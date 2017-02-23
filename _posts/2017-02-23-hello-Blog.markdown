@@ -10,7 +10,7 @@ tags:
     - 生活
 ---
 
-> “Yeah It's on. ”
+> “加油！！！ ”
 
 
 ## 前言
@@ -18,13 +18,11 @@ tags:
 Binux Blog 开通了。
 
 
-以后会多多写些Blog 以前都是自己随便记录些笔记。
-
 ---
 
 ## 正文
 
-接下来说说搭建这个博客的技术细节。  
+以后会多多写些Blog 以前都是自己随便记录些笔记。
 
 无意了解到 [GitHub Pages](https://pages.github.com/)
 通过[Jekyll](http://jekyllrb.com/) 可以快速 Building Blog
