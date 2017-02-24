@@ -1,7 +1,7 @@
 {
-  "name": "Hux Blog",
-  "short_name": "Hux Blog",
-  "description": "About an engineer & designer who loves web.",
+  "name": "Binux Blog",
+  "short_name": "Binux Blog",
+  "description": "About an Jave programmer.",
   "icons": [{
     "src": "icons/128.png",
     "sizes": "128x128",
