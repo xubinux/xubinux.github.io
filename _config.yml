@@ -3,7 +3,7 @@ title: Binux Blog
 SEOTitle: 許彬的博客 | Binux Blog
 header-img: img/home-bg.jpg
 email: xu.binux@gmail.com
-description: "Java 后端分布式 | 許彬 | 这里是 @許彬 的个人博客，痛痛快快写代码！"
+description: "一名正在崛起的Java后端工程师 | 許彬 | 这里是 @許彬 的个人博客 分享经验 交流技术 痛痛快快写代 与大家共同进步"
 keyword: "Java,Distributed,Transaction,Linux,Mac OS,IDEA,Redis,Dubbox,Spring,Netty,Mybatis,MySQL,Druid,Zookeeper,MQ,Android"
 # url: "https://huangxuan.me"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
