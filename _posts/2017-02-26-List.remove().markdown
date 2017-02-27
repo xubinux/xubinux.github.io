@@ -149,6 +149,6 @@ List Remove对象时不要传Integer对象的index值 要传也只能是传index
 ```
 最后我直接把这两句全注释了 解决了问题。
 
-#### 著作权声明
+## 著作权声明
 
 本文首次发布于 [Binux Blog](http://binux.cn)，转载请保留以上链接
