@@ -5,7 +5,7 @@ header-img: img/home-bg.jpg
 email: xu.binux@gmail.com
 description: "一名正在崛起的Java后端工程师 | 許彬 | 这里是 @許彬 的个人博客 分享经验 交流技术 痛痛快快写代 与大家共同进步"
 keyword: "Java,Distributed,Transaction,Linux,Mac OS,IDEA,Redis,Dubbox,Spring,Netty,Mybatis,MySQL,Druid,Zookeeper,MQ,Android"
-# url: "https://huangxuan.me"              # your host, for absolute URL
+url: "https://binux.cn"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 
@@ -63,8 +63,8 @@ duoshuo_share: true                     # set to false if you want to use Commen
 # ba_track_id: [your track id]
 
 # Google Analytics
-ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-# ga_domain: huangxuan.me
+ga_track_id: 'UA-92760839-1'            # Format: UA-xxxxxx-xx
+ga_domain: binux.cn
 
 
 
