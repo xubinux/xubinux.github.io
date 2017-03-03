@@ -8,7 +8,7 @@ header-img: "img/in-post/MySQL-ERROR/blog.png"
 catalog: true
 tags:
     - MySQL
-    - Error
+    - Bug
 ---
 
 > “这篇文章将讲一个困扰了我3天的问题 Java连接不上MySQL”
