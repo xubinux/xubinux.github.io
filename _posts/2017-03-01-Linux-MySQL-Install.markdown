@@ -119,9 +119,15 @@ root      2438  1573  0 11:30 pts/1    00:00:00 grep mysql
 #### 启动 输入初始密码
 \[root@mysql mysql\]# ./mysql -uroot -p
 
-### 第十步 重新设置密码
+### 第十步 重新设置密码、授权
+#### 设置密码
 mysql> grant all privileges on *.* to root@'%' identified by '**我是密码**';
 
+#### 授权
+mysql>grant all privileges on *.* to root@'%' identified by '**我是密码**';
+
+#### 刷新
+mysql>flush privileges;
 ### 第十一步 设置防火墙规则
 
 \[root@mysql mysql\]# vim /etc/sysconfig/iptables
