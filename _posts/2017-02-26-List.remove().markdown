@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "List<E>.remove()无效"
-subtitle:   "今天做购物车数量加减功能时候 对购物车List集合进行操作时报错！"
+title:      "List<E>.remove()无效!!!"
+subtitle:   "今天做购物车数量加减功能时候 对购物车List集合进行操作时报错"
 date:       2017-02-26
 author:     "Binux"
 header-img: "img/in-post/List.remove()/blog.png"
