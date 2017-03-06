@@ -29,6 +29,9 @@ tags:
 ## 正文
 
 ### 安装
+
+#### 安装JDK 略
+
 > 以下操作3台机器同时操作
 
 #### 新建用户
@@ -40,8 +43,7 @@ passwd zookeeper
 
 #### 下载
 
-官网下载zookeeper-3.4.6：http://apache.fayea.com/zookeeper/
-
+官网下载[zookeeper-3.4.6](http://apache.fayea.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz)
 Linux wget http://apache.fayea.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz
 
 #### 解压
