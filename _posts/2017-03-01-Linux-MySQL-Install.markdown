@@ -14,6 +14,13 @@ tags:
 
 > “这篇文章将介绍如何Linux下如何安装MySQL 只适合Linux小白看 大神勿喷”
 
+## 系列
+* **[Xbin-Store(分布式商城)项目所用Linux服务系列 MySQL安装(一)](http://binux.cn/2017/03/01/Linux-MySQL-Install/)**
+* [Xbin-Store(分布式商城)项目所用Linux服务系列 Redis集群安装(二)](http://binux.cn/2017/03/03/Redis-Cluster-Install/)
+* [Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三)](http://binux.cn/2017/03/04/Zookeeper-Cluster-Install/)
+* [Xbin-Store(分布式商城)项目所用Linux服务系列 Nginx安装(四)](http://binux.cn/2017/03/04/Nginx-Install/)
+* [Xbin-Store(分布式商城)项目所用Linux服务系列 FastDFS安装(五)](http://binux.cn/2017/03/05/FastDFS-Install/)
+* [Xbin-Store(分布式商城)项目所依赖的Linux服务器 安装系列(六)](http://binux.cn/2017/03/06/Solr-Cluster-Install/)
 
 ## 前言
 
