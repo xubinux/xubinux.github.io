@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Xbin-Store(分布式商城)项目所依赖的Linux服务器 安装系列(三)"
+title:      "Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三)"
 subtitle:   "————Zookeeper集群安装"
 date:       2017-03-04
 author:     "Binux"

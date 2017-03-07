@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Xbin-Store(分布式商城)项目所依赖的Linux服务器 安装系列(五)"
+title:      "Xbin-Store(分布式商城)项目所用Linux服务系列 FastDFS安装(五)"
 subtitle:   "————FastDFS安装"
 date:       2017-03-05
 author:     "Binux"

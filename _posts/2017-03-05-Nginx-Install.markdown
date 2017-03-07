@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Xbin-Store(分布式商城)项目所依赖的Linux服务器 安装系列(四)"
+title:      "Xbin-Store(分布式商城)项目所用Linux服务系列 Nginx安装(四)"
 subtitle:   "————Nginx安装"
 date:       2017-03-04
 author:     "Binux"

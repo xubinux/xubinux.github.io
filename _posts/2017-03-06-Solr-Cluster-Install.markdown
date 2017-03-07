@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Xbin-Store(分布式商城)项目所依赖的Linux服务器 安装系列(六)"
+title:      "Xbin-Store(分布式商城)项目所用Linux服务系列 Solr集群安装(六)"
 subtitle:   "————Solr集群安装"
 date:       2017-03-06
 author:     "Binux"
@@ -40,7 +40,7 @@ CentOS 6.5
 
 #### Zookeeper集群安装
 
-[Xbin-Store(分布式商城)项目所依赖的Linux服务器 安装系列(三)](http://binux.cn/2017/03/04/Zookeeper-Cluster-Install/)
+[Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三)](http://binux.cn/2017/03/04/Zookeeper-Cluster-Install/)
 
 #### Tomcat安装(四台同时)
 

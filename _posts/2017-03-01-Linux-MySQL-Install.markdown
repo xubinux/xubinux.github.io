@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Xbin-Store(分布式商城)项目所依赖的Linux服务器 安装系列(一)"
+title:      "Xbin-Store(分布式商城)项目所用Linux服务系列 MySQL安装(一)"
 subtitle:   "————MySQL5.7安装"
 date:       2017-03-01
 author:     "Binux"
