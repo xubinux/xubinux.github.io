@@ -176,11 +176,11 @@ JAVA_OPTS="-DzkHost=192.168.1.1:2181,192.168.1.2:2181,192.168.1.3:2181"
 
 #### 集群配置
 
-访问：http://192.168.1.4/admin/collections?action=CREATE&name=collection2&numShards=2&replicationFactor=2
+访问：http://192.168.1.11/admin/collections?action=CREATE&name=collection2&numShards=2&replicationFactor=2
 
 > 新建collection2将集群分为两片，每片两个副本。
 
-访问：http://192.168.1.4/admin/collections?action=DELETE&name=collection1
+访问：http://192.168.1.11/admin/collections?action=DELETE&name=collection1
 
 > 删除 collection1
 
