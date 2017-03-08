@@ -48,11 +48,11 @@ RocketMQ 版本3.2.6
 
 ## 正文
 
-### 安装
+### 安装(4台同时)
 
 #### 安装JDK 略
 
-#### 解压 (4台同时)
+#### 解压
 
 ```bash
 tar -zxvf alibaba-rocketmq-3.2.6.tar.gz -C /usr/local
