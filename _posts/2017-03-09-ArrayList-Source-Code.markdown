@@ -337,7 +337,12 @@ tags:
     }
 ```
 
-##### void removeRange(int fromIndex, int toIndex)
+##### protected void removeRange(int fromIndex, int toIndex)
+
+> 受保护不能直接调用
+> 使用list.subList(start,end).clear();调用此方法
+> 查看[removeRange详细分析](http://www.cnblogs.com/hzmark/archive/2012/12/19/ArrayList_removeRange.html)
+
 ```java
     /**
      * 移除指定范围的元素
