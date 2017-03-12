@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!-- 
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.0 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            Xbin-Store(分布式商城)项目所用Linux服务系列 Redis集群安装(二) | 
+        
+        Binux Blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Binux">
+    <meta name="description" content="一名正在崛起的Java后端工程师">
+    <meta name="keywords" content="null,XBin-Store,Linux,Redis">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Binux Blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://binux.cn">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Xbin-Store(分布式商城)项目所用Linux服务系列 Redis集群安装(二) | Binux Blog">
+    <meta property="og:description" content="一名正在崛起的Java后端工程师">
+    <meta property="og:article:tag" content="XBin-Store"> <meta property="og:article:tag" content="Linux"> <meta property="og:article:tag" content="Redis"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/queue.js"></script>
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-92760839-1', 'auto');ga('send', 'pageview');
+    </script>
+    
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#系列"><span class="post-toc-number">1.</span> <span class="post-toc-text">系列</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">2.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装"><span class="post-toc-number">3.</span> <span class="post-toc-text">安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下载源码点我下载"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">下载源码点我下载</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解压"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">解压</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编译"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">编译</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装-1"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拷贝配置文件"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">拷贝配置文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#复制6个Redis"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">复制6个Redis</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#复制redis-trib-rb集群管理工具"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">复制redis-trib.rb集群管理工具</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动-后端启动"><span class="post-toc-number">3.8.</span> <span class="post-toc-text">启动(后端启动)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建集群"><span class="post-toc-number">3.9.</span> <span class="post-toc-text">创建集群</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看Redis运行状态"><span class="post-toc-number">3.10.</span> <span class="post-toc-text">查看Redis运行状态</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Redis集群操作"><span class="post-toc-number">4.</span> <span class="post-toc-text">Redis集群操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#新增一个Master节点"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">新增一个Master节点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为新节点分配slot"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">为新节点分配slot</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#完成-查看新增节点-slot数量"><span class="post-toc-number">4.1.2.</span> <span class="post-toc-text">完成 查看新增节点 slot数量</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#给7007添加一个Slave节点"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">给7007添加一个Slave节点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除一个Slave节点-7008-Slave"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">删除一个Slave节点(7008 Slave)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除一个Master节点-7007-Master"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">删除一个Master节点(7007 Master)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#删除成功-查看集群状态"><span class="post-toc-number">4.4.1.</span> <span class="post-toc-text">删除成功 查看集群状态</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#jedis连接"><span class="post-toc-number">5.</span> <span class="post-toc-text">jedis连接</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pom坐标："><span class="post-toc-number">5.1.</span> <span class="post-toc-text">pom坐标：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单实例连接"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">单实例连接</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用连接池连接"><span class="post-toc-number">5.2.1.</span> <span class="post-toc-text">使用连接池连接</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#jedis与spring整合"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">jedis与spring整合</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#测试代码"><span class="post-toc-number">5.3.1.</span> <span class="post-toc-text">测试代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多实例连接"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">多实例连接</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#测试代码-1"><span class="post-toc-number">5.4.1.</span> <span class="post-toc-text">测试代码</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">6.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#著作权声明"><span class="post-toc-number">7.</span> <span class="post-toc-text">著作权声明</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Xbin-Store(分布式商城)项目所用Linux服务系列 Redis集群安装(二)
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Binux</strong>
+        <span>3月 03, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACVElEQVR42u3aQW7CQAwFUO5/6XZbqaJ82xOTopcVgkLmZTHjfvvx9dHXAw8PDw8PDw8P72a8R3w1b/bruz/fefZ6sjY8PDy8HV5viX/j809zcLQ2PDw8vEXe2Vs+3biDu/TWhoeHh3dnXnXLzktnPDw8vE/lTQruf3bu4eHh4Y3DiORg+DuAmETAl2cteHh4eDEvbzLtv17t7+Hh4eEFvPkowCSSODumgIeHh7fD692yOi6QjBGcegR4eHh4O7z50EAOy1tr1ceEh4eHt8OrRre95lYeB0++i4eHh7fD6y2oWmrnjyl/cHh4eHjv5eVbcG9zT8KIPJJ4cXc8PDy8FV6vtK22yuYFd/Q7eHh4eBfzkq08CVjnB0N+UL1owuHh4eGt8ybDo9UjJ4eNGmB4eHh4R3nRVjsYiuoNcvUOFTw8PLxNXjViqA5RRY2rVhyMh4eHt8/LBwWq+Ml4VjWwwMPDw9vk9f7hr27ledyQP+7RZAQeHh7egDfZiKvDpmfvVT738PDw8A7xToUFZ2Pc0Tt4eHh4K7xeiVwtf69ovI1GB/Dw8PDGvMmiqyOqvRbXgawFDw8P7wJetVWfNLR6LbFmIY6Hh4d3Ma969cYL8sK9V7Lj4eHhbfKObce90dKgTD8QRuDh4eFdwOsdBtUGf7V8b/4lHh4e3iIv36DnZXQS7B7OWvDw8PBuwOvFvvPoodkAw8PDw3srL9/cq2FuNeC4pKTGw8PDOxpGnFrc2QECPDw8vH1e/nPzZeW/kB9XeHh4eJu8z7vw8PDw8PDw8PBucH0DR1PEcE1PJHEAAAAASUVORK5CYII=">
+        </ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Linux/">Linux</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Redis/">Redis</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/XBin-Store/">XBin-Store</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Xbin-Store(分布式商城)项目所用Linux服务系列 Redis集群安装(二)&url=http://binux.cn//2017/03/03/Redis-Cluster-Install/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://binux.cn//2017/03/03/Redis-Cluster-Install/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Binux Blog&title=Xbin-Store(分布式商城)项目所用Linux服务系列 Redis集群安装(二)&summary=一名正在崛起的Java后端工程师&pics=http://binux.cn/img/favicon.png&url=http://binux.cn/2017/03/03/Redis-Cluster-Install/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>“这篇文章将介绍如何安装Redis集群(6节点 3主3从),并且如何对Redis集群进行操作,以及Jedis进行操作!”</p>
+</blockquote>
+<h2 id="系列"><a href="#系列" class="headerlink" title="系列"></a>系列</h2><ul>
+<li><a href="http://binux.cn/2017/03/01/Linux-MySQL-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 MySQL安装(一)</a></li>
+<li><strong><a href="http://binux.cn/2017/03/03/Redis-Cluster-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Redis集群安装(二)</a></strong></li>
+<li><a href="http://binux.cn/2017/03/04/Zookeeper-Cluster-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三)</a></li>
+<li><a href="http://binux.cn/2017/03/04/Nginx-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Nginx安装(四)</a></li>
+<li><a href="http://binux.cn/2017/03/05/FastDFS-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 FastDFS安装(五)</a></li>
+<li><a href="http://binux.cn/2017/03/06/Solr-Cluster-Install/">Xbin-Store(分布式商城)项目所依赖的Linux服务系列 Solr集群安装(六)</a></li>
+<li><a href="http://binux.cn/2017/03/07/RocketMQ-Cluster-Install/">Xbin-Store(分布式商城)项目所依赖的Linux服务系列 RocketMQ集群安装(七)</a></li>
+</ul>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本篇安装的Redis版本为3.0 目前官方最新稳定版3.2</p>
+<p>需要安装gcc：yum install gcc-c++</p>
+<p>需要安装ruby的环境。</p>
+<p>yum -y install ruby ruby-devel rubygems rpm-build</p>
+<p>需要使用到官方提供的ruby脚本<a href="https://rubygems.org/downloads/redis-3.0.0.gem" target="_blank" rel="external">redis-3.0.0.gem</a>。</p>
+<p>gem install redis-3.0.0.gem</p>
+<blockquote>
+<p>本机IP为192.168.1.1</p>
+</blockquote>
+<hr>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="下载源码点我下载"><a href="#下载源码点我下载" class="headerlink" title="下载源码点我下载"></a>下载源码<a href="http://download.redis.io/releases/redis-3.0.0.tar.gz" target="_blank" rel="external">点我下载</a></h3><h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><p>tar -zxvf redis-3.0.0.tar.gz</p>
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>cd /usr/local/redis-3.0.0</p>
+<p>make</p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>make PREFIX=/usr/local/redis1 install</p>
+<h3 id="拷贝配置文件"><a href="#拷贝配置文件" class="headerlink" title="拷贝配置文件"></a>拷贝配置文件</h3><p>进入源码目录，里面有一份配置文件 redis.conf，然后将其拷贝到安装路径下</p>
+<p>cd /usr/local/redis</p>
+<p>mkdir etc</p>
+<p>cp redis-3.0.0/redis.conf  /usr/local/redis-cluster/redis1/etc</p>
+<p>编辑redis.conf 打开第632行# cluster-enabled yes 的注释</p>
+<h3 id="复制6个Redis"><a href="#复制6个Redis" class="headerlink" title="复制6个Redis"></a>复制6个Redis</h3><p>分别命名为redis1-6</p>
+<p>分别修改redis.conf配置文件中的第45行端口号为7001-7006</p>
+<h3 id="复制redis-trib-rb集群管理工具"><a href="#复制redis-trib-rb集群管理工具" class="headerlink" title="复制redis-trib.rb集群管理工具"></a>复制redis-trib.rb集群管理工具</h3><p>cp redis-3.0.0/src/redis-trib.rb  /usr/local/redis-cluster</p>
+<h3 id="启动-后端启动"><a href="#启动-后端启动" class="headerlink" title="启动(后端启动)"></a>启动(后端启动)</h3><p> /usr/local/redis-cluster/redis1/bin/redis-server /usr/local/redis-cluster/redis1/etc/redis.conf<br> /usr/local/redis-cluster/redis2/bin/redis-server /usr/local/redis-cluster/redis2/etc/redis.conf<br> /usr/local/redis-cluster/redis3/bin/redis-server /usr/local/redis-cluster/redis3/etc/redis.conf<br> /usr/local/redis-cluster/redis4/bin/redis-server /usr/local/redis-cluster/redis4/etc/redis.conf<br> /usr/local/redis-cluster/redis5/bin/redis-server /usr/local/redis-cluster/redis5/etc/redis.conf<br> /usr/local/redis-cluster/redis6/bin/redis-server /usr/local/redis-cluster/redis6/etc/redis.conf</p>
+<h3 id="创建集群"><a href="#创建集群" class="headerlink" title="创建集群"></a>创建集群</h3><p>cd /usr/local/redis-cluster<br>./redis-trib.rb create –replicas 1 <strong>192.168.1.1</strong>:<strong>7001</strong> <strong>192.168.1.1</strong>:<strong>7002</strong> <strong>192.168.1.1</strong>:<strong>7003</strong> <strong>192.168.1.1</strong>:<strong>7004</strong> <strong>192.168.1.1</strong>:<strong>7005</strong>  <strong>192.168.1.1</strong>:<strong>7006</strong></p>
+<p>打印：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; Creating cluster</div><div class="line">Connecting to node 192.168.1.1:7001: OK</div><div class="line">Connecting to node 192.168.1.1:7002: OK</div><div class="line">Connecting to node 192.168.1.1:7003: OK</div><div class="line">Connecting to node 192.168.1.1:7004: OK</div><div class="line">Connecting to node 192.168.1.1:7005: OK</div><div class="line">Connecting to node 192.168.1.1:7006: OK</div><div class="line">&gt;&gt;&gt; Performing hash slots allocation on 6 nodes...</div><div class="line">Using 3 masters:</div><div class="line">192.168.1.1:7001</div><div class="line">192.168.1.1:7002</div><div class="line">192.168.1.1:7003</div><div class="line">Adding replica 192.168.1.1:7004 to 192.168.1.1:7001</div><div class="line">Adding replica 192.168.1.1:7005 to 192.168.1.1:7002</div><div class="line">Adding replica 192.168.1.1:7006 to 192.168.1.1:7003</div><div class="line">M: 5a8523db7e12ca600dc82901ced06741b3010076 192.168.1.1:7001</div><div class="line">   slots:0-5460 (5461 slots) master</div><div class="line">M: bf6f0929044db485dea9b565bb51e0c917d20a53 192.168.1.1:7002</div><div class="line">   slots:5461-10922 (5462 slots) master</div><div class="line">M: c5e334dc4a53f655cb98fa3c3bdef8a808a693ca 192.168.1.1:7003</div><div class="line">   slots:10923-16383 (5461 slots) master</div><div class="line">S: 2a61b87b49e5b1c84092918fa2467dd70fec115f 192.168.1.1:7004</div><div class="line">   replicates 5a8523db7e12ca600dc82901ced06741b3010076</div><div class="line">S: 14848b8c813766387cfd77229bd2d1ffd6ac8d65 192.168.1.1:7005</div><div class="line">   replicates bf6f0929044db485dea9b565bb51e0c917d20a53</div><div class="line">S: 3192cbe437fe67bbde9062f59d5a77dabcd0d632 192.168.1.1:7006</div><div class="line">   replicates c5e334dc4a53f655cb98fa3c3bdef8a808a693ca</div><div class="line">Can I set the above configuration? (type &apos;yes&apos; to accept): yes</div><div class="line">&gt;&gt;&gt; Nodes configuration updated</div><div class="line">&gt;&gt;&gt; Assign a different config epoch to each node</div><div class="line">&gt;&gt;&gt; Sending CLUSTER MEET messages to join the cluster</div><div class="line">Waiting for the cluster to join.....</div><div class="line">&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.1:7001)</div><div class="line">M: 5a8523db7e12ca600dc82901ced06741b3010076 192.168.1.1:7001</div><div class="line">   slots:0-5460 (5461 slots) master</div><div class="line">M: bf6f0929044db485dea9b565bb51e0c917d20a53 192.168.1.1:7002</div><div class="line">   slots:5461-10922 (5462 slots) master</div><div class="line">M: c5e334dc4a53f655cb98fa3c3bdef8a808a693ca 192.168.1.1:7003</div><div class="line">   slots:10923-16383 (5461 slots) master</div><div class="line">M: 2a61b87b49e5b1c84092918fa2467dd70fec115f 192.168.1.1:7004</div><div class="line">   slots: (0 slots) master</div><div class="line">   replicates 5a8523db7e12ca600dc82901ced06741b3010076</div><div class="line">M: 14848b8c813766387cfd77229bd2d1ffd6ac8d65 192.168.1.1:7005</div><div class="line">   slots: (0 slots) master</div><div class="line">   replicates bf6f0929044db485dea9b565bb51e0c917d20a53</div><div class="line">M: 3192cbe437fe67bbde9062f59d5a77dabcd0d632 192.168.1.1:7006</div><div class="line">   slots: (0 slots) master</div><div class="line">   replicates c5e334dc4a53f655cb98fa3c3bdef8a808a693ca</div><div class="line">[OK] All nodes agree about slots configuration.</div><div class="line">&gt;&gt;&gt; Check for open slots...</div><div class="line">&gt;&gt;&gt; Check slots coverage...</div><div class="line">[OK] All 16384 slots covered.</div></pre></td></tr></table></figure></p>
+<h3 id="查看Redis运行状态"><a href="#查看Redis运行状态" class="headerlink" title="查看Redis运行状态"></a>查看Redis运行状态</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ps -el | grep redis</div><div class="line">5 S     0  1999     1  0  80   0 - 34359 ep_pol ?        00:00:00 redis-server</div><div class="line">5 S     0  2003     1  0  80   0 - 34359 ep_pol ?        00:00:00 redis-server</div><div class="line">5 S     0  2007     1  0  80   0 - 34359 ep_pol ?        00:00:00 redis-server</div><div class="line">5 S     0  2011     1  0  80   0 - 34359 ep_pol ?        00:00:00 redis-server</div><div class="line">5 S     0  2017     1  0  80   0 - 34359 ep_pol ?        00:00:00 redis-server</div><div class="line">5 S     0  2023     1  0  80   0 - 34359 ep_pol ?        00:00:00 redis-server</div></pre></td></tr></table></figure>
+<h2 id="Redis集群操作"><a href="#Redis集群操作" class="headerlink" title="Redis集群操作"></a>Redis集群操作</h2><h3 id="新增一个Master节点"><a href="#新增一个Master节点" class="headerlink" title="新增一个Master节点"></a>新增一个Master节点</h3><p>/usr/local/redis-cluster/redis-trib.rb add-node <strong>新增节点192.168.1.1:端口</strong> <strong>已知节点192.168.1.1:端口</strong></p>
+<blockquote>
+<p>如192.168.1.1:6385 192.168.1.1:6379</p>
+</blockquote>
+<p>打印：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; Adding node 新增192.168.1.1:端口 to cluster 192.168.1.1:7001</div><div class="line">Connecting to node 192.168.1.1:7001: OK</div><div class="line">Connecting to node 192.168.1.1:7006: OK</div><div class="line">Connecting to node 192.168.1.1:7005: OK</div><div class="line">Connecting to node 192.168.1.1:7004: OK</div><div class="line">Connecting to node 192.168.1.1:7002: OK</div><div class="line">Connecting to node 192.168.1.1:7003: OK</div><div class="line">&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.1:7001)</div><div class="line">M: 614d0def75663f2620b6402a017014b57c912dad 192.168.1.1:7001</div><div class="line">   slots:0-5460 (5461 slots) master</div><div class="line">   1 additional replica(s)</div><div class="line">S: fa299e41c173fa807ba04684c2f5e5e185d5f7d0 192.168.1.1:7006</div><div class="line">   slots: (0 slots) slave</div><div class="line">   replicates 83df08875c7707878756364039df0a4c8658f272</div><div class="line">S: adb99506ddccad332e09258565f2e5f4f456a150 192.168.1.1:7005</div><div class="line">   slots: (0 slots) slave</div><div class="line">   replicates 8aac82b63d42a1989528cd3906579863a5774e77</div><div class="line">S: a69b98937844c6050ee5885266ccccb185a3f36a 192.168.1.1:7004</div><div class="line">   slots: (0 slots) slave</div><div class="line">   replicates 614d0def75663f2620b6402a017014b57c912dad</div><div class="line">M: 8aac82b63d42a1989528cd3906579863a5774e77 192.168.1.1:7002</div><div class="line">   slots:5461-10922 (5462 slots) master</div><div class="line">   1 additional replica(s)</div><div class="line">M: 83df08875c7707878756364039df0a4c8658f272 192.168.1.1:7003</div><div class="line">   slots:10923-16383 (5461 slots) master</div><div class="line">   1 additional replica(s)</div><div class="line">[OK] All nodes agree about slots configuration.</div><div class="line">&gt;&gt;&gt; Check for open slots...</div><div class="line">&gt;&gt;&gt; Check slots coverage...</div><div class="line">[OK] All 16384 slots covered.</div><div class="line">Connecting to node 新增192.168.1.1:端口: OK</div><div class="line">&gt;&gt;&gt; Send CLUSTER MEET to node 新增192.168.1.1:端口 to make it join the cluster.</div><div class="line">[OK] New node added correctly.</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：当添加节点成功以后，新增的节点不会有任何数据，因为它没有分配任何的slot（hash槽）。我们需要为新节点手工分配slot。</p>
+</blockquote>
+<h4 id="为新节点分配slot"><a href="#为新节点分配slot" class="headerlink" title="为新节点分配slot"></a>为新节点分配slot</h4><p>/usr/local/redis-cluster/redis-trib.rb add-node <strong>192.168.1.1:端口</strong>(已知节点)</p>
+<p>打印：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.1:7001)</div><div class="line">M: 614d0def75663f2620b6402a017014b57c912dad 192.168.1.1:7001</div><div class="line">   slots:0-5460 (5461 slots) master</div><div class="line">   1 additional replica(s)</div><div class="line">S: fa299e41c173fa807ba04684c2f5e5e185d5f7d0 192.168.1.1:7006</div><div class="line">   slots: (0 slots) slave</div><div class="line">   replicates 83df08875c7707878756364039df0a4c8658f272</div><div class="line">S: adb99506ddccad332e09258565f2e5f4f456a150 192.168.1.1:7005</div><div class="line">   slots: (0 slots) slave</div><div class="line">   replicates 8aac82b63d42a1989528cd3906579863a5774e77</div><div class="line">M: 382634a4025778c040b7213453fd42a709f79e28 192.168.1.1:7007</div><div class="line">   slots: (0 slots) master</div><div class="line">   0 additional replica(s)</div><div class="line">S: a69b98937844c6050ee5885266ccccb185a3f36a 192.168.1.1:7004</div><div class="line">   slots: (0 slots) slave</div><div class="line">   replicates 614d0def75663f2620b6402a017014b57c912dad</div><div class="line">M: 8aac82b63d42a1989528cd3906579863a5774e77 192.168.1.1:7002</div><div class="line">   slots:5461-10922 (5462 slots) master</div><div class="line">   1 additional replica(s)</div><div class="line">M: 83df08875c7707878756364039df0a4c8658f272 192.168.1.1:7003</div><div class="line">   slots:10923-16383 (5461 slots) master</div><div class="line">   1 additional replica(s)</div><div class="line">[OK] All nodes agree about slots configuration.</div><div class="line">&gt;&gt;&gt; Check for open slots...</div><div class="line">&gt;&gt;&gt; Check slots coverage...</div><div class="line">[OK] All 16384 slots covered.</div><div class="line">// 提示一</div><div class="line">How many slots do you want to move (from 1 to 16384)? 输入需要分配的slot数量如：200</div><div class="line">// 提示二 是你需要把这200个slot槽移动到那个节点上去（需要指定节点id）</div><div class="line">What is the receiving node ID? 382634a4025778c040b7213453fd42a709f79e28//节点ID</div><div class="line">Please enter all the source node IDs.</div><div class="line">  Type &apos;all&apos; to use all the nodes as source nodes for the hash slots.</div><div class="line">  Type &apos;done&apos; once you entered all the source nodes IDs.</div><div class="line">// 提示三 输入all为从所有主节点3个中分别抽取响应的槽数（一共为200个槽到指定的新节点中！，并且会打印执行分片的计划。）</div><div class="line">Source node #1:all</div><div class="line">Ready to move 200 slots.</div><div class="line">Source nodes:</div><div class="line">M: 614d0def75663f2620b6402a017014b57c912dad 192.168.1.1:7001</div><div class="line">slots:0-5460 (5461 slots) master</div><div class="line">1 additional replica(s)</div><div class="line">M: 8aac82b63d42a1989528cd3906579863a5774e77 192.168.1.1:7002</div><div class="line">slots:5461-10922 (5462 slots) master</div><div class="line">1 additional replica(s)</div><div class="line">M: 83df08875c7707878756364039df0a4c8658f272 192.168.1.1:7003</div><div class="line">slots:10923-16383 (5461 slots) master</div><div class="line">1 additional replica(s)</div><div class="line">Destination node:</div><div class="line">M: 382634a4025778c040b7213453fd42a709f79e28 192.168.1.1:7007</div><div class="line">slots: (0 slots) master</div><div class="line">0 additional replica(s)</div><div class="line">Resharding plan:（分片执行计划日志）</div><div class="line">......</div><div class="line">//提示四 输入yes执行</div><div class="line">Do you want to proceed with the proposed reshard plan (yes/no)? yes</div></pre></td></tr></table></figure></p>
+<h4 id="完成-查看新增节点-slot数量"><a href="#完成-查看新增节点-slot数量" class="headerlink" title="完成 查看新增节点 slot数量"></a>完成 查看新增节点 slot数量</h4><p>/usr/local/redis/bin/redis-cli -c -h 192.168.1.1 -p 7001</p>
+<p>192.168.1.1:7001&gt; cluster  nodes</p>
+<h3 id="给7007添加一个Slave节点"><a href="#给7007添加一个Slave节点" class="headerlink" title="给7007添加一个Slave节点"></a>给7007添加一个Slave节点</h3><p>/usr/local/redis-cluster/redis-trib.rb add-node 192.168.1.1:7008 <strong>192.168.1.1:7007</strong>(Master节点)</p>
+<p>需要执行replicate命令来指定当前节点（从节点）的主节点id为哪个。</p>
+<p>/usr/local/redis-cluster/redis1/bin/redis-cli -c -h 192.168.1.1 -p 7008<br>192.168.1.1:7008&gt; cluster replicate 382634a4025778c040b7213453fd42a709f79e28(7007的id)</p>
+<p>192.168.1.1:7008&gt; OK（提示OK则操作成功）</p>
+<h3 id="删除一个Slave节点-7008-Slave"><a href="#删除一个Slave节点-7008-Slave" class="headerlink" title="删除一个Slave节点(7008 Slave)"></a>删除一个Slave节点(7008 Slave)</h3><p>删除从节点7008，输入del-node命令，指定删除节点ip和端口，以及节点id</p>
+<p>/usr/local/redis-cluster/redis-trib.rb del-node 192.168.1.1:7008 97b0e0115326833724eb0ffe1d0574ee34618e9f(节点id)</p>
+<p>打印：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; Removing node 97b0e0115326833724eb0ffe1d0574ee34618e9f from cluster 192.168.1.1:7008</div><div class="line">Connecting to node 192.168.1.1:7008: OK</div><div class="line">Connecting to node 192.168.1.1:7003: OK</div><div class="line">Connecting to node 192.168.1.1:7006: OK</div><div class="line">Connecting to node 192.168.1.1:7002: OK</div><div class="line">Connecting to node 192.168.1.1:7005: OK</div><div class="line">Connecting to node 192.168.1.1:7001: OK</div><div class="line">Connecting to node 192.168.1.1:7004: OK</div><div class="line">Connecting to node 192.168.1.1:7007: OK</div><div class="line">&gt;&gt;&gt; Sending CLUSTER FORGET messages to the cluster...</div><div class="line">&gt;&gt;&gt; SHUTDOWN the node.</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>删除成功</p>
+</blockquote>
+<h3 id="删除一个Master节点-7007-Master"><a href="#删除一个Master节点-7007-Master" class="headerlink" title="删除一个Master节点(7007 Master)"></a>删除一个Master节点(7007 Master)</h3><p>这个步骤会相对比较麻烦一些，因为主节点的里面是有分配了slot槽的，所以我们这里必须先把7007里的slot槽放入到其他的可用主节点中去，然后再进行移除节点操作才行，不然会出现数据丢失问题。</p>
+<p>需要先把其全部的数据（Slot槽）移动到其他节点上去（目前只能把Master的数据迁移到一个节点上，暂时做不了平均分配功能）。</p>
+<blockquote>
+<p>暂不知在后续版本有无增加此功能</p>
+</blockquote>
+<p>/usr/local/redis-cluster/redis-trib.rb reshard 192.168.1.1:7007</p>
+<p>打印：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.1:7007)</div><div class="line">M: 382634a4025778c040b7213453fd42a709f79e28 192.168.1.1:7007</div><div class="line">   slots:0-65,5461-5527,10923-10988 (199 slots) master</div><div class="line">   0 additional replica(s)</div><div class="line">S: fa299e41c173fa807ba04684c2f5e5e185d5f7d0 192.168.1.1:7006</div><div class="line">   slots: (0 slots) slave</div><div class="line">   replicates 83df08875c7707878756364039df0a4c8658f272</div><div class="line">S: a69b98937844c6050ee5885266ccccb185a3f36a 192.168.1.1:7004</div><div class="line">   slots: (0 slots) slave</div><div class="line">   replicates 614d0def75663f2620b6402a017014b57c912dad</div><div class="line">M: 614d0def75663f2620b6402a017014b57c912dad 192.168.1.1:7001</div><div class="line">   slots:66-5460 (5395 slots) master</div><div class="line">   1 additional replica(s)</div><div class="line">M: 8aac82b63d42a1989528cd3906579863a5774e77 192.168.1.1:7002</div><div class="line">   slots:5528-10922 (5395 slots) master</div><div class="line">   1 additional replica(s)</div><div class="line">S: adb99506ddccad332e09258565f2e5f4f456a150 192.168.1.1:7005</div><div class="line">   slots: (0 slots) slave</div><div class="line">   replicates 8aac82b63d42a1989528cd3906579863a5774e77</div><div class="line">M: 83df08875c7707878756364039df0a4c8658f272 192.168.1.1:7003</div><div class="line">   slots:10989-16383 (5395 slots) master</div><div class="line">   1 additional replica(s)</div><div class="line">[OK] All nodes agree about slots configuration.</div><div class="line">&gt;&gt;&gt; Check for open slots...</div><div class="line">&gt;&gt;&gt; Check slots coverage...</div><div class="line">[OK] All 16384 slots covered.</div><div class="line">How many slots do you want to move (from 1 to 16384)? 199// 这里不一定正好200个槽</div><div class="line">What is the receiving node ID? 614d0def75663f2620b6402a017014b57c912dad</div><div class="line">Please enter all the source node IDs.</div><div class="line">  Type &apos;all&apos; to use all the nodes as source nodes for the hash slots.</div><div class="line">  Type &apos;done&apos; once you entered all the source nodes IDs.</div><div class="line">Source node #1:382634a4025778c040b7213453fd42a709f79e28// 这里是需要把数据移动到哪？这里输入7001的主节点id</div><div class="line">Source node #2:done// 这里直接输入done 开始生成迁移计划</div><div class="line">Ready to move 199 slots.</div><div class="line">  Source nodes:</div><div class="line">    M: 382634a4025778c040b7213453fd42a709f79e28 192.168.1.1:7007</div><div class="line">   slots:0-65,5461-5527,10923-10988 (199 slots) master</div><div class="line">   0 additional replica(s)</div><div class="line">  Destination node:</div><div class="line">    M: 614d0def75663f2620b6402a017014b57c912dad 192.168.1.1:7001</div><div class="line">   slots:66-5460 (5395 slots) master</div><div class="line">   1 additional replica(s)</div><div class="line">  Resharding plan:</div><div class="line">Moving slot 0 from 382634a4025778c040b7213453fd42a709f79e28</div><div class="line">...</div><div class="line">Do you want to proceed with the proposed reshard plan (yes/no)? Yes// 这里输入yes开始迁移</div><div class="line">Moving slot 0 from 192.168.1.1:7007 to 192.168.1.1:7001:</div></pre></td></tr></table></figure></p>
+<p>使用del-node命令删除7007主节点即可</p>
+<p>/usr/local/redis-cluster/redis-trib.rb del-node 192.168.1.1:7007 382634a4025778c040b7213453fd42a709f79e28(7007ID)<br>输出如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; Removing node 382634a4025778c040b7213453fd42a709f79e28 from cluster 192.168.1.171:7007</div><div class="line">Connecting to node 192.168.1.171:7007: OK</div><div class="line">Connecting to node 192.168.1.171:7006: OK</div><div class="line">Connecting to node 192.168.1.171:7004: OK</div><div class="line">Connecting to node 192.168.1.171:7001: OK</div><div class="line">Connecting to node 192.168.1.171:7002: OK</div><div class="line">Connecting to node 192.168.1.171:7005: OK</div><div class="line">Connecting to node 192.168.1.171:7003: OK</div><div class="line">&gt;&gt;&gt; Sending CLUSTER FORGET messages to the cluster...</div><div class="line">&gt;&gt;&gt; SHUTDOWN the node。</div></pre></td></tr></table></figure></p>
+<h4 id="删除成功-查看集群状态"><a href="#删除成功-查看集群状态" class="headerlink" title="删除成功 查看集群状态"></a>删除成功 查看集群状态</h4><p>/usr/local/redis/bin/redis-cli -c -h 192.168.1.1 -p 7001</p>
+<p>192.168.1.1:7001&gt; cluster  nodes</p>
+<h2 id="jedis连接"><a href="#jedis连接" class="headerlink" title="jedis连接"></a>jedis连接</h2><h3 id="pom坐标："><a href="#pom坐标：" class="headerlink" title="pom坐标："></a>pom坐标：</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>redis.clients<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jedis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="单实例连接"><a href="#单实例连接" class="headerlink" title="单实例连接"></a>单实例连接</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 单实例连接redis</span></div><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testJedisSingle</span><span class="params">()</span> </span>&#123;</div><div class="line">    Jedis jedis = <span class="keyword">new</span> Jedis(<span class="string">"192.168.1.1"</span>, <span class="number">7001</span>);</div><div class="line">    jedis.set(<span class="string">"name"</span>, <span class="string">"binux"</span>);</div><div class="line">    String name = jedis.get(<span class="string">"name"</span>);</div><div class="line">    System.out.println(name);</div><div class="line">    jedis.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="使用连接池连接"><a href="#使用连接池连接" class="headerlink" title="使用连接池连接"></a>使用连接池连接</h4><p>   通过单实例连接redis不能对redis连接进行共享，可以使用连接池对redis连接进行共享，提高资源利用率，使用jedisPool连接redis服务，如下代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 连接池连接redis</span></div><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pool</span><span class="params">()</span> </span>&#123;</div><div class="line">    JedisPoolConfig config = <span class="keyword">new</span> JedisPoolConfig();</div><div class="line">    <span class="comment">//最大连接数</span></div><div class="line">    config.setMaxTotal(<span class="number">30</span>);</div><div class="line">    <span class="comment">//最大连接空闲数</span></div><div class="line">    config.setMaxIdle(<span class="number">2</span>);</div><div class="line"></div><div class="line">    JedisPool pool = <span class="keyword">new</span> JedisPool(config, <span class="string">"192.168.1.1"</span>, <span class="number">7001</span>);</div><div class="line">    Jedis jedis = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">try</span>  &#123;</div><div class="line">         jedis = pool.getResource();</div><div class="line">         jedis.set(<span class="string">"name"</span>, <span class="string">"binux"</span>);</div><div class="line">         String name = jedis.get(<span class="string">"name"</span>);</div><div class="line">         System.out.println(name);</div><div class="line">    &#125;<span class="keyword">catch</span>(Exception ex)&#123;</div><div class="line">         ex.printStackTrace();</div><div class="line">    &#125;<span class="keyword">finally</span>&#123;</div><div class="line">         <span class="keyword">if</span>(jedis != <span class="keyword">null</span>)&#123;</div><div class="line">             <span class="comment">//关闭连接</span></div><div class="line">             jedis.close();</div><div class="line">         &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="jedis与spring整合"><a href="#jedis与spring整合" class="headerlink" title="jedis与spring整合"></a>jedis与spring整合</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></div><div class="line">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xmlns:mvc</span>=<span class="string">"http://www.springframework.org/schema/mvc"</span></div><div class="line">    <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></div><div class="line">    <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span> <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span></div><div class="line">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans</span></div><div class="line">        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd</div><div class="line">        http://www.springframework.org/schema/mvc</div><div class="line">        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd</div><div class="line">        http://www.springframework.org/schema/context</div><div class="line">        http://www.springframework.org/schema/context/spring-context-3.2.xsd</div><div class="line">        http://www.springframework.org/schema/aop</div><div class="line">        http://www.springframework.org/schema/aop/spring-aop-3.2.xsd</div><div class="line">        http://www.springframework.org/schema/tx</div><div class="line">        http://www.springframework.org/schema/tx/spring-tx-3.2.xsd "&gt;</div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- 连接池配置 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"jedisPoolConfig"</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.JedisPoolConfig"</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 最大连接数 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxTotal"</span> <span class="attr">value</span>=<span class="string">"30"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 最大空闲连接数 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxIdle"</span> <span class="attr">value</span>=<span class="string">"10"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 每次释放连接的最大数目 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"numTestsPerEvictionRun"</span> <span class="attr">value</span>=<span class="string">"1024"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 释放连接的扫描间隔（毫秒） --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"timeBetweenEvictionRunsMillis"</span> <span class="attr">value</span>=<span class="string">"30000"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 连接最小空闲时间 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"minEvictableIdleTimeMillis"</span> <span class="attr">value</span>=<span class="string">"1800000"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 连接空闲多久后释放, 当空闲时间&gt;该值 且 空闲连接&gt;最大空闲连接数 时直接释放 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"softMinEvictableIdleTimeMillis"</span> <span class="attr">value</span>=<span class="string">"10000"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 获取连接时的最大等待毫秒数,小于零:阻塞不确定的时间,默认-1 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxWaitMillis"</span> <span class="attr">value</span>=<span class="string">"1500"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 在获取连接的时候检查有效性, 默认false --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testOnBorrow"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 在空闲时检查有效性, 默认false --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testWhileIdle"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 连接耗尽时是否阻塞, false报异常,ture阻塞直到超时, 默认true --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"blockWhenExhausted"</span> <span class="attr">value</span>=<span class="string">"false"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="comment">&lt;!-- redis单机 通过连接池 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"jedisPool"</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.JedisPool"</span> <span class="attr">destroy-method</span>=<span class="string">"close"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"poolConfig"</span> <span class="attr">ref</span>=<span class="string">"jedisPoolConfig"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"host"</span> <span class="attr">value</span>=<span class="string">"192.168.1.1"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"port"</span> <span class="attr">value</span>=<span class="string">"7001"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> ApplicationContext applicationContext;</div><div class="line"></div><div class="line"><span class="meta">@Before</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</div><div class="line">    applicationContext = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"classpath:spring-redis.xml"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testJedisPool</span><span class="params">()</span> </span>&#123;</div><div class="line">JedisPool pool = (JedisPool) applicationContext.getBean(<span class="string">"jedisPool"</span>);</div><div class="line">         <span class="keyword">try</span>  &#123;</div><div class="line">         jedis = pool.getResource();</div><div class="line"></div><div class="line">         jedis.set(<span class="string">"name"</span>, <span class="string">"binux"</span>);</div><div class="line">         String name = jedis.get(<span class="string">"name"</span>);</div><div class="line">         System.out.println(name);</div><div class="line"></div><div class="line">         &#125;<span class="keyword">catch</span>(Exception ex)&#123;</div><div class="line">         ex.printStackTrace();</div><div class="line">         &#125;<span class="keyword">finally</span>&#123;</div><div class="line">             <span class="keyword">if</span>(jedis != <span class="keyword">null</span>)&#123;</div><div class="line">                 <span class="comment">//关闭连接</span></div><div class="line">                 jedis.close();</div><div class="line">             &#125;</div><div class="line">         &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="多实例连接"><a href="#多实例连接" class="headerlink" title="多实例连接"></a>多实例连接</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&lt;bean id="jedisClient" class="redis.clients.jedis.JedisCluster"&gt;</div><div class="line">        &lt;constructor-arg name="nodes"&gt;</div><div class="line">            &lt;set&gt;</div><div class="line">                &lt;bean class="redis.clients.jedis.HostAndPort"&gt;</div><div class="line">                    &lt;constructor-arg name="host" value="$&#123;redis.server.cluster.1&#125;"/&gt;</div><div class="line">                    &lt;constructor-arg name="port" value="$&#123;redis.server.cluster.port.1&#125;"/&gt;</div><div class="line">                &lt;/bean&gt;</div><div class="line">                &lt;bean class="redis.clients.jedis.HostAndPort"&gt;</div><div class="line">                    &lt;constructor-arg name="host" value="$&#123;redis.server.cluster.2&#125;"/&gt;</div><div class="line">                    &lt;constructor-arg name="port" value="$&#123;redis.server.cluster.port.2&#125;"/&gt;</div><div class="line">                &lt;/bean&gt;</div><div class="line">                &lt;bean class="redis.clients.jedis.HostAndPort"&gt;</div><div class="line">                    &lt;constructor-arg name="host" value="$&#123;redis.server.cluster.3&#125;"/&gt;</div><div class="line">                    &lt;constructor-arg name="port" value="$&#123;redis.server.cluster.port.3&#125;"/&gt;</div><div class="line">                &lt;/bean&gt;</div><div class="line">                &lt;bean class="redis.clients.jedis.HostAndPort"&gt;</div><div class="line">                    &lt;constructor-arg name="host" value="$&#123;redis.server.cluster.4&#125;"/&gt;</div><div class="line">                    &lt;constructor-arg name="port" value="$&#123;redis.server.cluster.port.4&#125;"/&gt;</div><div class="line">                &lt;/bean&gt;</div><div class="line">                &lt;bean class="redis.clients.jedis.HostAndPort"&gt;</div><div class="line">                    &lt;constructor-arg name="host" value="$&#123;redis.server.cluster.5&#125;"/&gt;</div><div class="line">                    &lt;constructor-arg name="port" value="$&#123;redis.server.cluster.port.5&#125;"/&gt;</div><div class="line">                &lt;/bean&gt;</div><div class="line">                &lt;bean class="redis.clients.jedis.HostAndPort"&gt;</div><div class="line">                    &lt;constructor-arg name="host" value="$&#123;redis.server.cluster.6&#125;"/&gt;</div><div class="line">                    &lt;constructor-arg name="port" value="$&#123;redis.server.cluster.port.6&#125;"/&gt;</div><div class="line">                &lt;/bean&gt;</div><div class="line">            &lt;/set&gt;</div><div class="line">        &lt;/constructor-arg&gt;</div><div class="line">    &lt;/bean&gt;</div></pre></td></tr></table></figure>
+<h4 id="测试代码-1"><a href="#测试代码-1" class="headerlink" title="测试代码"></a>测试代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> ApplicationContext applicationContext;</div><div class="line"></div><div class="line"><span class="meta">@Before</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</div><div class="line">    applicationContext = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"classpath:spring-redis.xml"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testJedisPool</span><span class="params">()</span> </span>&#123;</div><div class="line">JedisCluster jedisCluster = (JedisCluster) applicationContext.getBean(<span class="string">"jedisClient"</span>);</div><div class="line">         <span class="keyword">try</span>  &#123;</div><div class="line"></div><div class="line">         jedisCluster.set(<span class="string">"name"</span>, <span class="string">"binux"</span>);</div><div class="line">         String name = jedisCluster.get(<span class="string">"name"</span>);</div><div class="line">         System.out.println(name);</div><div class="line"></div><div class="line">         &#125;<span class="keyword">catch</span>(Exception ex)&#123;</div><div class="line">         ex.printStackTrace();</div><div class="line">         &#125;<span class="keyword">finally</span>&#123;</div><div class="line">             <span class="keyword">if</span>(jedis != <span class="keyword">null</span>)&#123;</div><div class="line">                 <span class="comment">//关闭连接</span></div><div class="line">                 jedis.close();</div><div class="line">             &#125;</div><div class="line">         &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本篇只是讲了Redis集群的搭建和集群的基本操作 想深入了解的 建议自己买本书来看看 比如<a href="https://www.amazon.cn/Redis/dp/B00L4XHH0S/ref=tmm_pap_swatch_0?_encoding=UTF8&amp;qid=1488619617&amp;sr=8-2" target="_blank" rel="external">Redis设计与实现</a>、<a href="https://www.amazon.cn/图书/dp/B016YLS2LM/ref=sr_1_1?ie=UTF8&amp;qid=1488619617&amp;sr=8-1&amp;keywords=redis" target="_blank" rel="external">Redis实战</a>等</p>
+<p>安装如有问题 可以在下方评论 我会尽我所能的帮你解决一些问题。</p>
+<hr>
+<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+    <!-- 使用 DISQUS_CLICK -->
+    <div id="disqus-comment">	
+        <div id="disqus_thread"></div>
+<!-- include js -->
+<script src="/js/ripple.js"></script>
+
+<!-- add animation -->
+<style>
+        .ripple-container {
+        }
+        .ripple-container .ripple{
+            background-color: rgba(255,255,255,0.4);
+            animation: ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+        }
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            80% {
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+		.disqus_click_btn {
+            background-color: dodgerblue;
+            color: white;
+            padding: 10px 20px;
+            border:0;
+            font-size: 14px;
+            cursor: pointer
+        }
+</style>
+	
+<!-- add data-ripple attribute -->
+<div class="btn_click_load"> 
+    <button class="disqus_click_btn" data-ripple>阅读评论 「请确保 disq.us &amp; disquscdn.com &amp; disqus.com 可以正常加载」</button>
+</div>
+	
+<script>
+    // add effect to elements
+    Array.prototype.forEach.call(document.querySelectorAll('[data-ripple]'), function(element){
+        // find all elements and attach effect
+        new RippleEffect(element); // element is instance of javascript element node
+    });
+</script>
+
+<script>
+    $('.btn_click_load').click(function() {  //click to load comments
+        var disqus_config = function () {
+            this.page.url = 'http://binux.cn/2017/03/03/Redis-Cluster-Install/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//xubinux.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+  	
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/03/04/Zookeeper-Cluster-Install/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/03/02/Mac-MySQL-Error/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.jpg" alt="Binux's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        xu.binux@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="Mailto:xu.binux@gmail.com?Subject=网友来信（来自博客）" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="Gallery">
+                
+                    <i class="material-icons sidebar-material-icons">photo</i>
+                
+                Gallery
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/tags" title="Tags">
+                
+                    <i class="material-icons sidebar-material-icons">bookmark</i>
+                
+                Tags
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="Links">
+                
+                    <i class="material-icons sidebar-material-icons">people</i>
+                
+                Links
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">15</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/xubin0830" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/xubinux" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/binux-29/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.png);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Binux Blog
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+    <script>
+    var searchFunc = function(path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: 'xml',
+            success: function( xmlResponse ) {
+                // get the contents from search data
+                var datas = $( 'entry', xmlResponse ).map(function() {
+                    return {
+                        title: $( 'title', this ).text(),
+                        content: $('content',this).text(),
+                        url: $( 'url' , this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function() {
+                    var str='<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = '';
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function(data) {
+                        var isMatch = true;
+                        var content_index = [];
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g,'').toLowerCase();
+                        var data_url = data.url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if(data_title !== '' && data_content !== '') {
+                            keywords.forEach(function(keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if( index_title < 0 && index_content < 0 ) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += '<li><a href="'+ data_url +'" class="search-result-title" target="_blank">'+ data_title;
+                            var content = data.content.trim().replace(/<[^>]+>/g, '');
+                            if (first_occur >= 0) {
+                                // cut out characters
+                                var start = first_occur - 6;
+                                var end = first_occur + 6;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 10;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, 'gi');
+                                    match_content = match_content.replace(regS, '<em class="search-keyword">'+keyword+'</em>');
+                                })
+                                str += '<p class="search-result">' + match_content + '...</p>' +'</a>';
+                            }
+                        }
+                    });
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    }
+</script>
+
+
+    <script>
+        var inputArea = document.querySelector('#search');
+        var getSearchFile = function() {
+            var path = 'search.xml';
+            searchFunc(path, 'search', 'local-search-result');
+        }
+
+        if(inputArea) {
+            inputArea.onfocus = function() {
+                getSearchFile();
+            }
+        }
+    </script>
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>

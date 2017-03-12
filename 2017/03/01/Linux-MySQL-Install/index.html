@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!-- 
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.0 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            Xbin-Store(分布式商城)项目所用Linux服务系列 MySQL安装(一) | 
+        
+        Binux Blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Binux">
+    <meta name="description" content="一名正在崛起的Java后端工程师">
+    <meta name="keywords" content="null,XBin-Store,MySQL,Linux">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Binux Blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://binux.cn">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Xbin-Store(分布式商城)项目所用Linux服务系列 MySQL安装(一) | Binux Blog">
+    <meta property="og:description" content="一名正在崛起的Java后端工程师">
+    <meta property="og:article:tag" content="XBin-Store"> <meta property="og:article:tag" content="MySQL"> <meta property="og:article:tag" content="Linux"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/queue.js"></script>
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-92760839-1', 'auto');ga('send', 'pageview');
+    </script>
+    
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#系列"><span class="post-toc-number">1.</span> <span class="post-toc-text">系列</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">2.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正文"><span class="post-toc-number">3.</span> <span class="post-toc-text">正文</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第一步-安装CentOS-略"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">第一步 安装CentOS 略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第二步-下载MySQL"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">第二步 下载MySQL</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第三步-解压tar文件"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">第三步 解压tar文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第四步-改名"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">第四步 改名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第五步-复制修改配置文件"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">第五步 复制修改配置文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加以下配置：-解决中文乱码"><span class="post-toc-number">3.5.1.</span> <span class="post-toc-text">添加以下配置：(解决中文乱码)</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第六步-复制、配置mysql服务"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">第六步 复制、配置mysql服务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第46行做如下修改"><span class="post-toc-number">3.6.1.</span> <span class="post-toc-text">第46行做如下修改</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第七步-启动mysql服务"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">第七步 启动mysql服务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#屏幕打印："><span class="post-toc-number">3.7.1.</span> <span class="post-toc-text">屏幕打印：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第八步-加密mysql数据"><span class="post-toc-number">3.8.</span> <span class="post-toc-text">第八步 加密mysql数据</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#屏幕打印：-1"><span class="post-toc-number">3.8.1.</span> <span class="post-toc-text">屏幕打印：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第九步-启动mysql"><span class="post-toc-number">3.9.</span> <span class="post-toc-text">第九步 启动mysql</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看启动是否成功-打印如下-启动成功"><span class="post-toc-number">3.9.1.</span> <span class="post-toc-text">查看启动是否成功(打印如下 启动成功)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#屏幕打印：-2"><span class="post-toc-number">3.9.2.</span> <span class="post-toc-text">屏幕打印：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#启动-输入初始密码"><span class="post-toc-number">3.9.3.</span> <span class="post-toc-text">启动 输入初始密码</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第十步-重新设置密码、授权"><span class="post-toc-number">3.10.</span> <span class="post-toc-text">第十步 重新设置密码、授权</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置密码"><span class="post-toc-number">3.10.1.</span> <span class="post-toc-text">设置密码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#授权"><span class="post-toc-number">3.10.2.</span> <span class="post-toc-text">授权</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#刷新"><span class="post-toc-number">3.10.3.</span> <span class="post-toc-text">刷新</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第十一步-设置防火墙规则"><span class="post-toc-number">3.11.</span> <span class="post-toc-text">第十一步 设置防火墙规则</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加以下规则："><span class="post-toc-number">3.11.1.</span> <span class="post-toc-text">添加以下规则：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#重启防火墙："><span class="post-toc-number">3.11.2.</span> <span class="post-toc-text">重启防火墙：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第十二步-开机自启"><span class="post-toc-number">3.12.</span> <span class="post-toc-text">第十二步 开机自启</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第十三步-配置环境变量"><span class="post-toc-number">3.13.</span> <span class="post-toc-text">第十三步 配置环境变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加配置"><span class="post-toc-number">3.13.1.</span> <span class="post-toc-text">添加配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第十四步-Linux新建mysql用户"><span class="post-toc-number">3.14.</span> <span class="post-toc-text">第十四步 Linux新建mysql用户</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">4.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#著作权声明"><span class="post-toc-number">5.</span> <span class="post-toc-text">著作权声明</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Xbin-Store(分布式商城)项目所用Linux服务系列 MySQL安装(一)
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Binux</strong>
+        <span>3月 01, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACZElEQVR42u3aQXLDMAgF0Nz/0u0BWscfZBG187zKTBJLTwvQAK+vf/288PDw8PDw8PDwDuO94if51y+L/fj2/S8f2BseHh7eCO8m1F4sfAW42lzybXIQN3vDw8PDG+RVl0y2nqeT/BBv/oWHh4d3JC+/UifhvrcuHh4e3t/lVUN/foHGw8PDO5+Xh/XqJTtf64FCCR4eHt4IL28yzX8e7e/h4eHhBbzySFMx6OdliF7yuBm6wsPDw9vA65Vo11tfyRE0S8Z4eHh4m3nJ8nm4r5Zuq0kCDw8P7xzeTWE0aGjl6aT6znKxGA8PD28zLwnlSRCvJon1SzkeHh7eZ3m9C3Rv1GA9/dy8GQ8PD2+EVyiSFkdXe0mlV/jAw8PDm+HtaEQ9NbxVPVA8PDy8Gd7KJqqhv/ebaosODw8Pb5K30hJLjikvaqxc3PHw8PBmeE+F+5XWWtIMiwaz8PDw8AZ5eTmg17KqNtXyggUeHh7eCbynBkmTEu3KYAEeHh7ePC+/HK8E7l6xo/dmPDw8vN28p0agqgME1at84Wjw8PDwRnjVcmq1yFtNDCsXazw8PLxP8d6H76QwkWy9N9iKh4eHdw6vOqjau16vs5cmI/Dw8PCWeb2Sbl5iqLbB8jdcpi48PDy8zbxqIK6WGHoD/Xlyiq7UeHh4eBt4eZMpASewpLTR3AMeHh7eIK9XSH0/2FptgK2UIfDw8PBO5uWBfkcaKBcj8PDw8A7g9bZeHb2qJhg8PDy8eV514fWA3ru43xwTHh4e3ghvvQTQKy4kaaDclsPDw8PbzPt/Dx4eHh4eHh4e3gHPN2c9fLgeiGPHAAAAAElFTkSuQmCC">
+        </ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Linux/">Linux</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/MySQL/">MySQL</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/XBin-Store/">XBin-Store</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Xbin-Store(分布式商城)项目所用Linux服务系列 MySQL安装(一)&url=http://binux.cn//2017/03/01/Linux-MySQL-Install/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://binux.cn//2017/03/01/Linux-MySQL-Install/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Binux Blog&title=Xbin-Store(分布式商城)项目所用Linux服务系列 MySQL安装(一)&summary=一名正在崛起的Java后端工程师&pics=http://binux.cn/img/favicon.png&url=http://binux.cn/2017/03/01/Linux-MySQL-Install/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>“这篇文章将介绍如何Linux下如何安装MySQL 只适合Linux小白看 大神勿喷”</p>
+</blockquote>
+<h2 id="系列"><a href="#系列" class="headerlink" title="系列"></a>系列</h2><ul>
+<li><strong><a href="http://binux.cn/2017/03/01/Linux-MySQL-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 MySQL安装(一)</a></strong></li>
+<li><a href="http://binux.cn/2017/03/03/Redis-Cluster-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Redis集群安装(二)</a></li>
+<li><a href="http://binux.cn/2017/03/04/Zookeeper-Cluster-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三)</a></li>
+<li><a href="http://binux.cn/2017/03/04/Nginx-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Nginx安装(四)</a></li>
+<li><a href="http://binux.cn/2017/03/05/FastDFS-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 FastDFS安装(五)</a></li>
+<li><a href="http://binux.cn/2017/03/06/Solr-Cluster-Install/">Xbin-Store(分布式商城)项目所依赖的Linux服务系列 Solr集群安装(六)</a></li>
+<li><a href="http://binux.cn/2017/03/07/RocketMQ-Cluster-Install/">Xbin-Store(分布式商城)项目所依赖的Linux服务系列 RocketMQ集群安装(七)</a></li>
+</ul>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Mac上MySQL就突然没用了 但是Navicat、IDEA都可以连接上MySQL 使用Java就是连接不上 <strong>重装也没有用</strong></p>
+<p> Google、Baidu了一上午都没解决 不想在浪费时间了 就在Linux中装个MySQL用吧！ (虽然很想把问题找出来)</p>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="第一步-安装CentOS-略"><a href="#第一步-安装CentOS-略" class="headerlink" title="第一步 安装CentOS 略"></a>第一步 安装CentOS 略</h3><h3 id="第二步-下载MySQL"><a href="#第二步-下载MySQL" class="headerlink" title="第二步 下载MySQL"></a>第二步 下载MySQL</h3><ul>
+<li>1、Linux下载 wget <a href="http://mirrors.sohu.com/mysql/MySQL-5.7/mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz" target="_blank" rel="external">http://mirrors.sohu.com/mysql/MySQL-5.7/mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz</a></li>
+<li>2、<a href="http://mirrors.sohu.com/mysql/MySQL-5.7/mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz" target="_blank" rel="external">右键我迅雷下载</a></li>
+</ul>
+<h3 id="第三步-解压tar文件"><a href="#第三步-解压tar文件" class="headerlink" title="第三步 解压tar文件"></a>第三步 解压tar文件</h3><p>[root@mysql ~]# tar -zxvf mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz</p>
+<h3 id="第四步-改名"><a href="#第四步-改名" class="headerlink" title="第四步 改名"></a>第四步 改名</h3><p>[root@mysql ~]# mv mysql-5.7.17-linux-glibc2.5-x86_64 /usr/local/mysql</p>
+<h3 id="第五步-复制修改配置文件"><a href="#第五步-复制修改配置文件" class="headerlink" title="第五步 复制修改配置文件"></a>第五步 复制修改配置文件</h3><p>[root@mysql ~]# cp /usr/local/mysql/support-files/my-default.cnf /etc/my.cnf</p>
+<p>[root@mysql ~]# vim /etc/my.cnf</p>
+<h4 id="添加以下配置：-解决中文乱码"><a href="#添加以下配置：-解决中文乱码" class="headerlink" title="添加以下配置：(解决中文乱码)"></a>添加以下配置：(解决中文乱码)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[mysql]</div><div class="line">default-character-set=utf8</div><div class="line"></div><div class="line">[mysqld]</div><div class="line">character_set_server=utf8</div></pre></td></tr></table></figure>
+<h3 id="第六步-复制、配置mysql服务"><a href="#第六步-复制、配置mysql服务" class="headerlink" title="第六步 复制、配置mysql服务"></a>第六步 复制、配置mysql服务</h3><p>[root@mysql ~]# cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql</p>
+<h4 id="第46行做如下修改"><a href="#第46行做如下修改" class="headerlink" title="第46行做如下修改"></a>第46行做如下修改</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">basedir=/usr/local/mysql</div><div class="line">datadir=/usr/local/mysql/data</div></pre></td></tr></table></figure>
+<h3 id="第七步-启动mysql服务"><a href="#第七步-启动mysql服务" class="headerlink" title="第七步 启动mysql服务"></a>第七步 启动mysql服务</h3><p>[root@mysql ~]# cd /usr/local/mysql/bin/</p>
+<p>[root@mysql bin]# ./mysqld –initialize –user=mysql –basedir=/usr/local/mysql –datadir=/usr/local/mysql/data</p>
+<h4 id="屏幕打印："><a href="#屏幕打印：" class="headerlink" title="屏幕打印："></a>屏幕打印：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">2017-01-27T03:14:04.598579Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).</div><div class="line">2017-01-27T03:14:04.598645Z 0 [Warning] &apos;NO_ZERO_DATE&apos;, &apos;NO_ZERO_IN_DATE&apos; and &apos;ERROR_FOR_DIVISION_BY_ZERO&apos; sql modes should be used with strict mode. They will be merged with strict mode in a future release.</div><div class="line">2017-01-27T03:14:04.598648Z 0 [Warning] &apos;NO_AUTO_CREATE_USER&apos; sql mode was not set.</div><div class="line">2017-01-27T03:14:05.002057Z 0 [Warning] InnoDB: New log files created, LSN=45790</div><div class="line">2017-01-27T03:14:05.079640Z 0 [Warning] InnoDB: Creating foreign key constraint system tables.</div><div class="line">2017-01-27T03:14:05.214710Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: a8c7be60-e43e-11e6-b470-000c299fe1ef.</div><div class="line">2017-01-27T03:14:05.216074Z 0 [Warning] Gtid table is not ready to be used. Table &apos;mysql.gtid_executed&apos; cannot be opened.</div><div class="line">2017-01-27T03:14:05.221297Z 1 [Note] A temporary password is generated for root@localhost: ME#SiCHkw4zS</div></pre></td></tr></table></figure>
+<blockquote>
+<p>ME#SiCHkw4zS 这个是初始化密码</p>
+</blockquote>
+<h3 id="第八步-加密mysql数据"><a href="#第八步-加密mysql数据" class="headerlink" title="第八步 加密mysql数据"></a>第八步 加密mysql数据</h3><p>[root@mysql mysql]# ./bin/mysql_ssl_rsa_setup –datadir=/usr/local/mysql/data</p>
+<h4 id="屏幕打印：-1"><a href="#屏幕打印：-1" class="headerlink" title="屏幕打印："></a>屏幕打印：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Generating a 2048 bit RSA private key</div><div class="line">....................................................+++</div><div class="line">..................+++</div><div class="line">writing new private key to &apos;ca-key.pem&apos;</div><div class="line">-----</div><div class="line">Generating a 2048 bit RSA private key</div><div class="line">......+++</div><div class="line">.............+++</div><div class="line">writing new private key to &apos;server-key.pem&apos;</div><div class="line">-----</div><div class="line">Generating a 2048 bit RSA private key</div><div class="line">..........................................................................................................................................+++</div><div class="line">.....+++</div><div class="line">writing new private key to &apos;client-key.pem&apos;</div><div class="line">-----</div></pre></td></tr></table></figure>
+<h3 id="第九步-启动mysql"><a href="#第九步-启动mysql" class="headerlink" title="第九步 启动mysql"></a>第九步 启动mysql</h3><p>[root@mysql mysql]# ./mysqld_safe –user=mysql &amp;</p>
+<h4 id="查看启动是否成功-打印如下-启动成功"><a href="#查看启动是否成功-打印如下-启动成功" class="headerlink" title="查看启动是否成功(打印如下 启动成功)"></a>查看启动是否成功(打印如下 启动成功)</h4><p>[root@mysql mysql]# ps -ef|grep mysql</p>
+<h4 id="屏幕打印：-2"><a href="#屏幕打印：-2" class="headerlink" title="屏幕打印："></a>屏幕打印：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">root      2286  1573  0 11:30 pts/1    00:00:00 /bin/sh ./mysqld_safe --user=mysql</div><div class="line">mysql     2407  2286  5 11:30 pts/1    00:00:00 /usr/local/mysql/bin/mysqld --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --plugin-dir=/usr/local/mysql/lib/plugin --user=mysql --log-error=/usr/local/mysql/data/storm3.err --pid-file=/usr/local/mysql/data/mysql.pid</div><div class="line">root      2438  1573  0 11:30 pts/1    00:00:00 grep mysql</div></pre></td></tr></table></figure>
+<h4 id="启动-输入初始密码"><a href="#启动-输入初始密码" class="headerlink" title="启动 输入初始密码"></a>启动 输入初始密码</h4><p>[root@mysql mysql]# ./mysql -uroot -p</p>
+<h3 id="第十步-重新设置密码、授权"><a href="#第十步-重新设置密码、授权" class="headerlink" title="第十步 重新设置密码、授权"></a>第十步 重新设置密码、授权</h3><h4 id="设置密码"><a href="#设置密码" class="headerlink" title="设置密码"></a>设置密码</h4><p>mysql&gt; grant all privileges on <em>.</em> to root@’%’ identified by ‘<strong>我是密码</strong>‘;</p>
+<h4 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h4><p>mysql&gt;grant all privileges on <em>.</em> to root@’%’ identified by ‘<strong>我是密码</strong>‘;</p>
+<h4 id="刷新"><a href="#刷新" class="headerlink" title="刷新"></a>刷新</h4><p>mysql&gt;flush privileges;</p>
+<h3 id="第十一步-设置防火墙规则"><a href="#第十一步-设置防火墙规则" class="headerlink" title="第十一步 设置防火墙规则"></a>第十一步 设置防火墙规则</h3><p>[root@mysql mysql]# vim /etc/sysconfig/iptables</p>
+<h4 id="添加以下规则："><a href="#添加以下规则：" class="headerlink" title="添加以下规则："></a>添加以下规则：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT</div></pre></td></tr></table></figure>
+<h4 id="重启防火墙："><a href="#重启防火墙：" class="headerlink" title="重启防火墙："></a>重启防火墙：</h4><p>[root@mysql mysql]# service iptables restart</p>
+<h3 id="第十二步-开机自启"><a href="#第十二步-开机自启" class="headerlink" title="第十二步 开机自启"></a>第十二步 开机自启</h3><p>chkconfig –add mysql</p>
+<p>chkconfig mysql on</p>
+<h3 id="第十三步-配置环境变量"><a href="#第十三步-配置环境变量" class="headerlink" title="第十三步 配置环境变量"></a>第十三步 配置环境变量</h3><p>[root@mysql mysql]# vim /etc/profile</p>
+<h4 id="添加配置"><a href="#添加配置" class="headerlink" title="添加配置"></a>添加配置</h4><p>export PATH=$JAVA_HOME/bin:/usr/local/mysql/bin:$PATH</p>
+<h3 id="第十四步-Linux新建mysql用户"><a href="#第十四步-Linux新建mysql用户" class="headerlink" title="第十四步 Linux新建mysql用户"></a>第十四步 Linux新建mysql用户</h3><p>[root@mysql mysql]# groupadd mysql</p>
+<p>[root@mysql mysql]# useradd -r -g mysql mysql</p>
+<p>[root@mysql mysql]# passwd mysql</p>
+<p>[root@mysql mysql]#chown -R mysql:mysql /usr/local/mysql/</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>MySQL安装还是很简单的。</p>
+<hr>
+<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+    <!-- 使用 DISQUS_CLICK -->
+    <div id="disqus-comment">	
+        <div id="disqus_thread"></div>
+<!-- include js -->
+<script src="/js/ripple.js"></script>
+
+<!-- add animation -->
+<style>
+        .ripple-container {
+        }
+        .ripple-container .ripple{
+            background-color: rgba(255,255,255,0.4);
+            animation: ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+        }
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            80% {
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+		.disqus_click_btn {
+            background-color: dodgerblue;
+            color: white;
+            padding: 10px 20px;
+            border:0;
+            font-size: 14px;
+            cursor: pointer
+        }
+</style>
+	
+<!-- add data-ripple attribute -->
+<div class="btn_click_load"> 
+    <button class="disqus_click_btn" data-ripple>阅读评论 「请确保 disq.us &amp; disquscdn.com &amp; disqus.com 可以正常加载」</button>
+</div>
+	
+<script>
+    // add effect to elements
+    Array.prototype.forEach.call(document.querySelectorAll('[data-ripple]'), function(element){
+        // find all elements and attach effect
+        new RippleEffect(element); // element is instance of javascript element node
+    });
+</script>
+
+<script>
+    $('.btn_click_load').click(function() {  //click to load comments
+        var disqus_config = function () {
+            this.page.url = 'http://binux.cn/2017/03/01/Linux-MySQL-Install/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//xubinux.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+  	
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/03/02/Mac-MySQL-Error/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/02/27/Mac-MySQL-Garbled/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.jpg" alt="Binux's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        xu.binux@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="Mailto:xu.binux@gmail.com?Subject=网友来信（来自博客）" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="Gallery">
+                
+                    <i class="material-icons sidebar-material-icons">photo</i>
+                
+                Gallery
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/tags" title="Tags">
+                
+                    <i class="material-icons sidebar-material-icons">bookmark</i>
+                
+                Tags
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="Links">
+                
+                    <i class="material-icons sidebar-material-icons">people</i>
+                
+                Links
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">15</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/xubin0830" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/xubinux" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/binux-29/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.png);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Binux Blog
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+    <script>
+    var searchFunc = function(path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: 'xml',
+            success: function( xmlResponse ) {
+                // get the contents from search data
+                var datas = $( 'entry', xmlResponse ).map(function() {
+                    return {
+                        title: $( 'title', this ).text(),
+                        content: $('content',this).text(),
+                        url: $( 'url' , this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function() {
+                    var str='<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = '';
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function(data) {
+                        var isMatch = true;
+                        var content_index = [];
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g,'').toLowerCase();
+                        var data_url = data.url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if(data_title !== '' && data_content !== '') {
+                            keywords.forEach(function(keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if( index_title < 0 && index_content < 0 ) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += '<li><a href="'+ data_url +'" class="search-result-title" target="_blank">'+ data_title;
+                            var content = data.content.trim().replace(/<[^>]+>/g, '');
+                            if (first_occur >= 0) {
+                                // cut out characters
+                                var start = first_occur - 6;
+                                var end = first_occur + 6;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 10;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, 'gi');
+                                    match_content = match_content.replace(regS, '<em class="search-keyword">'+keyword+'</em>');
+                                })
+                                str += '<p class="search-result">' + match_content + '...</p>' +'</a>';
+                            }
+                        }
+                    });
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    }
+</script>
+
+
+    <script>
+        var inputArea = document.querySelector('#search');
+        var getSearchFile = function() {
+            var path = 'search.xml';
+            searchFunc(path, 'search', 'local-search-result');
+        }
+
+        if(inputArea) {
+            inputArea.onfocus = function() {
+                getSearchFile();
+            }
+        }
+    </script>
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>

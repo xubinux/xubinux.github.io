@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!-- 
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.0 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            Xbin-Store(分布式商城)项目所用Linux服务系列 FastDFS安装(五) | 
+        
+        Binux Blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Binux">
+    <meta name="description" content="一名正在崛起的Java后端工程师">
+    <meta name="keywords" content="null,XBin-Store,Linux,FastDFS">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Binux Blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://binux.cn">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Xbin-Store(分布式商城)项目所用Linux服务系列 FastDFS安装(五) | Binux Blog">
+    <meta property="og:description" content="一名正在崛起的Java后端工程师">
+    <meta property="og:article:tag" content="XBin-Store"> <meta property="og:article:tag" content="Linux"> <meta property="og:article:tag" content="FastDFS"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/queue.js"></script>
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-92760839-1', 'auto');ga('send', 'pageview');
+    </script>
+    
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#系列"><span class="post-toc-number">1.</span> <span class="post-toc-text">系列</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">2.</span> <span class="post-toc-text">前言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FastDFS方案"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">FastDFS方案</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#环境准备"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">环境准备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#下载软件："><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">下载软件：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装gcc"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">安装gcc</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解压libfastcommon"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">解压libfastcommon</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关闭防火墙"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">关闭防火墙</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正文"><span class="post-toc-number">3.</span> <span class="post-toc-text">正文</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装libfastcommon"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">安装libfastcommon</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进行软链接创建"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">进行软链接创建</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装FastDFS（同时进行）"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">安装FastDFS（同时进行）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解压"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">解压</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#服务脚本在："><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">服务脚本在：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置文件在："><span class="post-toc-number">3.3.4.</span> <span class="post-toc-text">配置文件在：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#命令行工具在-usr-bin-目录下"><span class="post-toc-number">3.3.5.</span> <span class="post-toc-text">命令行工具在/usr/bin/目录下</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置跟踪器（trackerd）"><span class="post-toc-number">4.</span> <span class="post-toc-text">配置跟踪器（trackerd）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改配置文件"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">修改配置文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修改"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">修改</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看是否启动成功"><span class="post-toc-number">4.1.2.</span> <span class="post-toc-text">查看是否启动成功</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#启动前："><span class="post-toc-number">4.1.2.1.</span> <span class="post-toc-text">启动前：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#启动"><span class="post-toc-number">4.1.2.2.</span> <span class="post-toc-text">启动</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#启动成功"><span class="post-toc-number">4.1.2.3.</span> <span class="post-toc-text">启动成功</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置FastDFS存储（storaged）"><span class="post-toc-number">5.</span> <span class="post-toc-text">配置FastDFS存储（storaged）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改配置文件storage-conf"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">修改配置文件storage.conf</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改内容："><span class="post-toc-number">5.2.</span> <span class="post-toc-text">修改内容：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建存储目录："><span class="post-toc-number">5.3.</span> <span class="post-toc-text">创建存储目录：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动存储（storage）"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">启动存储（storage）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看是否启动成功-1"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">查看是否启动成功</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#测试"><span class="post-toc-number">6.</span> <span class="post-toc-text">测试</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#首先我们在跟踪器（tracker）里copy一份client-conf文件。"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">首先我们在跟踪器（tracker）里copy一份client.conf文件。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编辑client-conf文件"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">编辑client.conf文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改内容：-1"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">修改内容：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#测试上传"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">测试上传</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#存储器查看文件"><span class="post-toc-number">6.5.</span> <span class="post-toc-text">存储器查看文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#FastDFS与Nginx整合（Storage）"><span class="post-toc-number">7.</span> <span class="post-toc-text">FastDFS与Nginx整合（Storage）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解压Nginx"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">解压Nginx</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装fastdfs-nginx-module-v1-16-tar-gz"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">安装fastdfs-nginx-module_v1.16.tar.gz</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编辑配置文件config"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">编辑配置文件config</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FastDFS与Nginx进行集成"><span class="post-toc-number">7.4.</span> <span class="post-toc-text">FastDFS与Nginx进行集成</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#复制、修改配置文件"><span class="post-toc-number">7.5.</span> <span class="post-toc-text">复制、修改配置文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#复制FastDFS里的2个文件"><span class="post-toc-number">7.6.</span> <span class="post-toc-text">复制FastDFS里的2个文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#建立软连接"><span class="post-toc-number">7.7.</span> <span class="post-toc-text">建立软连接</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改Nginx配置"><span class="post-toc-number">7.8.</span> <span class="post-toc-text">修改Nginx配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动Nginx"><span class="post-toc-number">7.9.</span> <span class="post-toc-text">启动Nginx</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#测试-1"><span class="post-toc-number">7.10.</span> <span class="post-toc-text">测试</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用Java客户端操作"><span class="post-toc-number">8.</span> <span class="post-toc-text">使用Java客户端操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#classpath下建立文件fastdfs-client-conf"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">classpath下建立文件fastdfs_client.conf</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#输入以下内容"><span class="post-toc-number">8.1.1.</span> <span class="post-toc-text">输入以下内容</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">9.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#著作权声明"><span class="post-toc-number">10.</span> <span class="post-toc-text">著作权声明</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Xbin-Store(分布式商城)项目所用Linux服务系列 FastDFS安装(五)
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Binux</strong>
+        <span>3月 05, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACcElEQVR42u3aQVLDMAwF0N7/0nCADuF/OTah87zKkKb18yISkl5fH71eeHh4eHh4eHh4D+O94nX91Pvd90++3/3pqaW94eHh4R3h/fKqvQRcP5Vgkutib3h4eHgHeT+9cGfX+Ys+OcTiKTw8PLzH82YpcpKg4+Hh4X0Sb1aq+DeBAQ8PD+/WYkS7xaQAkRcattda8PDw8GJe3mQ6f320v4eHh4cX8OqRpqDEMNt6HgyKoSs8PDy8Dbz8RdyGk6Q8MSte/JK44+Hh4W3m5ZtIgsH139t2WntMeHh4eGd4143/ZDhg2KaKj6MeWcDDw8M7yGsLAdebWEm+8+OuJyPw8PDwlnnJRvNNtKl5Mo6QJ9x4eHh4Z3izgdEkVMyKuevpPh4eHt4ZXtt2aksVySfz4FEHBjw8PLxtvFnqvHI3DyTFN+Ph4eEd4bUhYfYSb9P3qN3V/seAh4eHt8xb31A7bpUMYOXfUFSp8fDw8G7itUNOs2Jr+51JgXhYa8HDw8Nb5s1aUAlsVpKYNc/w8PDwTvLaYsTsJ5NyQwK+YegKDw8P71Ze+8PrYwfXxzQbzMLDw8M7z8vT4iQYtKl5fljDwICHh4d3Ky8v5rZDAzuKEXh4eHjP4c0a/Ouby8MAHh4e3t/y2pUXdtvwk4+lDvt7eHh4eDfxXvGalSraTa80yfDw8PBO8tqWf56It8e0JTDg4eHhbePdVYzIy75JOMkHC/Dw8PD+F+/mJtZogBUPDw/vybx25WMEySDC9pQaDw8P79ZixPpTeWDIy8p4eHh453mzgaeV8ak2NS+KIHh4eHibeZ+38PDw8PDw8PDwHrC+AW0cDDcgaNfxAAAAAElFTkSuQmCC">
+        </ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/FastDFS/">FastDFS</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Linux/">Linux</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/XBin-Store/">XBin-Store</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Xbin-Store(分布式商城)项目所用Linux服务系列 FastDFS安装(五)&url=http://binux.cn//2017/03/05/FastDFS-Install/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://binux.cn//2017/03/05/FastDFS-Install/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Binux Blog&title=Xbin-Store(分布式商城)项目所用Linux服务系列 FastDFS安装(五)&summary=一名正在崛起的Java后端工程师&pics=http://binux.cn/img/favicon.png&url=http://binux.cn/2017/03/05/FastDFS-Install/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>“这篇文章将介绍如何安装FastDFS,集群有点麻烦 可能以后会写篇 毕竟我个人开发是足够的”</p>
+</blockquote>
+<h2 id="系列"><a href="#系列" class="headerlink" title="系列"></a>系列</h2><ul>
+<li><a href="http://binux.cn/2017/03/01/Linux-MySQL-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 MySQL安装(一)</a></li>
+<li><a href="http://binux.cn/2017/03/03/Redis-Cluster-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Redis集群安装(二)</a></li>
+<li><a href="http://binux.cn/2017/03/04/Zookeeper-Cluster-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三)</a></li>
+<li><a href="http://binux.cn/2017/03/04/Nginx-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Nginx安装(四)</a></li>
+<li><strong><a href="http://binux.cn/2017/03/05/FastDFS-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 FastDFS安装(五)</a></strong></li>
+<li><a href="http://binux.cn/2017/03/06/Solr-Cluster-Install/">Xbin-Store(分布式商城)项目所依赖的Linux服务系列 Solr集群安装(六)</a></li>
+<li><a href="http://binux.cn/2017/03/07/RocketMQ-Cluster-Install/">Xbin-Store(分布式商城)项目所依赖的Linux服务系列 RocketMQ集群安装(七)</a></li>
+</ul>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文基于CentOS6.5安装</p>
+<h3 id="FastDFS方案"><a href="#FastDFS方案" class="headerlink" title="FastDFS方案"></a>FastDFS方案</h3><p>主机IP        |    名称                |<br>192.168.1.1    |    trackerd        |<br>192.168.1.2    |    storaged        |</p>
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><h4 id="下载软件："><a href="#下载软件：" class="headerlink" title="下载软件："></a>下载软件：</h4><ul>
+<li><a href="http://download.csdn.net/detail/cynicismsrs/9771164" target="_blank" rel="external">libfastcommon-master.zip</a></li>
+<li><a href="http://download.csdn.net/detail/cynicismsrs/9771173" target="_blank" rel="external">FastDFS_v5.05.tar</a></li>
+<li><a href="http://download.csdn.net/detail/cynicismsrs/9771174" target="_blank" rel="external">fastdfs-nginx-module_v1.16.tar</a></li>
+<li><a href="http://download.csdn.net/detail/cynicismsrs/9771212" target="_blank" rel="external">fastdfs_client_v1.24.jar</a></li>
+</ul>
+<h4 id="安装gcc"><a href="#安装gcc" class="headerlink" title="安装gcc"></a>安装gcc</h4><p>命令：yum install make cmake gcc gcc-c++</p>
+<h3 id="解压libfastcommon"><a href="#解压libfastcommon" class="headerlink" title="解压libfastcommon"></a>解压libfastcommon</h3><p>命令：unzip libfastcommon-master.zip -d /usr/local/fast/</p>
+<h3 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h3><blockquote>
+<p>在学习时可以不用考虑防火墙的问题</p>
+</blockquote>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="安装libfastcommon"><a href="#安装libfastcommon" class="headerlink" title="安装libfastcommon"></a>安装libfastcommon</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">./make.sh install</div><div class="line">mkdir -p /usr/lib64</div><div class="line">install -m 755 libfastcommon.so /usr/lib64</div><div class="line">mkdir -p /usr/include/fastcommon</div></pre></td></tr></table></figure>
+<p>打印：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install -m 644 common_define.h hash.h chain.h logger.h base64.h shared_func.h pthread_func.h ini_file_reader.h _os_bits.h sockopt.h sched_thread.h http_func.h md5.h local_ip_func.h avl_tree.h ioevent.h ioevent_loop.h fast_task_queue.h fast_timer.h process_ctrl.h fast_mblock.h connection_pool.h /usr/include/fastcommon</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意安装的路径：libfastcommon默认安装到了/usr/lib64/这个位置。</p>
+</blockquote>
+<h3 id="进行软链接创建"><a href="#进行软链接创建" class="headerlink" title="进行软链接创建"></a>进行软链接创建</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so</div><div class="line">ln -s /usr/lib64/libfdfsclient.so /usr/local/lib/libfdfsclient.so</div><div class="line">ln -s /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so</div></pre></td></tr></table></figure>
+<h3 id="安装FastDFS（同时进行）"><a href="#安装FastDFS（同时进行）" class="headerlink" title="安装FastDFS（同时进行）"></a>安装FastDFS（同时进行）</h3><h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><p>tar -zxvf FastDFS_v5.05.tar.gz -C /usr/local/fast/</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/fast/FastDFS</div><div class="line">[root@storm1 FastDFS]# ./make.sh install</div></pre></td></tr></table></figure>
+<p>打印：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">mkdir -p /usr/bin</div><div class="line">mkdir -p /etc/fdfs</div><div class="line">cp -f fdfs_trackerd /usr/bin</div><div class="line">if [ ! -f /etc/fdfs/tracker.conf.sample ]; then cp -f ../conf/tracker.conf /etc/fdfs/tracker.conf.sample; fi</div><div class="line">mkdir -p /usr/bin</div><div class="line">mkdir -p /etc/fdfs</div><div class="line">cp -f fdfs_storaged  /usr/bin</div><div class="line">if [ ! -f /etc/fdfs/storage.conf.sample ]; then cp -f ../conf/storage.conf /etc/fdfs/storage.conf.sample; fi</div><div class="line">mkdir -p /usr/bin</div><div class="line">mkdir -p /etc/fdfs</div><div class="line">mkdir -p /usr/lib64</div><div class="line">cp -f fdfs_monitor fdfs_test fdfs_test1 fdfs_crc32 fdfs_upload_file fdfs_download_file fdfs_delete_file fdfs_file_info fdfs_appender_test fdfs_appender_test1 fdfs_append_file fdfs_upload_appender /usr/bin</div><div class="line">if [ 0 -eq 1 ]; then cp -f libfdfsclient.a /usr/lib64; fi</div><div class="line">if [ 1 -eq 1 ]; then cp -f libfdfsclient.so /usr/lib64; fi</div><div class="line">mkdir -p /usr/include/fastdfs</div><div class="line">cp -f ../common/fdfs_define.h ../common/fdfs_global.h ../common/mime_file_parser.h ../common/fdfs_http_shared.h ../tracker/tracker_types.h ../tracker/tracker_proto.h ../tracker/fdfs_shared_func.h ../storage/trunk_mgr/trunk_shared.h tracker_client.h storage_client.h storage_client1.h client_func.h client_global.h fdfs_client.h /usr/include/fastdfs</div><div class="line">if [ ! -f /etc/fdfs/client.conf.sample ]; then cp -f ../conf/client.conf /etc/fdfs/client.conf.sample; fi</div></pre></td></tr></table></figure></p>
+<h4 id="服务脚本在："><a href="#服务脚本在：" class="headerlink" title="服务脚本在："></a>服务脚本在：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ls /etc/init.d/ | grep fdfs</div><div class="line">fdfs_storaged</div><div class="line">fdfs_trackerd</div></pre></td></tr></table></figure>
+<h4 id="配置文件在："><a href="#配置文件在：" class="headerlink" title="配置文件在："></a>配置文件在：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ls /etc/fdfs/</div><div class="line">client.conf.sample  storage.conf.sample  tracker.conf.sample</div></pre></td></tr></table></figure>
+<h4 id="命令行工具在-usr-bin-目录下"><a href="#命令行工具在-usr-bin-目录下" class="headerlink" title="命令行工具在/usr/bin/目录下"></a>命令行工具在/usr/bin/目录下</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">ls /usr/bin/ | grep fdfs</div><div class="line">fdfs_appender_test</div><div class="line">fdfs_appender_test1</div><div class="line">fdfs_append_file</div><div class="line">fdfs_crc32</div><div class="line">fdfs_delete_file</div><div class="line">fdfs_download_file</div><div class="line">fdfs_file_info</div><div class="line">fdfs_monitor</div><div class="line">fdfs_storaged</div><div class="line">fdfs_test</div><div class="line">fdfs_test1</div><div class="line">fdfs_trackerd</div><div class="line">fdfs_upload_appender</div><div class="line">fdfs_upload_file</div></pre></td></tr></table></figure>
+<blockquote>
+<p>因为FastDFS服务脚本设置的bin目录为/usr/local/bin/下,但是实际我们安装在了/u sr/bin/下面。所以我们需要修改FastDFS配置文件中的路径，也就是需要修改俩 个配置文件：</p>
+<ul>
+<li>命令：vim /etc/init.d/fdfs_storaged</li>
+<li>进行全局替换命令：%s+/usr/local/bin+/usr/bin</li>
+<li>命令：vim /etc/init.d/fdfs_trackerd</li>
+<li>进行全局替换命令：%s+/usr/local/bin+/usr/bin</li>
+</ul>
+</blockquote>
+<h2 id="配置跟踪器（trackerd）"><a href="#配置跟踪器（trackerd）" class="headerlink" title="配置跟踪器（trackerd）"></a>配置跟踪器（trackerd）</h2><h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd /etc/fdfs/</div><div class="line">cp tracker.conf.sample tracker.conf</div><div class="line">vim /etc/fdfs/tracker.conf</div></pre></td></tr></table></figure>
+<h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># the base path to store data and log files</div><div class="line">base_path=/fastdfs/tracker</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>目录命令：cd /fastdfs/tracker/ &amp;&amp; ll</li>
+<li>启动tracker命令：/etc/init.d/fdfs_trackerd start</li>
+<li>查看进程命令：ps -el | grep fdfs</li>
+<li>停止tracker命令：/etc/init.d/fdfs_trackerd stop</li>
+</ul>
+</blockquote>
+<h4 id="查看是否启动成功"><a href="#查看是否启动成功" class="headerlink" title="查看是否启动成功"></a>查看是否启动成功</h4><h5 id="启动前："><a href="#启动前：" class="headerlink" title="启动前："></a>启动前：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /fastdfs/tracker/ &amp;&amp; ll</div><div class="line">total 0</div></pre></td></tr></table></figure>
+<h5 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h5><p>/etc/init.d/fdfs_trackerd start</p>
+<h5 id="启动成功"><a href="#启动成功" class="headerlink" title="启动成功"></a>启动成功</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd /fastdfs/tracker/ &amp;&amp; ll</div><div class="line">total 8</div><div class="line">drwxr-xr-x. 2 root root 4096 Dec 14 20:48 data</div><div class="line">drwxr-xr-x. 2 root root 4096 Dec 14 20:48 logs</div></pre></td></tr></table></figure>
+<blockquote>
+<p>可以设置开机启动跟踪器：（一般生产环境需要开机启动一些服务，如keepalived、Nginx、tomcat等等）</p>
+<ul>
+<li>命令：vim /etc/rc.d/rc.local</li>
+<li>加入配置：/etc/init.d/fdfs_trackerd start</li>
+</ul>
+</blockquote>
+<h2 id="配置FastDFS存储（storaged）"><a href="#配置FastDFS存储（storaged）" class="headerlink" title="配置FastDFS存储（storaged）"></a>配置FastDFS存储（storaged）</h2><h3 id="修改配置文件storage-conf"><a href="#修改配置文件storage-conf" class="headerlink" title="修改配置文件storage.conf"></a>修改配置文件storage.conf</h3><blockquote>
+<ul>
+<li>进入文件目录：cd /etc/fdfs/，进行copy storage文件一份</li>
+<li>命令：cd /etc/fdfs/</li>
+<li>命令：cp storage.conf.sample storage.conf</li>
+<li>命令：vim /etc/fdfs/storage.conf</li>
+</ul>
+</blockquote>
+<h3 id="修改内容："><a href="#修改内容：" class="headerlink" title="修改内容："></a>修改内容：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">base_path=/fastdfs/storage</div><div class="line">store_path0=/fastdfs/storage</div><div class="line">tracker_server=192.168.1.1:22122</div><div class="line">http.server_port=8888</div></pre></td></tr></table></figure>
+<h3 id="创建存储目录："><a href="#创建存储目录：" class="headerlink" title="创建存储目录："></a>创建存储目录：</h3><p>mkdir -p /fastdfs/storage</p>
+<h3 id="启动存储（storage）"><a href="#启动存储（storage）" class="headerlink" title="启动存储（storage）"></a>启动存储（storage）</h3><p>命令：/etc/init.d/fdfs_storaged start</p>
+<h3 id="查看是否启动成功-1"><a href="#查看是否启动成功-1" class="headerlink" title="查看是否启动成功"></a>查看是否启动成功</h3><p>ps -ef | grep fdfs</p>
+<blockquote>
+<p>可以设置开机启动跟踪器：（一般生产环境需要开机启动一些服务，如keepaliv ed、linux、tomcat等等）</p>
+<ul>
+<li>命令：vim /etc/rc.d/rc.local</li>
+<li>加入配置：/etc/init.d/fdfs_storaged start</li>
+</ul>
+</blockquote>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><h3 id="首先我们在跟踪器（tracker）里copy一份client-conf文件。"><a href="#首先我们在跟踪器（tracker）里copy一份client-conf文件。" class="headerlink" title="首先我们在跟踪器（tracker）里copy一份client.conf文件。"></a>首先我们在跟踪器（tracker）里copy一份client.conf文件。</h3><p>命令：cd /etc/fdfs/</p>
+<p>命令：cp client.conf.sample client.conf</p>
+<h3 id="编辑client-conf文件"><a href="#编辑client-conf文件" class="headerlink" title="编辑client.conf文件"></a>编辑client.conf文件</h3><p>vim /etc/fdfs/client.conf</p>
+<h3 id="修改内容：-1"><a href="#修改内容：-1" class="headerlink" title="修改内容："></a>修改内容：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">base_path=/fastdfs/tracker</div><div class="line">tracker_server=**192.168.1.1**:22122</div></pre></td></tr></table></figure>
+<h3 id="测试上传"><a href="#测试上传" class="headerlink" title="测试上传"></a>测试上传</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/bin/fdfs_upload_file /etc/fdfs/client.conf /root/FastDFS/libfastcommon-master.zip</div></pre></td></tr></table></figure>
+<p>打印：</p>
+<p>group1/M00/00/00/2-YyVlhRQlaAZLlgAAGP6hUWM6I411.zip</p>
+<h3 id="存储器查看文件"><a href="#存储器查看文件" class="headerlink" title="存储器查看文件"></a>存储器查看文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd /fastdfs/tracker/data/00/00/ &amp;&amp; ll</div><div class="line">total 1</div><div class="line">-rw-r--r--. 1 root root 102378 Dec 14 21:00 2-YyVlhRQlaAZLlgAAGP6hUWM6I411.zip</div></pre></td></tr></table></figure>
+<h2 id="FastDFS与Nginx整合（Storage）"><a href="#FastDFS与Nginx整合（Storage）" class="headerlink" title="FastDFS与Nginx整合（Storage）"></a>FastDFS与Nginx整合（Storage）</h2><h3 id="解压Nginx"><a href="#解压Nginx" class="headerlink" title="解压Nginx"></a>解压Nginx</h3><p>tar -zxvf nginx-1.6.2.tar.gz</p>
+<h3 id="安装fastdfs-nginx-module-v1-16-tar-gz"><a href="#安装fastdfs-nginx-module-v1-16-tar-gz" class="headerlink" title="安装fastdfs-nginx-module_v1.16.tar.gz"></a>安装fastdfs-nginx-module_v1.16.tar.gz</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tar -zxvf FastDFS/fastdfs-nginx-module_v1.16.tar.gz -C /usr/local/fast/</div><div class="line">cd /usr/local/fast/fastdfs-nginx-module/src/</div></pre></td></tr></table></figure>
+<h3 id="编辑配置文件config"><a href="#编辑配置文件config" class="headerlink" title="编辑配置文件config"></a>编辑配置文件config</h3><p>vim /usr/local/fast/fastdfs-nginx-module/src/config<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">前：</div><div class="line">CORE_INCS=&quot;$CORE_INCS /usr/local/include/fastdfs /usr/local/include/fastcommon/&quot;</div><div class="line">后：</div><div class="line">CORE_INCS=&quot;$CORE_INCS /usr/include/fastdfs /usr/include/fastcommon/&quot;</div></pre></td></tr></table></figure></p>
+<h3 id="FastDFS与Nginx进行集成"><a href="#FastDFS与Nginx进行集成" class="headerlink" title="FastDFS与Nginx进行集成"></a>FastDFS与Nginx进行集成</h3><p>cd nginx-1.6.2/</p>
+<p>./configure –add-module=/usr/local/fast/fastdfs-nginx-module/src/</p>
+<p>make &amp;&amp; make install</p>
+<h3 id="复制、修改配置文件"><a href="#复制、修改配置文件" class="headerlink" title="复制、修改配置文件"></a>复制、修改配置文件</h3><p>cp /usr/local/fast/fastdfs-nginx-module/src/mod_fastdfs.conf /etc/fdfs/</p>
+<p>vim /etc/fdfs/mod_fastdfs.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">connect_timeout=10</div><div class="line">tracker_server=192.168.1.1:22122</div><div class="line">url_have_group_name = true</div><div class="line">store_path0=/fastdfs/storage</div></pre></td></tr></table></figure>
+<h3 id="复制FastDFS里的2个文件"><a href="#复制FastDFS里的2个文件" class="headerlink" title="复制FastDFS里的2个文件"></a>复制FastDFS里的2个文件</h3><p>cd /usr/local/fast/FastDFS/conf/</p>
+<p>cp http.conf mime.types /etc/fdfs/</p>
+<h3 id="建立软连接"><a href="#建立软连接" class="headerlink" title="建立软连接"></a>建立软连接</h3><p>ln -s /fastdfs/storage/data/ /fastdfs/storage/data/M00</p>
+<h3 id="修改Nginx配置"><a href="#修改Nginx配置" class="headerlink" title="修改Nginx配置"></a>修改Nginx配置</h3><p>vim nginx.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">listen 80;</div><div class="line">server_name localhost;</div><div class="line">location ~/group([0-9])/M00 &#123;</div><div class="line">    #alias /fastdfs/storage/data;</div><div class="line">    ngx_fastdfs_module;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="启动Nginx"><a href="#启动Nginx" class="headerlink" title="启动Nginx"></a>启动Nginx</h3><blockquote>
+<p>/usr/local/nginx/sbin/nginx</p>
+</blockquote>
+<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>访问 <a href="http://192.168.1.2/group1/M00/00/00/2-YyVlhRQlaAZLlgAAGP6hUWM6I411.zip" target="_blank" rel="external">http://192.168.1.2/group1/M00/00/00/2-YyVlhRQlaAZLlgAAGP6hUWM6I411.zip</a></p>
+<ul>
+<li>启动停止命令</li>
+<li>启动命令： 启动tracker命令：/etc/init.d/fdfs_trackerd start</li>
+<li>查看进程命令：ps -el | grep fdfs</li>
+<li>启动storage命令：/etc/init.d/fdfs_storaged start</li>
+<li>查看进程命令：ps -el | grep fdfs</li>
+<li>启动nginx命令：/usr/local/nginx/sbin/nginx</li>
+<li>停止命令： 停止tracker命令：/etc/init.d/fdfs_trackerd stop</li>
+<li>关闭storage命令：/etc/init.d/fdfs_storaged stop</li>
+<li>关闭nginx命令：/usr/local/nginx/sbin/nginx -s stop</li>
+</ul>
+<h2 id="使用Java客户端操作"><a href="#使用Java客户端操作" class="headerlink" title="使用Java客户端操作"></a>使用Java客户端操作</h2><h3 id="classpath下建立文件fastdfs-client-conf"><a href="#classpath下建立文件fastdfs-client-conf" class="headerlink" title="classpath下建立文件fastdfs_client.conf"></a>classpath下建立文件fastdfs_client.conf</h3><h4 id="输入以下内容"><a href="#输入以下内容" class="headerlink" title="输入以下内容"></a>输入以下内容</h4><p>tracker_server = 192.168.125.129:22122</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> vip.xubin.utils;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.commons.lang3.StringUtils;</div><div class="line"><span class="keyword">import</span> org.apache.log4j.Logger;</div><div class="line"><span class="keyword">import</span> org.csource.common.NameValuePair;</div><div class="line"><span class="keyword">import</span> org.csource.fastdfs.*;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.*;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * FastDFS 工具类</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FastDFSClientUtils</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String CONF_FILENAME = Thread.currentThread().getContextClassLoader().getResource(<span class="string">"fastdfs_client.conf"</span>).getPath();</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Logger logger = Logger.getLogger(FastDFSClientUtils.class);</div><div class="line"></div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> TrackerClient trackerClient;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="comment">//加载文件</span></div><div class="line">	<span class="keyword">static</span> &#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			ClientGlobal.init(CONF_FILENAME);</div><div class="line">			TrackerGroup trackerGroup = ClientGlobal.g_tracker_group;</div><div class="line">			trackerClient = <span class="keyword">new</span> TrackerClient(trackerGroup);</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			logger.error(e);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 上传</div><div class="line">	 * <span class="doctag">@param</span> file 文件</div><div class="line">	 * <span class="doctag">@param</span> path 路径</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 *          上传成功返回id，失败返回null</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">upload</span><span class="params">(File file, String path)</span> </span>&#123;</div><div class="line">		TrackerServer trackerServer = <span class="keyword">null</span>;</div><div class="line">		StorageServer storageServer = <span class="keyword">null</span>;</div><div class="line">		StorageClient1 storageClient1 = <span class="keyword">null</span>;</div><div class="line">		FileInputStream fis = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			NameValuePair[] meta_list = <span class="keyword">null</span>; <span class="comment">// new NameValuePair[0];</span></div><div class="line">			fis = <span class="keyword">new</span> FileInputStream(file);</div><div class="line">			<span class="keyword">byte</span>[] file_buff = <span class="keyword">null</span>;</div><div class="line">			<span class="keyword">if</span> (fis != <span class="keyword">null</span>) &#123;</div><div class="line">				<span class="keyword">int</span> len = fis.available();</div><div class="line">				file_buff = <span class="keyword">new</span> <span class="keyword">byte</span>[len];</div><div class="line">				fis.read(file_buff);</div><div class="line">			&#125;</div><div class="line"></div><div class="line">			trackerServer = trackerClient.getConnection();</div><div class="line">			<span class="keyword">if</span> (trackerServer == <span class="keyword">null</span>) &#123;</div><div class="line">				logger.error(<span class="string">"getConnection return null"</span>);</div><div class="line">			&#125;</div><div class="line">			storageServer = trackerClient.getStoreStorage(trackerServer);</div><div class="line">			storageClient1 = <span class="keyword">new</span> StorageClient1(trackerServer, storageServer);</div><div class="line">			String fileid = storageClient1.upload_file1(file_buff, getFileExt(path), meta_list);</div><div class="line"></div><div class="line">			<span class="keyword">return</span> fileid;</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception ex) &#123;</div><div class="line">			logger.error(ex);</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		&#125;<span class="keyword">finally</span>&#123;</div><div class="line">			<span class="keyword">if</span> (fis != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					fis.close();</div><div class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">					logger.error(e);</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (storageServer != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					storageServer.close();</div><div class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (trackerServer != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					trackerServer.close();</div><div class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			storageClient1 = <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 上传</div><div class="line">	 * <span class="doctag">@param</span> data 数据</div><div class="line">	 * <span class="doctag">@param</span> extName 路径</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 *          上传成功返回id，失败返回null</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">upload</span><span class="params">(<span class="keyword">byte</span>[] data, String extName)</span> </span>&#123;</div><div class="line">		TrackerServer trackerServer = <span class="keyword">null</span>;</div><div class="line">		StorageServer storageServer = <span class="keyword">null</span>;</div><div class="line">		StorageClient1 storageClient1 = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			NameValuePair[] meta_list = <span class="keyword">null</span>; <span class="comment">// new NameValuePair[0];</span></div><div class="line"></div><div class="line">			trackerServer = trackerClient.getConnection();</div><div class="line">			<span class="keyword">if</span> (trackerServer == <span class="keyword">null</span>) &#123;</div><div class="line">				logger.error(<span class="string">"getConnection return null"</span>);</div><div class="line">			&#125;</div><div class="line">			storageServer = trackerClient.getStoreStorage(trackerServer);</div><div class="line">			storageClient1 = <span class="keyword">new</span> StorageClient1(trackerServer, storageServer);</div><div class="line">			String fileid = storageClient1.upload_file1(data, extName, meta_list);</div><div class="line">			<span class="keyword">return</span> fileid;</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception ex) &#123;</div><div class="line">			logger.error(ex);</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		&#125;<span class="keyword">finally</span>&#123;</div><div class="line">			<span class="keyword">if</span> (storageServer != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					storageServer.close();</div><div class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (trackerServer != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					trackerServer.close();</div><div class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			storageClient1 = <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 下载</div><div class="line">	 * <span class="doctag">@param</span> fileId 文件id</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 *          返回InputStream</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> InputStream <span class="title">download</span><span class="params">(String groupName, String fileId)</span> </span>&#123;</div><div class="line">		TrackerServer trackerServer = <span class="keyword">null</span>;</div><div class="line">		StorageServer storageServer = <span class="keyword">null</span>;</div><div class="line">		StorageClient1 storageClient1 = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			trackerServer = trackerClient.getConnection();</div><div class="line">			<span class="keyword">if</span> (trackerServer == <span class="keyword">null</span>) &#123;</div><div class="line">				logger.error(<span class="string">"getConnection return null"</span>);</div><div class="line">			&#125;</div><div class="line">			storageServer = trackerClient.getStoreStorage(trackerServer, groupName);</div><div class="line">			storageClient1 = <span class="keyword">new</span> StorageClient1(trackerServer, storageServer);</div><div class="line">			<span class="keyword">byte</span>[] bytes = storageClient1.download_file1(fileId);</div><div class="line">			InputStream inputStream = <span class="keyword">new</span> ByteArrayInputStream(bytes);</div><div class="line">			<span class="keyword">return</span> inputStream;</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception ex) &#123;</div><div class="line">			logger.error(ex);</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		&#125; <span class="keyword">finally</span> &#123;</div><div class="line">			<span class="keyword">if</span> (storageServer != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					storageServer.close();</div><div class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (trackerServer != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					trackerServer.close();</div><div class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			storageClient1 = <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 删除</div><div class="line">	 * <span class="doctag">@param</span> fileId 文件id</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 *          删除成功返回0，非0则操作失败，返回错误代码</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">delete</span><span class="params">(String groupName, String fileId)</span> </span>&#123;</div><div class="line">		TrackerServer trackerServer = <span class="keyword">null</span>;</div><div class="line">		StorageServer storageServer = <span class="keyword">null</span>;</div><div class="line">		StorageClient1 storageClient1 = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			trackerServer = trackerClient.getConnection();</div><div class="line">			<span class="keyword">if</span> (trackerServer == <span class="keyword">null</span>) &#123;</div><div class="line">				logger.error(<span class="string">"getConnection return null"</span>);</div><div class="line">			&#125;</div><div class="line">			storageServer = trackerClient.getStoreStorage(trackerServer, groupName);</div><div class="line">			storageClient1 = <span class="keyword">new</span> StorageClient1(trackerServer, storageServer);</div><div class="line">			<span class="keyword">int</span> result = storageClient1.delete_file1(fileId);</div><div class="line">			<span class="keyword">return</span> result;</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception ex) &#123;</div><div class="line">			logger.error(ex);</div><div class="line">			<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		&#125; <span class="keyword">finally</span> &#123;</div><div class="line">			<span class="keyword">if</span> (storageServer != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					storageServer.close();</div><div class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (trackerServer != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					trackerServer.close();</div><div class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			storageClient1 = <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 更新文件</div><div class="line">	 * <span class="doctag">@param</span> oldFileId 旧文件id</div><div class="line">	 * <span class="doctag">@param</span> file 新文件</div><div class="line">	 * <span class="doctag">@param</span> path 新文件路径</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 *          上传成功返回id，失败返回null</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">modify</span><span class="params">(String oldGroupName, String oldFileId, File file, String path)</span> </span>&#123;</div><div class="line">		String fileid = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			<span class="comment">// 先上传</span></div><div class="line">			fileid = upload(file, path);</div><div class="line">			<span class="keyword">if</span> (fileid == <span class="keyword">null</span>) &#123;</div><div class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="comment">// 再删除</span></div><div class="line">			<span class="keyword">int</span> delResult = delete(oldGroupName, oldFileId);</div><div class="line">			<span class="keyword">if</span> (delResult != <span class="number">0</span>) &#123;</div><div class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">			&#125;</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception ex) &#123;</div><div class="line">			logger.error(ex);</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> fileid;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 获取文件后缀名</div><div class="line">	 * <span class="doctag">@param</span> fileName</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 *          如："jpg"、"txt"、"zip" 等</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getFileExt</span><span class="params">(String fileName)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (StringUtils.isBlank(fileName) || !fileName.contains(<span class="string">"."</span>)) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> fileName.substring(fileName.lastIndexOf(<span class="string">"."</span>) + <span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>FastDFS的安装算是比较麻烦的 不过按照本篇 一步一步来 是绝对可以安装成功的 集群的安装就更麻烦了 个人暂时用不到 就不安装了</p>
+<hr>
+<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+    <!-- 使用 DISQUS_CLICK -->
+    <div id="disqus-comment">	
+        <div id="disqus_thread"></div>
+<!-- include js -->
+<script src="/js/ripple.js"></script>
+
+<!-- add animation -->
+<style>
+        .ripple-container {
+        }
+        .ripple-container .ripple{
+            background-color: rgba(255,255,255,0.4);
+            animation: ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+        }
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            80% {
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+		.disqus_click_btn {
+            background-color: dodgerblue;
+            color: white;
+            padding: 10px 20px;
+            border:0;
+            font-size: 14px;
+            cursor: pointer
+        }
+</style>
+	
+<!-- add data-ripple attribute -->
+<div class="btn_click_load"> 
+    <button class="disqus_click_btn" data-ripple>阅读评论 「请确保 disq.us &amp; disquscdn.com &amp; disqus.com 可以正常加载」</button>
+</div>
+	
+<script>
+    // add effect to elements
+    Array.prototype.forEach.call(document.querySelectorAll('[data-ripple]'), function(element){
+        // find all elements and attach effect
+        new RippleEffect(element); // element is instance of javascript element node
+    });
+</script>
+
+<script>
+    $('.btn_click_load').click(function() {  //click to load comments
+        var disqus_config = function () {
+            this.page.url = 'http://binux.cn/2017/03/05/FastDFS-Install/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//xubinux.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+  	
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/03/06/Solr-Cluster-Install/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/03/04/Nginx-Install/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.jpg" alt="Binux's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        xu.binux@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="Mailto:xu.binux@gmail.com?Subject=网友来信（来自博客）" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="Gallery">
+                
+                    <i class="material-icons sidebar-material-icons">photo</i>
+                
+                Gallery
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/tags" title="Tags">
+                
+                    <i class="material-icons sidebar-material-icons">bookmark</i>
+                
+                Tags
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="Links">
+                
+                    <i class="material-icons sidebar-material-icons">people</i>
+                
+                Links
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">15</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/xubin0830" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/xubinux" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/binux-29/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.png);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Binux Blog
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+    <script>
+    var searchFunc = function(path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: 'xml',
+            success: function( xmlResponse ) {
+                // get the contents from search data
+                var datas = $( 'entry', xmlResponse ).map(function() {
+                    return {
+                        title: $( 'title', this ).text(),
+                        content: $('content',this).text(),
+                        url: $( 'url' , this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function() {
+                    var str='<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = '';
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function(data) {
+                        var isMatch = true;
+                        var content_index = [];
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g,'').toLowerCase();
+                        var data_url = data.url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if(data_title !== '' && data_content !== '') {
+                            keywords.forEach(function(keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if( index_title < 0 && index_content < 0 ) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += '<li><a href="'+ data_url +'" class="search-result-title" target="_blank">'+ data_title;
+                            var content = data.content.trim().replace(/<[^>]+>/g, '');
+                            if (first_occur >= 0) {
+                                // cut out characters
+                                var start = first_occur - 6;
+                                var end = first_occur + 6;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 10;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, 'gi');
+                                    match_content = match_content.replace(regS, '<em class="search-keyword">'+keyword+'</em>');
+                                })
+                                str += '<p class="search-result">' + match_content + '...</p>' +'</a>';
+                            }
+                        }
+                    });
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    }
+</script>
+
+
+    <script>
+        var inputArea = document.querySelector('#search');
+        var getSearchFile = function() {
+            var path = 'search.xml';
+            searchFunc(path, 'search', 'local-search-result');
+        }
+
+        if(inputArea) {
+            inputArea.onfocus = function() {
+                getSearchFile();
+            }
+        }
+    </script>
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>

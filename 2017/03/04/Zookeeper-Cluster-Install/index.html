@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!-- 
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.0 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三) | 
+        
+        Binux Blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Binux">
+    <meta name="description" content="一名正在崛起的Java后端工程师">
+    <meta name="keywords" content="null,XBin-Store,Linux,Zookeeper">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Binux Blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://binux.cn">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三) | Binux Blog">
+    <meta property="og:description" content="一名正在崛起的Java后端工程师">
+    <meta property="og:article:tag" content="XBin-Store"> <meta property="og:article:tag" content="Linux"> <meta property="og:article:tag" content="Zookeeper"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/queue.js"></script>
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-92760839-1', 'auto');ga('send', 'pageview');
+    </script>
+    
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#系列"><span class="post-toc-number">1.</span> <span class="post-toc-text">系列</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">2.</span> <span class="post-toc-text">前言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Zookeeper集群方案"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Zookeeper集群方案</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正文"><span class="post-toc-number">3.</span> <span class="post-toc-text">正文</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装JDK-略"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">安装JDK 略</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#新建用户"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">新建用户</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#下载"><span class="post-toc-number">3.1.3.</span> <span class="post-toc-text">下载</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解压"><span class="post-toc-number">3.1.4.</span> <span class="post-toc-text">解压</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#改名"><span class="post-toc-number">3.1.5.</span> <span class="post-toc-text">改名</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#建立以下文件夹"><span class="post-toc-number">3.1.6.</span> <span class="post-toc-text">建立以下文件夹</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修改配置文件"><span class="post-toc-number">3.1.7.</span> <span class="post-toc-text">修改配置文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解释配置文件"><span class="post-toc-number">3.1.8.</span> <span class="post-toc-text">解释配置文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#新建myid文件"><span class="post-toc-number">3.1.9.</span> <span class="post-toc-text">新建myid文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#编辑-bash-profile文件"><span class="post-toc-number">3.1.10.</span> <span class="post-toc-text">编辑.bash_profile文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加防火墙规则"><span class="post-toc-number">3.1.11.</span> <span class="post-toc-text">添加防火墙规则</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#切换到-root-用户权限，执行以下命令："><span class="post-toc-number">3.1.11.1.</span> <span class="post-toc-text">切换到 root 用户权限，执行以下命令：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#增加以下-3-行："><span class="post-toc-number">3.1.11.2.</span> <span class="post-toc-text">增加以下 3 行：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#重启防火墙："><span class="post-toc-number">3.1.11.3.</span> <span class="post-toc-text">重启防火墙：</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#zk操作"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">zk操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#启动zk"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">启动zk</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查看有无启动成功"><span class="post-toc-number">3.2.1.1.</span> <span class="post-toc-text">查看有无启动成功</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看状态"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">查看状态</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看日志文件"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">查看日志文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#停止zookeeper进程："><span class="post-toc-number">3.2.4.</span> <span class="post-toc-text">停止zookeeper进程：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置zookeeper开机使用xubin用户启动："><span class="post-toc-number">3.2.5.</span> <span class="post-toc-text">配置zookeeper开机使用xubin用户启动：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#zookeeper查看插件"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">zookeeper查看插件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#eclipse"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">eclipse</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#idea插件"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">idea插件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Java开发的客户端"><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">Java开发的客户端</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">4.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#著作权声明"><span class="post-toc-number">5.</span> <span class="post-toc-text">著作权声明</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三)
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Binux</strong>
+        <span>3月 04, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAACyklEQVR42u3a0U7rMBAE0P7/T9/7ioRIZ9apCPbJU5VC4mMkRt7d178jrxc2NjY2NjY2Njb2I9mv+Pr6899/96c7P73r+/3k+bM1Y2NjY5/AfvOvP3jxCq+OotmasbGxsQ9gJ6F1zcs/R5FThuj1mrGxsbGxk+NHElrJE2bHFWxsbGzse9nXS5+BsbGxsbHXi0pJCSkvNl23Ex5US8PGxsZ+PHul0ftbn3+5v42NjY39GPasydqG0Gz77r2wsbGxd2VfN3Hz1mzbuJ0NALVNYmxsbOwT2Hnk5KX5vCWQvD15fvST2NjY2JuyZ8WjPLqS+3lDot1ibGxs7HPY+QtW7uSt3/ywVGwKNjY29tbsPJZmpaVZpLXlpzdbjI2Njb01uy3QzMZoVspYLbLObWxsbOw/zl45DLSN3jzqkvXc0B7AxsbGPoDdFnFmT5vFWzH6g42Njb0pO8Enn5Pjygw8+wNgY2Njn8OegXPkbLkrwz03HEWwsbGx/yx7NljZbkHdoB0dgbCxsbHPYbcx0ALakZ2liMoDDBsbG3tT9ixa8gJQe8hphy+HAYaNjY29KTsflLn+th2LzwMvWSc2Njb2OeyE1y6lHejM4yof3MTGxsY+h50/aNY8aLepPd5gY2NjY7cF+vzbTzy/bUhjY2Nj783OY6Nt8SZ3Zq3ivGGAjY2NfQJ7vbHaNgBmsTeLRmxsbOwz2bMDw/UTZhvXUt/8AbCxsbE3Za8MzeQtgZVWxOyKTmDY2NjYW7A/UU4aNmLj+Bw2J7CxsbE3ZbfLvWsEc/auPCaxsbGxT2O3oXVX4Wk2oDNsCWNjY2MfwL4rSPLltkeRWfELGxsbGzsJudnwTb300YZiY2NjY+cFo6Vllfi6gYGNjY19AHsWS8nWtAeJ2eZ+vJaGjY2N/WD2vYtb35T2XUl8YmNjY+/KPufCxsbGxsbGxsbGfsz1HwYHKlzaVpviAAAAAElFTkSuQmCC">
+        </ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Linux/">Linux</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/XBin-Store/">XBin-Store</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Zookeeper/">Zookeeper</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三)&url=http://binux.cn//2017/03/04/Zookeeper-Cluster-Install/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://binux.cn//2017/03/04/Zookeeper-Cluster-Install/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Binux Blog&title=Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三)&summary=一名正在崛起的Java后端工程师&pics=http://binux.cn/img/favicon.png&url=http://binux.cn/2017/03/04/Zookeeper-Cluster-Install/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>“这篇文章将介绍如何安装Zookeeper集群”</p>
+</blockquote>
+<h2 id="系列"><a href="#系列" class="headerlink" title="系列"></a>系列</h2><ul>
+<li><a href="http://binux.cn/2017/03/01/Linux-MySQL-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 MySQL安装(一)</a></li>
+<li><a href="http://binux.cn/2017/03/03/Redis-Cluster-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Redis集群安装(二)</a></li>
+<li><strong><a href="http://binux.cn/2017/03/04/Zookeeper-Cluster-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三)</a></strong></li>
+<li><a href="http://binux.cn/2017/03/04/Nginx-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Nginx安装(四)</a></li>
+<li><a href="http://binux.cn/2017/03/05/FastDFS-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 FastDFS安装(五)</a></li>
+<li><a href="http://binux.cn/2017/03/06/Solr-Cluster-Install/">Xbin-Store(分布式商城)项目所依赖的Linux服务系列 Solr集群安装(六)</a></li>
+<li><a href="http://binux.cn/2017/03/07/RocketMQ-Cluster-Install/">Xbin-Store(分布式商城)项目所依赖的Linux服务系列 RocketMQ集群安装(七)</a></li>
+</ul>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="Zookeeper集群方案"><a href="#Zookeeper集群方案" class="headerlink" title="Zookeeper集群方案"></a>Zookeeper集群方案</h3><p>主机IP        |    消息端口        |        通信端口        |节点目录/usr/local/下|<br>192.168.1.1    |    2181        |        2888:3888    |        zookeeper   |<br>192.168.1.2    |    2181        |        2888:3888    |        zookeeper   |<br>192.168.1.3    |    2181        |        2888:3888    |        zookeeper   |</p>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="安装JDK-略"><a href="#安装JDK-略" class="headerlink" title="安装JDK 略"></a>安装JDK 略</h4><blockquote>
+<p>以下操作3台机器同时操作</p>
+</blockquote>
+<h4 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h4><p>useradd zookeeper</p>
+<p>passwd zookeeper</p>
+<p>设置密码</p>
+<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p>官网下载<a href="http://apache.fayea.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz" target="_blank" rel="external">zookeeper-3.4.6</a><br>Linux wget <a href="http://apache.fayea.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz" target="_blank" rel="external">http://apache.fayea.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz</a></p>
+<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><p>tar -zxvf zookeeper-3.4.6.tar.gz —C /usr/local</p>
+<h4 id="改名"><a href="#改名" class="headerlink" title="改名"></a>改名</h4><p>cd /usr/local</p>
+<p>mv zookeeper-3.4.6 zookeeper</p>
+<h4 id="建立以下文件夹"><a href="#建立以下文件夹" class="headerlink" title="建立以下文件夹"></a>建立以下文件夹</h4><p>cd /usr/local/zookeeper</p>
+<p>mkdir data</p>
+<p>mkdir logs</p>
+<h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p>将/conf目录下的zoo_sample.cfg文件拷贝一份， 命名为为zoo.cfg</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># The number of milliseconds of each tick</span></div><div class="line">tickTime=2000</div><div class="line"><span class="comment"># The number of ticks that the initial</span></div><div class="line"><span class="comment"># synchronization phase can take</span></div><div class="line">initLimit=10</div><div class="line"><span class="comment"># The number of ticks that can pass between</span></div><div class="line"><span class="comment"># sending a request and getting an acknowledgement</span></div><div class="line">syncLimit=5</div><div class="line"><span class="comment"># the directory where the snapshot is stored.</span></div><div class="line"><span class="comment"># do not use /tmp for storage, /tmp here is just</span></div><div class="line"><span class="comment"># example sakes.</span></div><div class="line">dataDir=/usr/<span class="built_in">local</span>/zookeeper/data</div><div class="line">dataLogDir=/usr/<span class="built_in">local</span>/zookeeper/logs</div><div class="line"><span class="comment"># the port at which the clients will connect</span></div><div class="line">clientPort=2181</div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Be sure to read the maintenance section of the</span></div><div class="line"><span class="comment"># administrator guide before turning on autopurge.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># http://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_maintenance</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># The number of snapshots to retain in dataDir</span></div><div class="line"><span class="comment">#autopurge.snapRetainCount=3</span></div><div class="line"><span class="comment"># Purge task interval in hours</span></div><div class="line"><span class="comment"># Set to "0" to disable auto purge feature</span></div><div class="line"><span class="comment">#autopurge.purgeInterval=1</span></div><div class="line"><span class="comment"># 2888 端口号是 zookeeper 服务之间通信的端口。</span></div><div class="line"><span class="comment"># 3888 是 zookeeper 与其他应用程序通信的端口。</span></div><div class="line">server.0=192.168.1.1:2888:3888</div><div class="line">server.1=192.168.1.2:2888:3888</div><div class="line">server.2=192.168.1.3:2888:3888</div></pre></td></tr></table></figure>
+<h4 id="解释配置文件"><a href="#解释配置文件" class="headerlink" title="解释配置文件"></a>解释配置文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">initLimit：这个配置项是用来配置 Zookeeper 接受客户端（这里所说的客户端不</div><div class="line">是用户连接 Zookeeper 服务器的客户端，而是 Zookeeper 服务器集群中连接到</div><div class="line">Leader 的 Follower 服务器）初始化连接时最长能忍受多少个心跳时间间隔数。</div><div class="line">当已经超过 10 个心跳的时间（也就是 tickTime）长度后 Zookeeper 服务器还没</div><div class="line">有收到客户端的返回信息，那么表明这个客户端连接失败。总的时间长度就是</div><div class="line">5*2000=10 秒。</div><div class="line"></div><div class="line">syncLimit：这个配置项标识 Leader 与 Follower 之间发送消息，请求和应答时</div><div class="line">间长度，最长不能超过多少个 tickTime 的时间长度，总的时间长度就是 2*2000=4</div><div class="line">秒。</div><div class="line"></div><div class="line">server.A=B:C:D：其中 A 是一个数字，表示这个是第几号服务器；B 是这个服务</div><div class="line">器的 IP 地址或/etc/hosts 文件中映射了 IP 的主机名；C 表示的是这个服务器与</div><div class="line">集群中的 Leader 服务器交换信息的端口；D 表示的是万一集群中的 Leader 服务</div><div class="line">器挂了，需要一个端口来重新进行选举，选出一个新的 Leader，而这个端口就是</div><div class="line">用来执行选举时服务器相互通信的端口。如果是伪集群的配置方式，由于 B 都是</div><div class="line">一样，所以不同的 Zookeeper 实例通信端口号不能一样，所以要给它们分配不同</div><div class="line">的端口号。</div></pre></td></tr></table></figure>
+<h4 id="新建myid文件"><a href="#新建myid文件" class="headerlink" title="新建myid文件"></a>新建myid文件</h4><p>cd /usr/local/zookeeper/data</p>
+<ul>
+<li>192.168.1.1机器:  echo 1 &gt;&gt; myid</li>
+<li>192.168.1.2机器:  echo 2 &gt;&gt; myid</li>
+<li>192.168.1.3机器:  echo 3 &gt;&gt; myid</li>
+</ul>
+<h4 id="编辑-bash-profile文件"><a href="#编辑-bash-profile文件" class="headerlink" title="编辑.bash_profile文件"></a>编辑.bash_profile文件</h4><p>添加<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> ZOOKEEPER_HOME=/usr/<span class="built_in">local</span>/zookeeper</div><div class="line"><span class="comment"># zookeeper env</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$ZOOKEEPER_HOME</span>/bin:<span class="variable">$PATH</span></div></pre></td></tr></table></figure></p>
+<p>使配置文件生效<br>$ source /home/zookeeper/.bash_profile</p>
+<h4 id="添加防火墙规则"><a href="#添加防火墙规则" class="headerlink" title="添加防火墙规则"></a>添加防火墙规则</h4><p>在防火墙中打开要用到的端口2181、2888、3888</p>
+<h5 id="切换到-root-用户权限，执行以下命令："><a href="#切换到-root-用户权限，执行以下命令：" class="headerlink" title="切换到 root 用户权限，执行以下命令："></a>切换到 root 用户权限，执行以下命令：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chkconfig iptables on</div><div class="line">service iptables start</div><div class="line">vim /etc/sysconfig/iptables</div></pre></td></tr></table></figure>
+<h5 id="增加以下-3-行："><a href="#增加以下-3-行：" class="headerlink" title="增加以下 3 行："></a>增加以下 3 行：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 2181 -j ACCEPT</div><div class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 2888 -j ACCEPT</div><div class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 3888 -j ACCEPT</div></pre></td></tr></table></figure>
+<h5 id="重启防火墙："><a href="#重启防火墙：" class="headerlink" title="重启防火墙："></a>重启防火墙：</h5><p>service iptables restart</p>
+<h3 id="zk操作"><a href="#zk操作" class="headerlink" title="zk操作"></a>zk操作</h3><h4 id="启动zk"><a href="#启动zk" class="headerlink" title="启动zk"></a>启动zk</h4><p>zkServer.sh start</p>
+<h5 id="查看有无启动成功"><a href="#查看有无启动成功" class="headerlink" title="查看有无启动成功"></a>查看有无启动成功</h5><p>jps<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1456 QuorumPeerMain</div><div class="line">1475 Jps</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>启动成功</p>
+</blockquote>
+<h4 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h4><p>zkServer.shstatus</p>
+<h4 id="查看日志文件"><a href="#查看日志文件" class="headerlink" title="查看日志文件"></a>查看日志文件</h4><p>$ tail -500f /usr/local/zookeeper/logs/zookeeper.out</p>
+<h4 id="停止zookeeper进程："><a href="#停止zookeeper进程：" class="headerlink" title="停止zookeeper进程："></a>停止zookeeper进程：</h4><p>zkServer.sh stop</p>
+<h4 id="配置zookeeper开机使用xubin用户启动："><a href="#配置zookeeper开机使用xubin用户启动：" class="headerlink" title="配置zookeeper开机使用xubin用户启动："></a>配置zookeeper开机使用xubin用户启动：</h4><p>编辑/etc/rc.local 文件，加入：</p>
+<p>su - zookeeper -c ‘/usr/local/zookeeper/bin/zkServer.sh start’</p>
+<h3 id="zookeeper查看插件"><a href="#zookeeper查看插件" class="headerlink" title="zookeeper查看插件"></a>zookeeper查看插件</h3><h4 id="eclipse"><a href="#eclipse" class="headerlink" title="eclipse"></a>eclipse</h4><ul>
+<li>Help -&gt; Install New Software</li>
+<li>添加 url <a href="http://www.massedynamic.org/eclipse/updates/" target="_blank" rel="external">http://www.massedynamic.org/eclipse/updates/</a></li>
+<li>选择zookeeper插件安装</li>
+<li>Eclipse 菜单打开Window -&gt; Show View -&gt; Other… -&gt; ZooKeeper 3.2.2</li>
+<li>输入zookeeper的地址 连接</li>
+</ul>
+<h4 id="idea插件"><a href="#idea插件" class="headerlink" title="idea插件"></a>idea插件</h4><p>直接插件库中搜索zookeeper</p>
+<blockquote>
+<p>不过我不推荐使用<br>插件开发成那样还上线…(不过是免费的 想用就用吧)</p>
+</blockquote>
+<h4 id="Java开发的客户端"><a href="#Java开发的客户端" class="headerlink" title="Java开发的客户端"></a>Java开发的客户端</h4><p><a href="http://download.csdn.net/detail/nihaoadam/9427620" target="_blank" rel="external">点我下载</a></p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>安装集群的时候一定要把防火墙配置好 不然就会出现各种问题 或者直接把防火墙关了吧 学习技术的时候可以不用考虑防火墙</p>
+<p>后面会写一篇关于使用ZkClient、Curator操作Zookeeper的博客</p>
+<hr>
+<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+    <!-- 使用 DISQUS_CLICK -->
+    <div id="disqus-comment">	
+        <div id="disqus_thread"></div>
+<!-- include js -->
+<script src="/js/ripple.js"></script>
+
+<!-- add animation -->
+<style>
+        .ripple-container {
+        }
+        .ripple-container .ripple{
+            background-color: rgba(255,255,255,0.4);
+            animation: ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+        }
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            80% {
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+		.disqus_click_btn {
+            background-color: dodgerblue;
+            color: white;
+            padding: 10px 20px;
+            border:0;
+            font-size: 14px;
+            cursor: pointer
+        }
+</style>
+	
+<!-- add data-ripple attribute -->
+<div class="btn_click_load"> 
+    <button class="disqus_click_btn" data-ripple>阅读评论 「请确保 disq.us &amp; disquscdn.com &amp; disqus.com 可以正常加载」</button>
+</div>
+	
+<script>
+    // add effect to elements
+    Array.prototype.forEach.call(document.querySelectorAll('[data-ripple]'), function(element){
+        // find all elements and attach effect
+        new RippleEffect(element); // element is instance of javascript element node
+    });
+</script>
+
+<script>
+    $('.btn_click_load').click(function() {  //click to load comments
+        var disqus_config = function () {
+            this.page.url = 'http://binux.cn/2017/03/04/Zookeeper-Cluster-Install/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//xubinux.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+  	
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/03/04/Nginx-Install/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/03/03/Redis-Cluster-Install/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.jpg" alt="Binux's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        xu.binux@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="Mailto:xu.binux@gmail.com?Subject=网友来信（来自博客）" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="Gallery">
+                
+                    <i class="material-icons sidebar-material-icons">photo</i>
+                
+                Gallery
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/tags" title="Tags">
+                
+                    <i class="material-icons sidebar-material-icons">bookmark</i>
+                
+                Tags
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="Links">
+                
+                    <i class="material-icons sidebar-material-icons">people</i>
+                
+                Links
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">15</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/xubin0830" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.png);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/xubinux" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/binux-29/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.png);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Binux Blog
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+    <script>
+    var searchFunc = function(path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: 'xml',
+            success: function( xmlResponse ) {
+                // get the contents from search data
+                var datas = $( 'entry', xmlResponse ).map(function() {
+                    return {
+                        title: $( 'title', this ).text(),
+                        content: $('content',this).text(),
+                        url: $( 'url' , this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function() {
+                    var str='<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = '';
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function(data) {
+                        var isMatch = true;
+                        var content_index = [];
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g,'').toLowerCase();
+                        var data_url = data.url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if(data_title !== '' && data_content !== '') {
+                            keywords.forEach(function(keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if( index_title < 0 && index_content < 0 ) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += '<li><a href="'+ data_url +'" class="search-result-title" target="_blank">'+ data_title;
+                            var content = data.content.trim().replace(/<[^>]+>/g, '');
+                            if (first_occur >= 0) {
+                                // cut out characters
+                                var start = first_occur - 6;
+                                var end = first_occur + 6;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 10;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, 'gi');
+                                    match_content = match_content.replace(regS, '<em class="search-keyword">'+keyword+'</em>');
+                                })
+                                str += '<p class="search-result">' + match_content + '...</p>' +'</a>';
+                            }
+                        }
+                    });
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    }
+</script>
+
+
+    <script>
+        var inputArea = document.querySelector('#search');
+        var getSearchFile = function() {
+            var path = 'search.xml';
+            searchFunc(path, 'search', 'local-search-result');
+        }
+
+        if(inputArea) {
+            inputArea.onfocus = function() {
+                getSearchFile();
+            }
+        }
+    </script>
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>
