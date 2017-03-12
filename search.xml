@@ -1009,7 +1009,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[List<E>.remove()无效!!!]]></title>
+      <title><![CDATA[List.remove()无效!!!]]></title>
       <url>http://binux.cn/2017/02/26/List.remove()/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>“还是接触Java太少了，以前根本没碰到过，记录下这个小问题”</p>

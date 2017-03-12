@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://binux.cn/2017/02/26/List.remove()/</loc>
+    
+    <lastmod>2017-03-12T11:43:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://binux.cn/links/links.json</loc>
     
     <lastmod>2017-03-12T11:08:32.000Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://binux.cn/about/index.html</loc>
     
     <lastmod>2017-03-12T10:54:14.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://binux.cn/2017/02/26/List.remove()/</loc>
-    
-    <lastmod>2017-03-12T09:44:44.000Z</lastmod>
     
   </url>
   
