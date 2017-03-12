@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Binux">
     <meta name="description" content="一名正在崛起的Java后端工程师">
-    <meta name="keywords" content="null,Mac,MySQL">
+    <meta name="keywords" content="null,MySQL,Mac">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -50,7 +50,7 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="完美解决Mac下Navicat Premium连接MySQL5.7中文乱码！！！ | Binux Blog">
     <meta property="og:description" content="一名正在崛起的Java后端工程师">
-    <meta property="og:article:tag" content="Mac"> <meta property="og:article:tag" content="MySQL"> 
+    <meta property="og:article:tag" content="MySQL"> <meta property="og:article:tag" content="Mac"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -267,16 +267,8 @@
                 
     <!-- Paradox Post Header -->
     
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-            <script>
-    var randomNum = Math.floor(Math.random() * 19 + 1);
-
-    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
-</script>
-
-        
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/Mac-MySQL/blog.png)">
     
             <p class="article-headline-p">
                 完美解决Mac下Navicat Premium连接MySQL5.7中文乱码！！！
@@ -415,19 +407,19 @@
 <p>登录MySQL SHOW VARIABLES LIKE “character%”;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW VARIABLES LIKE &quot;character%&quot;;</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">| Variable_name            | Value                                                     |</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">| character_set_client     | utf8                                                      |</div><div class="line">| character_set_connection | utf8                                                      |</div><div class="line">| character_set_database   | latin1                                                    |</div><div class="line">| character_set_filesystem | binary                                                    |</div><div class="line">| character_set_results    | utf8                                                      |</div><div class="line">| character_set_server     | latin1                                                    |</div><div class="line">| character_set_system     | utf8                                                      |</div><div class="line">| character_sets_dir       | /usr/local/mysql-5.7.17-macos10.12-x86_64/share/charsets/ |</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">8 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
 <p>character_set_database和character_set_server的默认字符集还是latin1。</p>
 <p>需要改成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW VARIABLES LIKE &quot;character%&quot;;</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">| Variable_name            | Value                                                     |</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">| character_set_client     | utf8                                                      |</div><div class="line">| character_set_connection | utf8                                                      |</div><div class="line">| character_set_database   | utf8                                                      |</div><div class="line">| character_set_filesystem | binary                                                    |</div><div class="line">| character_set_results    | utf8                                                      |</div><div class="line">| character_set_server     | utf8                                                      |</div><div class="line">| character_set_system     | utf8                                                      |</div><div class="line">| character_sets_dir       | /usr/local/mysql-5.7.17-macos10.12-x86_64/share/charsets/ |</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">8 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
-<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>停止MySQL服务<br><img src="/img/in-post/Mac-MySQL/img1.png"><br><small class="img-hint">MySQL设置</small></p>
+<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>停止MySQL服务<br><img src="/img/Mac-MySQL/img1.png"><br><small class="img-hint">MySQL设置</small></p>
 <p>打开终端 执行 sudo vim /etc/my.cnf 输入密码 新建一个MySQL配置文件 因为5.7 安装的时候默认没有配置文件</p>
 <p>加入2条配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[client]</div><div class="line">default-character-set=utf8</div><div class="line">[mysqld]</div><div class="line">character-set-server=utf8</div></pre></td></tr></table></figure></p>
 <p>重新启动MySQL服务</p>
-<p>打开Navicat Premium 连接<br><img src="/img/in-post/Mac-MySQL/img2.png"><br><small class="img-hint">Navicat Premium连接</small></p>
-<p>发现还是乱码<br><img class="shadow" src="/img/in-post/Mac-MySQL/img3.png"><br><small class="img-hint">中文乱码</small></p>
+<p>打开Navicat Premium 连接<br><img src="/img/Mac-MySQL/img2.png"><br><small class="img-hint">Navicat Premium连接</small></p>
+<p>发现还是乱码<br><img class="shadow" src="/img/Mac-MySQL/img3.png"><br><small class="img-hint">中文乱码</small></p>
 <p>其实到这边 MySQL乱码就配置完成了 问题就出在 新建连接的时候Encoding这边选择了utf-8</p>
-<p>把它改成Auto 问题解决<br><img class="shadow" src="/img/in-post/Mac-MySQL/img4.png"><br><small class="img-hint">问题解决</small></p>
+<p>把它改成Auto 问题解决<br><img class="shadow" src="/img/Mac-MySQL/img4.png"><br><small class="img-hint">问题解决</small></p>
 <hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>出现这个问题不怪别人 都是自己手残 干嘛自己去改连接属性里面的Encoding 其实默认就是Auto 其实这个问题困扰我挺久的 </p>
 <p>不过在改过MySQL配置后 使用MyBatis 也就是JDBC操作数据库是没问题的 所以也没在意</p>
 <p>最后怎么看自己配置的有没有问题呢！</p>
-<p>Navicat Premium右键Edit DataBase 如果是下图 就绝对没问题了<br><img src="/img/in-post/Mac-MySQL/img5.png"><br><small class="img-hint">Edit DataBase</small></p>
+<p>Navicat Premium右键Edit DataBase 如果是下图 就绝对没问题了<br><img src="/img/Mac-MySQL/img5.png"><br><small class="img-hint">Edit DataBase</small></p>
 <hr>
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 
@@ -652,7 +644,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                
+                <a class="sidebar_archives-link" href="/categories/Bug/">Bug<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/安装教程/">安装教程<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/源码分析/">源码分析<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/随记/">随记<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/面试题/">面试题<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         

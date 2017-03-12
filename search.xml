@@ -12,11 +12,11 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>JDK 版本1.7</p>
 </blockquote>
-<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><p><img class="shadow" src="/img/in-post/JDK-Source-Code/Java-Collections.png"><br><small class="img-hint">Collection</small></p>
+<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><p><img class="shadow" src="/img/JDK-Source-Code/Java-Collections.png"><br><small class="img-hint">Collection</small></p>
 <blockquote>
 <p>来源<a href="https://infinitescript.com/2014/10/java-collections-framework/" target="_blank" rel="external">Java Collections Framework</a></p>
 </blockquote>
-<h3 id="LinkedList-继承树"><a href="#LinkedList-继承树" class="headerlink" title="LinkedList 继承树"></a>LinkedList 继承树</h3><p><img src="/img/in-post/JDK-Source-Code/LinkedList.png"><br><small class="img-hint">LinkedList</small></p>
+<h3 id="LinkedList-继承树"><a href="#LinkedList-继承树" class="headerlink" title="LinkedList 继承树"></a>LinkedList 继承树</h3><p><img src="/img/JDK-Source-Code/LinkedList.png"><br><small class="img-hint">LinkedList</small></p>
 <p>LinkedList从数据结构层面上说算是一个双向链表 继承于AbstractSequentialList实现了List、Deque、Cloneable、Serializable</p>
 <p>有三个重要的成员变量first(链表的头节点)、last(链表的尾节点)、size(链表的长度)</p>
 <p>Node为存储数据的类 共有3个变量item(元素)、next(此元素的下一个节点)、prev(此元素的上一个节点)</p>
@@ -36,12 +36,59 @@
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 源码分析 </category>
+            
+        </categories>
+        
         
         <tags>
             
             <tag> JDK </tag>
             
             <tag> Source Code </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Alibaba 2018实习生招聘 在线编程题解答]]></title>
+      <url>http://binux.cn/2017/03/09/Alibaba-Arithmetic/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>“阿里巴巴 2018实习生 在线编程 题目解答”</p>
+</blockquote>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p> 对于一个长度为N的整型数组A， 数组里所有的数都是正整数，对于两个满足0&lt;=X &lt;= Y &lt;N的整数，A[X], A[X+1] … A[Y]构成A的一个切片，记作(X, Y)。</p>
+<p> 用三个下标 m1, m2, m3下标满足条件 0 &lt; m1, m1 + 1 &lt; m2, m2 +1 &lt; m3 &lt; N – 1。</p>
+<p> 可以把这个整型数组分成(0, m1-1), (m1+1, m2-1), (m2+1, m3-1), (m3+1, N-1) 四个切片。如果这四个切片中的整数求和相等，称作“四等分”。</p>
+<p> 编写一个函数，求一个给定的整型数组是否可以四等分，如果可以，返回一个布尔类型的true，如果不可以返回一个布尔类型的false。</p>
+<p> 限制条件： 数组A最多有1,000,000项，数组中的整数取值范围介于-1,000,000到1,000,000之间。</p>
+<p> 要求： 函数的计算复杂度为O(N)，使用的额外存储空间（除了输入的数组之外）最多为O(N)。</p>
+<p> 例子：</p>
+<p> 对于数组A=[2, 5, 1, 1, 1, 1, 4, 1, 7, 3, 7] 存在下标 2, 7, 9使得数组分成四个分片[2, 5], [1, 1, 1, 4], [7], [7]，这三个分片内整数之和相等，所以对于这个数组，函数应该返回true。</p>
+<p> 对于数组 A=[10, 2, 11, 13, 1, 1, 1, 1, 1]， 找不到能把数组四等分的下标，所以函数应该返回false。</p>
+<hr>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> cn.binux;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/** 请完成下面这个函数，实现题目要求的功能 **/</span></div><div class="line">    <span class="comment">/** 当然，你也可以不按照这个模板来作答，完全按照自己的想法来 ^-^  **/</span></div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">resolve</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (A == <span class="keyword">null</span> || A.length &lt; (<span class="number">4</span> + <span class="number">3</span>)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> indexl = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> indexr = A.length - <span class="number">1</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> suml = A[indexl];</div><div class="line">        <span class="keyword">int</span> sumr = A[indexr];</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (indexl &lt; indexr) &#123;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (suml &lt; sumr) &#123;</div><div class="line">                indexl++;</div><div class="line">                suml += A[indexl];</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (suml &gt; sumr) &#123;</div><div class="line">                indexr--;</div><div class="line">                sumr += A[indexr];</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">boolean</span> check = check(indexl + <span class="number">1</span>, indexr - <span class="number">1</span>, suml, A);</div><div class="line">                <span class="keyword">if</span> (check) &#123;</div><div class="line">                    <span class="keyword">return</span> check;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    indexl++;</div><div class="line">                    suml += A[indexl];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> sum, <span class="keyword">int</span>[] A)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> indexl = start + <span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> indexr = end - <span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> suml = A[indexl];</div><div class="line">        <span class="keyword">int</span> sumr = A[indexr];</div><div class="line">        <span class="keyword">while</span> (indexr &gt; indexl) &#123;</div><div class="line">            <span class="keyword">if</span> (suml &lt; sumr) &#123;</div><div class="line">                indexl++;</div><div class="line">                suml += A[indexl];</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (suml &gt; sumr) &#123;</div><div class="line">                indexr--;</div><div class="line">                sumr += A[indexr];</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (suml == sumr) &#123;</div><div class="line">                <span class="keyword">if</span> (indexr - indexl == <span class="number">2</span> &amp;&amp; suml == sum) &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        <span class="comment">//ArrayList&lt;Integer&gt; inputs = new ArrayList&lt;Integer&gt;();</span></div><div class="line">        <span class="comment">//Scanner in = new Scanner(System.in);</span></div><div class="line">        <span class="comment">//String line = in.nextLine();</span></div><div class="line">        <span class="comment">//while(line != null &amp;&amp; !line.isEmpty()) &#123;</span></div><div class="line">        <span class="comment">//    int value = Integer.parseInt(line.trim());</span></div><div class="line">        <span class="comment">//    if(value == 0) break;</span></div><div class="line">        <span class="comment">//    inputs.add(value);</span></div><div class="line">        <span class="comment">//    line = in.nextLine();</span></div><div class="line">        <span class="comment">//&#125;</span></div><div class="line">        <span class="comment">//int[] A = new int[inputs.size()];</span></div><div class="line">        <span class="comment">//for(int i=0; i&lt;inputs.size(); i++) &#123;</span></div><div class="line">        <span class="comment">//    A[i] = inputs.get(i).intValue();</span></div><div class="line">        <span class="comment">//&#125;</span></div><div class="line">        <span class="keyword">int</span>[] A1 = &#123; <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">3</span> &#125;; <span class="comment">// true</span></div><div class="line">        <span class="keyword">int</span>[] A2 = &#123; <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> &#125;; <span class="comment">// false</span></div><div class="line">        <span class="keyword">int</span>[] A3 = &#123; <span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">8</span> &#125;; <span class="comment">// false</span></div><div class="line">        Boolean res = resolve(A1);</div><div class="line"></div><div class="line">        System.out.println(String.valueOf(res));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这道算法题 不是太难 毕竟是招实习生</p>
+<p>并且阿里还说了 这道题目并不会影响最后的录用 只是作为一个参考</p>
+<hr>
+<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 面试题 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Alibaba </tag>
+            
+            <tag> Arithmetic </tag>
             
         </tags>
         
@@ -56,11 +103,11 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>JDK 版本1.7</p>
 </blockquote>
-<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><p><img class="shadow" src="/img/in-post/JDK-Source-Code/Java-Collections.png"><br><small class="img-hint">Collection</small></p>
+<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><p><img class="shadow" src="/img/JDK-Source-Code/Java-Collections.png"><br><small class="img-hint">Collection</small></p>
 <blockquote>
 <p>来源<a href="https://infinitescript.com/2014/10/java-collections-framework/" target="_blank" rel="external">Java Collections Framework</a></p>
 </blockquote>
-<h3 id="Vector-继承树"><a href="#Vector-继承树" class="headerlink" title="Vector 继承树"></a>Vector 继承树</h3><p><img src="/img/in-post/JDK-Source-Code/Vector.png"><br><small class="img-hint">Vector</small></p>
+<h3 id="Vector-继承树"><a href="#Vector-继承树" class="headerlink" title="Vector 继承树"></a>Vector 继承树</h3><p><img src="/img/JDK-Source-Code/Vector.png"><br><small class="img-hint">Vector</small></p>
 <hr>
 <h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><h3 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 序列化ID</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">2767605614048989439L</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 容量增加时的数量</div><div class="line"> * <span class="doctag">@serial</span></div><div class="line"> */</div><div class="line"><span class="keyword">protected</span> <span class="keyword">int</span> capacityIncrement;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 存放数据的数组</div><div class="line"> *</div><div class="line"> * <span class="doctag">@serial</span></div><div class="line"> */</div><div class="line"><span class="keyword">protected</span> Object[] elementData;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 元素的个数 == size</div><div class="line"> *</div><div class="line"> * <span class="doctag">@serial</span></div><div class="line"> */</div><div class="line"><span class="keyword">protected</span> <span class="keyword">int</span> elementCount;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 数组分配的最大大小</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_ARRAY_SIZE = Integer.MAX_VALUE - <span class="number">8</span>;</div></pre></td></tr></table></figure>
 <blockquote>
@@ -89,6 +136,12 @@
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 源码分析 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -109,11 +162,11 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>JDK 版本1.7</p>
 </blockquote>
-<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><p><img class="shadow" src="/img/in-post/JDK-Source-Code/Java-Collections.png"><br><small class="img-hint">Collection</small></p>
+<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><p><img class="shadow" src="/img/JDK-Source-Code/Java-Collections.png"><br><small class="img-hint">Collection</small></p>
 <blockquote>
 <p>来源<a href="https://infinitescript.com/2014/10/java-collections-framework/" target="_blank" rel="external">Java Collections Framework</a></p>
 </blockquote>
-<h3 id="ArrayList-继承树"><a href="#ArrayList-继承树" class="headerlink" title="ArrayList 继承树"></a>ArrayList 继承树</h3><p><img src="/img/in-post/JDK-Source-Code/ArrayList.png"><br><small class="img-hint">ArrayList</small></p>
+<h3 id="ArrayList-继承树"><a href="#ArrayList-继承树" class="headerlink" title="ArrayList 继承树"></a>ArrayList 继承树</h3><p><img src="/img/JDK-Source-Code/ArrayList.png"><br><small class="img-hint">ArrayList</small></p>
 <hr>
 <h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><h3 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 序列化ID</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">8683452581122892189L</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 默认的初始化容量</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_CAPACITY = <span class="number">10</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 用于空实例的数组</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object[] EMPTY_ELEMENTDATA = &#123;&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 真正存放元素的数组</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">transient</span> Object[] elementData;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * List的大小</div><div class="line"> *</div><div class="line"> * <span class="doctag">@serial</span></div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">int</span> size;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 数组分配的最大大小</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_ARRAY_SIZE = Integer.MAX_VALUE - <span class="number">8</span>;</div></pre></td></tr></table></figure>
 <blockquote>
@@ -163,47 +216,18 @@
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 源码分析 </category>
+            
+        </categories>
+        
         
         <tags>
             
             <tag> JDK </tag>
             
             <tag> Source Code </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Alibaba 2018实习生招聘 在线编程题解答]]></title>
-      <url>http://binux.cn/2017/03/09/Alibaba-Arithmetic/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>“阿里巴巴 2018实习生 在线编程 题目解答”</p>
-</blockquote>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p> 对于一个长度为N的整型数组A， 数组里所有的数都是正整数，对于两个满足0&lt;=X &lt;= Y &lt;N的整数，A[X], A[X+1] … A[Y]构成A的一个切片，记作(X, Y)。</p>
-<p> 用三个下标 m1, m2, m3下标满足条件 0 &lt; m1, m1 + 1 &lt; m2, m2 +1 &lt; m3 &lt; N – 1。</p>
-<p> 可以把这个整型数组分成(0, m1-1), (m1+1, m2-1), (m2+1, m3-1), (m3+1, N-1) 四个切片。如果这四个切片中的整数求和相等，称作“四等分”。</p>
-<p> 编写一个函数，求一个给定的整型数组是否可以四等分，如果可以，返回一个布尔类型的true，如果不可以返回一个布尔类型的false。</p>
-<p> 限制条件： 数组A最多有1,000,000项，数组中的整数取值范围介于-1,000,000到1,000,000之间。</p>
-<p> 要求： 函数的计算复杂度为O(N)，使用的额外存储空间（除了输入的数组之外）最多为O(N)。</p>
-<p> 例子：</p>
-<p> 对于数组A=[2, 5, 1, 1, 1, 1, 4, 1, 7, 3, 7] 存在下标 2, 7, 9使得数组分成四个分片[2, 5], [1, 1, 1, 4], [7], [7]，这三个分片内整数之和相等，所以对于这个数组，函数应该返回true。</p>
-<p> 对于数组 A=[10, 2, 11, 13, 1, 1, 1, 1, 1]， 找不到能把数组四等分的下标，所以函数应该返回false。</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> cn.binux;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/** 请完成下面这个函数，实现题目要求的功能 **/</span></div><div class="line">    <span class="comment">/** 当然，你也可以不按照这个模板来作答，完全按照自己的想法来 ^-^  **/</span></div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">resolve</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (A == <span class="keyword">null</span> || A.length &lt; (<span class="number">4</span> + <span class="number">3</span>)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> indexl = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> indexr = A.length - <span class="number">1</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> suml = A[indexl];</div><div class="line">        <span class="keyword">int</span> sumr = A[indexr];</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (indexl &lt; indexr) &#123;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (suml &lt; sumr) &#123;</div><div class="line">                indexl++;</div><div class="line">                suml += A[indexl];</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (suml &gt; sumr) &#123;</div><div class="line">                indexr--;</div><div class="line">                sumr += A[indexr];</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">boolean</span> check = check(indexl + <span class="number">1</span>, indexr - <span class="number">1</span>, suml, A);</div><div class="line">                <span class="keyword">if</span> (check) &#123;</div><div class="line">                    <span class="keyword">return</span> check;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    indexl++;</div><div class="line">                    suml += A[indexl];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> sum, <span class="keyword">int</span>[] A)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> indexl = start + <span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> indexr = end - <span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> suml = A[indexl];</div><div class="line">        <span class="keyword">int</span> sumr = A[indexr];</div><div class="line">        <span class="keyword">while</span> (indexr &gt; indexl) &#123;</div><div class="line">            <span class="keyword">if</span> (suml &lt; sumr) &#123;</div><div class="line">                indexl++;</div><div class="line">                suml += A[indexl];</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (suml &gt; sumr) &#123;</div><div class="line">                indexr--;</div><div class="line">                sumr += A[indexr];</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (suml == sumr) &#123;</div><div class="line">                <span class="keyword">if</span> (indexr - indexl == <span class="number">2</span> &amp;&amp; suml == sum) &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        <span class="comment">//ArrayList&lt;Integer&gt; inputs = new ArrayList&lt;Integer&gt;();</span></div><div class="line">        <span class="comment">//Scanner in = new Scanner(System.in);</span></div><div class="line">        <span class="comment">//String line = in.nextLine();</span></div><div class="line">        <span class="comment">//while(line != null &amp;&amp; !line.isEmpty()) &#123;</span></div><div class="line">        <span class="comment">//    int value = Integer.parseInt(line.trim());</span></div><div class="line">        <span class="comment">//    if(value == 0) break;</span></div><div class="line">        <span class="comment">//    inputs.add(value);</span></div><div class="line">        <span class="comment">//    line = in.nextLine();</span></div><div class="line">        <span class="comment">//&#125;</span></div><div class="line">        <span class="comment">//int[] A = new int[inputs.size()];</span></div><div class="line">        <span class="comment">//for(int i=0; i&lt;inputs.size(); i++) &#123;</span></div><div class="line">        <span class="comment">//    A[i] = inputs.get(i).intValue();</span></div><div class="line">        <span class="comment">//&#125;</span></div><div class="line">        <span class="keyword">int</span>[] A1 = &#123; <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">3</span> &#125;; <span class="comment">// true</span></div><div class="line">        <span class="keyword">int</span>[] A2 = &#123; <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> &#125;; <span class="comment">// false</span></div><div class="line">        <span class="keyword">int</span>[] A3 = &#123; <span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">8</span> &#125;; <span class="comment">// false</span></div><div class="line">        Boolean res = resolve(A1);</div><div class="line"></div><div class="line">        System.out.println(String.valueOf(res));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这道算法题 不是太难 毕竟是招实习生</p>
-<p>并且阿里还说了 这道题目并不会影响最后的录用 只是作为一个参考</p>
-<hr>
-<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
-]]></content>
-      
-        
-        <tags>
-            
-            <tag> Alibaba </tag>
-            
-            <tag> Arithmetic </tag>
             
         </tags>
         
@@ -259,6 +283,12 @@
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 安装教程 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -288,7 +318,7 @@
 <li><a href="http://binux.cn/2017/03/07/RocketMQ-Cluster-Install/">Xbin-Store(分布式商城)项目所依赖的Linux服务系列 RocketMQ集群安装(七)</a></li>
 </ul>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="所用虚拟机"><a href="#所用虚拟机" class="headerlink" title="所用虚拟机"></a>所用虚拟机</h3><p>CentOS 6.5</p>
-<h3 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h3><p><img class="shadow" src="/img/in-post/Linux-Solr/img1.png"><br><small class="img-hint">IP</small></p>
+<h3 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h3><p><img class="shadow" src="/img/Linux-Solr/img1.png"><br><small class="img-hint">IP</small></p>
 <h3 id="下载软件"><a href="#下载软件" class="headerlink" title="下载软件"></a>下载软件</h3><ul>
 <li><a href="http://download.csdn.net/detail/cynicismsrs/9772212" target="_blank" rel="external">apache-tomcat-7.0.47.tar.gz</a></li>
 <li><a href="http://apache.fayea.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz" target="_blank" rel="external">zookeeper-3.4.6</a></li>
@@ -356,6 +386,12 @@
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 安装教程 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -503,14 +539,20 @@
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 安装教程 </category>
+            
+        </categories>
+        
         
         <tags>
             
             <tag> XBin-Store </tag>
             
-            <tag> Linux </tag>
-            
             <tag> FastDFS </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
         
@@ -551,6 +593,12 @@
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 安装教程 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -638,6 +686,12 @@
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 安装教程 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -739,6 +793,12 @@
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 安装教程 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -772,7 +832,7 @@
 </li>
 </ul>
 <h4 id="下面我会讲一下这个问题的原因-不限于我出现的这个问题-帮大家分析下这个问题-希望大家不要出现我这种问题了-为什么我老是碰到这种蛋疼问题-浪费时间还让人心烦-3天时间干什么不好啊"><a href="#下面我会讲一下这个问题的原因-不限于我出现的这个问题-帮大家分析下这个问题-希望大家不要出现我这种问题了-为什么我老是碰到这种蛋疼问题-浪费时间还让人心烦-3天时间干什么不好啊" class="headerlink" title="下面我会讲一下这个问题的原因 不限于我出现的这个问题 帮大家分析下这个问题 希望大家不要出现我这种问题了 为什么我老是碰到这种蛋疼问题 浪费时间还让人心烦 (3天时间干什么不好啊)"></a>下面我会讲一下这个问题的原因 不限于我出现的这个问题 帮大家分析下这个问题 希望大家不要出现我这种问题了 为什么我老是碰到这种蛋疼问题 <strong>浪费时间还让人心烦</strong> (3天时间干什么不好啊)</h4><hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h4 id="BalusC解答截图-再次感谢"><a href="#BalusC解答截图-再次感谢" class="headerlink" title="@BalusC解答截图 再次感谢"></a>@BalusC解答截图 再次感谢</h4><p><img class="shadow" src="/img/in-post/MySQL-ERROR/img1.png"><br><small class="img-hint">@BalusC解答截图</small></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h4 id="BalusC解答截图-再次感谢"><a href="#BalusC解答截图-再次感谢" class="headerlink" title="@BalusC解答截图 再次感谢"></a>@BalusC解答截图 再次感谢</h4><p><img class="shadow" src="/img/MySQL-ERROR/img1.png"><br><small class="img-hint">@BalusC解答截图</small></p>
 <h4 id="具体报错–MySQL服务没启动同样报此错"><a href="#具体报错–MySQL服务没启动同样报此错" class="headerlink" title="具体报错–MySQL服务没启动同样报此错"></a>具体报错–MySQL服务没启动同样报此错</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure</div><div class="line"></div><div class="line">The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</div><div class="line">	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)</div><div class="line">	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)</div><div class="line">	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)</div><div class="line">	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)</div><div class="line">	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)</div><div class="line">	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:981)</div><div class="line">	at com.mysql.jdbc.MysqlIO.readPacket(MysqlIO.java:628)</div><div class="line">	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1014)</div><div class="line">	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2255)</div><div class="line">	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2286)</div><div class="line">	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2085)</div><div class="line">	at com.mysql.jdbc.ConnectionImpl.&lt;init&gt;(ConnectionImpl.java:795)</div><div class="line">	at com.mysql.jdbc.JDBC4Connection.&lt;init&gt;(JDBC4Connection.java:44)</div><div class="line">	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)</div><div class="line">	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)</div><div class="line">	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)</div><div class="line">	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)</div><div class="line">	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)</div><div class="line">	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:400)</div><div class="line">	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:327)</div><div class="line">	at org.mybatis.generator.internal.db.ConnectionFactory.getConnection(ConnectionFactory.java:68)</div><div class="line">	at org.mybatis.generator.config.Context.getConnection(Context.java:526)</div><div class="line">	at org.mybatis.generator.config.Context.introspectTables(Context.java:436)</div><div class="line">	at org.mybatis.generator.api.MyBatisGenerator.generate(MyBatisGenerator.java:222)</div><div class="line">	at org.mybatis.generator.api.MyBatisGenerator.generate(MyBatisGenerator.java:133)</div><div class="line">	at GeneratorSqlmap.generator(GeneratorSqlmap.java:27)</div><div class="line">	at GeneratorSqlmap.main(GeneratorSqlmap.java:33)</div><div class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</div><div class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)</div><div class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</div><div class="line">	at java.lang.reflect.Method.invoke(Method.java:606)</div><div class="line">	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)</div><div class="line">Caused by: java.io.EOFException: Can not read response from server. Expected to read 4 bytes, read 0 bytes before connection was unexpectedly lost.</div><div class="line">	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:2957)</div><div class="line">	at com.mysql.jdbc.MysqlIO.readPacket(MysqlIO.java:560)</div><div class="line">	... 25 more</div></pre></td></tr></table></figure>
 <h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><h5 id="报错问题："><a href="#报错问题：" class="headerlink" title="报错问题："></a>报错问题：</h5><p>The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</p>
 <p>最后一个发送成功的数据包在0秒前 没有收到任何来自服务器的数据包。</p>
@@ -795,19 +855,25 @@
 <p>比如有没有开什么<strong>代理</strong></p>
 <p>比如拔网线 再连接MySQL试试</p>
 <hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img class="shadow" src="/img/in-post/MySQL-ERROR/img2.png"><br><small class="img-hint">Shadowsocks</small></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img class="shadow" src="/img/MySQL-ERROR/img2.png"><br><small class="img-hint">Shadowsocks</small></p>
 <p>我是栽在最后一条Proxy 想到了Firewall 却忘记他了 程序员翻个墙看看外面的世界 这是一件很正常的事 个人感觉Google甩Baidu一个地球到月球的距离 我就是由于开着小飞机(Shadowsocks) 嫌网速卡 切换到全局模式 然后就让我郁闷了3天。</p>
 <p>改成自动模式 解决问题..</p>
 <hr>
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 ]]></content>
       
+        <categories>
+            
+            <category> Bug </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> Bug </tag>
-            
             <tag> MySQL </tag>
+            
+            <tag> Bug </tag>
             
         </tags>
         
@@ -874,14 +940,20 @@
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 安装教程 </category>
+            
+        </categories>
+        
         
         <tags>
             
             <tag> XBin-Store </tag>
             
-            <tag> MySQL </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> MySQL </tag>
             
         </tags>
         
@@ -902,29 +974,35 @@
 <p>登录MySQL SHOW VARIABLES LIKE “character%”;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW VARIABLES LIKE &quot;character%&quot;;</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">| Variable_name            | Value                                                     |</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">| character_set_client     | utf8                                                      |</div><div class="line">| character_set_connection | utf8                                                      |</div><div class="line">| character_set_database   | latin1                                                    |</div><div class="line">| character_set_filesystem | binary                                                    |</div><div class="line">| character_set_results    | utf8                                                      |</div><div class="line">| character_set_server     | latin1                                                    |</div><div class="line">| character_set_system     | utf8                                                      |</div><div class="line">| character_sets_dir       | /usr/local/mysql-5.7.17-macos10.12-x86_64/share/charsets/ |</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">8 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
 <p>character_set_database和character_set_server的默认字符集还是latin1。</p>
 <p>需要改成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW VARIABLES LIKE &quot;character%&quot;;</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">| Variable_name            | Value                                                     |</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">| character_set_client     | utf8                                                      |</div><div class="line">| character_set_connection | utf8                                                      |</div><div class="line">| character_set_database   | utf8                                                      |</div><div class="line">| character_set_filesystem | binary                                                    |</div><div class="line">| character_set_results    | utf8                                                      |</div><div class="line">| character_set_server     | utf8                                                      |</div><div class="line">| character_set_system     | utf8                                                      |</div><div class="line">| character_sets_dir       | /usr/local/mysql-5.7.17-macos10.12-x86_64/share/charsets/ |</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">8 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
-<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>停止MySQL服务<br><img src="/img/in-post/Mac-MySQL/img1.png"><br><small class="img-hint">MySQL设置</small></p>
+<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>停止MySQL服务<br><img src="/img/Mac-MySQL/img1.png"><br><small class="img-hint">MySQL设置</small></p>
 <p>打开终端 执行 sudo vim /etc/my.cnf 输入密码 新建一个MySQL配置文件 因为5.7 安装的时候默认没有配置文件</p>
 <p>加入2条配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[client]</div><div class="line">default-character-set=utf8</div><div class="line">[mysqld]</div><div class="line">character-set-server=utf8</div></pre></td></tr></table></figure></p>
 <p>重新启动MySQL服务</p>
-<p>打开Navicat Premium 连接<br><img src="/img/in-post/Mac-MySQL/img2.png"><br><small class="img-hint">Navicat Premium连接</small></p>
-<p>发现还是乱码<br><img class="shadow" src="/img/in-post/Mac-MySQL/img3.png"><br><small class="img-hint">中文乱码</small></p>
+<p>打开Navicat Premium 连接<br><img src="/img/Mac-MySQL/img2.png"><br><small class="img-hint">Navicat Premium连接</small></p>
+<p>发现还是乱码<br><img class="shadow" src="/img/Mac-MySQL/img3.png"><br><small class="img-hint">中文乱码</small></p>
 <p>其实到这边 MySQL乱码就配置完成了 问题就出在 新建连接的时候Encoding这边选择了utf-8</p>
-<p>把它改成Auto 问题解决<br><img class="shadow" src="/img/in-post/Mac-MySQL/img4.png"><br><small class="img-hint">问题解决</small></p>
+<p>把它改成Auto 问题解决<br><img class="shadow" src="/img/Mac-MySQL/img4.png"><br><small class="img-hint">问题解决</small></p>
 <hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>出现这个问题不怪别人 都是自己手残 干嘛自己去改连接属性里面的Encoding 其实默认就是Auto 其实这个问题困扰我挺久的 </p>
 <p>不过在改过MySQL配置后 使用MyBatis 也就是JDBC操作数据库是没问题的 所以也没在意</p>
 <p>最后怎么看自己配置的有没有问题呢！</p>
-<p>Navicat Premium右键Edit DataBase 如果是下图 就绝对没问题了<br><img src="/img/in-post/Mac-MySQL/img5.png"><br><small class="img-hint">Edit DataBase</small></p>
+<p>Navicat Premium右键Edit DataBase 如果是下图 就绝对没问题了<br><img src="/img/Mac-MySQL/img5.png"><br><small class="img-hint">Edit DataBase</small></p>
 <hr>
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 ]]></content>
       
+        <categories>
+            
+            <category> Bug </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> Mac </tag>
-            
             <tag> MySQL </tag>
+            
+            <tag> Mac </tag>
             
         </tags>
         
@@ -941,26 +1019,26 @@
 <p>然后就想着有没有办法可以不用每次遍历整个购物车List集合 然后就想到从页面传入一个索引值 直接定位List中需要加减的商品 于是就引发了这个问题</p>
 <p><a href="#build">不想看我BB的 直接跳到最后看总结 </a></p>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p><img class="shadow" src="/img/in-post/List.remove()/cart.png"><br><small class="img-hint">购物车截图</small></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p><img class="shadow" src="/img/List.remove()/cart.png"><br><small class="img-hint">购物车截图</small></p>
 <p>服务端代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> *</div><div class="line"> * 根据商品id和数量对购物车增加商品或减少商品</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> pid       商品id</div><div class="line"> * <span class="doctag">@param</span> pcount    增加数量</div><div class="line"> * <span class="doctag">@param</span> type      1 增加 2 减少</div><div class="line"> * <span class="doctag">@param</span> index     商品位置   ps:用于直接定位商品 不用遍历整个购物车</div><div class="line"> * <span class="doctag">@return</span></div><div class="line"> */</div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> XbinResult <span class="title">decreOrIncre</span><span class="params">(Long pid, Integer pcount, Integer type, Integer index, String cookieUUID)</span> </span>&#123;</div><div class="line"></div><div class="line">    String key = CART_INFO_PROFIX + cookieUUID;</div><div class="line"></div><div class="line">    List&lt;CartInfo&gt; cartInfoList = getCartInfoListByCookiesId(cookieUUID);</div><div class="line">    <span class="keyword">if</span> (cartInfoList == <span class="keyword">null</span> || cartInfoList.size() == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> XbinResult.build(<span class="number">400</span>, <span class="string">"购物车没有商品 请不要非法操作!"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    CartInfo cartInfo = cartInfoList.get(index);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (type == <span class="number">1</span>) &#123;</div><div class="line">        cartInfo.setNum(cartInfo.getNum() + pcount);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        cartInfo.setNum(cartInfo.getNum() - pcount);</div><div class="line">    &#125;</div><div class="line">    cartInfoList.remove(index);</div><div class="line">    cartInfoList.add(index, cartInfo);</div><div class="line">    jedisClient.set(key, FastJsonConvert.convertObjectToJSON(cartInfoList));</div><div class="line">    jedisClient.expire(key,REDIS_CART_EXPIRE_TIME);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> XbinResult.ok();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>代码就不解释了 太简单了。</p>
 </blockquote>
-<p>点击➕一件商品 然后就出现了一个非常奇怪的现象 商品确实加1了 但是出现了2个相同的商品<br><img class="shadow" src="/img/in-post/List.remove()/Bug.png"><br><small class="img-hint">点击➕号后刷新出现</small></p>
+<p>点击➕一件商品 然后就出现了一个非常奇怪的现象 商品确实加1了 但是出现了2个相同的商品<br><img class="shadow" src="/img/List.remove()/Bug.png"><br><small class="img-hint">点击➕号后刷新出现</small></p>
 <p>查询Redis中数据是这样的</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  &#123;</div><div class="line">    <span class="attr">"colour"</span>: <span class="string">"黑色"</span>,</div><div class="line">    <span class="attr">"id"</span>: <span class="number">148630831972863</span>,</div><div class="line">    <span class="attr">"imageUrl"</span>: <span class="string">"http://192.168.125.132/group1/M00/00/00/wKh9hFiM0l-AQuvEAABmx7u5QSA128.jpg"</span>,</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"Apple MacBook Pro 15.4英寸笔记本电脑 深空灰色（Multi-Touch Bar/Core i7/16GB/512GB MLH42CH/A）"</span>,</div><div class="line">    <span class="attr">"num"</span>: <span class="number">3</span>,</div><div class="line">    <span class="attr">"price"</span>: <span class="number">2148800</span>,</div><div class="line">    <span class="attr">"size"</span>: <span class="string">"32GB"</span>,</div><div class="line">    <span class="attr">"sum"</span>: <span class="number">6446400</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">"$ref"</span>: <span class="string">"$[0]"</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">"colour"</span>: <span class="string">"黑色"</span>,</div><div class="line">    <span class="attr">"id"</span>: <span class="number">148630639229938</span>,</div><div class="line">    <span class="attr">"imageUrl"</span>: <span class="string">"http://192.168.125.132/group1/M00/00/00/wKh9hFiMy4eAV5lwAAB25IS6WjM274.jpg"</span>,</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"Apple iPhone 7 (A1660) 32G 黑色 移动联通电信4G手机"</span>,</div><div class="line">    <span class="attr">"num"</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">"price"</span>: <span class="number">519900</span>,</div><div class="line">    <span class="attr">"size"</span>: <span class="string">"32GB"</span>,</div><div class="line">    <span class="attr">"sum"</span>: <span class="number">1039800</span></div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
 <blockquote>
 <p>“$ref”: “$[0]” 表示数据引用索引0位置的数据</p>
 </blockquote>
-<p>List.remove()无效 无效第一时间想到的是查查看API是不是我用错了<br><img class="shadow" src="/img/in-post/List.remove()/api.png"><br><small class="img-hint">int remove(int index)</small></p>
+<p>List.remove()无效 无效第一时间想到的是查查看API是不是我用错了<br><img class="shadow" src="/img/List.remove()/api.png"><br><small class="img-hint">int remove(int index)</small></p>
 <p>API并没有用错 但为什么就是remove不掉呢！ 然后就DEBUG查看了下整个流程</p>
-<p><img class="shadow" src="/img/in-post/List.remove()/DEBUG1.png"><br><small class="img-hint">从Redis中取出的购物车List</small></p>
-<p><img class="shadow" src="/img/in-post/List.remove()/DEBUG2.png"><br><small class="img-hint">List.get(index)得到对象</small></p>
+<p><img class="shadow" src="/img/List.remove()/DEBUG1.png"><br><small class="img-hint">从Redis中取出的购物车List</small></p>
+<p><img class="shadow" src="/img/List.remove()/DEBUG2.png"><br><small class="img-hint">List.get(index)得到对象</small></p>
 <p>发现问题了 <strong>内存地址竟然一样一样！！！</strong></p>
 <p>这才想起来 我把CartInfo类给序列化了 <strong>脑中万**马奔腾</strong> 不是我没事去实现Serializable接口 而是Dubbox传输的对象 不实现Serializable就报错</p>
 <p>但是也说不通啊 为什么我Remove不掉呢 我只想保留一个</p>
 <p>在次查询API 发现问题了 remove()有重载方法</p>
-<p><img class="shadow" src="/img/in-post/List.remove()/Bug2.png"><br><small class="img-hint">boolean remove(Object o)</small></p>
+<p><img class="shadow" src="/img/List.remove()/Bug2.png"><br><small class="img-hint">boolean remove(Object o)</small></p>
 <p>……</p>
 <p>我定义的Integer index ，他竟然没有自动拆箱 当成对象去比较了 这两个对象当然不会相同 返回false 自然不会删除 </p>
 <p>应该是默认调用的boolean remove(Object o) 方法才没有拆箱</p>
@@ -970,14 +1048,20 @@
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 ]]></content>
       
+        <categories>
+            
+            <category> Bug </category>
+            
+        </categories>
+        
         
         <tags>
+            
+            <tag> XBin-Store </tag>
             
             <tag> Java </tag>
             
             <tag> Bug </tag>
-            
-            <tag> XBin-Store </tag>
             
         </tags>
         
@@ -995,6 +1079,12 @@
 <p>无意了解到 <a href="https://pages.github.com/" target="_blank" rel="external">GitHub Pages</a><br>通过<a href="http://jekyllrb.com/" target="_blank" rel="external">Jekyll</a> 可以快速 Building Blog</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 随记 </category>
+            
+        </categories>
+        
         
         <tags>
             

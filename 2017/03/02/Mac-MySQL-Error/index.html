@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Binux">
     <meta name="description" content="一名正在崛起的Java后端工程师">
-    <meta name="keywords" content="null,Bug,MySQL">
+    <meta name="keywords" content="null,MySQL,Bug">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -50,7 +50,7 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="解决Java程序连接不上MySQL 但是Navicat可以连接的问题! | Binux Blog">
     <meta property="og:description" content="一名正在崛起的Java后端工程师">
-    <meta property="og:article:tag" content="Bug"> <meta property="og:article:tag" content="MySQL"> 
+    <meta property="og:article:tag" content="MySQL"> <meta property="og:article:tag" content="Bug"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -267,16 +267,8 @@
                 
     <!-- Paradox Post Header -->
     
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-            <script>
-    var randomNum = Math.floor(Math.random() * 19 + 1);
-
-    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
-</script>
-
-        
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/Mac-MySQL/blog.png)">
     
             <p class="article-headline-p">
                 解决Java程序连接不上MySQL 但是Navicat可以连接的问题!
@@ -420,7 +412,7 @@
 </li>
 </ul>
 <h4 id="下面我会讲一下这个问题的原因-不限于我出现的这个问题-帮大家分析下这个问题-希望大家不要出现我这种问题了-为什么我老是碰到这种蛋疼问题-浪费时间还让人心烦-3天时间干什么不好啊"><a href="#下面我会讲一下这个问题的原因-不限于我出现的这个问题-帮大家分析下这个问题-希望大家不要出现我这种问题了-为什么我老是碰到这种蛋疼问题-浪费时间还让人心烦-3天时间干什么不好啊" class="headerlink" title="下面我会讲一下这个问题的原因 不限于我出现的这个问题 帮大家分析下这个问题 希望大家不要出现我这种问题了 为什么我老是碰到这种蛋疼问题 浪费时间还让人心烦 (3天时间干什么不好啊)"></a>下面我会讲一下这个问题的原因 不限于我出现的这个问题 帮大家分析下这个问题 希望大家不要出现我这种问题了 为什么我老是碰到这种蛋疼问题 <strong>浪费时间还让人心烦</strong> (3天时间干什么不好啊)</h4><hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h4 id="BalusC解答截图-再次感谢"><a href="#BalusC解答截图-再次感谢" class="headerlink" title="@BalusC解答截图 再次感谢"></a>@BalusC解答截图 再次感谢</h4><p><img class="shadow" src="/img/in-post/MySQL-ERROR/img1.png"><br><small class="img-hint">@BalusC解答截图</small></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h4 id="BalusC解答截图-再次感谢"><a href="#BalusC解答截图-再次感谢" class="headerlink" title="@BalusC解答截图 再次感谢"></a>@BalusC解答截图 再次感谢</h4><p><img class="shadow" src="/img/MySQL-ERROR/img1.png"><br><small class="img-hint">@BalusC解答截图</small></p>
 <h4 id="具体报错–MySQL服务没启动同样报此错"><a href="#具体报错–MySQL服务没启动同样报此错" class="headerlink" title="具体报错–MySQL服务没启动同样报此错"></a>具体报错–MySQL服务没启动同样报此错</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure</div><div class="line"></div><div class="line">The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</div><div class="line">	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)</div><div class="line">	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)</div><div class="line">	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)</div><div class="line">	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)</div><div class="line">	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)</div><div class="line">	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:981)</div><div class="line">	at com.mysql.jdbc.MysqlIO.readPacket(MysqlIO.java:628)</div><div class="line">	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1014)</div><div class="line">	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2255)</div><div class="line">	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2286)</div><div class="line">	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2085)</div><div class="line">	at com.mysql.jdbc.ConnectionImpl.&lt;init&gt;(ConnectionImpl.java:795)</div><div class="line">	at com.mysql.jdbc.JDBC4Connection.&lt;init&gt;(JDBC4Connection.java:44)</div><div class="line">	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)</div><div class="line">	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)</div><div class="line">	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)</div><div class="line">	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)</div><div class="line">	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)</div><div class="line">	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:400)</div><div class="line">	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:327)</div><div class="line">	at org.mybatis.generator.internal.db.ConnectionFactory.getConnection(ConnectionFactory.java:68)</div><div class="line">	at org.mybatis.generator.config.Context.getConnection(Context.java:526)</div><div class="line">	at org.mybatis.generator.config.Context.introspectTables(Context.java:436)</div><div class="line">	at org.mybatis.generator.api.MyBatisGenerator.generate(MyBatisGenerator.java:222)</div><div class="line">	at org.mybatis.generator.api.MyBatisGenerator.generate(MyBatisGenerator.java:133)</div><div class="line">	at GeneratorSqlmap.generator(GeneratorSqlmap.java:27)</div><div class="line">	at GeneratorSqlmap.main(GeneratorSqlmap.java:33)</div><div class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</div><div class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)</div><div class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</div><div class="line">	at java.lang.reflect.Method.invoke(Method.java:606)</div><div class="line">	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)</div><div class="line">Caused by: java.io.EOFException: Can not read response from server. Expected to read 4 bytes, read 0 bytes before connection was unexpectedly lost.</div><div class="line">	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:2957)</div><div class="line">	at com.mysql.jdbc.MysqlIO.readPacket(MysqlIO.java:560)</div><div class="line">	... 25 more</div></pre></td></tr></table></figure>
 <h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><h5 id="报错问题："><a href="#报错问题：" class="headerlink" title="报错问题："></a>报错问题：</h5><p>The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</p>
 <p>最后一个发送成功的数据包在0秒前 没有收到任何来自服务器的数据包。</p>
@@ -443,7 +435,7 @@
 <p>比如有没有开什么<strong>代理</strong></p>
 <p>比如拔网线 再连接MySQL试试</p>
 <hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img class="shadow" src="/img/in-post/MySQL-ERROR/img2.png"><br><small class="img-hint">Shadowsocks</small></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img class="shadow" src="/img/MySQL-ERROR/img2.png"><br><small class="img-hint">Shadowsocks</small></p>
 <p>我是栽在最后一条Proxy 想到了Firewall 却忘记他了 程序员翻个墙看看外面的世界 这是一件很正常的事 个人感觉Google甩Baidu一个地球到月球的距离 我就是由于开着小飞机(Shadowsocks) 嫌网速卡 切换到全局模式 然后就让我郁闷了3天。</p>
 <p>改成自动模式 解决问题..</p>
 <hr>
@@ -670,7 +662,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                
+                <a class="sidebar_archives-link" href="/categories/Bug/">Bug<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/安装教程/">安装教程<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/源码分析/">源码分析<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/随记/">随记<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/面试题/">面试题<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         

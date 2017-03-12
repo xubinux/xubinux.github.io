@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Binux">
     <meta name="description" content="一名正在崛起的Java后端工程师">
-    <meta name="keywords" content="null,Java,Bug,XBin-Store">
+    <meta name="keywords" content="null,XBin-Store,Java,Bug">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -50,7 +50,7 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="List&lt;E&gt;.remove()无效!!! | Binux Blog">
     <meta property="og:description" content="一名正在崛起的Java后端工程师">
-    <meta property="og:article:tag" content="Java"> <meta property="og:article:tag" content="Bug"> <meta property="og:article:tag" content="XBin-Store"> 
+    <meta property="og:article:tag" content="XBin-Store"> <meta property="og:article:tag" content="Java"> <meta property="og:article:tag" content="Bug"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -267,16 +267,8 @@
                 
     <!-- Paradox Post Header -->
     
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-            <script>
-    var randomNum = Math.floor(Math.random() * 19 + 1);
-
-    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
-</script>
-
-        
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/javabug.png)">
     
             <p class="article-headline-p">
                 List<E>.remove()无效!!!
@@ -411,26 +403,26 @@
 <p>然后就想着有没有办法可以不用每次遍历整个购物车List集合 然后就想到从页面传入一个索引值 直接定位List中需要加减的商品 于是就引发了这个问题</p>
 <p><a href="#build">不想看我BB的 直接跳到最后看总结 </a></p>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p><img class="shadow" src="/img/in-post/List.remove()/cart.png"><br><small class="img-hint">购物车截图</small></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p><img class="shadow" src="/img/List.remove()/cart.png"><br><small class="img-hint">购物车截图</small></p>
 <p>服务端代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> *</div><div class="line"> * 根据商品id和数量对购物车增加商品或减少商品</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> pid       商品id</div><div class="line"> * <span class="doctag">@param</span> pcount    增加数量</div><div class="line"> * <span class="doctag">@param</span> type      1 增加 2 减少</div><div class="line"> * <span class="doctag">@param</span> index     商品位置   ps:用于直接定位商品 不用遍历整个购物车</div><div class="line"> * <span class="doctag">@return</span></div><div class="line"> */</div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> XbinResult <span class="title">decreOrIncre</span><span class="params">(Long pid, Integer pcount, Integer type, Integer index, String cookieUUID)</span> </span>&#123;</div><div class="line"></div><div class="line">    String key = CART_INFO_PROFIX + cookieUUID;</div><div class="line"></div><div class="line">    List&lt;CartInfo&gt; cartInfoList = getCartInfoListByCookiesId(cookieUUID);</div><div class="line">    <span class="keyword">if</span> (cartInfoList == <span class="keyword">null</span> || cartInfoList.size() == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> XbinResult.build(<span class="number">400</span>, <span class="string">"购物车没有商品 请不要非法操作!"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    CartInfo cartInfo = cartInfoList.get(index);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (type == <span class="number">1</span>) &#123;</div><div class="line">        cartInfo.setNum(cartInfo.getNum() + pcount);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        cartInfo.setNum(cartInfo.getNum() - pcount);</div><div class="line">    &#125;</div><div class="line">    cartInfoList.remove(index);</div><div class="line">    cartInfoList.add(index, cartInfo);</div><div class="line">    jedisClient.set(key, FastJsonConvert.convertObjectToJSON(cartInfoList));</div><div class="line">    jedisClient.expire(key,REDIS_CART_EXPIRE_TIME);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> XbinResult.ok();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>代码就不解释了 太简单了。</p>
 </blockquote>
-<p>点击➕一件商品 然后就出现了一个非常奇怪的现象 商品确实加1了 但是出现了2个相同的商品<br><img class="shadow" src="/img/in-post/List.remove()/Bug.png"><br><small class="img-hint">点击➕号后刷新出现</small></p>
+<p>点击➕一件商品 然后就出现了一个非常奇怪的现象 商品确实加1了 但是出现了2个相同的商品<br><img class="shadow" src="/img/List.remove()/Bug.png"><br><small class="img-hint">点击➕号后刷新出现</small></p>
 <p>查询Redis中数据是这样的</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  &#123;</div><div class="line">    <span class="attr">"colour"</span>: <span class="string">"黑色"</span>,</div><div class="line">    <span class="attr">"id"</span>: <span class="number">148630831972863</span>,</div><div class="line">    <span class="attr">"imageUrl"</span>: <span class="string">"http://192.168.125.132/group1/M00/00/00/wKh9hFiM0l-AQuvEAABmx7u5QSA128.jpg"</span>,</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"Apple MacBook Pro 15.4英寸笔记本电脑 深空灰色（Multi-Touch Bar/Core i7/16GB/512GB MLH42CH/A）"</span>,</div><div class="line">    <span class="attr">"num"</span>: <span class="number">3</span>,</div><div class="line">    <span class="attr">"price"</span>: <span class="number">2148800</span>,</div><div class="line">    <span class="attr">"size"</span>: <span class="string">"32GB"</span>,</div><div class="line">    <span class="attr">"sum"</span>: <span class="number">6446400</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">"$ref"</span>: <span class="string">"$[0]"</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">"colour"</span>: <span class="string">"黑色"</span>,</div><div class="line">    <span class="attr">"id"</span>: <span class="number">148630639229938</span>,</div><div class="line">    <span class="attr">"imageUrl"</span>: <span class="string">"http://192.168.125.132/group1/M00/00/00/wKh9hFiMy4eAV5lwAAB25IS6WjM274.jpg"</span>,</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"Apple iPhone 7 (A1660) 32G 黑色 移动联通电信4G手机"</span>,</div><div class="line">    <span class="attr">"num"</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">"price"</span>: <span class="number">519900</span>,</div><div class="line">    <span class="attr">"size"</span>: <span class="string">"32GB"</span>,</div><div class="line">    <span class="attr">"sum"</span>: <span class="number">1039800</span></div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
 <blockquote>
 <p>“$ref”: “$[0]” 表示数据引用索引0位置的数据</p>
 </blockquote>
-<p>List.remove()无效 无效第一时间想到的是查查看API是不是我用错了<br><img class="shadow" src="/img/in-post/List.remove()/api.png"><br><small class="img-hint">int remove(int index)</small></p>
+<p>List.remove()无效 无效第一时间想到的是查查看API是不是我用错了<br><img class="shadow" src="/img/List.remove()/api.png"><br><small class="img-hint">int remove(int index)</small></p>
 <p>API并没有用错 但为什么就是remove不掉呢！ 然后就DEBUG查看了下整个流程</p>
-<p><img class="shadow" src="/img/in-post/List.remove()/DEBUG1.png"><br><small class="img-hint">从Redis中取出的购物车List</small></p>
-<p><img class="shadow" src="/img/in-post/List.remove()/DEBUG2.png"><br><small class="img-hint">List.get(index)得到对象</small></p>
+<p><img class="shadow" src="/img/List.remove()/DEBUG1.png"><br><small class="img-hint">从Redis中取出的购物车List</small></p>
+<p><img class="shadow" src="/img/List.remove()/DEBUG2.png"><br><small class="img-hint">List.get(index)得到对象</small></p>
 <p>发现问题了 <strong>内存地址竟然一样一样！！！</strong></p>
 <p>这才想起来 我把CartInfo类给序列化了 <strong>脑中万**马奔腾</strong> 不是我没事去实现Serializable接口 而是Dubbox传输的对象 不实现Serializable就报错</p>
 <p>但是也说不通啊 为什么我Remove不掉呢 我只想保留一个</p>
 <p>在次查询API 发现问题了 remove()有重载方法</p>
-<p><img class="shadow" src="/img/in-post/List.remove()/Bug2.png"><br><small class="img-hint">boolean remove(Object o)</small></p>
+<p><img class="shadow" src="/img/List.remove()/Bug2.png"><br><small class="img-hint">boolean remove(Object o)</small></p>
 <p>……</p>
 <p>我定义的Integer index ，他竟然没有自动拆箱 当成对象去比较了 这两个对象当然不会相同 返回false 自然不会删除 </p>
 <p>应该是默认调用的boolean remove(Object o) 方法才没有拆箱</p>
@@ -660,7 +652,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                
+                <a class="sidebar_archives-link" href="/categories/Bug/">Bug<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/安装教程/">安装教程<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/源码分析/">源码分析<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/随记/">随记<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/面试题/">面试题<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
