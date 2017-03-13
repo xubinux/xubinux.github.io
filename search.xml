@@ -4,6 +4,41 @@
   
     
     <entry>
+      <title><![CDATA[Hello Hexo]]></title>
+      <url>http://binux.cn/2017/03/12/Hello-Hexo/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>“Hello Hexo!!!”</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>花了一天的时间把Blog换了个主题 没办法第一眼看了这个主题就特别喜欢然后立马就换了</p>
+<p>换主题倒不是太难,但是由于我之前使用的jekyll生成Blog,而这个主题是用Hexo生成Blog</p>
+<p>他们的生成方式完全不同,个人感觉Hexo生成方便点,毕竟直接生成HTML静态页面,不用Github服务器在进行处理了</p>
+<p>多亏了网上的大神们,没什么难度的完成了迁移,主要纠结我一天时间的是blog图片的选择上面,处女座加纠结狂,导致我看哪张图片都不顺眼</p>
+<p>要找一个符合我个人审美的系列图得多难…</p>
+<p>最后我实在不想找了,找了个还算可以的字体,操起我几百年没用过的PS,直接用文字作为Blog的背景图片</p>
+<p>最后感觉效果还可以,至少看的过去了</p>
+<p>就这样吧!</p>
+<p>继续看我的源码去了</p>
+<p>不想去BAT的程序猿都不是好程序猿 ^-^</p>
+<hr>
+<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 生活 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[JDK底层实现源码分析系列(三) LinkedList源码分析]]></title>
       <url>http://binux.cn/2017/03/11/LinkedList-Source-Code/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -30,9 +65,66 @@
 </li>
 </ul>
 <h3 id="new"><a href="#new" class="headerlink" title="new"></a>new</h3><p>LinkedList一共有俩个构造方法，一个是无参的，新new一个size为空的LinkedList，另一个是传入一个Collection类型的集合使用addAll(size,c)把集合中的全部数据加入到新建的LinkedList</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">    * Inserts all of the elements in the specified collection into this</div><div class="line">    * list, starting at the specified position.  Shifts the element</div><div class="line">    * currently at that position (if any) and any subsequent elements to</div><div class="line">    * the right (increases their indices).  The new elements will appear</div><div class="line">    * in the list in the order that they are returned by the</div><div class="line">    * specified collection's iterator.</div><div class="line">    *</div><div class="line">    * <span class="doctag">@param</span> index index at which to insert the first element</div><div class="line">    *              from the specified collection</div><div class="line">    * <span class="doctag">@param</span> c collection containing elements to be added to this list</div><div class="line">    * <span class="doctag">@return</span> &#123;<span class="doctag">@code</span> true&#125; if this list changed as a result of the call</div><div class="line">    * <span class="doctag">@throws</span> IndexOutOfBoundsException &#123;<span class="doctag">@inheritDoc</span>&#125;</div><div class="line">    * <span class="doctag">@throws</span> NullPointerException if the specified collection is null</div><div class="line">    */</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(<span class="keyword">int</span> index, Collection&lt;? extends E&gt; c)</span> </span>&#123;</div><div class="line">       <span class="comment">// index &gt;= 0 &amp;&amp; index &lt;= size;</span></div><div class="line">       <span class="comment">// false throw new IndexOutOfBoundsException(outOfBoundsMsg(index));</span></div><div class="line">       checkPositionIndex(index);</div><div class="line"></div><div class="line">       Object[] a = c.toArray();</div><div class="line">       <span class="keyword">int</span> numNew = a.length;</div><div class="line">       <span class="keyword">if</span> (numNew == <span class="number">0</span>) <span class="comment">// 传入集合为空</span></div><div class="line">           <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">       Node&lt;E&gt; pred, succ; <span class="comment">// pred为被插入节点前一个节点 succ为index节点</span></div><div class="line">       <span class="keyword">if</span> (index == size) &#123; <span class="comment">// 没有后继节点</span></div><div class="line">           succ = <span class="keyword">null</span>;</div><div class="line">           pred = last; <span class="comment">//</span></div><div class="line">       &#125; <span class="keyword">else</span> &#123;</div><div class="line">           succ = node(index);</div><div class="line">           pred = succ.prev;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">for</span> (Object o : a) &#123;</div><div class="line">           <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</div><div class="line">           E e = (E) o;</div><div class="line">           Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(pred, e, <span class="keyword">null</span>);</div><div class="line">           <span class="keyword">if</span> (pred == <span class="keyword">null</span>)</div><div class="line">               first = newNode;</div><div class="line">           <span class="keyword">else</span></div><div class="line">               pred.next = newNode;</div><div class="line">           pred = newNode;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (succ == <span class="keyword">null</span>) &#123;</div><div class="line">           last = pred;</div><div class="line">       &#125; <span class="keyword">else</span> &#123;</div><div class="line">           pred.next = succ;</div><div class="line">           succ.prev = pred;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       size += numNew;</div><div class="line">       modCount++;</div><div class="line">       <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 在链表指定位置插入集合中所有数据</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> index index at which to insert the first element</div><div class="line"> *              from the specified collection</div><div class="line"> * <span class="doctag">@param</span> c collection containing elements to be added to this list</div><div class="line"> * <span class="doctag">@return</span> &#123;<span class="doctag">@code</span> true&#125; if this list changed as a result of the call</div><div class="line"> * <span class="doctag">@throws</span> IndexOutOfBoundsException &#123;<span class="doctag">@inheritDoc</span>&#125;</div><div class="line"> * <span class="doctag">@throws</span> NullPointerException if the specified collection is null</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(<span class="keyword">int</span> index, Collection&lt;? extends E&gt; c)</span> </span>&#123;</div><div class="line">    <span class="comment">// index &gt;= 0 &amp;&amp; index &lt;= size;</span></div><div class="line">    <span class="comment">// false throw new IndexOutOfBoundsException(outOfBoundsMsg(index));</span></div><div class="line">    checkPositionIndex(index);</div><div class="line"></div><div class="line">    Object[] a = c.toArray();</div><div class="line">    <span class="keyword">int</span> numNew = a.length;</div><div class="line">    <span class="keyword">if</span> (numNew == <span class="number">0</span>) <span class="comment">// 传入集合为空</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    Node&lt;E&gt; pred, succ;</div><div class="line">    <span class="comment">// pred为被插入节点前一个节点 succ为index节点 index&lt;size时用于移动index节点succ.prev = pred;</span></div><div class="line">    <span class="keyword">if</span> (index == size) &#123; <span class="comment">// 即插入链表的最后</span></div><div class="line">        succ = <span class="keyword">null</span>;</div><div class="line">        pred = last; <span class="comment">// 获取最后一个节点</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123; <span class="comment">// 插入链表中间</span></div><div class="line">        succ = node(index);</div><div class="line">        pred = succ.prev; <span class="comment">// 获取index前一个节点</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (Object o : a) &#123;</div><div class="line"></div><div class="line">        E e = (E) o;</div><div class="line">        Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(pred, e, <span class="keyword">null</span>);</div><div class="line">        <span class="comment">// 新new节点 pred指向 (index == size)(pred-&gt;last)</span></div><div class="line">        <span class="comment">// 新new节点 pred指向 (index &lt; size)(pred-&gt;succ.prev)</span></div><div class="line">        <span class="keyword">if</span> (pred == <span class="keyword">null</span>) <span class="comment">// 链表为空</span></div><div class="line">            first = newNode; <span class="comment">// 新节点为头节点</span></div><div class="line">        <span class="keyword">else</span></div><div class="line">            pred.next = newNode; <span class="comment">// 上次循环的节点的next设置为本次循环节点</span></div><div class="line">        pred = newNode; <span class="comment">// 设置下次循环的pred节点为本次循环增加的节点</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (succ == <span class="keyword">null</span>) &#123; <span class="comment">// index == size</span></div><div class="line">        last = pred; <span class="comment">// 设置last节点为循环的最后一个节点</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        pred.next = succ; <span class="comment">// 设置循环的最后一个节点的next为index节点</span></div><div class="line">        succ.prev = pred; <span class="comment">// 设置设置index的prev为循环的最后一个节点</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    size += numNew;</div><div class="line">    modCount++; <span class="comment">// fail-fast</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h3><p>LinkedList插入数据的方法有</p>
+<ul>
+<li>public boolean add(E e)</li>
+<li>public void add(int index, E element)</li>
+<li>public boolean addAll(Collection&lt;? extends E&gt; c)</li>
+<li>public boolean addAll(int index, Collection&lt;? extends E&gt; c)</li>
+<li>public void addFirst(E e)</li>
+<li>public void addLast(E e)</li>
+<li>private void linkFirst(E e)</li>
+<li>void linkLast(E e)</li>
+<li>void linkBefore(E e, Node<e> succ)</e></li>
+<li>public boolean offerFirst(E e)</li>
+<li>public boolean offerLast(E e)</li>
+<li>public void push(E e)</li>
+<li>public E set(int index, E element)</li>
+<li>等</li>
+</ul>
+<blockquote>
+<p>由于添加方法太多 本篇只会讲add(int index, E element) 其他插入方法都类似</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 在index之前插入element元素</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;</div><div class="line">    checkPositionIndex(index);</div><div class="line">    <span class="comment">// 判断索引 index &gt;= 0 &amp;&amp; index &lt;= size</span></div><div class="line">    <span class="keyword">if</span> (index == size) <span class="comment">// 即链表尾部增加</span></div><div class="line">        linkLast(element);</div><div class="line">    <span class="keyword">else</span></div><div class="line">        linkBefore(element, node(index));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 在index之前插入element元素 (建议画图看)</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">linkBefore</span><span class="params">(E e, Node&lt;E&gt; succ)</span> </span>&#123;</div><div class="line">    <span class="comment">// assert succ != null;</span></div><div class="line">    <span class="keyword">final</span> Node&lt;E&gt; pred = succ.prev; <span class="comment">// 获取index节点的前一个节点</span></div><div class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(pred, e, succ); <span class="comment">// 新建节点 赋值 把index的prev赋给新建节点prev</span></div><div class="line">    succ.prev = newNode; <span class="comment">// 设置index节点的prev为新节点</span></div><div class="line">    <span class="keyword">if</span> (pred == <span class="keyword">null</span>) <span class="comment">// 即链表为空</span></div><div class="line">        first = newNode; <span class="comment">// 设置新节点为头节点</span></div><div class="line">    <span class="keyword">else</span></div><div class="line">        pred.next = newNode; <span class="comment">// 设置index节点的前一个节点的下个节点为newNode</span></div><div class="line">    size++;</div><div class="line">    modCount++;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p>LinkedList删除数据的方法有</p>
+<ul>
+<li>public void clear()</li>
+<li>public E poll()</li>
+<li>public E remove()</li>
+<li>public E remove(int index)</li>
+<li>public boolean remove(Object o)</li>
+<li>public E removeFirst()</li>
+<li>public boolean removeFirstOccurrence(Object o)</li>
+<li>public boolean removeLastOccurrence(Object o)</li>
+<li>public E removeLast()</li>
+<li>public E pollFirst()</li>
+<li>public E pollLast()</li>
+<li>public E pop()</li>
+<li>private E unlinkFirst(Node<e> f)</e></li>
+<li>等</li>
+</ul>
+<p>由于方法太多 而且都类似 本篇只会选择unlinkFirst()方法分析<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 移除first节点</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">private</span> E <span class="title">unlinkFirst</span><span class="params">(Node&lt;E&gt; f)</span> </span>&#123;</div><div class="line">    <span class="comment">// assert f == first &amp;&amp; f != null;</span></div><div class="line">    <span class="keyword">final</span> E element = f.item; <span class="comment">// 获取first的元素</span></div><div class="line">    <span class="keyword">final</span> Node&lt;E&gt; next = f.next; <span class="comment">// 获取first的下一个元素</span></div><div class="line">    f.item = <span class="keyword">null</span>; <span class="comment">// 删除first的元素</span></div><div class="line">    f.next = <span class="keyword">null</span>; <span class="comment">// 删除first指向的元素 让GC回收</span></div><div class="line">    first = next; <span class="comment">// 设置first为删除节点的下一个节点</span></div><div class="line">    <span class="keyword">if</span> (next == <span class="keyword">null</span>) <span class="comment">// 下个节点为空</span></div><div class="line">        last = <span class="keyword">null</span>; <span class="comment">// 说明只有一个first节点不为null</span></div><div class="line">    <span class="keyword">else</span></div><div class="line">        next.prev = <span class="keyword">null</span>; <span class="comment">// 设置first的下个节点为null</span></div><div class="line">    size--;</div><div class="line">    modCount++;</div><div class="line">    <span class="keyword">return</span> element; <span class="comment">// 返回删除数据</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 替换指定位置的元素</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;</div><div class="line">    checkElementIndex(index); <span class="comment">// 检查index是否越界</span></div><div class="line">    Node&lt;E&gt; x = node(index); <span class="comment">// 获得指定index元素</span></div><div class="line">    E oldVal = x.item; <span class="comment">// 活动被替换的元素</span></div><div class="line">    x.item = element; <span class="comment">// 修改元素</span></div><div class="line">    <span class="keyword">return</span> oldVal; <span class="comment">// 返回被修改的元素</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h3><p>LinkedList查询数据的方法有</p>
+<ul>
+<li>public E getFirst():获取First节点元素</li>
+<li>public E getLast():获取Last节点元素</li>
+<li>Node<e> node(int index):获取指定index节点元素</e></li>
+<li>public E peek():获取First节点元素</li>
+<li>public E peekFirst():获取First节点元素</li>
+<li>public E peekLast():获取Last节点元素</li>
+<li>public E poll():删除First节点并返回删除元素</li>
+<li>public E pollFirst():删除First节点并返回删除元素</li>
+<li>public E pollLast():删除Last节点并返回删除元素</li>
+<li>public E pop():删除First节点并返回删除元素</li>
+<li>等</li>
+</ul>
+<p>由于方法太多 而且都类似 本篇只会选择get()方法分析<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 获取指定index元素</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</div><div class="line">    checkElementIndex(index);</div><div class="line">    <span class="keyword">return</span> node(index).item;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 返回指定index的节点元素 会更具index的值判断是从前找还是从后找</div><div class="line"> */</div><div class="line"><span class="function">Node&lt;E&gt; <span class="title">node</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</div><div class="line">    <span class="comment">// assert isElementIndex(index);</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span> (index &lt; (size &gt;&gt; <span class="number">1</span>)) &#123; <span class="comment">// index &lt; size / 2</span></div><div class="line">        Node&lt;E&gt; x = first;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; index; i++)</div><div class="line">            x = x.next;</div><div class="line">        <span class="keyword">return</span> x;</div><div class="line">    &#125; <span class="keyword">else</span> &#123; <span class="comment">// index &gt; size / 2</span></div><div class="line">        Node&lt;E&gt; x = last;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = size - <span class="number">1</span>; i &gt; index; i--)</div><div class="line">            x = x.prev;</div><div class="line">        <span class="keyword">return</span> x;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>LinkedList本质上就是一个双向链表，不会像ArrayList那样，空间不足时去扩容(array copy是一件效率非常低的操作)这样做的好处就是处理大量数据时，存储数据的时间比ArrayList要低很多。</p>
+<p>另外LinkedList实现了Deque接口，可以通过内部,实现FIFO(先进先出)的队列或者LIFO(后进先出)的栈</p>
+<hr>
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 ]]></content>
       
@@ -113,6 +205,47 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Alibaba 2018实习生招聘 在线编程题解答]]></title>
+      <url>http://binux.cn/2017/03/09/Alibaba-Arithmetic/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>“阿里巴巴 2018实习生 在线编程 题目解答”</p>
+</blockquote>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p> 对于一个长度为N的整型数组A， 数组里所有的数都是正整数，对于两个满足0&lt;=X &lt;= Y &lt;N的整数，A[X], A[X+1] … A[Y]构成A的一个切片，记作(X, Y)。</p>
+<p> 用三个下标 m1, m2, m3下标满足条件 0 &lt; m1, m1 + 1 &lt; m2, m2 +1 &lt; m3 &lt; N – 1。</p>
+<p> 可以把这个整型数组分成(0, m1-1), (m1+1, m2-1), (m2+1, m3-1), (m3+1, N-1) 四个切片。如果这四个切片中的整数求和相等，称作“四等分”。</p>
+<p> 编写一个函数，求一个给定的整型数组是否可以四等分，如果可以，返回一个布尔类型的true，如果不可以返回一个布尔类型的false。</p>
+<p> 限制条件： 数组A最多有1,000,000项，数组中的整数取值范围介于-1,000,000到1,000,000之间。</p>
+<p> 要求： 函数的计算复杂度为O(N)，使用的额外存储空间（除了输入的数组之外）最多为O(N)。</p>
+<p> 例子：</p>
+<p> 对于数组A=[2, 5, 1, 1, 1, 1, 4, 1, 7, 3, 7] 存在下标 2, 7, 9使得数组分成四个分片[2, 5], [1, 1, 1, 4], [7], [7]，这三个分片内整数之和相等，所以对于这个数组，函数应该返回true。</p>
+<p> 对于数组 A=[10, 2, 11, 13, 1, 1, 1, 1, 1]， 找不到能把数组四等分的下标，所以函数应该返回false。</p>
+<hr>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> cn.binux;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/** 请完成下面这个函数，实现题目要求的功能 **/</span></div><div class="line">    <span class="comment">/** 当然，你也可以不按照这个模板来作答，完全按照自己的想法来 ^-^  **/</span></div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">resolve</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (A == <span class="keyword">null</span> || A.length &lt; (<span class="number">4</span> + <span class="number">3</span>)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> indexl = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> indexr = A.length - <span class="number">1</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> suml = A[indexl];</div><div class="line">        <span class="keyword">int</span> sumr = A[indexr];</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (indexl &lt; indexr) &#123;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (suml &lt; sumr) &#123;</div><div class="line">                indexl++;</div><div class="line">                suml += A[indexl];</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (suml &gt; sumr) &#123;</div><div class="line">                indexr--;</div><div class="line">                sumr += A[indexr];</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">boolean</span> check = check(indexl + <span class="number">1</span>, indexr - <span class="number">1</span>, suml, A);</div><div class="line">                <span class="keyword">if</span> (check) &#123;</div><div class="line">                    <span class="keyword">return</span> check;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    indexl++;</div><div class="line">                    suml += A[indexl];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> sum, <span class="keyword">int</span>[] A)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> indexl = start + <span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> indexr = end - <span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> suml = A[indexl];</div><div class="line">        <span class="keyword">int</span> sumr = A[indexr];</div><div class="line">        <span class="keyword">while</span> (indexr &gt; indexl) &#123;</div><div class="line">            <span class="keyword">if</span> (suml &lt; sumr) &#123;</div><div class="line">                indexl++;</div><div class="line">                suml += A[indexl];</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (suml &gt; sumr) &#123;</div><div class="line">                indexr--;</div><div class="line">                sumr += A[indexr];</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (suml == sumr) &#123;</div><div class="line">                <span class="keyword">if</span> (indexr - indexl == <span class="number">2</span> &amp;&amp; suml == sum) &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        <span class="comment">//ArrayList&lt;Integer&gt; inputs = new ArrayList&lt;Integer&gt;();</span></div><div class="line">        <span class="comment">//Scanner in = new Scanner(System.in);</span></div><div class="line">        <span class="comment">//String line = in.nextLine();</span></div><div class="line">        <span class="comment">//while(line != null &amp;&amp; !line.isEmpty()) &#123;</span></div><div class="line">        <span class="comment">//    int value = Integer.parseInt(line.trim());</span></div><div class="line">        <span class="comment">//    if(value == 0) break;</span></div><div class="line">        <span class="comment">//    inputs.add(value);</span></div><div class="line">        <span class="comment">//    line = in.nextLine();</span></div><div class="line">        <span class="comment">//&#125;</span></div><div class="line">        <span class="comment">//int[] A = new int[inputs.size()];</span></div><div class="line">        <span class="comment">//for(int i=0; i&lt;inputs.size(); i++) &#123;</span></div><div class="line">        <span class="comment">//    A[i] = inputs.get(i).intValue();</span></div><div class="line">        <span class="comment">//&#125;</span></div><div class="line">        <span class="keyword">int</span>[] A1 = &#123; <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">3</span> &#125;; <span class="comment">// true</span></div><div class="line">        <span class="keyword">int</span>[] A2 = &#123; <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> &#125;; <span class="comment">// false</span></div><div class="line">        <span class="keyword">int</span>[] A3 = &#123; <span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">8</span> &#125;; <span class="comment">// false</span></div><div class="line">        Boolean res = resolve(A1);</div><div class="line"></div><div class="line">        System.out.println(String.valueOf(res));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这道算法题 不是太难 毕竟是招实习生</p>
+<p>并且阿里还说了 这道题目并不会影响最后的录用 只是作为一个参考</p>
+<hr>
+<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 面试题 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Alibaba </tag>
+            
+            <tag> Arithmetic </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[JDK底层实现源码分析系列(一) ArrayList源码分析]]></title>
       <url>http://binux.cn/2017/03/09/ArrayList-Source-Code/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -187,47 +320,6 @@
             <tag> JDK </tag>
             
             <tag> Source Code </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Alibaba 2018实习生招聘 在线编程题解答]]></title>
-      <url>http://binux.cn/2017/03/09/Alibaba-Arithmetic/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>“阿里巴巴 2018实习生 在线编程 题目解答”</p>
-</blockquote>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p> 对于一个长度为N的整型数组A， 数组里所有的数都是正整数，对于两个满足0&lt;=X &lt;= Y &lt;N的整数，A[X], A[X+1] … A[Y]构成A的一个切片，记作(X, Y)。</p>
-<p> 用三个下标 m1, m2, m3下标满足条件 0 &lt; m1, m1 + 1 &lt; m2, m2 +1 &lt; m3 &lt; N – 1。</p>
-<p> 可以把这个整型数组分成(0, m1-1), (m1+1, m2-1), (m2+1, m3-1), (m3+1, N-1) 四个切片。如果这四个切片中的整数求和相等，称作“四等分”。</p>
-<p> 编写一个函数，求一个给定的整型数组是否可以四等分，如果可以，返回一个布尔类型的true，如果不可以返回一个布尔类型的false。</p>
-<p> 限制条件： 数组A最多有1,000,000项，数组中的整数取值范围介于-1,000,000到1,000,000之间。</p>
-<p> 要求： 函数的计算复杂度为O(N)，使用的额外存储空间（除了输入的数组之外）最多为O(N)。</p>
-<p> 例子：</p>
-<p> 对于数组A=[2, 5, 1, 1, 1, 1, 4, 1, 7, 3, 7] 存在下标 2, 7, 9使得数组分成四个分片[2, 5], [1, 1, 1, 4], [7], [7]，这三个分片内整数之和相等，所以对于这个数组，函数应该返回true。</p>
-<p> 对于数组 A=[10, 2, 11, 13, 1, 1, 1, 1, 1]， 找不到能把数组四等分的下标，所以函数应该返回false。</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> cn.binux;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/** 请完成下面这个函数，实现题目要求的功能 **/</span></div><div class="line">    <span class="comment">/** 当然，你也可以不按照这个模板来作答，完全按照自己的想法来 ^-^  **/</span></div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">resolve</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (A == <span class="keyword">null</span> || A.length &lt; (<span class="number">4</span> + <span class="number">3</span>)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> indexl = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> indexr = A.length - <span class="number">1</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> suml = A[indexl];</div><div class="line">        <span class="keyword">int</span> sumr = A[indexr];</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (indexl &lt; indexr) &#123;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (suml &lt; sumr) &#123;</div><div class="line">                indexl++;</div><div class="line">                suml += A[indexl];</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (suml &gt; sumr) &#123;</div><div class="line">                indexr--;</div><div class="line">                sumr += A[indexr];</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">boolean</span> check = check(indexl + <span class="number">1</span>, indexr - <span class="number">1</span>, suml, A);</div><div class="line">                <span class="keyword">if</span> (check) &#123;</div><div class="line">                    <span class="keyword">return</span> check;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    indexl++;</div><div class="line">                    suml += A[indexl];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> sum, <span class="keyword">int</span>[] A)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> indexl = start + <span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> indexr = end - <span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> suml = A[indexl];</div><div class="line">        <span class="keyword">int</span> sumr = A[indexr];</div><div class="line">        <span class="keyword">while</span> (indexr &gt; indexl) &#123;</div><div class="line">            <span class="keyword">if</span> (suml &lt; sumr) &#123;</div><div class="line">                indexl++;</div><div class="line">                suml += A[indexl];</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (suml &gt; sumr) &#123;</div><div class="line">                indexr--;</div><div class="line">                sumr += A[indexr];</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (suml == sumr) &#123;</div><div class="line">                <span class="keyword">if</span> (indexr - indexl == <span class="number">2</span> &amp;&amp; suml == sum) &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        <span class="comment">//ArrayList&lt;Integer&gt; inputs = new ArrayList&lt;Integer&gt;();</span></div><div class="line">        <span class="comment">//Scanner in = new Scanner(System.in);</span></div><div class="line">        <span class="comment">//String line = in.nextLine();</span></div><div class="line">        <span class="comment">//while(line != null &amp;&amp; !line.isEmpty()) &#123;</span></div><div class="line">        <span class="comment">//    int value = Integer.parseInt(line.trim());</span></div><div class="line">        <span class="comment">//    if(value == 0) break;</span></div><div class="line">        <span class="comment">//    inputs.add(value);</span></div><div class="line">        <span class="comment">//    line = in.nextLine();</span></div><div class="line">        <span class="comment">//&#125;</span></div><div class="line">        <span class="comment">//int[] A = new int[inputs.size()];</span></div><div class="line">        <span class="comment">//for(int i=0; i&lt;inputs.size(); i++) &#123;</span></div><div class="line">        <span class="comment">//    A[i] = inputs.get(i).intValue();</span></div><div class="line">        <span class="comment">//&#125;</span></div><div class="line">        <span class="keyword">int</span>[] A1 = &#123; <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">3</span> &#125;; <span class="comment">// true</span></div><div class="line">        <span class="keyword">int</span>[] A2 = &#123; <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> &#125;; <span class="comment">// false</span></div><div class="line">        <span class="keyword">int</span>[] A3 = &#123; <span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">8</span> &#125;; <span class="comment">// false</span></div><div class="line">        Boolean res = resolve(A1);</div><div class="line"></div><div class="line">        System.out.println(String.valueOf(res));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这道算法题 不是太难 毕竟是招实习生</p>
-<p>并且阿里还说了 这道题目并不会影响最后的录用 只是作为一个参考</p>
-<hr>
-<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 面试题 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Alibaba </tag>
-            
-            <tag> Arithmetic </tag>
             
         </tags>
         
@@ -550,9 +642,9 @@
             
             <tag> XBin-Store </tag>
             
-            <tag> Linux </tag>
-            
             <tag> FastDFS </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
         
@@ -871,9 +963,9 @@
         
         <tags>
             
-            <tag> Bug </tag>
-            
             <tag> MySQL </tag>
+            
+            <tag> Bug </tag>
             
         </tags>
         
@@ -951,9 +1043,9 @@
             
             <tag> XBin-Store </tag>
             
-            <tag> MySQL </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> MySQL </tag>
             
         </tags>
         
@@ -1000,9 +1092,9 @@
         
         <tags>
             
-            <tag> Mac </tag>
-            
             <tag> MySQL </tag>
+            
+            <tag> Mac </tag>
             
         </tags>
         
@@ -1057,11 +1149,11 @@
         
         <tags>
             
+            <tag> XBin-Store </tag>
+            
             <tag> Java </tag>
             
             <tag> Bug </tag>
-            
-            <tag> XBin-Store </tag>
             
         </tags>
         

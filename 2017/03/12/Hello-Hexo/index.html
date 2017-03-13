@@ -10,7 +10,7 @@
     
     <title>
         
-            About ME | 
+            Hello Hexo | 
         
         Binux Blog
     </title>
@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Binux">
     <meta name="description" content="一名正在崛起的Java后端工程师">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,Hexo">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -48,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://binux.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="About ME | Binux Blog">
+    <meta property="og:title" content="Hello Hexo | Binux Blog">
     <meta property="og:description" content="一名正在崛起的Java后端工程师">
-    
+    <meta property="og:article:tag" content="Hexo"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -219,6 +219,41 @@
 
                     <!-- Post TOC -->
 
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#著作权声明"><span class="post-toc-number">2.</span> <span class="post-toc-text">著作权声明</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
 
 <!-- Layouts -->
 
@@ -233,10 +268,10 @@
     <!-- Paradox Post Header -->
     
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/abloutme.png)">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/hello/hellohexo.png)">
     
             <p class="article-headline-p">
-                About ME
+                Hello Hexo
             </p>
         </div>
 
@@ -255,7 +290,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Binux</strong>
-        <span>3月 11, 2017</span>
+        <span>3月 12, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -276,7 +311,7 @@
         </button>
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
             <li class="mdl-menu__item">在其它设备中阅读本文章</li>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAAB3UlEQVR42u3aS3KDMBAFQN//0skFAn5vgNigZuUqMFKzmNJ8Xj+PuF4YGBgYGBgYGF/DeMXX5uuCf83u7u8BAwNjNcab0LbxTL6VreeP7AEDA2NNRr78ftBM8LP3Y2BgYMwYLemPDWFgYGBcwIjKYXk6ioGBgXFqEpsktOfexcDAwGiL8tf9/tf+BgYGxq0Y9YjDBYwPzIxgYGDcitGW0mZHxjZxjYY8MDAwFmO0W9/fXH63bXxiYGBgJAGxbQC0wbpoPGBgYCzDyI96LXXWqszbBhgYGCsz9se88oXP/SgYGBgY7fKzQttZ7VIMDIzVGO0ypzUgd5HJKhgYGCsz8lCbH/LaQFwnsRgYGAsw2oJXHRxnTcrZsAUGBsajGbPhrbxg16aydRKLgYHxaMYsvZyNhc0CenHCxcDAWIBx1kbbz5EjMTAwMPKSWTtIkR8Qo0+GgYGxDONI67EdEWtHNDAwMDDa4ld+aEsAeTFu2BjAwMB4HCMJskmamgPy5PlQEouBgfE4Rt6ArINjQM3bDxgYGBg5o20GtMNkb8I6BgYGRhlk8/ZAXry7POBiYGDckJEf7BLekSPm5bk4BgbGDRl5Y6BtG8xCc9R4wMDAWIZx3wsDAwMDAwMD46PXLxg4gm86gfvKAAAAAElFTkSuQmCC">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACbElEQVR42u3awW7DIBAEUP//T7fXSlGcGTDYjR6nqmkwzwfYDnv8fPU48PDw8PDw8PDwHsY74vF2uj+fvv7l6wzvZjv/br42PDw8vD28D1vt6YJelx4t4vT3M2vDw8PD28l7t6Bk609mO2cnM0ffwsPDw3swLzkw8iI7eS4eHh7ed/DGNvr8ReDh4eE9mdcGtTObeBLm3pC14OHh4cW8schgz89b7/fw8PDwAl7d0hQ3FsyX1Df0lOHh4eEFvJmL/zzATV7ETCMCHh4e3hN4bYtVERYEBXRykODh4eHdxWvj2jwCnr/Qyl8EHh4e3n5evulf8PiyJasOQfDw8PC289rRRsBtNNwGHHh4eHireWPl8rrrsbzpCg8PD+8uXl7IjgUQeRmdv+4L/mPAw8PDWxbjto2k7QEwdj122QUYHh4e3gLeYBwwFMLOhMJ4eHh4O3ntRVRSBI+Fv3lB/+HpeHh4eIt5M20BeRPAzKd5YIGHh4e3h5e0jeYX/GMBbhvdfpgTDw8PbzEvKV5nrvNnivLBKAQPDw9vMa8tkfMAN49iN2UteHh4eJfy8umSBa1utCqarvDw8PC289rA9xyflOB5FFLEuHh4eHjLeGNx7VhwkMe+OQwPDw9vD68dM8fAzKaftxHg4eHhreYd8WgbDsYK5bbxKzr38PDw8Bbw2uihvc5vZx6LP/Dw8PD28/INOr/mzy/M2jCiaLrCw8PDewwv2cpnPm1fKB4eHt7/4uUNqW0LV3Kc4OHh4d3Fay+98maC+euuy5qu8PDw8C7itRHADKYukcvjAQ8PD2817/sGHh4eHh4eHh7eA8YvYjDEcDm8zDcAAAAASUVORK5CYII=">
         </ul>
     
 
@@ -288,7 +323,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        
+        <a class="post_tag-link" href="/tags/Hexo/">Hexo</a>
     </ul>
     
 
@@ -315,7 +350,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=About ME&url=http://binux.cn//about/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Hello Hexo&url=http://binux.cn//2017/03/12/Hello-Hexo/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -330,7 +365,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://binux.cn//about/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://binux.cn//2017/03/12/Hello-Hexo/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -342,7 +377,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Binux Blog&title=About ME&summary=一名正在崛起的Java后端工程师&pics=http://binux.cn/img/favicon.png&url=http://binux.cn/about/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Binux Blog&title=Hello Hexo&summary=一名正在崛起的Java后端工程师&pics=http://binux.cn/img/favicon.png&url=http://binux.cn/2017/03/12/Hello-Hexo/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -360,7 +395,22 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        
+        <blockquote>
+<p>“Hello Hexo!!!”</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>花了一天的时间把Blog换了个主题 没办法第一眼看了这个主题就特别喜欢然后立马就换了</p>
+<p>换主题倒不是太难,但是由于我之前使用的jekyll生成Blog,而这个主题是用Hexo生成Blog</p>
+<p>他们的生成方式完全不同,个人感觉Hexo生成方便点,毕竟直接生成HTML静态页面,不用Github服务器在进行处理了</p>
+<p>多亏了网上的大神们,没什么难度的完成了迁移,主要纠结我一天时间的是blog图片的选择上面,处女座加纠结狂,导致我看哪张图片都不顺眼</p>
+<p>要找一个符合我个人审美的系列图得多难…</p>
+<p>最后我实在不想找了,找了个还算可以的字体,操起我几百年没用过的PS,直接用文字作为Blog的背景图片</p>
+<p>最后感觉效果还可以,至少看的过去了</p>
+<p>就这样吧!</p>
+<p>继续看我的源码去了</p>
+<p>不想去BAT的程序猿都不是好程序猿 ^-^</p>
+<hr>
+<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
+
     
 
     
@@ -428,7 +478,7 @@
 <script>
     $('.btn_click_load').click(function() {  //click to load comments
         var disqus_config = function () {
-            this.page.url = 'http://binux.cn/about/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.url = 'http://binux.cn/2017/03/12/Hello-Hexo/index.html';  // Replace PAGE_URL with your page's canonical URL variable
             this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
         };
         (function() { // DON'T EDIT BELOW THIS LINE
@@ -463,6 +513,14 @@
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
+    
+        <a href="/2017/03/11/LinkedList-Source-Code/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
     
 </nav>
 
@@ -679,6 +737,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 
