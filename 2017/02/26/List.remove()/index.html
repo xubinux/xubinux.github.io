@@ -423,9 +423,11 @@
 <p>API并没有用错 但为什么就是remove不掉呢！ 然后就DEBUG查看了下整个流程</p>
 <center><img src="http://on2bs9q7q.bkt.clouddn.com/List.remove()-DEBUG1.png"></center>
 
+<p>发现问题了 <strong>内存地址竟然一样一样！！！</strong></p>
 <center><img src="http://on2bs9q7q.bkt.clouddn.com/List.remove()-DEBUG2.png"></center>
 
-<p>发现问题了 <strong>内存地址竟然一样一样！！！</strong></p>
+
+
 <p>这才想起来 我把CartInfo类给序列化了 <strong>脑中万**马奔腾</strong> 不是我没事去实现Serializable接口 而是Dubbox传输的对象 不实现Serializable就报错</p>
 <p>但是也说不通啊 为什么我Remove不掉呢 我只想保留一个</p>
 <p>在次查询API 发现问题了 remove()有重载方法</p>
