@@ -16,9 +16,9 @@
     </title>
 
     <!-- Favicons -->
-    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
-    <link rel="icon" sizes="192x192" href="/img/favicon.png">
-    <link rel="apple-touch-icon" href="/img/favicon.png">
+    <link rel="icon shortcut" type="image/ico" href="http://on2bs9q7q.bkt.clouddn.com/avatar.png">
+    <link rel="icon" sizes="192x192" href="http://on2bs9q7q.bkt.clouddn.com/favicon.png">
+    <link rel="apple-touch-icon" href="http://on2bs9q7q.bkt.clouddn.com/favicon.png">
 
     <!-- Meta & Info -->
     <meta charset="utf-8">
@@ -268,7 +268,7 @@
     <!-- Paradox Post Header -->
     
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/JDK-Source-Code/HashMap.jpg)">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://on2bs9q7q.bkt.clouddn.com/HashMap.jpg)">
     
             <p class="article-headline-p">
                 JDK底层实现源码分析系列(四) HashMap源码分析
@@ -285,7 +285,7 @@
 
     <!-- Author Avatar -->
     <div id="author-avatar">
-        <img src="/img/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+        <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
     </div>
     <!-- Author Name & Date -->
     <div>
@@ -377,7 +377,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Binux Blog&title=JDK底层实现源码分析系列(四) HashMap源码分析&summary=一名正在崛起的Java后端工程师&pics=http://binux.cn/img/favicon.png&url=http://binux.cn/2017/03/14/HastMap-Source-Code/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Binux Blog&title=JDK底层实现源码分析系列(四) HashMap源码分析&summary=一名正在崛起的Java后端工程师&pics=http://binux.cnhttp://on2bs9q7q.bkt.clouddn.com/avatar.png&url=http://binux.cn/2017/03/14/HastMap-Source-Code/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -401,19 +401,19 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>JDK 版本1.7<br>注:JDK1.8对HashMap进行重构 引入了红黑树 大幅优化HashMap的查找速度</p>
 </blockquote>
-<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><center><img src="/img/JDK-Source-Code/Java-Collections.png" alt="Collection"></center>
+<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/Java-Collections.png" alt="Collection"></center>
 
 <blockquote>
 <p>来源<a href="https://infinitescript.com/2014/10/java-collections-framework/" target="_blank" rel="external">Java Collections Framework</a></p>
 </blockquote>
-<h3 id="LinkedList-继承树"><a href="#LinkedList-继承树" class="headerlink" title="LinkedList 继承树"></a>LinkedList 继承树</h3><center><img src="/img/JDK-Source-Code/HashMap.png" alt="Stack"></center><br><center>HashMap</center>
+<h3 id="LinkedList-继承树"><a href="#LinkedList-继承树" class="headerlink" title="LinkedList 继承树"></a>LinkedList 继承树</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/HashMap.png" alt="Stack"></center><br><center>HashMap</center>
 
 
 
 <hr>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>HashMap是基于哈希表,实现Map接口的非同步集合,允许使用Null键和Null值,但是不保证映射的顺序，特别是他不保证集合中的顺序恒久不变</p>
 <p>内部维护着一个数组用来存放数据,并且每个数组的元素都是一个单向链表</p>
-<center><img src="/img/JDK-Source-Code/HashMap-Array.png" alt="Stack"></center><br><center>HaspMap底层存储结构</center>
+<center><img src="http://on2bs9q7q.bkt.clouddn.com/HashMap-Array.png" alt="Stack"></center><br><center>HaspMap底层存储结构</center>
 
 <p>使用<code>get()</code>获取数据<code>put()</code>存放数据,内部基于hash算法会尽可能的将元素分布均匀在数组中</p>
 <p>在查找元素时先计算hash值,因为对同一个对象取hash值返回的都是相同的,用hash值去取模数组的长度就可以快速获取那一条链表</p>
@@ -597,7 +597,7 @@
 <aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
     <div id="sidebar-main">
         <!-- Sidebar Header -->
-        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+        <div class="sidebar-header header-cover" style="background-image: url(http://on2bs9q7q.bkt.clouddn.com/sidebar_header.png);">
     <!-- Top bar -->
     <div class="top-bar"></div>
 
@@ -612,7 +612,7 @@
 
     <!-- Sidebar Avatar -->
     <div class="sidebar-image">
-        <img src="/img/avatar.jpg" alt="Binux's avatar">
+        <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" alt="Binux's avatar">
     </div>
 
     <!-- Sidebar Email -->

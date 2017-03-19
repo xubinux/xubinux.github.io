@@ -12,12 +12,12 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>JDK 版本1.7</p>
 </blockquote>
-<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><center><img src="/img/JDK-Source-Code/Java-Collections.png" alt="Collection"></center>
+<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/Java-Collections.png" alt="Collection"></center>
 
 <blockquote>
 <p>来源<a href="https://infinitescript.com/2014/10/java-collections-framework/" target="_blank" rel="external">Java Collections Framework</a></p>
 </blockquote>
-<h3 id="HashSet-继承树"><a href="#HashSet-继承树" class="headerlink" title="HashSet 继承树"></a>HashSet 继承树</h3><center><img src="/img/JDK-Source-Code/HashSet.png" alt="HashSet"></center><br><center>HashSet</center>
+<h3 id="HashSet-继承树"><a href="#HashSet-继承树" class="headerlink" title="HashSet 继承树"></a>HashSet 继承树</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/HashSet.png" alt="HashSet"></center><br><center>HashSet</center>
 
 
 <hr>
@@ -87,46 +87,46 @@
 <blockquote>
 <p>优点:以后Spring更新直接Pull下就可以更新<br>缺点:速度慢到爆炸…</p>
 </blockquote>
-<h4 id="选择Checkout-form-GitHub"><a href="#选择Checkout-form-GitHub" class="headerlink" title="选择Checkout form GitHub"></a>选择Checkout form GitHub</h4><center><img src="/img/Spring/import-project1.png" alt="Spring"></center>
+<h4 id="选择Checkout-form-GitHub"><a href="#选择Checkout-form-GitHub" class="headerlink" title="选择Checkout form GitHub"></a>选择Checkout form GitHub</h4><center><img src="http://on2bs9q7q.bkt.clouddn.com/import-project1.png" alt="Spring"></center>
 
-<h4 id="输入Spring-git地址"><a href="#输入Spring-git地址" class="headerlink" title="输入Spring git地址"></a>输入Spring git地址</h4><center><img src="/img/Spring/import-project2.png" alt="Spring"></center>
+<h4 id="输入Spring-git地址"><a href="#输入Spring-git地址" class="headerlink" title="输入Spring git地址"></a>输入Spring git地址</h4><center><img src="http://on2bs9q7q.bkt.clouddn.com/import-project2.png" alt="Spring"></center>
 
 <h4 id="等待"><a href="#等待" class="headerlink" title="等待"></a>等待</h4><p>需要等很久,开了代理照样等很久…</p>
 <h4 id="询问"><a href="#询问" class="headerlink" title="询问"></a>询问</h4><p>IDEA识别出了Gradle工程</p>
-<center><img src="/img/Spring/import-project3.png" alt="Spring"></center>
+<center><img src="http://on2bs9q7q.bkt.clouddn.com/import-project3.png" alt="Spring"></center>
 
-<h4 id="选择编译环境"><a href="#选择编译环境" class="headerlink" title="选择编译环境"></a>选择编译环境</h4><center><img src="/img/Spring/import-project4.png" alt="Spring"></center>
+<h4 id="选择编译环境"><a href="#选择编译环境" class="headerlink" title="选择编译环境"></a>选择编译环境</h4><center><img src="http://on2bs9q7q.bkt.clouddn.com/import-project4.png" alt="Spring"></center>
 
 <blockquote>
 <p>一定得选择JDK1.8<br>Gradle使用第三项本地输入下载解压的目录</p>
 </blockquote>
 <h4 id="等待-1"><a href="#等待-1" class="headerlink" title="等待"></a>等待</h4><p>Gradle和Maven一样需要去下载Jar包编译</p>
 <p>第一次需要等很久…</p>
-<center><img src="/img/Spring/import-project5.png" alt="Spring"></center>
+<center><img src="http://on2bs9q7q.bkt.clouddn.com/import-project5.png" alt="Spring"></center>
 
 <h4 id="选择Modules"><a href="#选择Modules" class="headerlink" title="选择Modules"></a>选择Modules</h4><p>全部勾上</p>
-<center><img src="/img/Spring/import-project6.png" alt="Spring"></center>
+<center><img src="http://on2bs9q7q.bkt.clouddn.com/import-project6.png" alt="Spring"></center>
 
-<h4 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h4><center><img src="/img/Spring/success.png" alt="Spring"></center>
+<h4 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h4><center><img src="http://on2bs9q7q.bkt.clouddn.com/success.png" alt="Spring"></center>
 
 <hr>
 <h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><p>下载源码包:<a href="https://github.com/spring-projects/spring-framework/archive/v4.3.7.RELEASE.tar.gz" target="_blank" rel="external">点我下载</a></p>
 <blockquote>
 <p>优点:速度快<br>缺点:以后更新得自己手动下载覆盖更新</p>
 </blockquote>
-<h4 id="新建工程"><a href="#新建工程" class="headerlink" title="新建工程"></a>新建工程</h4><center><img src="/img/Spring/import-project2-1.png" alt="Spring"></center>
+<h4 id="新建工程"><a href="#新建工程" class="headerlink" title="新建工程"></a>新建工程</h4><center><img src="http://on2bs9q7q.bkt.clouddn.com/import-project2-1.png" alt="Spring"></center>
 
-<h4 id="选择源码目录"><a href="#选择源码目录" class="headerlink" title="选择源码目录"></a>选择源码目录</h4><center><img src="/img/Spring/import-project2-2.png" alt="Spring"></center>
+<h4 id="选择源码目录"><a href="#选择源码目录" class="headerlink" title="选择源码目录"></a>选择源码目录</h4><center><img src="http://on2bs9q7q.bkt.clouddn.com/import-project2-2.png" alt="Spring"></center>
 
-<h4 id="选择Gradle工程"><a href="#选择Gradle工程" class="headerlink" title="选择Gradle工程"></a>选择Gradle工程</h4><center><img src="/img/Spring/import-project2-3.png" alt="Spring"></center>
+<h4 id="选择Gradle工程"><a href="#选择Gradle工程" class="headerlink" title="选择Gradle工程"></a>选择Gradle工程</h4><center><img src="http://on2bs9q7q.bkt.clouddn.com/import-project2-3.png" alt="Spring"></center>
 
-<h4 id="选择编译环境-1"><a href="#选择编译环境-1" class="headerlink" title="选择编译环境"></a>选择编译环境</h4><center><img src="/img/Spring/import-project2-4.png" alt="Spring"></center>
+<h4 id="选择编译环境-1"><a href="#选择编译环境-1" class="headerlink" title="选择编译环境"></a>选择编译环境</h4><center><img src="http://on2bs9q7q.bkt.clouddn.com/import-project2-4.png" alt="Spring"></center>
 
 <blockquote>
 <p>一定得选择JDK1.8<br>Gradle使用第三项本地输入下载解压的目录</p>
 </blockquote>
 <h4 id="等待编译"><a href="#等待编译" class="headerlink" title="等待编译"></a>等待编译</h4><p>等好久…</p>
-<h4 id="成功-1"><a href="#成功-1" class="headerlink" title="成功"></a>成功</h4><center><img src="/img/Spring/success.png" alt="Spring"></center>
+<h4 id="成功-1"><a href="#成功-1" class="headerlink" title="成功"></a>成功</h4><center><img src="http://on2bs9q7q.bkt.clouddn.com/success.png" alt="Spring"></center>
 
 <hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>源码环境搭建完成 接下来就开始Spring源码的阅读之旅吧!</p>
@@ -160,19 +160,19 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>JDK 版本1.7<br>注:JDK1.8对HashMap进行重构 引入了红黑树 大幅优化HashMap的查找速度</p>
 </blockquote>
-<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><center><img src="/img/JDK-Source-Code/Java-Collections.png" alt="Collection"></center>
+<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/Java-Collections.png" alt="Collection"></center>
 
 <blockquote>
 <p>来源<a href="https://infinitescript.com/2014/10/java-collections-framework/" target="_blank" rel="external">Java Collections Framework</a></p>
 </blockquote>
-<h3 id="LinkedList-继承树"><a href="#LinkedList-继承树" class="headerlink" title="LinkedList 继承树"></a>LinkedList 继承树</h3><center><img src="/img/JDK-Source-Code/HashMap.png" alt="Stack"></center><br><center>HashMap</center>
+<h3 id="LinkedList-继承树"><a href="#LinkedList-继承树" class="headerlink" title="LinkedList 继承树"></a>LinkedList 继承树</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/HashMap.png" alt="Stack"></center><br><center>HashMap</center>
 
 
 
 <hr>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>HashMap是基于哈希表,实现Map接口的非同步集合,允许使用Null键和Null值,但是不保证映射的顺序，特别是他不保证集合中的顺序恒久不变</p>
 <p>内部维护着一个数组用来存放数据,并且每个数组的元素都是一个单向链表</p>
-<center><img src="/img/JDK-Source-Code/HashMap-Array.png" alt="Stack"></center><br><center>HaspMap底层存储结构</center>
+<center><img src="http://on2bs9q7q.bkt.clouddn.com/HashMap-Array.png" alt="Stack"></center><br><center>HaspMap底层存储结构</center>
 
 <p>使用<code>get()</code>获取数据<code>put()</code>存放数据,内部基于hash算法会尽可能的将元素分布均匀在数组中</p>
 <p>在查找元素时先计算hash值,因为对同一个对象取hash值返回的都是相同的,用hash值去取模数组的长度就可以快速获取那一条链表</p>
@@ -249,12 +249,12 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>JDK 版本1.7</p>
 </blockquote>
-<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><center><img src="/img/JDK-Source-Code/Java-Collections.png" alt="Collection"></center>
+<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/Java-Collections.png" alt="Collection"></center>
 
 <blockquote>
 <p>来源<a href="https://infinitescript.com/2014/10/java-collections-framework/" target="_blank" rel="external">Java Collections Framework</a></p>
 </blockquote>
-<h3 id="LinkedList-继承树"><a href="#LinkedList-继承树" class="headerlink" title="LinkedList 继承树"></a>LinkedList 继承树</h3><center><img src="/img/JDK-Source-Code/Stack.png" alt="Stack"></center><br><center>Stack</center>
+<h3 id="LinkedList-继承树"><a href="#LinkedList-继承树" class="headerlink" title="LinkedList 继承树"></a>LinkedList 继承树</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/Stack.png" alt="Stack"></center><br><center>Stack</center>
 
 
 <hr>
@@ -339,12 +339,12 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>JDK 版本1.7</p>
 </blockquote>
-<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><center><img src="/img/JDK-Source-Code/Java-Collections.png" alt="Collection"></center>
+<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/Java-Collections.png" alt="Collection"></center>
 
 <blockquote>
 <p>来源<a href="https://infinitescript.com/2014/10/java-collections-framework/" target="_blank" rel="external">Java Collections Framework</a></p>
 </blockquote>
-<h3 id="LinkedList-继承树"><a href="#LinkedList-继承树" class="headerlink" title="LinkedList 继承树"></a>LinkedList 继承树</h3><center><img src="/img/JDK-Source-Code/LinkedList.png" alt="LinkedList"></center><br><center>LinkedList</center>
+<h3 id="LinkedList-继承树"><a href="#LinkedList-继承树" class="headerlink" title="LinkedList 继承树"></a>LinkedList 继承树</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/LinkedList.png" alt="LinkedList"></center><br><center>LinkedList</center>
 
 <p>LinkedList从数据结构层面上说算是一个双向链表 继承于AbstractSequentialList实现了List、Deque、Cloneable、Serializable</p>
 <p>有三个重要的成员变量first(链表的头节点)、last(链表的尾节点)、size(链表的长度)</p>
@@ -448,12 +448,12 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>JDK 版本1.7</p>
 </blockquote>
-<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><center><img src="/img/JDK-Source-Code/Java-Collections.png" alt="Collection"></center>
+<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/Java-Collections.png" alt="Collection"></center>
 
 <blockquote>
 <p>来源<a href="https://infinitescript.com/2014/10/java-collections-framework/" target="_blank" rel="external">Java Collections Framework</a></p>
 </blockquote>
-<h3 id="Vector-继承树"><a href="#Vector-继承树" class="headerlink" title="Vector 继承树"></a>Vector 继承树</h3><center><img src="/img/JDK-Source-Code/Vector.png" alt="Vector"></center><br><center>Vector</center>
+<h3 id="Vector-继承树"><a href="#Vector-继承树" class="headerlink" title="Vector 继承树"></a>Vector 继承树</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/Vector.png" alt="Vector"></center><br><center>Vector</center>
 
 <hr>
 <h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><h3 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 序列化ID</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">2767605614048989439L</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 容量增加时的数量</div><div class="line"> * <span class="doctag">@serial</span></div><div class="line"> */</div><div class="line"><span class="keyword">protected</span> <span class="keyword">int</span> capacityIncrement;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 存放数据的数组</div><div class="line"> *</div><div class="line"> * <span class="doctag">@serial</span></div><div class="line"> */</div><div class="line"><span class="keyword">protected</span> Object[] elementData;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 元素的个数 == size</div><div class="line"> *</div><div class="line"> * <span class="doctag">@serial</span></div><div class="line"> */</div><div class="line"><span class="keyword">protected</span> <span class="keyword">int</span> elementCount;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 数组分配的最大大小</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_ARRAY_SIZE = Integer.MAX_VALUE - <span class="number">8</span>;</div></pre></td></tr></table></figure>
@@ -509,12 +509,12 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>JDK 版本1.7</p>
 </blockquote>
-<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><center><img src="/img/JDK-Source-Code/Java-Collections.png" alt="Collection"></center>
+<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/Java-Collections.png" alt="Collection"></center>
 
 <blockquote>
 <p>来源<a href="https://infinitescript.com/2014/10/java-collections-framework/" target="_blank" rel="external">Java Collections Framework</a></p>
 </blockquote>
-<h3 id="ArrayList-继承树"><a href="#ArrayList-继承树" class="headerlink" title="ArrayList 继承树"></a>ArrayList 继承树</h3><center><img src="/img/JDK-Source-Code/ArrayList.png" alt="ArrayList"></center><br><center>ArrayList</center>
+<h3 id="ArrayList-继承树"><a href="#ArrayList-继承树" class="headerlink" title="ArrayList 继承树"></a>ArrayList 继承树</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/ArrayList.png" alt="ArrayList"></center><br><center>ArrayList</center>
 
 <hr>
 <h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><h3 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 序列化ID</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">8683452581122892189L</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 默认的初始化容量</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_CAPACITY = <span class="number">10</span>;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 用于空实例的数组</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object[] EMPTY_ELEMENTDATA = &#123;&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 真正存放元素的数组</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">transient</span> Object[] elementData;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * List的大小</div><div class="line"> *</div><div class="line"> * <span class="doctag">@serial</span></div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">int</span> size;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 数组分配的最大大小</div><div class="line"> */</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_ARRAY_SIZE = Integer.MAX_VALUE - <span class="number">8</span>;</div></pre></td></tr></table></figure>
@@ -754,7 +754,7 @@
 <li><a href="http://binux.cn/2017/03/07/RocketMQ-Cluster-Install/">Xbin-Store(分布式商城)项目所依赖的Linux服务系列 RocketMQ集群安装(七)</a></li>
 </ul>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="所用虚拟机"><a href="#所用虚拟机" class="headerlink" title="所用虚拟机"></a>所用虚拟机</h3><p>CentOS 6.5</p>
-<h3 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h3><center><img src="/img/Linux-Solr/img1.png" alt="IP"></center><br><center>IP</center>
+<h3 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/Linux-Solr-img1.png" alt="IP"></center><br><center>IP</center>
 
 <h3 id="下载软件"><a href="#下载软件" class="headerlink" title="下载软件"></a>下载软件</h3><ul>
 <li><a href="http://download.csdn.net/detail/cynicismsrs/9772212" target="_blank" rel="external">apache-tomcat-7.0.47.tar.gz</a></li>
@@ -1459,14 +1459,14 @@
 <p>character_set_database和character_set_server的默认字符集还是latin1。</p>
 <p>需要改成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW VARIABLES LIKE &quot;character%&quot;;</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">| Variable_name            | Value                                                     |</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">| character_set_client     | utf8                                                      |</div><div class="line">| character_set_connection | utf8                                                      |</div><div class="line">| character_set_database   | utf8                                                      |</div><div class="line">| character_set_filesystem | binary                                                    |</div><div class="line">| character_set_results    | utf8                                                      |</div><div class="line">| character_set_server     | utf8                                                      |</div><div class="line">| character_set_system     | utf8                                                      |</div><div class="line">| character_sets_dir       | /usr/local/mysql-5.7.17-macos10.12-x86_64/share/charsets/ |</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">8 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
 <h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>停止MySQL服务</p>
-<center><img src="/img/Mac-MySQL/img1.png" alt="MySQL设置"></center><br><center>MySQL设置</center><br>打开终端 执行 sudo vim /etc/my.cnf 输入密码 新建一个MySQL配置文件 因为5.7 安装的时候默认没有配置文件<br><br>加入2条配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[client]</div><div class="line">default-character-set=utf8</div><div class="line">[mysqld]</div><div class="line">character-set-server=utf8</div></pre></td></tr></table></figure><br><br>重新启动MySQL服务<br><br>打开Navicat Premium 连接<br><center><img src="/img/Mac-MySQL/img2.png" alt="Navicat Premium连接"></center><br>发现还是乱码<br><center><img src="/img/Mac-MySQL/img3.png" alt="中文乱码"></center><br><center>中文乱码</center><br>其实到这边 MySQL乱码就配置完成了 问题就出在 新建连接的时候Encoding这边选择了utf-8<br><br>把它改成Auto 问题解决<br><center><img src="/img/Mac-MySQL/img4.png" alt="问题解决"></center>
+<center><img src="http://on2bs9q7q.bkt.clouddn.com/Mac-MySQL-img1.png" alt="MySQL设置"></center><br><center>MySQL设置</center><br>打开终端 执行 sudo vim /etc/my.cnf 输入密码 新建一个MySQL配置文件 因为5.7 安装的时候默认没有配置文件<br><br>加入2条配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[client]</div><div class="line">default-character-set=utf8</div><div class="line">[mysqld]</div><div class="line">character-set-server=utf8</div></pre></td></tr></table></figure><br><br>重新启动MySQL服务<br><br>打开Navicat Premium 连接<br><center><img src="http://on2bs9q7q.bkt.clouddn.com/Mac-MySQL-img2.png" alt="Navicat Premium连接"></center><br>发现还是乱码<br><center><img src="http://on2bs9q7q.bkt.clouddn.com/Mac-MySQL-img3.png" alt="中文乱码"></center><br><center>中文乱码</center><br>其实到这边 MySQL乱码就配置完成了 问题就出在 新建连接的时候Encoding这边选择了utf-8<br><br>把它改成Auto 问题解决<br><center><img src="http://on2bs9q7q.bkt.clouddn.com/Mac-MySQL-img4.png" alt="问题解决"></center>
 
 <hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>出现这个问题不怪别人 都是自己手残 干嘛自己去改连接属性里面的Encoding 其实默认就是Auto 其实这个问题困扰我挺久的 </p>
 <p>不过在改过MySQL配置后 使用MyBatis 也就是JDBC操作数据库是没问题的 所以也没在意</p>
 <p>最后怎么看自己配置的有没有问题呢！</p>
 <p>Navicat Premium右键Edit DataBase 如果是下图 就绝对没问题了</p>
-<center><img src="/img/Mac-MySQL/img5.png" alt="Edit DataBase"></center>
+<center><img src="http://on2bs9q7q.bkt.clouddn.com/Mac-MySQL-img5.png" alt="Edit DataBase"></center>
 
 <hr>
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
@@ -1500,14 +1500,14 @@
 <p>然后就想着有没有办法可以不用每次遍历整个购物车List集合 然后就想到从页面传入一个索引值 直接定位List中需要加减的商品 于是就引发了这个问题</p>
 <p><a href="#build">不想看我BB的 直接跳到最后看总结 </a></p>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><center><img src="/img/List.remove()/cart.png"></center><br><center>购物车截图</center>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><center><img src="http://on2bs9q7q.bkt.clouddn.com/List.remove()-cart.png"></center><br><center>购物车截图</center>
 
 <p>服务端代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> *</div><div class="line"> * 根据商品id和数量对购物车增加商品或减少商品</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> pid       商品id</div><div class="line"> * <span class="doctag">@param</span> pcount    增加数量</div><div class="line"> * <span class="doctag">@param</span> type      1 增加 2 减少</div><div class="line"> * <span class="doctag">@param</span> index     商品位置   ps:用于直接定位商品 不用遍历整个购物车</div><div class="line"> * <span class="doctag">@return</span></div><div class="line"> */</div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> XbinResult <span class="title">decreOrIncre</span><span class="params">(Long pid, Integer pcount, Integer type, Integer index, String cookieUUID)</span> </span>&#123;</div><div class="line"></div><div class="line">    String key = CART_INFO_PROFIX + cookieUUID;</div><div class="line"></div><div class="line">    List&lt;CartInfo&gt; cartInfoList = getCartInfoListByCookiesId(cookieUUID);</div><div class="line">    <span class="keyword">if</span> (cartInfoList == <span class="keyword">null</span> || cartInfoList.size() == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> XbinResult.build(<span class="number">400</span>, <span class="string">"购物车没有商品 请不要非法操作!"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    CartInfo cartInfo = cartInfoList.get(index);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (type == <span class="number">1</span>) &#123;</div><div class="line">        cartInfo.setNum(cartInfo.getNum() + pcount);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        cartInfo.setNum(cartInfo.getNum() - pcount);</div><div class="line">    &#125;</div><div class="line">    cartInfoList.remove(index);</div><div class="line">    cartInfoList.add(index, cartInfo);</div><div class="line">    jedisClient.set(key, FastJsonConvert.convertObjectToJSON(cartInfoList));</div><div class="line">    jedisClient.expire(key,REDIS_CART_EXPIRE_TIME);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> XbinResult.ok();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>代码就不解释了 太简单了。</p>
 </blockquote>
 <p>点击➕一件商品 然后就出现了一个非常奇怪的现象 商品确实加1了 但是出现了2个相同的商品</p>
-<center><img src="/img/List.remove()/Bug.png"></center><br><center>点击➕号后刷新出现</center>
+<center><img src="http://on2bs9q7q.bkt.clouddn.com/List.remove()-Bug.png"></center><br><center>点击➕号后刷新出现</center>
 
 <p>查询Redis中数据是这样的</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  &#123;</div><div class="line">    <span class="attr">"colour"</span>: <span class="string">"黑色"</span>,</div><div class="line">    <span class="attr">"id"</span>: <span class="number">148630831972863</span>,</div><div class="line">    <span class="attr">"imageUrl"</span>: <span class="string">"http://192.168.125.132/group1/M00/00/00/wKh9hFiM0l-AQuvEAABmx7u5QSA128.jpg"</span>,</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"Apple MacBook Pro 15.4英寸笔记本电脑 深空灰色（Multi-Touch Bar/Core i7/16GB/512GB MLH42CH/A）"</span>,</div><div class="line">    <span class="attr">"num"</span>: <span class="number">3</span>,</div><div class="line">    <span class="attr">"price"</span>: <span class="number">2148800</span>,</div><div class="line">    <span class="attr">"size"</span>: <span class="string">"32GB"</span>,</div><div class="line">    <span class="attr">"sum"</span>: <span class="number">6446400</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">"$ref"</span>: <span class="string">"$[0]"</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">"colour"</span>: <span class="string">"黑色"</span>,</div><div class="line">    <span class="attr">"id"</span>: <span class="number">148630639229938</span>,</div><div class="line">    <span class="attr">"imageUrl"</span>: <span class="string">"http://192.168.125.132/group1/M00/00/00/wKh9hFiMy4eAV5lwAAB25IS6WjM274.jpg"</span>,</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"Apple iPhone 7 (A1660) 32G 黑色 移动联通电信4G手机"</span>,</div><div class="line">    <span class="attr">"num"</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">"price"</span>: <span class="number">519900</span>,</div><div class="line">    <span class="attr">"size"</span>: <span class="string">"32GB"</span>,</div><div class="line">    <span class="attr">"sum"</span>: <span class="number">1039800</span></div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
@@ -1515,18 +1515,18 @@
 <p>“$ref”: “$[0]” 表示数据引用索引0位置的数据</p>
 </blockquote>
 <p>List.remove()无效 无效第一时间想到的是查查看API是不是我用错了</p>
-<center><img src="/img/List.remove()/api.png"></center>
+<center><img src="http://on2bs9q7q.bkt.clouddn.com/List.remove()-api.png"></center>
 
 <p>API并没有用错 但为什么就是remove不掉呢！ 然后就DEBUG查看了下整个流程</p>
-<center><img src="/img/List.remove()/DEBUG1.png"></center>
+<center><img src="http://on2bs9q7q.bkt.clouddn.com/List.remove()-DEBUG1.png"></center>
 
-<center><img src="/img/List.remove()/DEBUG2.png"></center>
+<center><img src="http://on2bs9q7q.bkt.clouddn.com/List.remove()-DEBUG2.png"></center>
 
 <p>发现问题了 <strong>内存地址竟然一样一样！！！</strong></p>
 <p>这才想起来 我把CartInfo类给序列化了 <strong>脑中万**马奔腾</strong> 不是我没事去实现Serializable接口 而是Dubbox传输的对象 不实现Serializable就报错</p>
 <p>但是也说不通啊 为什么我Remove不掉呢 我只想保留一个</p>
 <p>在次查询API 发现问题了 remove()有重载方法</p>
-<center><img class="shadow" src="/img/List.remove()/Bug2.png"></center>
+<center><img class="shadow" src="http://on2bs9q7q.bkt.clouddn.com/List.remove()-Bug2.png"></center>
 
 <p>……</p>
 <p>我定义的Integer index ，他竟然没有自动拆箱 当成对象去比较了 这两个对象当然不会相同 返回false 自然不会删除 </p>
