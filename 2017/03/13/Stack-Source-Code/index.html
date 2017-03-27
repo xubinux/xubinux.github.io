@@ -243,7 +243,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Collection-大家族"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Collection 大家族</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LinkedList-继承树"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">LinkedList 继承树</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分析"><span class="post-toc-number">2.</span> <span class="post-toc-text">分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#著作权声明"><span class="post-toc-number">4.</span> <span class="post-toc-text">著作权声明</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Collection-大家族"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Collection 大家族</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Stack-继承树"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Stack 继承树</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分析"><span class="post-toc-number">2.</span> <span class="post-toc-text">分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#著作权声明"><span class="post-toc-number">4.</span> <span class="post-toc-text">著作权声明</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -406,11 +406,11 @@
 <blockquote>
 <p>来源<a href="https://infinitescript.com/2014/10/java-collections-framework/" target="_blank" rel="external">Java Collections Framework</a></p>
 </blockquote>
-<h3 id="LinkedList-继承树"><a href="#LinkedList-继承树" class="headerlink" title="LinkedList 继承树"></a>LinkedList 继承树</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/Stack.png" alt="Stack"></center><br><center>Stack</center>
+<h3 id="Stack-继承树"><a href="#Stack-继承树" class="headerlink" title="Stack 继承树"></a>Stack 继承树</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/Stack.png" alt="Stack"></center><br><center>Stack</center>
 
 
 <hr>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>Stack从字面上理解就是堆,先进后出,继承Vector也就是说他完全可以当做Vector使用,并且他内部只增加了5个方法用来实现堆的特性</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>Stack从字面上理解就是栈,先进后出,继承Vector也就是说他完全可以当做Vector使用,并且他内部只增加了5个方法用来实现栈的特性</p>
 <p>之前已经讲过<a href="http://binux.cn/2017/03/09/Vector-Source-Code/">Vector的源码分析</a>了,本篇就只讲讲他是如何实现先进后出的</p>
 <ul>
 <li>public boolean empty()</li>
@@ -419,11 +419,12 @@
 <li>public E push(E item)</li>
 <li>public synchronized int search(Object o)</li>
 </ul>
-<p>从上面的方法可以看出Stack对取出数据的操作都加了synchronized,说明他是支持并发取出数据的peek()和pop()的区别仅在于前者不会删除元素,后者会</p>
+<p>从上面的方法可以看出Stack对取出数据的操作都加了synchronized,说明他是支持并发取出数据的</p>
+<p>peek()和pop()的区别仅在于前者不会删除元素,后者会</p>
 <p>另外多了个search(Object o) 搜索最后出现的此元素元素<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 本质上还是调用父类的方法lastIndexOf来确定最后出现此元素的索引</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> <span class="title">search</span><span class="params">(Object o)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i = lastIndexOf(o);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (i &gt;= <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> size() - i;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Stack的源码还是很简单的,只比Vector多了几个方法用来实现堆的特性</p>
-<p>其实实现堆可以使用LinkedList来实现,LinkedList和Stack实现堆的区别只在于LinkedList底层是使用链表来存储数据的,而Stack是使用数组存储的</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Stack的源码还是很简单的,只比Vector多了几个方法用来实现栈的特性</p>
+<p>其实实现栈可以使用LinkedList来实现,LinkedList和Stack实现栈的区别只在于LinkedList底层是使用链表来存储数据的,而Stack是使用数组存储的</p>
 <p>在选择使用哪个的时候看是否需要频繁的删除或插入指定index的数据</p>
 <p>如果频繁那只能选择LinkedList,反之一定得选择Stack,底层的存储数据的结构不同导致他们的使用场景都各有优势</p>
 <hr>
