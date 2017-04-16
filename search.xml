@@ -69,7 +69,29 @@
 <p>如:<code>private final Object $lock = new Object[0];</code></p>
 <p>可以修饰的对象为: METHOD(方法)</p>
 <h4 id="Log"><a href="#Log" class="headerlink" title="@Log"></a>@Log</h4><p>当需要使用<code>get</code>获取的值需要非常大资源计算 可以创建一个<code>private final 变量</code> 用这次计算的值对其进行赋值。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@CommonsLog</span></div><div class="line"></div><div class="line">Creates <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(LogExample.class);</div><div class="line"></div><div class="line"><span class="meta">@JBossLog</span></div><div class="line"></div><div class="line">Creates <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.jboss.logging.Logger log = org.jboss.logging.Logger.getLogger(LogExample.class);</div><div class="line"></div><div class="line"><span class="meta">@Log</span></div><div class="line"></div><div class="line">Creates <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> java.util.logging.Logger log = java.util.logging.Logger.getLogger(LogExample.class.getName());</div><div class="line"></div><div class="line"><span class="meta">@Log</span>4j</div><div class="line"></div><div class="line">Creates <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(LogExample.class);</div><div class="line"></div><div class="line"><span class="meta">@Log</span>4j2</div><div class="line"></div><div class="line">Creates <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.apache.logging.log4j.Logger log = org.apache.logging.log4j.LogManager.getLogger(LogExample.class);</div><div class="line"></div><div class="line"><span class="meta">@Slf</span>4j</div><div class="line"></div><div class="line">Creates <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(LogExample.class);</div><div class="line"></div><div class="line"><span class="meta">@XSlf</span>4j</div><div class="line"></div><div class="line">Creates <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.slf4j.ext.XLogger log = org.slf4j.ext.XLoggerFactory.getXLogger(LogExample.class);</div></pre></td></tr></table></figure>
+<ul>
+<li><p>@CommonsLog</p>
+<p>  <code>Creates private static final org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(LogExample.class);</code></p>
+</li>
+<li><p>@JBossLog</p>
+<p>  <code>Creates private static final org.jboss.logging.Logger log = org.jboss.logging.Logger.getLogger(LogExample.class);</code></p>
+</li>
+<li><p>@Log</p>
+<p>  <code>Creates private static final java.util.logging.Logger log = java.util.logging.Logger.getLogger(LogExample.class.getName());</code></p>
+</li>
+<li><p>@Log4j</p>
+<p>  <code>Creates private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(LogExample.class);</code></p>
+</li>
+<li><p>@Log4j2</p>
+<p>  <code>Creates private static final org.apache.logging.log4j.Logger log = org.apache.logging.log4j.LogManager.getLogger(LogExample.class);</code></p>
+</li>
+<li><p>@Slf4j</p>
+<p>  <code>Creates private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(LogExample.class);</code></p>
+</li>
+<li><p>@XSlf4j</p>
+<p>  <code>Creates private static final org.slf4j.ext.XLogger log = org.slf4j.ext.XLoggerFactory.getXLogger(LogExample.class);</code></p>
+</li>
+</ul>
 <p>可以修饰的对象为: TYPE(类、接口(包括注解类型)</p>
 <h2 id="详情请查看"><a href="#详情请查看" class="headerlink" title="详情请查看"></a>详情请查看</h2><p><a href="https://projectlombok.org/features/index.html" target="_blank" rel="external">https://projectlombok.org/features/index.html</a></p>
 <hr>
