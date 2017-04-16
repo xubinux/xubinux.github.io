@@ -435,7 +435,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">第41行</div><div class="line">&lt;env-entry&gt;</div><div class="line">   &lt;env-entry-name&gt;solr/home&lt;/env-entry-name&gt;</div><div class="line">   &lt;env-entry-value&gt;/usr/<span class="built_in">local</span>/solr/solrhome&lt;/env-entry-value&gt;</div><div class="line">   &lt;env-entry-type&gt;java.lang.String&lt;/env-entry-type&gt;</div><div class="line">&lt;/env-entry&gt;</div></pre></td></tr></table></figure>
 <h4 id="配置中文分词"><a href="#配置中文分词" class="headerlink" title="配置中文分词"></a>配置中文分词</h4><h5 id="解压-1"><a href="#解压-1" class="headerlink" title="解压"></a>解压</h5><p>IK Analyzer 2012FF_hf1.zip</p>
 <h5 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h5><p>cp IKAnalyzer2012FF_u1.jar /usr/local/solr/tomcat/webapps/ROOT/WEB-INF/lib/</p>
-<p>cp IKAnalyzer.cfg.xml ext_stopword.dic mydict.dic /usr/local/solr/tomcat/webapps/solr/WEB-INF/classes</p>
+<p>cp IKAnalyzer.cfg.xml ext_stopword.dic mydict.dic /usr/local/solr/tomcat/webapps/ROOT/WEB-INF/classes</p>
 <blockquote>
 <p>扩展词典及停用词词典的字符集必须是utf-8。不能使用windows记事本编辑。</p>
 </blockquote>

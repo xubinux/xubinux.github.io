@@ -782,7 +782,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">第41行</div><div class="line">&lt;env-entry&gt;</div><div class="line">   &lt;env-entry-name&gt;solr/home&lt;/env-entry-name&gt;</div><div class="line">   &lt;env-entry-value&gt;/usr/<span class="built_in">local</span>/solr/solrhome&lt;/env-entry-value&gt;</div><div class="line">   &lt;env-entry-type&gt;java.lang.String&lt;/env-entry-type&gt;</div><div class="line">&lt;/env-entry&gt;</div></pre></td></tr></table></figure>
 <h4 id="配置中文分词"><a href="#配置中文分词" class="headerlink" title="配置中文分词"></a>配置中文分词</h4><h5 id="解压-1"><a href="#解压-1" class="headerlink" title="解压"></a>解压</h5><p>IK Analyzer 2012FF_hf1.zip</p>
 <h5 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h5><p>cp IKAnalyzer2012FF_u1.jar /usr/local/solr/tomcat/webapps/ROOT/WEB-INF/lib/</p>
-<p>cp IKAnalyzer.cfg.xml ext_stopword.dic mydict.dic /usr/local/solr/tomcat/webapps/solr/WEB-INF/classes</p>
+<p>cp IKAnalyzer.cfg.xml ext_stopword.dic mydict.dic /usr/local/solr/tomcat/webapps/ROOT/WEB-INF/classes</p>
 <blockquote>
 <p>扩展词典及停用词词典的字符集必须是utf-8。不能使用windows记事本编辑。</p>
 </blockquote>
@@ -1140,9 +1140,9 @@
 <h4 id="解释配置文件"><a href="#解释配置文件" class="headerlink" title="解释配置文件"></a>解释配置文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">initLimit：这个配置项是用来配置 Zookeeper 接受客户端（这里所说的客户端不</div><div class="line">是用户连接 Zookeeper 服务器的客户端，而是 Zookeeper 服务器集群中连接到</div><div class="line">Leader 的 Follower 服务器）初始化连接时最长能忍受多少个心跳时间间隔数。</div><div class="line">当已经超过 10 个心跳的时间（也就是 tickTime）长度后 Zookeeper 服务器还没</div><div class="line">有收到客户端的返回信息，那么表明这个客户端连接失败。总的时间长度就是</div><div class="line">5*2000=10 秒。</div><div class="line"></div><div class="line">syncLimit：这个配置项标识 Leader 与 Follower 之间发送消息，请求和应答时</div><div class="line">间长度，最长不能超过多少个 tickTime 的时间长度，总的时间长度就是 2*2000=4</div><div class="line">秒。</div><div class="line"></div><div class="line">server.A=B:C:D：其中 A 是一个数字，表示这个是第几号服务器；B 是这个服务</div><div class="line">器的 IP 地址或/etc/hosts 文件中映射了 IP 的主机名；C 表示的是这个服务器与</div><div class="line">集群中的 Leader 服务器交换信息的端口；D 表示的是万一集群中的 Leader 服务</div><div class="line">器挂了，需要一个端口来重新进行选举，选出一个新的 Leader，而这个端口就是</div><div class="line">用来执行选举时服务器相互通信的端口。如果是伪集群的配置方式，由于 B 都是</div><div class="line">一样，所以不同的 Zookeeper 实例通信端口号不能一样，所以要给它们分配不同</div><div class="line">的端口号。</div></pre></td></tr></table></figure>
 <h4 id="新建myid文件"><a href="#新建myid文件" class="headerlink" title="新建myid文件"></a>新建myid文件</h4><p>cd /usr/local/zookeeper/data</p>
 <ul>
-<li>192.168.1.1机器:  echo 1 &gt;&gt; myid</li>
-<li>192.168.1.2机器:  echo 2 &gt;&gt; myid</li>
-<li>192.168.1.3机器:  echo 3 &gt;&gt; myid</li>
+<li>192.168.1.1机器:  echo 0 &gt;&gt; myid</li>
+<li>192.168.1.2机器:  echo 1 &gt;&gt; myid</li>
+<li>192.168.1.3机器:  echo 2 &gt;&gt; myid</li>
 </ul>
 <h4 id="编辑-bash-profile文件"><a href="#编辑-bash-profile文件" class="headerlink" title="编辑.bash_profile文件"></a>编辑.bash_profile文件</h4><p>添加<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> ZOOKEEPER_HOME=/usr/<span class="built_in">local</span>/zookeeper</div><div class="line"><span class="comment"># zookeeper env</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$ZOOKEEPER_HOME</span>/bin:<span class="variable">$PATH</span></div></pre></td></tr></table></figure></p>
 <p>使配置文件生效<br>$ source /home/zookeeper/.bash_profile</p>
