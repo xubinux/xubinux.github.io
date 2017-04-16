@@ -10,7 +10,7 @@
     
     <title>
         
-            标签: Spring | 
+            使用 Lombok 减少 Java Bean 代码 | 
         
         Binux Blog
     </title>
@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Binux">
     <meta name="description" content="一名正在崛起的Java后端工程师">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,Lombok">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -48,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://binux.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="标签: Spring | Binux Blog">
+    <meta property="og:title" content="使用 Lombok 减少 Java Bean 代码 | Binux Blog">
     <meta property="og:description" content="一名正在崛起的Java后端工程师">
-    
+    <meta property="og:article:tag" content="Lombok"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -217,92 +217,376 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
 
-    <!-- Normal Post -->
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加依赖"><span class="post-toc-number">1.</span> <span class="post-toc-text">添加依赖</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number"></span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#著作权声明"><span class="post-toc-number"></span> <span class="post-toc-text">著作权声明</span></a>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://on2bs9q7q.bkt.clouddn.com/Spring3.png)">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://on2bs9q7q.bkt.clouddn.com/20170416149232994822898.png)">
+    
+            <p class="article-headline-p">
+                使用 Lombok 减少 Java Bean 代码
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Binux</strong>
+        <span>4月 16, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACYUlEQVR42u3bwW6DQAwFwPz/T7fXShXk2WYXEg2nKqXgyQEb2339fPXxwsPDw8PDw8PDexjvFR9/zz+/wtFvj66QX/k8Njw8PLydvDeP2n/BHX1yFOLkq8ljw8PDw9vPqyaD/JPqQ38UGx4eHt7DeNUE0CuU8fDw8L6Jl7cPJokEDw8P71N4+Qt/8qCfn39DrwUPDw8v5k3K3NU/3zbfw8PDw7to6aqaBibl8gVLV3h4eHgLeL21gHw81kstvSvj4eHh7eFVx1rVxkF1VJYPz6JmBB4eHt4CXhWWMK5aPE3ujoeHh3cXbzJ86iWPZEjWLLvx8PDwFvOqgHkLeFKy4+Hh4T2Nl5fC1TPPg+s1cw/viIeHh7eY1xtN7Qy9vA6Lh4eHt5FXxeRfQTPQYkrAw8PD28NLHuK9ZsRkVJavf+Hh4eHdxcuL4N6Du5psktFa+V+k8PDw8BbzkltWC+heeiiPyvDw8PC28CaYvCzO27WjZIOHh4e3hVdt2iYt4B47j+rwLnh4eHiLefOX/3kRXB3FvfkrPDw8vMW8+TCs2p64KlWU27h4eHh4l/KqN+i1DOaLVtGaFx4eHt5iXm85tUqtrrfmrZDojQEPDw/vUt68kZoU0MlCVc5+EyEeHh7eYl510ao6GMvHZj02Hh4e3l28vPWQs/Mmb7VwL68O4OHh4S3j5SHmiWSSHnoJAw8PD+9pvN5qVL4oME8keHh4eE/mVZsF80HaqBmBh4eHt4CXNCPyQPOCO19liGLDw8PD28KbNAImY7BJ83fhfA8PDw/vlPd9Bx4eHh4eHh4e3gOOX3ZJ7pqF0IcEAAAAAElFTkSuQmCC">
+        </ul>
     
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/15/Spring-Framework/">Spring Framework实现源码分析(一) 源码阅读环境搭建</a></p>
-    </div>
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Lombok/">Lombok</a>
+    </ul>
+    
 
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
         
-            
-“Spring Framework&nbsp;&nbsp;&nbsp;&nbsp;Java最重要的框架,没有之一”...
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
         
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/15/Spring-Framework/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" width="44px" height="44px" alt="Binux's avatar">
-            </div>
-            <div>
-                <strong>Binux</strong>
-                <span>3月 15, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/源码分析/">源码分析</a>
-            </span>
+    
 
-            
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=使用 Lombok 减少 Java Bean 代码&url=http://binux.cn//2017/04/16/Lombok/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
 
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://binux.cn//2017/04/16/Lombok/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Binux Blog&title=使用 Lombok 减少 Java Bean 代码&summary=一名正在崛起的Java后端工程师&pics=http://binux.cnhttp://on2bs9q7q.bkt.clouddn.com/avatar.png&url=http://binux.cn/2017/04/16/Lombok/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
 </div>
 
-        
-        
-        
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>“这篇文章将介绍如何使用Lombok 来减少 Java Bean 的代码”</p>
+</blockquote>
+<p>##简介<br>lombok 就是一款可以简化 get/set/toString/equals 等方法的工具!</p>
+<ul>
+<li><a href="https://projectlombok.org" target="_blank" rel="external">官网</a></li>
+<li><a href="https://github.com/rzwitserloot/lombok" target="_blank" rel="external">GitHub</a></li>
+</ul>
+<p>##安装</p>
+<p>###IDE安装</p>
+<ul>
+<li>IDEA<br><img src="http://on2bs9q7q.bkt.clouddn.com/20170416149232607786005.png" alt="20170416149232607786005.png"></li>
+</ul>
+<ul>
+<li><p>eclipse / myeclipse 手动安装 lombok (没试过)</p>
+<ol>
+<li>将 lombok.jar 复制到 myeclipse.ini / eclipse.ini 所在的文件夹目录下</li>
+<li><p>打开 eclipse.ini / myeclipse.ini，在最后面插入以下两行并保存：</p>
+<ul>
+<li>-Xbootclasspath/a:lombok.jar</li>
+<li>-javaagent:lombok.jar</li>
+</ul>
+<p>3.重启 eclipse / myeclipse</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><ul>
+<li><p>Maven 地址</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.16.16<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Gradle 地址</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">provided "org.projectlombok:lombok:1.16.16"</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://projectlombok.org/downloads/lombok.jar" target="_blank" rel="external">jar 下载</a>手动添加</p>
+</li>
+</ul>
+<p>##使用</p>
+<p>###快速入门<br><img src="http://on2bs9q7q.bkt.clouddn.com/2017041614923263831722.png" alt="2017041614923263831722.png"></p>
+<p>直接类上加<code>@Data</code>注解 自动生成 getXxx()/setXxx()/toString()/equals(Object)等方法</p>
+<p>###注解说明</p>
+<p>####@NonNull<br>如果被注解属值为 <code>null</code> 将抛出 <code>NullPointerException</code></p>
+<p>可以修饰的对象为: FIELD(域),METHOD(方法),PARAMETER(参数),LOCAL_VARIABLE(局部变量)</p>
+<p>####@Cleanup<br>修饰 Java IO 类，会自动对资源调用close()方法关闭.</p>
+<p>可以修饰的对象为: LOCAL_VARIABLE(局部变量)</p>
+<p>####@Getter / @Setter<br>自动生成 <code>getXxx()</code>/<code>setXxx()</code></p>
+<p>#####@Getter(lazy=true)<br>当需要使用<code>get</code>获取的值需要非常大资源计算 可以创建一个<code>private final 变量</code>使用<code>@Getter(lazy=true)</code>修饰 用这次计算的值对其进行赋值。</p>
+<p>可以修饰的对象为: LOCAL_VARIABLE(局部变量)，TYPE(类、接口(包括注解类型)、enum)</p>
+<p>####@ToString<br>自动生成 <code>toString()</code></p>
+<p>可以修饰的对象为: TYPE(类、接口(包括注解类型)、enum)</p>
+<p>####@EqualsAndHashCode<br>自动生成 <code>equals()</code> 和 <code>hashCode()</code> 方法</p>
+<p>可以修饰的对象为: TYPE(类、接口(包括注解类型)、enum)</p>
+<p>####@NoArgsConstructor、@RequiredArgsConstructor、@AllArgsConstructor<br>自动生成 构造无参方法、构造非<code>final</code>或<code>@NonNull</code>修饰对象的有参构造方法、构造全部参数构造方法</p>
+<p>可以修饰的对象为: TYPE(类、接口(包括注解类型)、enum)</p>
+<p>####@Data<br>组合注解相当于:<code>@ToString</code>、<code>@EqualsAndHashCode</code>、<code>@Getter(全部)</code>、<code>@Setter(非final字段)</code>、<code>@RequiredArgsConstructor</code></p>
+<p>可以修饰的对象为: TYPE(类、接口(包括注解类型)、enum)</p>
+<p>####@Value<br>被修饰的会加<code>final</code>、<code>@ToString</code>、<code>@EqualsAndHashCode</code>、<code>@AllArgsConstructor</code>、<code>@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)</code>、<code>@Getter</code></p>
+<p>可以修饰的对象为: TYPE(类、接口(包括注解类型)、enum)</p>
+<p>####@Builder<br>生成一个内部类<code>BuilderExampleBuilder</code>可以使用链式编程创建对象。</p>
+<p>如:Person.builder().name(“Binux”).city(“NanJing.”).build();</p>
+<p>可以修饰的对象为: TYPE(类、接口(包括注解类型)、enum),CONSTRUCTOR(构造器),METHOD(方法)</p>
+<p>####@SneakyThrows<br>对修饰对象进行<code>try-catch</code> value为<code>Throwable&gt;[] value()</code> 可以声明异常类型</p>
+<p>可以修饰的对象为: CONSTRUCTOR(构造器),METHOD(方法)</p>
+<p>####@Synchronized<br>对修饰方法内进行加锁 <code>value</code>值为锁名称 锁为<code>Object</code>类型 </p>
+<p>如:<code>private final Object $lock = new Object[0];</code></p>
+<p>可以修饰的对象为: METHOD(方法)</p>
+<p>####@Log<br>当需要使用<code>get</code>获取的值需要非常大资源计算 可以创建一个<code>private final 变量</code> 用这次计算的值对其进行赋值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@CommonsLog</span></div><div class="line">Creates <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.apache.commons.logging.Log log = org.apache.commons.logging.LogFactory.getLog(LogExample.class);</div><div class="line"><span class="meta">@JBossLog</span></div><div class="line">Creates <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.jboss.logging.Logger log = org.jboss.logging.Logger.getLogger(LogExample.class);</div><div class="line"><span class="meta">@Log</span></div><div class="line">Creates <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> java.util.logging.Logger log = java.util.logging.Logger.getLogger(LogExample.class.getName());</div><div class="line"><span class="meta">@Log</span>4j</div><div class="line">Creates <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(LogExample.class);</div><div class="line"><span class="meta">@Log</span>4j2</div><div class="line">Creates <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.apache.logging.log4j.Logger log = org.apache.logging.log4j.LogManager.getLogger(LogExample.class);</div><div class="line"><span class="meta">@Slf</span>4j</div><div class="line">Creates <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(LogExample.class);</div><div class="line"><span class="meta">@XSlf</span>4j</div><div class="line">Creates <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.slf4j.ext.XLogger log = org.slf4j.ext.XLoggerFactory.getXLogger(LogExample.class);</div></pre></td></tr></table></figure>
+<p>可以修饰的对象为: TYPE(类、接口(包括注解类型)</p>
+<p>##详情请查看</p>
+<p><a href="https://projectlombok.org/features/index.html" target="_blank" rel="external">https://projectlombok.org/features/index.html</a></p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>lombok 解决了成员类型修改后 还需重新生成getXxx/setXxx()/toString()等方法的问题，还是很实用的。</p>
+<hr>
+<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
+
     
 
     
+</div>
 
-    
-        <script>
-    var randomNum;
 
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
+                
 
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
+                <!-- Post Comments -->
+                
+                    
 
-        locatePost = locatePost.next();
-    }
+
+
+
+    <!-- 使用 DISQUS_CLICK -->
+    <div id="disqus-comment">	
+        <div id="disqus_thread"></div>
+<!-- include js -->
+<script src="/js/ripple.js"></script>
+
+<!-- add animation -->
+<style>
+        .ripple-container {
+        }
+        .ripple-container .ripple{
+            background-color: rgba(255,255,255,0.4);
+            animation: ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+        }
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            80% {
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+		.disqus_click_btn {
+            background-color: dodgerblue;
+            color: white;
+            padding: 10px 20px;
+            border:0;
+            font-size: 14px;
+            cursor: pointer
+        }
+</style>
+	
+<!-- add data-ripple attribute -->
+<div class="btn_click_load"> 
+    <button class="disqus_click_btn" data-ripple>阅读评论 「请确保 disq.us &amp; disquscdn.com &amp; disqus.com 可以正常加载」</button>
+</div>
+	
+<script>
+    // add effect to elements
+    Array.prototype.forEach.call(document.querySelectorAll('[data-ripple]'), function(element){
+        // find all elements and attach effect
+        new RippleEffect(element); // element is instance of javascript element node
+    });
 </script>
 
+<script>
+    $('.btn_click_load').click(function() {  //click to load comments
+        var disqus_config = function () {
+            this.page.url = 'http://binux.cn/2017/04/16/Lombok/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//xubinux.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+  	
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
     
-</div>
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/03/16/HastSet-Source-Code/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -513,6 +797,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 

@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://binux.cn/2017/04/16/Lombok/</loc>
+    <lastmod>2017-04-16T08:08:52.000Z</lastmod>
+    <data>
+        <display>
+        <title>使用 Lombok 减少 Java Bean 代码</title>
+        <pubTime>2017-04-15T16:00:00.000Z</pubTime>
+        
+        <tag>Lombok</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="http://binux.cn/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://binux.cn/2017/03/04/Zookeeper-Cluster-Install/</loc>
     <lastmod>2017-04-16T02:46:46.000Z</lastmod>
     <data>
@@ -147,30 +167,6 @@
 
     
   <url>
-    <loc>http://binux.cn/2017/03/07/RocketMQ-Cluster-Install/</loc>
-    <lastmod>2017-03-19T13:48:39.000Z</lastmod>
-    <data>
-        <display>
-        <title>Xbin-Store(分布式商城)项目所用Linux服务系列 RocketMQ集群安装(七)</title>
-        <pubTime>2017-03-06T16:00:00.000Z</pubTime>
-        
-        <tag>XBin-Store</tag>
-         
-        <tag>Linux</tag>
-         
-        <tag>RocketMQ</tag>
-         
-         
-           
-             
-              <breadCrumb title="安装教程" url="http://binux.cn/categories/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://binux.cn/2017/03/03/Redis-Cluster-Install/</loc>
     <lastmod>2017-03-19T13:48:39.000Z</lastmod>
     <data>
@@ -183,6 +179,30 @@
         <tag>Linux</tag>
          
         <tag>Redis</tag>
+         
+         
+           
+             
+              <breadCrumb title="安装教程" url="http://binux.cn/categories/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://binux.cn/2017/03/07/RocketMQ-Cluster-Install/</loc>
+    <lastmod>2017-03-19T13:48:39.000Z</lastmod>
+    <data>
+        <display>
+        <title>Xbin-Store(分布式商城)项目所用Linux服务系列 RocketMQ集群安装(七)</title>
+        <pubTime>2017-03-06T16:00:00.000Z</pubTime>
+        
+        <tag>XBin-Store</tag>
+         
+        <tag>Linux</tag>
+         
+        <tag>RocketMQ</tag>
          
          
            
@@ -347,12 +367,12 @@
 
     
   <url>
-    <loc>http://binux.cn/2017/03/14/HastMap-Source-Code/</loc>
+    <loc>http://binux.cn/2017/03/09/Vector-Source-Code/</loc>
     <lastmod>2017-03-19T13:30:18.000Z</lastmod>
     <data>
         <display>
-        <title>JDK底层实现源码分析系列(四) HashMap源码分析</title>
-        <pubTime>2017-03-13T16:00:00.000Z</pubTime>
+        <title>JDK底层实现源码分析系列(二) Vector源码分析</title>
+        <pubTime>2017-03-08T16:00:00.000Z</pubTime>
         
         <tag>JDK</tag>
          
@@ -391,12 +411,12 @@
 
     
   <url>
-    <loc>http://binux.cn/2017/03/09/Vector-Source-Code/</loc>
+    <loc>http://binux.cn/2017/03/11/LinkedList-Source-Code/</loc>
     <lastmod>2017-03-19T13:30:18.000Z</lastmod>
     <data>
         <display>
-        <title>JDK底层实现源码分析系列(二) Vector源码分析</title>
-        <pubTime>2017-03-08T16:00:00.000Z</pubTime>
+        <title>JDK底层实现源码分析系列(三) LinkedList源码分析</title>
+        <pubTime>2017-03-10T16:00:00.000Z</pubTime>
         
         <tag>JDK</tag>
          
@@ -413,12 +433,12 @@
 
     
   <url>
-    <loc>http://binux.cn/2017/03/11/LinkedList-Source-Code/</loc>
+    <loc>http://binux.cn/2017/03/14/HastMap-Source-Code/</loc>
     <lastmod>2017-03-19T13:30:18.000Z</lastmod>
     <data>
         <display>
-        <title>JDK底层实现源码分析系列(三) LinkedList源码分析</title>
-        <pubTime>2017-03-10T16:00:00.000Z</pubTime>
+        <title>JDK底层实现源码分析系列(四) HashMap源码分析</title>
+        <pubTime>2017-03-13T16:00:00.000Z</pubTime>
         
         <tag>JDK</tag>
          
