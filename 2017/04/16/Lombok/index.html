@@ -410,16 +410,18 @@
 <p><strong>Enable annotation processing</strong>勾选</p>
 <ul>
 <li><p>eclipse / myeclipse 手动安装 lombok (没试过)</p>
-<ol>
-<li>将 lombok.jar 复制到 myeclipse.ini / eclipse.ini 所在的文件夹目录下</li>
+<ul>
+<li><p>将 lombok.jar 复制到 myeclipse.ini / eclipse.ini 所在的文件夹目录下</p>
+</li>
 <li><p>打开 eclipse.ini / myeclipse.ini，在最后面插入以下两行并保存：</p>
 <ul>
 <li>-Xbootclasspath/a:lombok.jar</li>
 <li>-javaagent:lombok.jar</li>
 </ul>
-<p>3.重启 eclipse / myeclipse</p>
 </li>
-</ol>
+<li><p>重启 eclipse / myeclipse</p>
+</li>
+</ul>
 </li>
 </ul>
 <h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><ul>
