@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://binux.cn/2017/05/08/Docker-Instal/</loc>
+    
+    <lastmod>2017-05-08T07:27:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://binux.cn/portfolio/index.html</loc>
     
     <lastmod>2017-05-08T06:42:21.000Z</lastmod>

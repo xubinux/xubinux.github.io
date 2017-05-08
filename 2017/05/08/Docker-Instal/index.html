@@ -10,7 +10,7 @@
     
     <title>
         
-            标签: Java | 
+            CentOS 7下 Docker 安装 | 
         
         Binux Blog
     </title>
@@ -27,7 +27,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Binux">
     <meta name="description" content="一名正在崛起的Java后端工程师">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,Linux,Docker">
 
     <!--iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -48,9 +48,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://binux.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="标签: Java | Binux Blog">
+    <meta property="og:title" content="CentOS 7下 Docker 安装 | Binux Blog">
     <meta property="og:description" content="一名正在崛起的Java后端工程师">
-    
+    <meta property="og:article:tag" content="Linux"> <meta property="og:article:tag" content="Docker"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -217,94 +217,329 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
 
-    <!-- Normal Post -->
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正文"><span class="post-toc-number">2.</span> <span class="post-toc-text">正文</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、安装CentOS-7"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1、安装CentOS 7</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#下载"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">下载</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装-略"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">安装 略</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#确认内核版本"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">确认内核版本</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、获取docker国内加速连接"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2、获取docker国内加速连接</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3、添加yum源"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3、添加yum源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4、安装"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">4、安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5、使用加速连接"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">5、使用加速连接</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6、启动"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">6、启动</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#尾巴"><span class="post-toc-number">3.</span> <span class="post-toc-text">尾巴</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">4.</span> <span class="post-toc-text">参考</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#著作权声明"><span class="post-toc-number">5.</span> <span class="post-toc-text">著作权声明</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://on2bs9q7q.bkt.clouddn.com/javabug.png)">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://on2bs9q7q.bkt.clouddn.com/20170508149422828337830.png)">
+    
+            <p class="article-headline-p">
+                CentOS 7下 Docker 安装
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Binux</strong>
+        <span>5月 08, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACb0lEQVR42u3aSXKEMBAEQP7/afvqw8BUtxYwkZwmMIuSg7pd0vHz6uPAw8PDw8PDw8N7GO+Ij7/Xf3hofP7saWdX5mPDw8PD28n7MtVeDigBXL8leU4yNjw8PLz9vLwYnF3zZcpuPbM8Njw8PLyH8a4BySSetM54eHh4b+LlrW3+OZJ4Ag8PD++ZvOrQ8+m+eu9tWQseHh5ezOstgO35fdv6Hh4eHt4Jr3oUXtMKhasBx4cR4uHh4S3mXS/z916c4PNmvbopAQ8PD28PL2+mk7/mGwKqVzZjXDw8PLypvGRSzqf46kSflIF8IxceHh7efl50c/yaanOcf+hCS42Hh4e3gDfSKOdhRC/C6D0NDw8Pbw9vdZHYcy8eHh7efl5v09XcoLZHwsPDw3sOLxncyLaAZLmrHBbj4eHhLeZVp/LeNXmAW41F8PDw8PbzerDqcn4e3Y4Hynh4eHireb3muFcwkt/5vVGMi4eHh7eMN95AVzebVsOOwhIaHh4e3mJeNU7NN98nHyIpRdVIAg8PD28Pb7xR7p1PSkseCuPh4eHt4VULwOTItVhmJvzHgIeHhzeJ11vKyoPapNXOl8qmLYDh4eHhDW8dSNriZIjjBSB/11AYgYeHh9fiVY+8eFQBydOieAIPDw9vMa8XNOTUkQWzhI2Hh4d3Fy8vBr3lq3wbQb6ZoLDpCg8PD28Zr9fmXre/+caCXnFqZi14eHh4G3lzP0F+Pllyw8PDw/svvDx4TYbei27x8PDw7uLlL+4tfSVvqW7/mpy14OHh4cW8ahCQlI28/FSj4XIYgYeHhzeV974DDw8PDw8PDw/vAccvnKT4dKx8y2MAAAAASUVORK5CYII=">
+        </ul>
     
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/02/26/List.remove()/">List.remove()无效!!!</a></p>
-    </div>
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Docker/">Docker</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Linux/">Linux</a>
+    </ul>
+    
 
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
         
-            
-“还是接触Java太少了，以前根本没碰到过，记录下这个小问题”
-
-
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
         
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/02/26/List.remove()/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" width="44px" height="44px" alt="Binux's avatar">
-            </div>
-            <div>
-                <strong>Binux</strong>
-                <span>2月 26, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/Bug/">Bug</a>
-            </span>
+    
 
-            
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=CentOS 7下 Docker 安装&url=http://binux.cn//2017/05/08/Docker-Instal/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
 
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://binux.cn//2017/05/08/Docker-Instal/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Binux Blog&title=CentOS 7下 Docker 安装&summary=一名正在崛起的Java后端工程师&pics=http://binux.cnhttp://on2bs9q7q.bkt.clouddn.com/avatar.png&url=http://binux.cn/2017/05/08/Docker-Instal/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
 </div>
 
-        
-        
-        
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>“CentOS 7下 Docker安装”</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="1、安装CentOS-7"><a href="#1、安装CentOS-7" class="headerlink" title="1、安装CentOS 7"></a>1、安装CentOS 7</h3><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p>Ali-OSM</p>
+<p><a href="http://mirrors.aliyun.com" target="_blank" rel="external">http://mirrors.aliyun.com</a></p>
+<h4 id="安装-略"><a href="#安装-略" class="headerlink" title="安装 略"></a>安装 略</h4><h4 id="确认内核版本"><a href="#确认内核版本" class="headerlink" title="确认内核版本"></a>确认内核版本</h4><p>uname -r</p>
+<p>3.10.0-514.16.1.el7.x86_64</p>
+<blockquote>
+<p>需大于3.10</p>
+</blockquote>
+<h3 id="2、获取docker国内加速连接"><a href="#2、获取docker国内加速连接" class="headerlink" title="2、获取docker国内加速连接"></a>2、获取docker国内加速连接</h3><p>这里使用阿里的</p>
+<p><a href="https://cr.console.aliyun.com/#/accelerator" target="_blank" rel="external">https://cr.console.aliyun.com/#/accelerator</a></p>
+<p><img src="http://on2bs9q7q.bkt.clouddn.com/20170508149422726525135.png" alt="20170508149422726525135.png"></p>
+<h3 id="3、添加yum源"><a href="#3、添加yum源" class="headerlink" title="3、添加yum源"></a>3、添加yum源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">sudo tee /etc/yum.repos.d/docker.repo &lt;&lt;-<span class="string">'EOF'</span></div><div class="line">[dockerrepo]</div><div class="line">name=Docker Repository</div><div class="line">baseurl=https://yum.dockerproject.org/repo/main/centos/7/</div><div class="line">enabled=1</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=https://yum.dockerproject.org/gpg</div><div class="line">EOF</div></pre></td></tr></table></figure>
+<h3 id="4、安装"><a href="#4、安装" class="headerlink" title="4、安装"></a>4、安装</h3><p>sudo yum install docker-engine</p>
+<h3 id="5、使用加速连接"><a href="#5、使用加速连接" class="headerlink" title="5、使用加速连接"></a>5、使用加速连接</h3><p>新建 docker 文件</p>
+<p>echo DOCKER_OPTS=”-H unix:///var/run/docker.sock -H 0.0.0.0:2375 –registry-mirror=国内仓库地址” &gt;&gt; /etc/sysconfig/docker</p>
+<p>修改 docker.service 添加 DOCKER_OPTS</p>
+<p>vim /lib/systemd/system/docker.service</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[Unit]</div><div class="line">Description=Docker Application Container Engine</div><div class="line">Documentation=https://docs.docker.com</div><div class="line">After=network-online.target firewalld.service</div><div class="line">Wants=network-online.target</div><div class="line"></div><div class="line">[Service]</div><div class="line">Type=notify</div><div class="line"><span class="comment"># the default is not to use systemd for cgroups because the delegate issues still</span></div><div class="line"><span class="comment"># exists and systemd currently does not support the cgroup feature set required</span></div><div class="line"><span class="comment"># for containers run by docker</span></div><div class="line"></div><div class="line">EnvironmentFile=-/etc/sysconfig/docker</div><div class="line"></div><div class="line">ExecStart=/usr/bin/dockerd <span class="variable">$DOCKER_OPTS</span></div><div class="line">...</div></pre></td></tr></table></figure>
+<h3 id="6、启动"><a href="#6、启动" class="headerlink" title="6、启动"></a>6、启动</h3><p>sudo systemctl start docker</p>
+<p>查看 是否启动成功</p>
+<p>ps -ef | grep docker</p>
+<p>看见参数 则启动成功</p>
+<h2 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h2><p>接下来 开始愉快的 Docker 之旅吧！</p>
+<hr>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://dcos.io/docs/1.7/administration/installing/custom/system-requirements/install-docker-centos/" target="_blank" rel="external">https://dcos.io/docs/1.7/administration/installing/custom/system-requirements/install-docker-centos/</a></p>
+<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
+
     
 
     
+</div>
 
-    
-        <script>
-    var randomNum;
 
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
+                
 
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
+                <!-- Post Comments -->
+                
+                    
 
-        locatePost = locatePost.next();
-    }
+
+
+
+    <!-- 使用 DISQUS_CLICK -->
+    <div id="disqus-comment">	
+        <div id="disqus_thread"></div>
+<!-- include js -->
+<script src="/js/ripple.js"></script>
+
+<!-- add animation -->
+<style>
+        .ripple-container {
+        }
+        .ripple-container .ripple{
+            background-color: rgba(255,255,255,0.4);
+            animation: ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+        }
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            80% {
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+		.disqus_click_btn {
+            background-color: dodgerblue;
+            color: white;
+            padding: 10px 20px;
+            border:0;
+            font-size: 14px;
+            cursor: pointer
+        }
+</style>
+	
+<!-- add data-ripple attribute -->
+<div class="btn_click_load"> 
+    <button class="disqus_click_btn" data-ripple>阅读评论 「请确保 disq.us &amp; disquscdn.com &amp; disqus.com 可以正常加载」</button>
+</div>
+	
+<script>
+    // add effect to elements
+    Array.prototype.forEach.call(document.querySelectorAll('[data-ripple]'), function(element){
+        // find all elements and attach effect
+        new RippleEffect(element); // element is instance of javascript element node
+    });
 </script>
 
+<script>
+    $('.btn_click_load').click(function() {  //click to load comments
+        var disqus_config = function () {
+            this.page.url = 'http://binux.cn/2017/05/08/Docker-Instal/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//xubinux.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+  	
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
     
-</div>
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/05/08/xbin-store/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -525,6 +760,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 
