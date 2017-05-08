@@ -10,6 +10,8 @@
     
     <title>
         
+            About ME | 
+        
         Binux Blog
     </title>
 
@@ -46,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://binux.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Binux Blog">
+    <meta property="og:title" content="About ME | Binux Blog">
     <meta property="og:description" content="一名正在崛起的Java后端工程师">
     
 
@@ -215,615 +217,272 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
-
-    <!-- Pin on top -->
-    
-
-    <!-- Normal Post -->
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://on2bs9q7q.bkt.clouddn.com/ArrayList.jpg)">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/09/ArrayList-Source-Code/">JDK底层实现源码分析系列(一) ArrayList源码分析</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-“合抱之木 生于毫末 九层之台 起于累土 千里之行 始于足下”
+                    <!-- Post TOC -->
 
 
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/09/ArrayList-Source-Code/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" width="44px" height="44px" alt="Binux's avatar">
-            </div>
-            <div>
-                <strong>Binux</strong>
-                <span>3月 09, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/源码分析/">源码分析</a>
-            </span>
+<!-- Layouts -->
 
-            
+    <!-- Post Module -->
+    <div class="material-post_container">
 
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
 
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://on2bs9q7q.bkt.clouddn.com/Linux-RocketMQ-blog.png)">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://on2bs9q7q.bkt.clouddn.com/20170508149422527238090.png)">
+    
+            <p class="article-headline-p">
+                About ME
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Binux</strong>
+        <span>5月 08, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAAB7ElEQVR42u3aOXbDMAwFQN//0kmbxswHKCmhMaz8vEgaF3jYXl8fcV4YGBgYGBgYGP+G8YrP+lc/33/3ev2r8jNgYGAMY/wS2paMhLe+ZvMZMDAwRjLyMPruxutvVq+/pmJgYGD0GOsAnX+KgYGBcRUjSe+SohQDAwPj2iI2Lz6r1EdrcQwMjAMZeVP+vtePzjcwMDCOYpRXHIqNtnyo8OjOCAYGxlGMPPDlDbVq8pffFwMDYyajtyRx38pXXuhiYGDMYeysnOZ/x7UrYhgYGNMYvSZ+UpomC2S91Q0MDIyZjGoQTD6thuzy8hkGBsYwRq+tli9JVE/0Z2FgYIxh9JKz6vCgOviMSl8MDIwxjLywzJckkvK1el8MDIzJjKRNVn2s/NGr72BgYExmVG+cDD53itioPYeBgTGekaRuO0lefp2tgIuBgfFxjF7TrTdaSBp25SIWAwNjDCMPf9UAmieLUfjGwMAYw6ie6rJFdTyZh2MMDIw5jGrbqzcMyJcqkmQRAwNjJqP6QDsFbVKyRqEZAwNjJKO58h406XpNt63BAAYGxnhGb0liJ8Vsdg0xMDAwWqE2CbvJFTAwMGYy8jWL3vpFPqq8vRbHwMA4kNFL9arDgGqCeON8AwMD4yjGuQcDAwMDAwMD40/PN3F6T8yLEzvpAAAAAElFTkSuQmCC">
+        </ul>
     
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/07/RocketMQ-Cluster-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 RocketMQ集群安装(七)</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
         
-            
-“这篇文章将介绍如何安装Solr集群,如何对Solr集群集群进行操作,以及使用Java客户端进行操作!”
+    </ul>
+    
 
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
         
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/07/RocketMQ-Cluster-Install/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" width="44px" height="44px" alt="Binux's avatar">
-            </div>
-            <div>
-                <strong>Binux</strong>
-                <span>3月 07, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/安装教程/">安装教程</a>
-            </span>
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
 
-            
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=About ME&url=http://binux.cn//portfolio/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
 
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://binux.cn//portfolio/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Binux Blog&title=About ME&summary=一名正在崛起的Java后端工程师&pics=http://binux.cnhttp://on2bs9q7q.bkt.clouddn.com/avatar.png&url=http://binux.cn/portfolio/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
 </div>
 
-        
-        
-        
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+        <style>
+.pro_name a{color: #4183c4;}
+.osc_git_title{background-color: #fff;}
+.osc_git_box{background-color: #fff;}
+.osc_git_box{border-color: #E3E9ED;}
+.osc_git_info{color: #666;}
+.osc_git_main a{color: #9B9B9B;}
+</style>
+
+<script src="//git.oschina.net/binu/xbin-store/widget_preview"></script>
+
+<hr>
+<script src="//git.oschina.net/binu/xbin-store-cloud/widget_preview"></script>
+
+
     
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://on2bs9q7q.bkt.clouddn.com/Linux-Solr-blog.png)">
+
     
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/06/Solr-Cluster-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Solr集群安装(六)</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-“这篇文章将介绍如何安装Solr集群,如何对Solr集群集群进行操作,以及使用Java客户端进行操作!”
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/06/Solr-Cluster-Install/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" width="44px" height="44px" alt="Binux's avatar">
-            </div>
-            <div>
-                <strong>Binux</strong>
-                <span>3月 06, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/安装教程/">安装教程</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
 </div>
 
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://on2bs9q7q.bkt.clouddn.com/Linux-FastDFS-blog.png)">
-    
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/05/FastDFS-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 FastDFS安装(五)</a></p>
-    </div>
+                
 
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-“这篇文章将介绍如何安装FastDFS,集群有点麻烦 可能以后会写篇 毕竟我个人开发是足够的”
+                <!-- Post Comments -->
+                
+                    
 
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/05/FastDFS-Install/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" width="44px" height="44px" alt="Binux's avatar">
-            </div>
-            <div>
-                <strong>Binux</strong>
-                <span>3月 05, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/安装教程/">安装教程</a>
-            </span>
 
-            
 
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
+
+    <!-- 使用 DISQUS_CLICK -->
+    <div id="disqus-comment">	
+        <div id="disqus_thread"></div>
+<!-- include js -->
+<script src="/js/ripple.js"></script>
+
+<!-- add animation -->
+<style>
+        .ripple-container {
+        }
+        .ripple-container .ripple{
+            background-color: rgba(255,255,255,0.4);
+            animation: ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+        }
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            80% {
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+		.disqus_click_btn {
+            background-color: dodgerblue;
+            color: white;
+            padding: 10px 20px;
+            border:0;
+            font-size: 14px;
+            cursor: pointer
+        }
+</style>
+	
+<!-- add data-ripple attribute -->
+<div class="btn_click_load"> 
+    <button class="disqus_click_btn" data-ripple>阅读评论 「请确保 disq.us &amp; disquscdn.com &amp; disqus.com 可以正常加载」</button>
 </div>
-
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://on2bs9q7q.bkt.clouddn.com/Linux-Nginx-blog.png)">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/04/Nginx-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Nginx安装(四)</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-“这篇文章将介绍如何安装Nginx。”
-
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/04/Nginx-Install/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" width="44px" height="44px" alt="Binux's avatar">
-            </div>
-            <div>
-                <strong>Binux</strong>
-                <span>3月 04, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/安装教程/">安装教程</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://on2bs9q7q.bkt.clouddn.com/Linux-Zookeeper-blog.png)">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/04/Zookeeper-Cluster-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三)</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-“这篇文章将介绍如何安装Zookeeper集群”
-
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/04/Zookeeper-Cluster-Install/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" width="44px" height="44px" alt="Binux's avatar">
-            </div>
-            <div>
-                <strong>Binux</strong>
-                <span>3月 04, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/安装教程/">安装教程</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://on2bs9q7q.bkt.clouddn.com/Linux-Redis-blog.png)">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/03/Redis-Cluster-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Redis集群安装(二)</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-“这篇文章将介绍如何安装Redis集群(6节点 3主3从),并且如何对Redis集群进行操作,以及Jedis进行操作!”
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/03/Redis-Cluster-Install/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" width="44px" height="44px" alt="Binux's avatar">
-            </div>
-            <div>
-                <strong>Binux</strong>
-                <span>3月 03, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/安装教程/">安装教程</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://on2bs9q7q.bkt.clouddn.com/Mac-MySQL-blog.png)">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/02/Mac-MySQL-Error/">解决Java程序连接不上MySQL 但是Navicat可以连接的问题!</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-“这篇文章将讲一个困扰了我3天的问题 Java连接不上MySQL”
-
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/02/Mac-MySQL-Error/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" width="44px" height="44px" alt="Binux's avatar">
-            </div>
-            <div>
-                <strong>Binux</strong>
-                <span>3月 02, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/Bug/">Bug</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://on2bs9q7q.bkt.clouddn.com/Linux-MySQL-blog.png)">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/01/Linux-MySQL-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 MySQL安装(一)</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-“这篇文章将介绍如何Linux下如何安装MySQL 只适合Linux小白看 大神勿喷”
-...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/01/Linux-MySQL-Install/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" width="44px" height="44px" alt="Binux's avatar">
-            </div>
-            <div>
-                <strong>Binux</strong>
-                <span>3月 01, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/安装教程/">安装教程</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-        
-        
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://on2bs9q7q.bkt.clouddn.com/Mac-MySQL-blog.png)">
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/02/27/Mac-MySQL-Garbled/">完美解决Mac下Navicat Premium连接MySQL5.7中文乱码！！！</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-“记录下 毕竟也是当初困扰自己好久的问题！”
-
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/02/27/Mac-MySQL-Garbled/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" width="44px" height="44px" alt="Binux's avatar">
-            </div>
-            <div>
-                <strong>Binux</strong>
-                <span>2月 27, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/Bug/">Bug</a>
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-        
-    
-
-    
-    <!-- Index nav -->
-        <nav class="material-nav mdl-cell mdl-cell--12-col">
-            <a class="extend prev" rel="prev" href="/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_back</i></button></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_forward</i></button></a>
-        </nav>
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
-
-        locatePost = locatePost.next();
-    }
+	
+<script>
+    // add effect to elements
+    Array.prototype.forEach.call(document.querySelectorAll('[data-ripple]'), function(element){
+        // find all elements and attach effect
+        new RippleEffect(element); // element is instance of javascript element node
+    });
 </script>
 
+<script>
+    $('.btn_click_load').click(function() {  //click to load comments
+        var disqus_config = function () {
+            this.page.url = 'http://binux.cn/portfolio/index.html';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//xubinux.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+  	
+
+    </div>
+    <style>
+        #disqus-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
     
-</div>
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -1044,14 +703,6 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
-
-                    
-                        <!-- Footer Top Button -->
-                        <div class="toTop-wrap">
-    <a href="#top" class="toTop">
-        <i class="material-icons footer_top-i">expand_less</i>
-    </a>
-</div>
 
                     
 
