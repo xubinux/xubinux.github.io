@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://binux.cn/2017/05/08/xbin-store/</loc>
+    
+    <lastmod>2017-05-08T06:19:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://binux.cn/2017/04/16/Lombok/</loc>
     
     <lastmod>2017-04-18T03:34:23.000Z</lastmod>
@@ -114,6 +121,20 @@
   </url>
   
   <url>
+    <loc>http://binux.cn/2017/03/11/LinkedList-Source-Code/</loc>
+    
+    <lastmod>2017-03-19T13:30:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://binux.cn/2017/03/14/HastMap-Source-Code/</loc>
+    
+    <lastmod>2017-03-19T13:30:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://binux.cn/2017/03/09/ArrayList-Source-Code/</loc>
     
     <lastmod>2017-03-19T13:30:18.000Z</lastmod>
@@ -129,20 +150,6 @@
   
   <url>
     <loc>http://binux.cn/2017/03/16/HastSet-Source-Code/</loc>
-    
-    <lastmod>2017-03-19T13:30:18.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://binux.cn/2017/03/11/LinkedList-Source-Code/</loc>
-    
-    <lastmod>2017-03-19T13:30:18.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://binux.cn/2017/03/14/HastMap-Source-Code/</loc>
     
     <lastmod>2017-03-19T13:30:18.000Z</lastmod>
     
