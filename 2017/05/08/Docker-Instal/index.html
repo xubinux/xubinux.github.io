@@ -40,7 +40,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Binux">
     <meta name="description" content="一名正在崛起的Java后端工程师">
-    <meta name="keywords" content="null,Linux,Docker">
+    <meta name="keywords" content="null,Docker,Linux">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="http://on2bs9q7q.bkt.clouddn.com/avatar.png">
@@ -68,7 +68,7 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="CentOS 7下 Docker 安装 | Binux Blog">
     <meta property="og:description" content="一名正在崛起的Java后端工程师">
-    <meta property="og:article:tag" content="Linux"> <meta property="og:article:tag" content="Docker"> 
+    <meta property="og:article:tag" content="Docker"> <meta property="og:article:tag" content="Linux"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -227,7 +227,7 @@
 
     <!-- Custom Head -->
     
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -439,13 +439,37 @@
 <h3 id="2、获取docker国内加速连接"><a href="#2、获取docker国内加速连接" class="headerlink" title="2、获取docker国内加速连接"></a>2、获取docker国内加速连接</h3><p>这里使用阿里的</p>
 <p><a href="https://cr.console.aliyun.com/#/accelerator" target="_blank" rel="external">https://cr.console.aliyun.com/#/accelerator</a></p>
 <p><img src="http://on2bs9q7q.bkt.clouddn.com/20170508149422726525135.png" alt="20170508149422726525135.png"></p>
-<h3 id="3、添加yum源"><a href="#3、添加yum源" class="headerlink" title="3、添加yum源"></a>3、添加yum源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">sudo tee /etc/yum.repos.d/docker.repo &lt;&lt;-<span class="string">'EOF'</span></div><div class="line">[dockerrepo]</div><div class="line">name=Docker Repository</div><div class="line">baseurl=https://yum.dockerproject.org/repo/main/centos/7/</div><div class="line">enabled=1</div><div class="line">gpgcheck=1</div><div class="line">gpgkey=https://yum.dockerproject.org/gpg</div><div class="line">EOF</div></pre></td></tr></table></figure>
+<h3 id="3、添加yum源"><a href="#3、添加yum源" class="headerlink" title="3、添加yum源"></a>3、添加yum源</h3><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">tee</span> /etc/yum.repos.d/docker.repo <span class="token operator">&lt;&lt;</span>-<span class="token string">'EOF'</span>
+<span class="token punctuation">[</span>dockerrepo<span class="token punctuation">]</span>
+name<span class="token operator">=</span>Docker Repository
+baseurl<span class="token operator">=</span>https://yum.dockerproject.org/repo/main/centos/7/
+enabled<span class="token operator">=</span>1
+gpgcheck<span class="token operator">=</span>1
+gpgkey<span class="token operator">=</span>https://yum.dockerproject.org/gpg
+EOF
+</code></pre>
 <h3 id="4、安装"><a href="#4、安装" class="headerlink" title="4、安装"></a>4、安装</h3><p>sudo yum install docker-engine</p>
 <h3 id="5、使用加速连接"><a href="#5、使用加速连接" class="headerlink" title="5、使用加速连接"></a>5、使用加速连接</h3><p>新建 docker 文件</p>
 <p>echo DOCKER_OPTS=”-H unix:///var/run/docker.sock -H 0.0.0.0:2375 –registry-mirror=国内仓库地址” &gt;&gt; /etc/sysconfig/docker</p>
 <p>修改 docker.service 添加 DOCKER_OPTS</p>
 <p>vim /lib/systemd/system/docker.service</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[Unit]</div><div class="line">Description=Docker Application Container Engine</div><div class="line">Documentation=https://docs.docker.com</div><div class="line">After=network-online.target firewalld.service</div><div class="line">Wants=network-online.target</div><div class="line"></div><div class="line">[Service]</div><div class="line">Type=notify</div><div class="line"><span class="comment"># the default is not to use systemd for cgroups because the delegate issues still</span></div><div class="line"><span class="comment"># exists and systemd currently does not support the cgroup feature set required</span></div><div class="line"><span class="comment"># for containers run by docker</span></div><div class="line"></div><div class="line">EnvironmentFile=-/etc/sysconfig/docker</div><div class="line"></div><div class="line">ExecStart=/usr/bin/dockerd <span class="variable">$DOCKER_OPTS</span></div><div class="line">...</div></pre></td></tr></table></figure>
+<pre class=" language-bash"><code class="language-bash"><span class="token punctuation">[</span>Unit<span class="token punctuation">]</span>
+Description<span class="token operator">=</span>Docker Application Container Engine
+Documentation<span class="token operator">=</span>https://docs.docker.com
+After<span class="token operator">=</span>network-online.target firewalld.service
+Wants<span class="token operator">=</span>network-online.target
+
+<span class="token punctuation">[</span>Service<span class="token punctuation">]</span>
+Type<span class="token operator">=</span>notify
+<span class="token comment" spellcheck="true"># the default is not to use systemd for cgroups because the delegate issues still</span>
+<span class="token comment" spellcheck="true"># exists and systemd currently does not support the cgroup feature set required</span>
+<span class="token comment" spellcheck="true"># for containers run by docker</span>
+
+EnvironmentFile<span class="token operator">=</span>-/etc/sysconfig/docker
+
+ExecStart<span class="token operator">=</span>/usr/bin/dockerd <span class="token variable">$DOCKER_OPTS</span>
+<span class="token punctuation">..</span>.
+</code></pre>
 <h3 id="6、启动"><a href="#6、启动" class="headerlink" title="6、启动"></a>6、启动</h3><p>sudo systemctl start docker</p>
 <p>查看 是否启动成功</p>
 <p>ps -ef | grep docker</p>

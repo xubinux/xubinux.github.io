@@ -40,7 +40,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Binux">
     <meta name="description" content="一名正在崛起的Java后端工程师">
-    <meta name="keywords" content="null,XBin-Store,Linux,RocketMQ">
+    <meta name="keywords" content="null,Linux,XBin-Store,RocketMQ">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="http://on2bs9q7q.bkt.clouddn.com/avatar.png">
@@ -68,7 +68,7 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Xbin-Store(分布式商城)项目所用Linux服务系列 RocketMQ集群安装(七) | Binux Blog">
     <meta property="og:description" content="一名正在崛起的Java后端工程师">
-    <meta property="og:article:tag" content="XBin-Store"> <meta property="og:article:tag" content="Linux"> <meta property="og:article:tag" content="RocketMQ"> 
+    <meta property="og:article:tag" content="Linux"> <meta property="og:article:tag" content="XBin-Store"> <meta property="og:article:tag" content="RocketMQ"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -227,7 +227,7 @@
 
     <!-- Custom Head -->
     
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -492,24 +492,154 @@
 <li><a href="https://github.com/JoeyFan/rocketmq-console" target="_blank" rel="external">rocketmq-console</a></li>
 </ul>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="安装-4台同时"><a href="#安装-4台同时" class="headerlink" title="安装(4台同时)"></a>安装(4台同时)</h3><h4 id="安装JDK-略"><a href="#安装JDK-略" class="headerlink" title="安装JDK 略"></a>安装JDK 略</h4><h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tar -zxvf alibaba-rocketmq-3.2.6.tar.gz -C /usr/<span class="built_in">local</span></div><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span></div><div class="line">ln <span class="_">-s</span> alibaba-rocketmq rocketmq</div></pre></td></tr></table></figure>
-<h4 id="创建存储路径"><a href="#创建存储路径" class="headerlink" title="创建存储路径"></a>创建存储路径</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir /usr/<span class="built_in">local</span>/rocketmq/store</div><div class="line">mkdir /usr/<span class="built_in">local</span>/rocketmq/store/commitlog</div><div class="line">mkdir /usr/<span class="built_in">local</span>/rocketmq/store/consumequeue</div><div class="line">mkdir /usr/<span class="built_in">local</span>/rocketmq/store/index</div></pre></td></tr></table></figure>
-<h4 id="配置RocketMQ配置文件"><a href="#配置RocketMQ配置文件" class="headerlink" title="配置RocketMQ配置文件"></a>配置RocketMQ配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vim /usr/<span class="built_in">local</span>/rocketmq/conf/2m-2s-async/broker-a.properties</div><div class="line">vim /usr/<span class="built_in">local</span>/rocketmq/conf/2m-2s-async/broker-b.properties</div><div class="line">vim /usr/<span class="built_in">local</span>/rocketmq/conf/2m-2s-async/broker<span class="_">-a</span>-s.properties</div><div class="line">vim /usr/<span class="built_in">local</span>/rocketmq/conf/2m-2s-async/broker-b-s.properties</div></pre></td></tr></table></figure>
-<h5 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#所属集群名字 （注意不要有空格）</span></div><div class="line">brokerClusterName=rocketmq-cluster</div><div class="line"><span class="comment">#broker名字，注意此处不同的配置文件填写的不一样 192.168.1.1/192.168.1.3 填broker-a 192.168.1.2/192.168.1.4 填broker-b</span></div><div class="line">brokerName=(broker<span class="_">-a</span>|broker-b)</div><div class="line"><span class="comment">#0 表示 Master，&gt;0 表示 Slave  192.168.1.1/192.168.1.2 填0 192.168.1.3/192.168.1.4 填1</span></div><div class="line">brokerId=0</div><div class="line"><span class="comment">#本机IP 默认识别 多块网卡会导致识别错误</span></div><div class="line">brokerIP1=本机IP</div><div class="line"><span class="comment">#nameServer地址，分号分割</span></div><div class="line">namesrvAddr=192.168.1.1:9876;192.168.1.2:9876;192.168.1.3:9876;192.168.1.4:9876</div><div class="line"><span class="comment">#在发送消息时，自动创建服务器不存在的topic，默认创建的队列数</span></div><div class="line">defaultTopicQueueNums=4</div><div class="line"><span class="comment">#是否允许 Broker 自动创建Topic，建议线下开启，线上关闭</span></div><div class="line">autoCreateTopicEnable=<span class="literal">true</span></div><div class="line"><span class="comment">#是否允许 Broker 自动创建订阅组，建议线下开启，线上关闭</span></div><div class="line">autoCreateSubscriptionGroup=<span class="literal">true</span></div><div class="line"><span class="comment">#Broker 对外服务的监听端口</span></div><div class="line">listenPort=10911</div><div class="line"><span class="comment">#删除文件时间点，默认凌晨 4点</span></div><div class="line">deleteWhen=04</div><div class="line"><span class="comment">#文件保留时间，默认 48 小时</span></div><div class="line">fileReservedTime=120</div><div class="line"><span class="comment">#commitLog每个文件的大小默认1G</span></div><div class="line">mapedFileSizeCommitLog=1073741824</div><div class="line"><span class="comment">#ConsumeQueue每个文件默认存30W条，根据业务情况调整</span></div><div class="line">mapedFileSizeConsumeQueue=300000</div><div class="line"><span class="comment">#destroyMapedFileIntervalForcibly=120000</span></div><div class="line"><span class="comment">#redeleteHangedFileInterval=120000</span></div><div class="line"><span class="comment">#检测物理文件磁盘空间</span></div><div class="line">diskMaxUsedSpaceRatio=88</div><div class="line"></div><div class="line"><span class="comment">#存储路径</span></div><div class="line">storePathRootDir=/usr/<span class="built_in">local</span>/rocketmq/store</div><div class="line"><span class="comment">#commitLog 存储路径</span></div><div class="line">storePathCommitLog=/usr/<span class="built_in">local</span>/rocketmq/store/commitlog</div><div class="line"><span class="comment">#消费队列存储路径存储路径</span></div><div class="line">storePathConsumeQueue=/usr/<span class="built_in">local</span>/rocketmq/store/consumequeue</div><div class="line"><span class="comment">#消息索引存储路径</span></div><div class="line">storePathIndex=/usr/<span class="built_in">local</span>/rocketmq/store/index</div><div class="line"><span class="comment">#checkpoint 文件存储路径</span></div><div class="line">storeCheckpoint=/usr/<span class="built_in">local</span>/rocketmq/store/checkpoint</div><div class="line"><span class="comment">#abort 文件存储路径</span></div><div class="line">abortFile=/usr/<span class="built_in">local</span>/rocketmq/store/abort</div><div class="line"><span class="comment">#限制的消息大小</span></div><div class="line">maxMessageSize=65536</div><div class="line"></div><div class="line"><span class="comment">#flushCommitLogLeastPages=4</span></div><div class="line"><span class="comment">#flushConsumeQueueLeastPages=2</span></div><div class="line"><span class="comment">#flushCommitLogThoroughInterval=10000</span></div><div class="line"><span class="comment">#flushConsumeQueueThoroughInterval=60000</span></div><div class="line"></div><div class="line"><span class="comment">#Broker 的角色  192.168.1.1/192.168.1.2 填ASYNC_MASTER 192.168.1.3/192.168.1.4 填SLAVE</span></div><div class="line"><span class="comment">#- ASYNC_MASTER 异步复制Master</span></div><div class="line"><span class="comment">#- SYNC_MASTER 同步双写Master</span></div><div class="line"><span class="comment">#- SLAVE</span></div><div class="line">brokerRole=ASYNC_MASTER</div><div class="line"></div><div class="line"><span class="comment">#刷盘方式</span></div><div class="line"><span class="comment">#- ASYNC_FLUSH 异步刷盘</span></div><div class="line"><span class="comment">#- SYNC_FLUSH 同步刷盘</span></div><div class="line">flushDiskType=ASYNC_FLUSH</div><div class="line"></div><div class="line"><span class="comment">#checkTransactionMessageEnable=false</span></div><div class="line"><span class="comment">#发消息线程池数量</span></div><div class="line"><span class="comment">#sendMessageThreadPoolNums=128</span></div><div class="line"><span class="comment">#拉消息线程池数量</span></div><div class="line"><span class="comment">#pullMessageThreadPoolNums=128</span></div><div class="line"><span class="comment">#filterNums</span></div><div class="line"><span class="comment">#filterServerNums=1</span></div></pre></td></tr></table></figure>
-<h4 id="修改日志配置文件"><a href="#修改日志配置文件" class="headerlink" title="修改日志配置文件"></a>修改日志配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir -p /usr/<span class="built_in">local</span>/rocketmq/logs</div><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/rocketmq/conf &amp;&amp; sed -i <span class="string">'s#$&#123;user.home&#125;#/usr/local/rocketmq#g'</span> *.xml</div></pre></td></tr></table></figure>
-<h4 id="修改启动脚本参数（测试时虚拟机内存不够修改）"><a href="#修改启动脚本参数（测试时虚拟机内存不够修改）" class="headerlink" title="修改启动脚本参数（测试时虚拟机内存不够修改）"></a>修改启动脚本参数（测试时虚拟机内存不够修改）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim /usr/<span class="built_in">local</span>/rocketmq/bin/runbroker.sh</div><div class="line">JAVA_OPT=<span class="string">"<span class="variable">$&#123;JAVA_OPT&#125;</span> -server -Xms1g -Xmx1g -Xmn512m - XX:PermSize=128m -XX:MaxPermSize=320m"</span></div><div class="line"></div><div class="line">vim /usr/<span class="built_in">local</span>/rocketmq/bin/runserver.sh</div><div class="line">JAVA_OPT=<span class="string">"<span class="variable">$&#123;JAVA_OPT&#125;</span> -server -Xms1g -Xmx1g -Xmn512m - XX:PermSize=128m -XX:MaxPermSize=320m"</span></div></pre></td></tr></table></figure>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="安装-4台同时"><a href="#安装-4台同时" class="headerlink" title="安装(4台同时)"></a>安装(4台同时)</h3><h4 id="安装JDK-略"><a href="#安装JDK-略" class="headerlink" title="安装JDK 略"></a>安装JDK 略</h4><h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><pre class=" language-bash"><code class="language-bash"><span class="token function">tar</span> -zxvf alibaba-rocketmq-3.2.6.tar.gz -C /usr/local
+<span class="token function">cd</span> /usr/local
+<span class="token function">ln</span> -s alibaba-rocketmq rocketmq
+</code></pre>
+<h4 id="创建存储路径"><a href="#创建存储路径" class="headerlink" title="创建存储路径"></a>创建存储路径</h4><pre class=" language-bash"><code class="language-bash"><span class="token function">mkdir</span> /usr/local/rocketmq/store
+<span class="token function">mkdir</span> /usr/local/rocketmq/store/commitlog
+<span class="token function">mkdir</span> /usr/local/rocketmq/store/consumequeue
+<span class="token function">mkdir</span> /usr/local/rocketmq/store/index
+</code></pre>
+<h4 id="配置RocketMQ配置文件"><a href="#配置RocketMQ配置文件" class="headerlink" title="配置RocketMQ配置文件"></a>配置RocketMQ配置文件</h4><pre class=" language-bash"><code class="language-bash">vim /usr/local/rocketmq/conf/2m-2s-async/broker-a.properties
+vim /usr/local/rocketmq/conf/2m-2s-async/broker-b.properties
+vim /usr/local/rocketmq/conf/2m-2s-async/broker-a-s.properties
+vim /usr/local/rocketmq/conf/2m-2s-async/broker-b-s.properties
+</code></pre>
+<h5 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h5><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#所属集群名字 （注意不要有空格）</span>
+brokerClusterName<span class="token operator">=</span>rocketmq-cluster
+<span class="token comment" spellcheck="true">#broker名字，注意此处不同的配置文件填写的不一样 192.168.1.1/192.168.1.3 填broker-a 192.168.1.2/192.168.1.4 填broker-b</span>
+brokerName<span class="token operator">=</span><span class="token punctuation">(</span>broker-a<span class="token operator">|</span>broker-b<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#0 表示 Master，>0 表示 Slave  192.168.1.1/192.168.1.2 填0 192.168.1.3/192.168.1.4 填1</span>
+brokerId<span class="token operator">=</span>0
+<span class="token comment" spellcheck="true">#本机IP 默认识别 多块网卡会导致识别错误</span>
+brokerIP1<span class="token operator">=</span>本机IP
+<span class="token comment" spellcheck="true">#nameServer地址，分号分割</span>
+namesrvAddr<span class="token operator">=</span>192.168.1.1:9876<span class="token punctuation">;</span>192.168.1.2:9876<span class="token punctuation">;</span>192.168.1.3:9876<span class="token punctuation">;</span>192.168.1.4:9876
+<span class="token comment" spellcheck="true">#在发送消息时，自动创建服务器不存在的topic，默认创建的队列数</span>
+defaultTopicQueueNums<span class="token operator">=</span>4
+<span class="token comment" spellcheck="true">#是否允许 Broker 自动创建Topic，建议线下开启，线上关闭</span>
+autoCreateTopicEnable<span class="token operator">=</span>true
+<span class="token comment" spellcheck="true">#是否允许 Broker 自动创建订阅组，建议线下开启，线上关闭</span>
+autoCreateSubscriptionGroup<span class="token operator">=</span>true
+<span class="token comment" spellcheck="true">#Broker 对外服务的监听端口</span>
+listenPort<span class="token operator">=</span>10911
+<span class="token comment" spellcheck="true">#删除文件时间点，默认凌晨 4点</span>
+deleteWhen<span class="token operator">=</span>04
+<span class="token comment" spellcheck="true">#文件保留时间，默认 48 小时</span>
+fileReservedTime<span class="token operator">=</span>120
+<span class="token comment" spellcheck="true">#commitLog每个文件的大小默认1G</span>
+mapedFileSizeCommitLog<span class="token operator">=</span>1073741824
+<span class="token comment" spellcheck="true">#ConsumeQueue每个文件默认存30W条，根据业务情况调整</span>
+mapedFileSizeConsumeQueue<span class="token operator">=</span>300000
+<span class="token comment" spellcheck="true">#destroyMapedFileIntervalForcibly=120000</span>
+<span class="token comment" spellcheck="true">#redeleteHangedFileInterval=120000</span>
+<span class="token comment" spellcheck="true">#检测物理文件磁盘空间</span>
+diskMaxUsedSpaceRatio<span class="token operator">=</span>88
+
+<span class="token comment" spellcheck="true">#存储路径</span>
+storePathRootDir<span class="token operator">=</span>/usr/local/rocketmq/store
+<span class="token comment" spellcheck="true">#commitLog 存储路径</span>
+storePathCommitLog<span class="token operator">=</span>/usr/local/rocketmq/store/commitlog
+<span class="token comment" spellcheck="true">#消费队列存储路径存储路径</span>
+storePathConsumeQueue<span class="token operator">=</span>/usr/local/rocketmq/store/consumequeue
+<span class="token comment" spellcheck="true">#消息索引存储路径</span>
+storePathIndex<span class="token operator">=</span>/usr/local/rocketmq/store/index
+<span class="token comment" spellcheck="true">#checkpoint 文件存储路径</span>
+storeCheckpoint<span class="token operator">=</span>/usr/local/rocketmq/store/checkpoint
+<span class="token comment" spellcheck="true">#abort 文件存储路径</span>
+abortFile<span class="token operator">=</span>/usr/local/rocketmq/store/abort
+<span class="token comment" spellcheck="true">#限制的消息大小</span>
+maxMessageSize<span class="token operator">=</span>65536
+
+<span class="token comment" spellcheck="true">#flushCommitLogLeastPages=4</span>
+<span class="token comment" spellcheck="true">#flushConsumeQueueLeastPages=2</span>
+<span class="token comment" spellcheck="true">#flushCommitLogThoroughInterval=10000</span>
+<span class="token comment" spellcheck="true">#flushConsumeQueueThoroughInterval=60000</span>
+
+<span class="token comment" spellcheck="true">#Broker 的角色  192.168.1.1/192.168.1.2 填ASYNC_MASTER 192.168.1.3/192.168.1.4 填SLAVE</span>
+<span class="token comment" spellcheck="true">#- ASYNC_MASTER 异步复制Master</span>
+<span class="token comment" spellcheck="true">#- SYNC_MASTER 同步双写Master</span>
+<span class="token comment" spellcheck="true">#- SLAVE</span>
+brokerRole<span class="token operator">=</span>ASYNC_MASTER
+
+<span class="token comment" spellcheck="true">#刷盘方式</span>
+<span class="token comment" spellcheck="true">#- ASYNC_FLUSH 异步刷盘</span>
+<span class="token comment" spellcheck="true">#- SYNC_FLUSH 同步刷盘</span>
+flushDiskType<span class="token operator">=</span>ASYNC_FLUSH
+
+<span class="token comment" spellcheck="true">#checkTransactionMessageEnable=false</span>
+<span class="token comment" spellcheck="true">#发消息线程池数量</span>
+<span class="token comment" spellcheck="true">#sendMessageThreadPoolNums=128</span>
+<span class="token comment" spellcheck="true">#拉消息线程池数量</span>
+<span class="token comment" spellcheck="true">#pullMessageThreadPoolNums=128</span>
+<span class="token comment" spellcheck="true">#filterNums</span>
+<span class="token comment" spellcheck="true">#filterServerNums=1</span>
+</code></pre>
+<h4 id="修改日志配置文件"><a href="#修改日志配置文件" class="headerlink" title="修改日志配置文件"></a>修改日志配置文件</h4><pre class=" language-bash"><code class="language-bash"><span class="token function">mkdir</span> -p /usr/local/rocketmq/logs
+<span class="token function">cd</span> /usr/local/rocketmq/conf <span class="token operator">&amp;&amp;</span> <span class="token function">sed</span> -i <span class="token string">'s#<span class="token variable">${user.home}</span>#/usr/local/rocketmq#g'</span> *.xml
+</code></pre>
+<h4 id="修改启动脚本参数（测试时虚拟机内存不够修改）"><a href="#修改启动脚本参数（测试时虚拟机内存不够修改）" class="headerlink" title="修改启动脚本参数（测试时虚拟机内存不够修改）"></a>修改启动脚本参数（测试时虚拟机内存不够修改）</h4><pre class=" language-bash"><code class="language-bash">vim /usr/local/rocketmq/bin/runbroker.sh
+JAVA_OPT<span class="token operator">=</span><span class="token string">"<span class="token variable">${JAVA_OPT}</span> -server -Xms1g -Xmx1g -Xmn512m - XX:PermSize=128m -XX:MaxPermSize=320m"</span>
+
+vim /usr/local/rocketmq/bin/runserver.sh
+JAVA_OPT<span class="token operator">=</span><span class="token string">"<span class="token variable">${JAVA_OPT}</span> -server -Xms1g -Xmx1g -Xmn512m - XX:PermSize=128m -XX:MaxPermSize=320m"</span>
+</code></pre>
 <h4 id="启动NameServer"><a href="#启动NameServer" class="headerlink" title="启动NameServer"></a>启动NameServer</h4><p>nohup sh /usr/local/rocketmq/bin/mqnamesrv &amp;</p>
 <h5 id="查看是否启动成功"><a href="#查看是否启动成功" class="headerlink" title="查看是否启动成功"></a>查看是否启动成功</h5><p>tail -f -n 500 /usr/local/rocketmq/logs/rocketmqlogs/namesrv.log</p>
 <h4 id="启动BrokerServer-多Master多Slave模式，异步复制"><a href="#启动BrokerServer-多Master多Slave模式，异步复制" class="headerlink" title="启动BrokerServer 多Master多Slave模式，异步复制"></a>启动BrokerServer 多Master多Slave模式，异步复制</h4><blockquote>
 <p>A -192.168.1.1|B-192.168.1.2|C-192.168.1.3|B-192.168.1.4</p>
 </blockquote>
-<p>启动命令:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">A:</div><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/rocketmq/bin</div><div class="line">nohup sh /usr/<span class="built_in">local</span>/rocketmq/bin/mqbroker -c /usr/<span class="built_in">local</span>/rocketmq/conf/2m-2s-async/broker-a.properties &gt;/dev/null 2&gt;&amp;1 &amp;</div><div class="line">//查看是否启动成功</div><div class="line">netstat -ntlp</div><div class="line">jps</div><div class="line">// 查看日志</div><div class="line">tail <span class="_">-f</span> -n 500 /usr/<span class="built_in">local</span>/rocketmq/logs/rocketmqlogs/broker.log</div><div class="line">tail <span class="_">-f</span> -n 500 /usr/<span class="built_in">local</span>/rocketmq/logs/rocketmqlogs/namesrv.log</div><div class="line"></div><div class="line">B:</div><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/rocketmq/bin</div><div class="line">nohup sh /usr/<span class="built_in">local</span>/rocketmq/bin/mqbroker -c /usr/<span class="built_in">local</span>/rocketmq/conf/2m-2s-async/broker-b.properties &gt;/dev/null 2&gt;&amp;1 &amp;</div><div class="line">//查看是否启动成功</div><div class="line">netstat -ntlp</div><div class="line">jps</div><div class="line">// 查看日志</div><div class="line">tail <span class="_">-f</span> -n 500 /usr/<span class="built_in">local</span>/rocketmq/logs/rocketmqlogs/broker.log</div><div class="line">tail <span class="_">-f</span> -n 500 /usr/<span class="built_in">local</span>/rocketmq/logs/rocketmqlogs/namesrv.log</div><div class="line"></div><div class="line">C:</div><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/rocketmq/bin</div><div class="line">nohup sh /usr/<span class="built_in">local</span>/rocketmq/bin/mqbroker -c /usr/<span class="built_in">local</span>/rocketmq/conf/2m-2s-async/broker<span class="_">-a</span>-s.properties &gt;/dev/null 2&gt;&amp;1 &amp;</div><div class="line">//查看是否启动成功</div><div class="line">netstat -ntlp</div><div class="line">jps</div><div class="line">// 查看日志</div><div class="line">tail <span class="_">-f</span> -n 500 /usr/<span class="built_in">local</span>/rocketmq/logs/rocketmqlogs/broker.log</div><div class="line">tail <span class="_">-f</span> -n 500 /usr/<span class="built_in">local</span>/rocketmq/logs/rocketmqlogs/namesrv.log</div><div class="line"></div><div class="line">D:</div><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/rocketmq/bin</div><div class="line">nohup sh /usr/<span class="built_in">local</span>/rocketmq/bin/mqbroker -c /usr/<span class="built_in">local</span>/rocketmq/conf/2m-2s-async/broker-b-s.properties &gt;/dev/null 2&gt;&amp;1 &amp;</div><div class="line">//查看是否启动成功</div><div class="line">netstat -ntlp</div><div class="line">jps</div><div class="line">// 查看日志</div><div class="line">tail <span class="_">-f</span> -n 500 /usr/<span class="built_in">local</span>/rocketmq/logs/rocketmqlogs/broker.log</div><div class="line">tail <span class="_">-f</span> -n 500 /usr/<span class="built_in">local</span>/rocketmq/logs/rocketmqlogs/namesrv.log</div></pre></td></tr></table></figure></p>
+<p>启动命令:</p>
+<pre class=" language-bash"><code class="language-bash">A:
+<span class="token function">cd</span> /usr/local/rocketmq/bin
+<span class="token function">nohup</span> sh /usr/local/rocketmq/bin/mqbroker -c /usr/local/rocketmq/conf/2m-2s-async/broker-a.properties <span class="token operator">></span>/dev/null 2<span class="token operator">></span><span class="token operator">&amp;</span>1 <span class="token operator">&amp;</span>
+//查看是否启动成功
+<span class="token function">netstat</span> -ntlp
+jps
+// 查看日志
+<span class="token function">tail</span> -f -n 500 /usr/local/rocketmq/logs/rocketmqlogs/broker.log
+<span class="token function">tail</span> -f -n 500 /usr/local/rocketmq/logs/rocketmqlogs/namesrv.log
+
+B:
+<span class="token function">cd</span> /usr/local/rocketmq/bin
+<span class="token function">nohup</span> sh /usr/local/rocketmq/bin/mqbroker -c /usr/local/rocketmq/conf/2m-2s-async/broker-b.properties <span class="token operator">></span>/dev/null 2<span class="token operator">></span><span class="token operator">&amp;</span>1 <span class="token operator">&amp;</span>
+//查看是否启动成功
+<span class="token function">netstat</span> -ntlp
+jps
+// 查看日志
+<span class="token function">tail</span> -f -n 500 /usr/local/rocketmq/logs/rocketmqlogs/broker.log
+<span class="token function">tail</span> -f -n 500 /usr/local/rocketmq/logs/rocketmqlogs/namesrv.log
+
+C:
+<span class="token function">cd</span> /usr/local/rocketmq/bin
+<span class="token function">nohup</span> sh /usr/local/rocketmq/bin/mqbroker -c /usr/local/rocketmq/conf/2m-2s-async/broker-a-s.properties <span class="token operator">></span>/dev/null 2<span class="token operator">></span><span class="token operator">&amp;</span>1 <span class="token operator">&amp;</span>
+//查看是否启动成功
+<span class="token function">netstat</span> -ntlp
+jps
+// 查看日志
+<span class="token function">tail</span> -f -n 500 /usr/local/rocketmq/logs/rocketmqlogs/broker.log
+<span class="token function">tail</span> -f -n 500 /usr/local/rocketmq/logs/rocketmqlogs/namesrv.log
+
+D:
+<span class="token function">cd</span> /usr/local/rocketmq/bin
+<span class="token function">nohup</span> sh /usr/local/rocketmq/bin/mqbroker -c /usr/local/rocketmq/conf/2m-2s-async/broker-b-s.properties <span class="token operator">></span>/dev/null 2<span class="token operator">></span><span class="token operator">&amp;</span>1 <span class="token operator">&amp;</span>
+//查看是否启动成功
+<span class="token function">netstat</span> -ntlp
+jps
+// 查看日志
+<span class="token function">tail</span> -f -n 500 /usr/local/rocketmq/logs/rocketmqlogs/broker.log
+<span class="token function">tail</span> -f -n 500 /usr/local/rocketmq/logs/rocketmqlogs/namesrv.log
+</code></pre>
 <h4 id="安装Tomcat配置RocketMQ-Console"><a href="#安装Tomcat配置RocketMQ-Console" class="headerlink" title="安装Tomcat配置RocketMQ Console"></a>安装Tomcat配置RocketMQ Console</h4><p>复制rocketmq-console.war到192.168.1.1机器的/usr/local/tomcat/webapps/下</p>
 <p>vim /usr/local/tomcat/webapps/rocketmq-console/WEB-INF/classes/config.properties</p>
 <p>rocketmq.namesrv.addr=192.168.1.1:9876;192.168.1.2:9876;192.168.1.3:9876;192.168.1.4:9876</p>
 <h5 id="启动："><a href="#启动：" class="headerlink" title="启动："></a>启动：</h5><p>/usr/local/tomcat/bin/startup.sh</p>
 <h4 id="防火墙配置："><a href="#防火墙配置：" class="headerlink" title="防火墙配置："></a>防火墙配置：</h4><p>vim /etc/sysconfig/iptables</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT</div><div class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 9876 -j ACCEPT</div><div class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 10911 -j ACCEPT</div></pre></td></tr></table></figure>
+<pre class=" language-bash"><code class="language-bash">-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 9876 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 10911 -j ACCEPT
+</code></pre>
 <p>重启防火墙</p>
 <p>service iptables restart</p>
 <hr>

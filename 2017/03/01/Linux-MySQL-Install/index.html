@@ -40,7 +40,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Binux">
     <meta name="description" content="一名正在崛起的Java后端工程师">
-    <meta name="keywords" content="null,XBin-Store,Linux,MySQL">
+    <meta name="keywords" content="null,Linux,XBin-Store,MySQL">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="http://on2bs9q7q.bkt.clouddn.com/avatar.png">
@@ -68,7 +68,7 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Xbin-Store(分布式商城)项目所用Linux服务系列 MySQL安装(一) | Binux Blog">
     <meta property="og:description" content="一名正在崛起的Java后端工程师">
-    <meta property="og:article:tag" content="XBin-Store"> <meta property="og:article:tag" content="Linux"> <meta property="og:article:tag" content="MySQL"> 
+    <meta property="og:article:tag" content="Linux"> <meta property="og:article:tag" content="XBin-Store"> <meta property="og:article:tag" content="MySQL"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -227,7 +227,7 @@
 
     <!-- Custom Head -->
     
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -449,27 +449,55 @@
 <h3 id="第四步-改名"><a href="#第四步-改名" class="headerlink" title="第四步 改名"></a>第四步 改名</h3><p>[root@mysql ~]# mv mysql-5.7.17-linux-glibc2.5-x86_64 /usr/local/mysql</p>
 <h3 id="第五步-复制修改配置文件"><a href="#第五步-复制修改配置文件" class="headerlink" title="第五步 复制修改配置文件"></a>第五步 复制修改配置文件</h3><p>[root@mysql ~]# cp /usr/local/mysql/support-files/my-default.cnf /etc/my.cnf</p>
 <p>[root@mysql ~]# vim /etc/my.cnf</p>
-<h4 id="添加以下配置：-解决中文乱码"><a href="#添加以下配置：-解决中文乱码" class="headerlink" title="添加以下配置：(解决中文乱码)"></a>添加以下配置：(解决中文乱码)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[mysql]</div><div class="line">default-character-set=utf8</div><div class="line"></div><div class="line">[mysqld]</div><div class="line">character_set_server=utf8</div></pre></td></tr></table></figure>
-<h3 id="第六步-复制、配置mysql服务"><a href="#第六步-复制、配置mysql服务" class="headerlink" title="第六步 复制、配置mysql服务"></a>第六步 复制、配置mysql服务</h3><p>[root@mysql ~]# cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql</p>
-<h4 id="第46行做如下修改"><a href="#第46行做如下修改" class="headerlink" title="第46行做如下修改"></a>第46行做如下修改</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">basedir=/usr/local/mysql</div><div class="line">datadir=/usr/local/mysql/data</div></pre></td></tr></table></figure>
-<h3 id="第七步-启动mysql服务"><a href="#第七步-启动mysql服务" class="headerlink" title="第七步 启动mysql服务"></a>第七步 启动mysql服务</h3><p>[root@mysql ~]# cd /usr/local/mysql/bin/</p>
+<h4 id="添加以下配置：-解决中文乱码"><a href="#添加以下配置：-解决中文乱码" class="headerlink" title="添加以下配置：(解决中文乱码)"></a>添加以下配置：(解决中文乱码)</h4><pre><code>[mysql]
+default-character-set=utf8
+
+[mysqld]
+character_set_server=utf8
+</code></pre><h3 id="第六步-复制、配置mysql服务"><a href="#第六步-复制、配置mysql服务" class="headerlink" title="第六步 复制、配置mysql服务"></a>第六步 复制、配置mysql服务</h3><p>[root@mysql ~]# cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql</p>
+<h4 id="第46行做如下修改"><a href="#第46行做如下修改" class="headerlink" title="第46行做如下修改"></a>第46行做如下修改</h4><pre><code>basedir=/usr/local/mysql
+datadir=/usr/local/mysql/data
+</code></pre><h3 id="第七步-启动mysql服务"><a href="#第七步-启动mysql服务" class="headerlink" title="第七步 启动mysql服务"></a>第七步 启动mysql服务</h3><p>[root@mysql ~]# cd /usr/local/mysql/bin/</p>
 <p>[root@mysql bin]# ./mysqld –initialize –user=mysql –basedir=/usr/local/mysql –datadir=/usr/local/mysql/data</p>
-<h4 id="屏幕打印："><a href="#屏幕打印：" class="headerlink" title="屏幕打印："></a>屏幕打印：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">2017-01-27T03:14:04.598579Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).</div><div class="line">2017-01-27T03:14:04.598645Z 0 [Warning] &apos;NO_ZERO_DATE&apos;, &apos;NO_ZERO_IN_DATE&apos; and &apos;ERROR_FOR_DIVISION_BY_ZERO&apos; sql modes should be used with strict mode. They will be merged with strict mode in a future release.</div><div class="line">2017-01-27T03:14:04.598648Z 0 [Warning] &apos;NO_AUTO_CREATE_USER&apos; sql mode was not set.</div><div class="line">2017-01-27T03:14:05.002057Z 0 [Warning] InnoDB: New log files created, LSN=45790</div><div class="line">2017-01-27T03:14:05.079640Z 0 [Warning] InnoDB: Creating foreign key constraint system tables.</div><div class="line">2017-01-27T03:14:05.214710Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: a8c7be60-e43e-11e6-b470-000c299fe1ef.</div><div class="line">2017-01-27T03:14:05.216074Z 0 [Warning] Gtid table is not ready to be used. Table &apos;mysql.gtid_executed&apos; cannot be opened.</div><div class="line">2017-01-27T03:14:05.221297Z 1 [Note] A temporary password is generated for root@localhost: ME#SiCHkw4zS</div></pre></td></tr></table></figure>
-<blockquote>
+<h4 id="屏幕打印："><a href="#屏幕打印：" class="headerlink" title="屏幕打印："></a>屏幕打印：</h4><pre><code>2017-01-27T03:14:04.598579Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2017-01-27T03:14:04.598645Z 0 [Warning] &#39;NO_ZERO_DATE&#39;, &#39;NO_ZERO_IN_DATE&#39; and &#39;ERROR_FOR_DIVISION_BY_ZERO&#39; sql modes should be used with strict mode. They will be merged with strict mode in a future release.
+2017-01-27T03:14:04.598648Z 0 [Warning] &#39;NO_AUTO_CREATE_USER&#39; sql mode was not set.
+2017-01-27T03:14:05.002057Z 0 [Warning] InnoDB: New log files created, LSN=45790
+2017-01-27T03:14:05.079640Z 0 [Warning] InnoDB: Creating foreign key constraint system tables.
+2017-01-27T03:14:05.214710Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: a8c7be60-e43e-11e6-b470-000c299fe1ef.
+2017-01-27T03:14:05.216074Z 0 [Warning] Gtid table is not ready to be used. Table &#39;mysql.gtid_executed&#39; cannot be opened.
+2017-01-27T03:14:05.221297Z 1 [Note] A temporary password is generated for root@localhost: ME#SiCHkw4zS
+</code></pre><blockquote>
 <p>ME#SiCHkw4zS 这个是初始化密码</p>
 </blockquote>
 <h3 id="第八步-加密mysql数据"><a href="#第八步-加密mysql数据" class="headerlink" title="第八步 加密mysql数据"></a>第八步 加密mysql数据</h3><p>[root@mysql mysql]# ./bin/mysql_ssl_rsa_setup –datadir=/usr/local/mysql/data</p>
-<h4 id="屏幕打印：-1"><a href="#屏幕打印：-1" class="headerlink" title="屏幕打印："></a>屏幕打印：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Generating a 2048 bit RSA private key</div><div class="line">....................................................+++</div><div class="line">..................+++</div><div class="line">writing new private key to &apos;ca-key.pem&apos;</div><div class="line">-----</div><div class="line">Generating a 2048 bit RSA private key</div><div class="line">......+++</div><div class="line">.............+++</div><div class="line">writing new private key to &apos;server-key.pem&apos;</div><div class="line">-----</div><div class="line">Generating a 2048 bit RSA private key</div><div class="line">..........................................................................................................................................+++</div><div class="line">.....+++</div><div class="line">writing new private key to &apos;client-key.pem&apos;</div><div class="line">-----</div></pre></td></tr></table></figure>
-<h3 id="第九步-启动mysql"><a href="#第九步-启动mysql" class="headerlink" title="第九步 启动mysql"></a>第九步 启动mysql</h3><p>[root@mysql mysql]# ./mysqld_safe –user=mysql &amp;</p>
+<h4 id="屏幕打印：-1"><a href="#屏幕打印：-1" class="headerlink" title="屏幕打印："></a>屏幕打印：</h4><pre><code>Generating a 2048 bit RSA private key
+....................................................+++
+..................+++
+writing new private key to &#39;ca-key.pem&#39;
+-----
+Generating a 2048 bit RSA private key
+......+++
+.............+++
+writing new private key to &#39;server-key.pem&#39;
+-----
+Generating a 2048 bit RSA private key
+..........................................................................................................................................+++
+.....+++
+writing new private key to &#39;client-key.pem&#39;
+-----
+</code></pre><h3 id="第九步-启动mysql"><a href="#第九步-启动mysql" class="headerlink" title="第九步 启动mysql"></a>第九步 启动mysql</h3><p>[root@mysql mysql]# ./mysqld_safe –user=mysql &amp;</p>
 <h4 id="查看启动是否成功-打印如下-启动成功"><a href="#查看启动是否成功-打印如下-启动成功" class="headerlink" title="查看启动是否成功(打印如下 启动成功)"></a>查看启动是否成功(打印如下 启动成功)</h4><p>[root@mysql mysql]# ps -ef|grep mysql</p>
-<h4 id="屏幕打印：-2"><a href="#屏幕打印：-2" class="headerlink" title="屏幕打印："></a>屏幕打印：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">root      2286  1573  0 11:30 pts/1    00:00:00 /bin/sh ./mysqld_safe --user=mysql</div><div class="line">mysql     2407  2286  5 11:30 pts/1    00:00:00 /usr/local/mysql/bin/mysqld --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --plugin-dir=/usr/local/mysql/lib/plugin --user=mysql --log-error=/usr/local/mysql/data/storm3.err --pid-file=/usr/local/mysql/data/mysql.pid</div><div class="line">root      2438  1573  0 11:30 pts/1    00:00:00 grep mysql</div></pre></td></tr></table></figure>
-<h4 id="启动-输入初始密码"><a href="#启动-输入初始密码" class="headerlink" title="启动 输入初始密码"></a>启动 输入初始密码</h4><p>[root@mysql mysql]# ./mysql -uroot -p</p>
+<h4 id="屏幕打印：-2"><a href="#屏幕打印：-2" class="headerlink" title="屏幕打印："></a>屏幕打印：</h4><pre><code>root      2286  1573  0 11:30 pts/1    00:00:00 /bin/sh ./mysqld_safe --user=mysql
+mysql     2407  2286  5 11:30 pts/1    00:00:00 /usr/local/mysql/bin/mysqld --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --plugin-dir=/usr/local/mysql/lib/plugin --user=mysql --log-error=/usr/local/mysql/data/storm3.err --pid-file=/usr/local/mysql/data/mysql.pid
+root      2438  1573  0 11:30 pts/1    00:00:00 grep mysql
+</code></pre><h4 id="启动-输入初始密码"><a href="#启动-输入初始密码" class="headerlink" title="启动 输入初始密码"></a>启动 输入初始密码</h4><p>[root@mysql mysql]# ./mysql -uroot -p</p>
 <h3 id="第十步-重新设置密码、授权"><a href="#第十步-重新设置密码、授权" class="headerlink" title="第十步 重新设置密码、授权"></a>第十步 重新设置密码、授权</h3><h4 id="设置密码"><a href="#设置密码" class="headerlink" title="设置密码"></a>设置密码</h4><p>mysql&gt; grant all privileges on <em>.</em> to root@’%’ identified by ‘<strong>我是密码</strong>‘;</p>
 <h4 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h4><p>mysql&gt;grant all privileges on <em>.</em> to root@’%’ identified by ‘<strong>我是密码</strong>‘;</p>
 <h4 id="刷新"><a href="#刷新" class="headerlink" title="刷新"></a>刷新</h4><p>mysql&gt;flush privileges;</p>
 <h3 id="第十一步-设置防火墙规则"><a href="#第十一步-设置防火墙规则" class="headerlink" title="第十一步 设置防火墙规则"></a>第十一步 设置防火墙规则</h3><p>[root@mysql mysql]# vim /etc/sysconfig/iptables</p>
-<h4 id="添加以下规则："><a href="#添加以下规则：" class="headerlink" title="添加以下规则："></a>添加以下规则：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT</div></pre></td></tr></table></figure>
-<h4 id="重启防火墙："><a href="#重启防火墙：" class="headerlink" title="重启防火墙："></a>重启防火墙：</h4><p>[root@mysql mysql]# service iptables restart</p>
+<h4 id="添加以下规则："><a href="#添加以下规则：" class="headerlink" title="添加以下规则："></a>添加以下规则：</h4><pre><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
+</code></pre><h4 id="重启防火墙："><a href="#重启防火墙：" class="headerlink" title="重启防火墙："></a>重启防火墙：</h4><p>[root@mysql mysql]# service iptables restart</p>
 <h3 id="第十二步-开机自启"><a href="#第十二步-开机自启" class="headerlink" title="第十二步 开机自启"></a>第十二步 开机自启</h3><p>chkconfig –add mysql</p>
 <p>chkconfig mysql on</p>
 <h3 id="第十三步-配置环境变量"><a href="#第十三步-配置环境变量" class="headerlink" title="第十三步 配置环境变量"></a>第十三步 配置环境变量</h3><p>[root@mysql mysql]# vim /etc/profile</p>

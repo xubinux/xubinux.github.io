@@ -40,7 +40,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Binux">
     <meta name="description" content="一名正在崛起的Java后端工程师">
-    <meta name="keywords" content="null,XBin-Store,Linux,Nginx">
+    <meta name="keywords" content="null,Linux,XBin-Store,Nginx">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="http://on2bs9q7q.bkt.clouddn.com/avatar.png">
@@ -68,7 +68,7 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Xbin-Store(分布式商城)项目所用Linux服务系列 Nginx安装(四) | Binux Blog">
     <meta property="og:description" content="一名正在崛起的Java后端工程师">
-    <meta property="og:article:tag" content="XBin-Store"> <meta property="og:article:tag" content="Linux"> <meta property="og:article:tag" content="Nginx"> 
+    <meta property="og:article:tag" content="Linux"> <meta property="og:article:tag" content="XBin-Store"> <meta property="og:article:tag" content="Nginx"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -227,7 +227,7 @@
 
     <!-- Custom Head -->
     
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -445,13 +445,211 @@
 </blockquote>
 <hr>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="wget下载"><a href="#wget下载" class="headerlink" title="wget下载:"></a>wget下载:</h3><p><a href="http://nginx.org/download/nginx-1.4.2.tar.gz" target="_blank" rel="external">http://nginx.org/download/nginx-1.4.2.tar.gz</a></p>
-<h3 id="安装：-tar-zxvf-nginx-1-6-2-tar-gz"><a href="#安装：-tar-zxvf-nginx-1-6-2-tar-gz" class="headerlink" title="安装： tar -zxvf nginx-1.6.2.tar.gz"></a>安装： tar -zxvf nginx-1.6.2.tar.gz</h3><h3 id="下载需要的依赖库文件："><a href="#下载需要的依赖库文件：" class="headerlink" title="下载需要的依赖库文件："></a>下载需要的依赖库文件：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yum install pcre</div><div class="line">yum install pcre-devel</div><div class="line">yum install zlib</div><div class="line">yum install zlib-devel</div></pre></td></tr></table></figure>
+<h3 id="安装：-tar-zxvf-nginx-1-6-2-tar-gz"><a href="#安装：-tar-zxvf-nginx-1-6-2-tar-gz" class="headerlink" title="安装： tar -zxvf nginx-1.6.2.tar.gz"></a>安装： tar -zxvf nginx-1.6.2.tar.gz</h3><h3 id="下载需要的依赖库文件："><a href="#下载需要的依赖库文件：" class="headerlink" title="下载需要的依赖库文件："></a>下载需要的依赖库文件：</h3><pre class=" language-bash"><code class="language-bash">yum <span class="token function">install</span> pcre
+yum <span class="token function">install</span> pcre-devel
+yum <span class="token function">install</span> zlib
+yum <span class="token function">install</span> zlib-devel
+</code></pre>
 <h3 id="进行configure配置："><a href="#进行configure配置：" class="headerlink" title="进行configure配置："></a>进行configure配置：</h3><p>cd nginx-1.6.2 &amp;&amp; ./configure –prefix=/usr/local/nginx  查看是否报错</p>
 <h3 id="编译安装-make-amp-amp-make-install"><a href="#编译安装-make-amp-amp-make-install" class="headerlink" title="编译安装 make &amp;&amp; make install"></a>编译安装 make &amp;&amp; make install</h3><h3 id="启动Nginx："><a href="#启动Nginx：" class="headerlink" title="启动Nginx："></a>启动Nginx：</h3><h3 id="启动命令："><a href="#启动命令：" class="headerlink" title="启动命令："></a>启动命令：</h3><p>/usr/local/nginx/sbin/nginx -s start 关闭（stop）重启（reload）</p>
 <h4 id="成功："><a href="#成功：" class="headerlink" title="成功："></a>成功：</h4><p>查看是否启动（netstat -ano | grep 80）</p>
 <h4 id="失败："><a href="#失败：" class="headerlink" title="失败："></a>失败：</h4><p>可能为80端口被占用等。</p>
 <h3 id="访问页面："><a href="#访问页面：" class="headerlink" title="访问页面："></a>访问页面：</h3><p>浏览器访问地址：<a href="http://192.168.1.1:80" target="_blank" rel="external">http://192.168.1.1:80</a> （看到欢迎页面即可）</p>
-<h2 id="配置文件说明"><a href="#配置文件说明" class="headerlink" title="配置文件说明"></a>配置文件说明</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#user  nobody;</span></div><div class="line"></div><div class="line"><span class="comment">#开启进程数 &lt;=CPU数</span></div><div class="line">worker_processes  1;</div><div class="line"></div><div class="line"><span class="comment">#错误日志保存位置</span></div><div class="line"><span class="comment">#error_log  logs/error.log;</span></div><div class="line"><span class="comment">#error_log  logs/error.log  notice;</span></div><div class="line"><span class="comment">#error_log  logs/error.log  info;</span></div><div class="line"></div><div class="line"><span class="comment">#进程号保存文件</span></div><div class="line"><span class="comment">#pid        logs/nginx.pid;</span></div><div class="line"></div><div class="line"><span class="comment">#每个进程最大连接数（最大连接=连接数x进程数）每个worker允许同时产生多少个链接，默认1024</span></div><div class="line">events &#123;</div><div class="line">    worker_connections  1024;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">http &#123;</div><div class="line">	<span class="comment">#文件扩展名与文件类型映射表</span></div><div class="line">    include       mime.types;</div><div class="line">	<span class="comment">#默认文件类型</span></div><div class="line">    default_type  application/octet-stream;</div><div class="line"></div><div class="line">	<span class="comment">#日志文件输出格式 这个位置相于全局设置</span></div><div class="line">    log_format  main  <span class="string">'$remote_addr - $remote_user [$time_local] "$request" '</span></div><div class="line">                      <span class="string">'$status $body_bytes_sent "$http_referer" '</span></div><div class="line">                      <span class="string">'"$http_user_agent" "$http_x_forwarded_for"'</span>;</div><div class="line"></div><div class="line">	<span class="comment">#请求日志保存位置</span></div><div class="line">    <span class="comment">#access_log  logs/access.log  main;</span></div><div class="line"></div><div class="line">	<span class="comment">#打开发送文件</span></div><div class="line">    sendfile        on;</div><div class="line">    <span class="comment">#tcp_nopush     on;</span></div><div class="line"></div><div class="line">    <span class="comment">#keepalive_timeout  0;</span></div><div class="line">	<span class="comment">#连接超时时间</span></div><div class="line">    keepalive_timeout  65;</div><div class="line"></div><div class="line">	<span class="comment">#打开gzip压缩</span></div><div class="line">    <span class="comment">#gzip  on;</span></div><div class="line"></div><div class="line">	<span class="comment">#设定请求缓冲</span></div><div class="line">	<span class="comment">#client_header_buffer_size 1k;</span></div><div class="line">	<span class="comment">#large_client_header_buffers 4 4k;</span></div><div class="line"></div><div class="line">	<span class="comment">#设定负载均衡的服务器列表</span></div><div class="line">	<span class="comment">#upstream myproject &#123;</span></div><div class="line">		<span class="comment">#weigth参数表示权值，权值越高被分配到的几率越大</span></div><div class="line">		<span class="comment">#max_fails 当有#max_fails个请求失败，就表示后端的服务器不可用，默认为1，将其设置为0可以关闭检查</span></div><div class="line">		<span class="comment">#fail_timeout 在以后的#fail_timeout时间内nginx不会再把请求发往已检查出标记为不可用的服务器</span></div><div class="line">	<span class="comment">#&#125;</span></div><div class="line"></div><div class="line">    <span class="comment">#webapp</span></div><div class="line">    <span class="comment">#upstream myapp &#123;</span></div><div class="line">  	<span class="comment"># server 192.168.1.1:8080 weight=1 max_fails=2 fail_timeout=30s;</span></div><div class="line">	<span class="comment"># server 192.168.1.1:8080 weight=1 max_fails=2 fail_timeout=30s;</span></div><div class="line">    <span class="comment">#&#125;</span></div><div class="line"></div><div class="line">	<span class="comment">#配置虚拟主机，基于域名、ip和端口</span></div><div class="line">    server &#123;</div><div class="line">		<span class="comment">#监听端口</span></div><div class="line">        listen       80;</div><div class="line">		<span class="comment">#监听域名</span></div><div class="line">        server_name  localhost;</div><div class="line"></div><div class="line">        <span class="comment">#charset koi8-r;</span></div><div class="line"></div><div class="line">		<span class="comment">#nginx访问日志放在logs/host.access.log下，并且使用main格式（还可以自定义格式）</span></div><div class="line">        <span class="comment">#access_log  logs/host.access.log  main;</span></div><div class="line"></div><div class="line">		<span class="comment">#返回的相应文件地址</span></div><div class="line">        location / &#123;</div><div class="line">            <span class="comment">#设置客户端真实ip地址</span></div><div class="line">            <span class="comment">#proxy_set_header X-real-ip $remote_addr;</span></div><div class="line">			<span class="comment">#负载均衡反向代理</span></div><div class="line">			<span class="comment">#proxy_pass http://myapp;</span></div><div class="line"></div><div class="line">			<span class="comment">#返回根路径地址（相对路径:相对于/usr/local/nginx/）</span></div><div class="line">            root   html;</div><div class="line">			<span class="comment">#默认访问文件</span></div><div class="line">            index  index.html index.htm;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">		<span class="comment">#配置反向代理tomcat服务器：拦截.jsp结尾的请求转向到tomcat</span></div><div class="line">        <span class="comment">#location ~ \.jsp$ &#123;</span></div><div class="line">        <span class="comment">#    proxy_pass http://192.168.1.1:8080;</span></div><div class="line">        <span class="comment">#&#125;</span></div><div class="line"></div><div class="line">        <span class="comment">#error_page  404              /404.html;</span></div><div class="line">        <span class="comment"># redirect server error pages to the static page /50x.html</span></div><div class="line">        <span class="comment">#</span></div><div class="line"></div><div class="line">		<span class="comment">#错误页面及其返回地址</span></div><div class="line">        error_page   500 502 503 504  /50x.html;</div><div class="line">        location = /50x.html &#123;</div><div class="line">            root   html;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment"># proxy the PHP scripts to Apache listening on 127.0.0.1:80</span></div><div class="line">        <span class="comment">#</span></div><div class="line">        <span class="comment">#location ~ \.php$ &#123;</span></div><div class="line">        <span class="comment">#    proxy_pass   http://127.0.0.1;</span></div><div class="line">        <span class="comment">#&#125;</span></div><div class="line"></div><div class="line">        <span class="comment"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span></div><div class="line">        <span class="comment">#</span></div><div class="line">        <span class="comment">#location ~ \.php$ &#123;</span></div><div class="line">        <span class="comment">#    root           html;</span></div><div class="line">        <span class="comment">#    fastcgi_pass   127.0.0.1:9000;</span></div><div class="line">        <span class="comment">#    fastcgi_index  index.php;</span></div><div class="line">        <span class="comment">#    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span></div><div class="line">        <span class="comment">#    include        fastcgi_params;</span></div><div class="line">        <span class="comment">#&#125;</span></div><div class="line"></div><div class="line">        <span class="comment"># deny access to .htaccess files, if Apache's document root</span></div><div class="line">        <span class="comment"># concurs with nginx's one</span></div><div class="line">        <span class="comment">#</span></div><div class="line">        <span class="comment">#location ~ /\.ht &#123;</span></div><div class="line">        <span class="comment">#    deny  all;</span></div><div class="line">        <span class="comment">#&#125;</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">	<span class="comment">#虚拟主机配置：</span></div><div class="line">	server &#123;</div><div class="line">		listen 1234;</div><div class="line">		server_name bhz.com;</div><div class="line">		location / &#123;</div><div class="line">		<span class="comment">#正则表达式匹配uri方式：在/usr/local/nginx/bhz.com下 建立一个test123.html 然后使用正则匹配</span></div><div class="line">		<span class="comment">#location ~ test &#123;</span></div><div class="line">			<span class="comment">## 重写语法：if return （条件 = ~ ~*）</span></div><div class="line">			<span class="comment">#if ($remote_addr = 192.168.1.200) &#123;</span></div><div class="line">			<span class="comment">#       return 401;</span></div><div class="line">			<span class="comment">#&#125;</span></div><div class="line"></div><div class="line">			<span class="comment">#if ($http_user_agent ~* firefox) &#123;</span></div><div class="line">			<span class="comment">#	   rewrite ^.*$ /firefox.html;</span></div><div class="line">			<span class="comment">#	   break;</span></div><div class="line">			<span class="comment">#&#125;</span></div><div class="line"></div><div class="line">			root bhz.com;</div><div class="line">			index index.html;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="comment">#location /goods &#123;</span></div><div class="line">		<span class="comment">#		rewrite "goods-(\d&#123;1,5&#125;)\.html" /goods-ctrl.html;</span></div><div class="line">		<span class="comment">#		root bhz.com;</span></div><div class="line">		<span class="comment">#		index index.html;</span></div><div class="line">		<span class="comment">#&#125;</span></div><div class="line"></div><div class="line">		<span class="comment">#配置访问日志</span></div><div class="line">		access_log logs/bhz.com.access.log main;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment"># another virtual host using mix of IP-, name-, and port-based configuration</span></div><div class="line">    <span class="comment">#</span></div><div class="line">    <span class="comment">#server &#123;</span></div><div class="line">    <span class="comment">#    listen       8000;</span></div><div class="line">    <span class="comment">#    listen       somename:8080;</span></div><div class="line">    <span class="comment">#    server_name  somename  alias  another.alias;</span></div><div class="line"></div><div class="line">    <span class="comment">#    location / &#123;</span></div><div class="line">    <span class="comment">#        root   html;</span></div><div class="line">    <span class="comment">#        index  index.html index.htm;</span></div><div class="line">    <span class="comment">#    &#125;</span></div><div class="line">    <span class="comment">#&#125;</span></div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment"># HTTPS server</span></div><div class="line">    <span class="comment">#</span></div><div class="line">    <span class="comment">#server &#123;</span></div><div class="line">    <span class="comment">#    listen       443 ssl;</span></div><div class="line">    <span class="comment">#    server_name  localhost;</span></div><div class="line"></div><div class="line">    <span class="comment">#    ssl_certificate      cert.pem;</span></div><div class="line">    <span class="comment">#    ssl_certificate_key  cert.key;</span></div><div class="line"></div><div class="line">    <span class="comment">#    ssl_session_cache    shared:SSL:1m;</span></div><div class="line">    <span class="comment">#    ssl_session_timeout  5m;</span></div><div class="line"></div><div class="line">    <span class="comment">#    ssl_ciphers  HIGH:!aNULL:!MD5;</span></div><div class="line">    <span class="comment">#    ssl_prefer_server_ciphers  on;</span></div><div class="line"></div><div class="line">    <span class="comment">#    location / &#123;</span></div><div class="line">    <span class="comment">#        root   html;</span></div><div class="line">    <span class="comment">#        index  index.html index.htm;</span></div><div class="line">    <span class="comment">#    &#125;</span></div><div class="line">    <span class="comment">#&#125;</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="配置文件说明"><a href="#配置文件说明" class="headerlink" title="配置文件说明"></a>配置文件说明</h2><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#user  nobody;</span>
+
+<span class="token comment" spellcheck="true">#开启进程数 &lt;=CPU数</span>
+worker_processes  1<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">#错误日志保存位置</span>
+<span class="token comment" spellcheck="true">#error_log  logs/error.log;</span>
+<span class="token comment" spellcheck="true">#error_log  logs/error.log  notice;</span>
+<span class="token comment" spellcheck="true">#error_log  logs/error.log  info;</span>
+
+<span class="token comment" spellcheck="true">#进程号保存文件</span>
+<span class="token comment" spellcheck="true">#pid        logs/nginx.pid;</span>
+
+<span class="token comment" spellcheck="true">#每个进程最大连接数（最大连接=连接数x进程数）每个worker允许同时产生多少个链接，默认1024</span>
+events <span class="token punctuation">{</span>
+    worker_connections  1024<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+http <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">#文件扩展名与文件类型映射表</span>
+    include       mime.types<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">#默认文件类型</span>
+    default_type  application/octet-stream<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">#日志文件输出格式 这个位置相于全局设置</span>
+    log_format  main  <span class="token string">'<span class="token variable">$remote_addr</span> - <span class="token variable">$remote_user</span> [<span class="token variable">$time_local</span>] "<span class="token variable">$request</span>" '</span>
+                      <span class="token string">'<span class="token variable">$status</span> <span class="token variable">$body_bytes_sent</span> "<span class="token variable">$http_referer</span>" '</span>
+                      <span class="token string">'"<span class="token variable">$http_user_agent</span>" "<span class="token variable">$http_x_forwarded_for</span>"'</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">#请求日志保存位置</span>
+    <span class="token comment" spellcheck="true">#access_log  logs/access.log  main;</span>
+
+    <span class="token comment" spellcheck="true">#打开发送文件</span>
+    sendfile        on<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">#tcp_nopush     on;</span>
+
+    <span class="token comment" spellcheck="true">#keepalive_timeout  0;</span>
+    <span class="token comment" spellcheck="true">#连接超时时间</span>
+    keepalive_timeout  65<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">#打开gzip压缩</span>
+    <span class="token comment" spellcheck="true">#gzip  on;</span>
+
+    <span class="token comment" spellcheck="true">#设定请求缓冲</span>
+    <span class="token comment" spellcheck="true">#client_header_buffer_size 1k;</span>
+    <span class="token comment" spellcheck="true">#large_client_header_buffers 4 4k;</span>
+
+    <span class="token comment" spellcheck="true">#设定负载均衡的服务器列表</span>
+    <span class="token comment" spellcheck="true">#upstream myproject {</span>
+        <span class="token comment" spellcheck="true">#weigth参数表示权值，权值越高被分配到的几率越大</span>
+        <span class="token comment" spellcheck="true">#max_fails 当有#max_fails个请求失败，就表示后端的服务器不可用，默认为1，将其设置为0可以关闭检查</span>
+        <span class="token comment" spellcheck="true">#fail_timeout 在以后的#fail_timeout时间内nginx不会再把请求发往已检查出标记为不可用的服务器</span>
+    <span class="token comment" spellcheck="true">#}</span>
+
+    <span class="token comment" spellcheck="true">#webapp</span>
+    <span class="token comment" spellcheck="true">#upstream myapp {</span>
+      <span class="token comment" spellcheck="true"># server 192.168.1.1:8080 weight=1 max_fails=2 fail_timeout=30s;</span>
+    <span class="token comment" spellcheck="true"># server 192.168.1.1:8080 weight=1 max_fails=2 fail_timeout=30s;</span>
+    <span class="token comment" spellcheck="true">#}</span>
+
+    <span class="token comment" spellcheck="true">#配置虚拟主机，基于域名、ip和端口</span>
+    server <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">#监听端口</span>
+        listen       80<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">#监听域名</span>
+        server_name  localhost<span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">#charset koi8-r;</span>
+
+        <span class="token comment" spellcheck="true">#nginx访问日志放在logs/host.access.log下，并且使用main格式（还可以自定义格式）</span>
+        <span class="token comment" spellcheck="true">#access_log  logs/host.access.log  main;</span>
+
+        <span class="token comment" spellcheck="true">#返回的相应文件地址</span>
+        location / <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">#设置客户端真实ip地址</span>
+            <span class="token comment" spellcheck="true">#proxy_set_header X-real-ip $remote_addr;</span>
+            <span class="token comment" spellcheck="true">#负载均衡反向代理</span>
+            <span class="token comment" spellcheck="true">#proxy_pass http://myapp;</span>
+
+            <span class="token comment" spellcheck="true">#返回根路径地址（相对路径:相对于/usr/local/nginx/）</span>
+            root   html<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">#默认访问文件</span>
+            index  index.html index.htm<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">#配置反向代理tomcat服务器：拦截.jsp结尾的请求转向到tomcat</span>
+        <span class="token comment" spellcheck="true">#location ~ \.jsp$ {</span>
+        <span class="token comment" spellcheck="true">#    proxy_pass http://192.168.1.1:8080;</span>
+        <span class="token comment" spellcheck="true">#}</span>
+
+        <span class="token comment" spellcheck="true">#error_page  404              /404.html;</span>
+        <span class="token comment" spellcheck="true"># redirect server error pages to the static page /50x.html</span>
+        <span class="token comment" spellcheck="true">#</span>
+
+        <span class="token comment" spellcheck="true">#错误页面及其返回地址</span>
+        error_page   500 502 503 504  /50x.html<span class="token punctuation">;</span>
+        location <span class="token operator">=</span> /50x.html <span class="token punctuation">{</span>
+            root   html<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true"># proxy the PHP scripts to Apache listening on 127.0.0.1:80</span>
+        <span class="token comment" spellcheck="true">#</span>
+        <span class="token comment" spellcheck="true">#location ~ \.php$ {</span>
+        <span class="token comment" spellcheck="true">#    proxy_pass   http://127.0.0.1;</span>
+        <span class="token comment" spellcheck="true">#}</span>
+
+        <span class="token comment" spellcheck="true"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span>
+        <span class="token comment" spellcheck="true">#</span>
+        <span class="token comment" spellcheck="true">#location ~ \.php$ {</span>
+        <span class="token comment" spellcheck="true">#    root           html;</span>
+        <span class="token comment" spellcheck="true">#    fastcgi_pass   127.0.0.1:9000;</span>
+        <span class="token comment" spellcheck="true">#    fastcgi_index  index.php;</span>
+        <span class="token comment" spellcheck="true">#    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span>
+        <span class="token comment" spellcheck="true">#    include        fastcgi_params;</span>
+        <span class="token comment" spellcheck="true">#}</span>
+
+        <span class="token comment" spellcheck="true"># deny access to .htaccess files, if Apache's document root</span>
+        <span class="token comment" spellcheck="true"># concurs with nginx's one</span>
+        <span class="token comment" spellcheck="true">#</span>
+        <span class="token comment" spellcheck="true">#location ~ /\.ht {</span>
+        <span class="token comment" spellcheck="true">#    deny  all;</span>
+        <span class="token comment" spellcheck="true">#}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">#虚拟主机配置：</span>
+    server <span class="token punctuation">{</span>
+        listen 1234<span class="token punctuation">;</span>
+        server_name bhz.com<span class="token punctuation">;</span>
+        location / <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">#正则表达式匹配uri方式：在/usr/local/nginx/bhz.com下 建立一个test123.html 然后使用正则匹配</span>
+        <span class="token comment" spellcheck="true">#location ~ test {</span>
+            <span class="token comment" spellcheck="true">## 重写语法：if return （条件 = ~ ~*）</span>
+            <span class="token comment" spellcheck="true">#if ($remote_addr = 192.168.1.200) {</span>
+            <span class="token comment" spellcheck="true">#       return 401;</span>
+            <span class="token comment" spellcheck="true">#}</span>
+
+            <span class="token comment" spellcheck="true">#if ($http_user_agent ~* firefox) {</span>
+            <span class="token comment" spellcheck="true">#       rewrite ^.*$ /firefox.html;</span>
+            <span class="token comment" spellcheck="true">#       break;</span>
+            <span class="token comment" spellcheck="true">#}</span>
+
+            root bhz.com<span class="token punctuation">;</span>
+            index index.html<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">#location /goods {</span>
+        <span class="token comment" spellcheck="true">#        rewrite "goods-(\d{1,5})\.html" /goods-ctrl.html;</span>
+        <span class="token comment" spellcheck="true">#        root bhz.com;</span>
+        <span class="token comment" spellcheck="true">#        index index.html;</span>
+        <span class="token comment" spellcheck="true">#}</span>
+
+        <span class="token comment" spellcheck="true">#配置访问日志</span>
+        access_log logs/bhz.com.access.log main<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+
+    <span class="token comment" spellcheck="true"># another virtual host using mix of IP-, name-, and port-based configuration</span>
+    <span class="token comment" spellcheck="true">#</span>
+    <span class="token comment" spellcheck="true">#server {</span>
+    <span class="token comment" spellcheck="true">#    listen       8000;</span>
+    <span class="token comment" spellcheck="true">#    listen       somename:8080;</span>
+    <span class="token comment" spellcheck="true">#    server_name  somename  alias  another.alias;</span>
+
+    <span class="token comment" spellcheck="true">#    location / {</span>
+    <span class="token comment" spellcheck="true">#        root   html;</span>
+    <span class="token comment" spellcheck="true">#        index  index.html index.htm;</span>
+    <span class="token comment" spellcheck="true">#    }</span>
+    <span class="token comment" spellcheck="true">#}</span>
+
+
+    <span class="token comment" spellcheck="true"># HTTPS server</span>
+    <span class="token comment" spellcheck="true">#</span>
+    <span class="token comment" spellcheck="true">#server {</span>
+    <span class="token comment" spellcheck="true">#    listen       443 ssl;</span>
+    <span class="token comment" spellcheck="true">#    server_name  localhost;</span>
+
+    <span class="token comment" spellcheck="true">#    ssl_certificate      cert.pem;</span>
+    <span class="token comment" spellcheck="true">#    ssl_certificate_key  cert.key;</span>
+
+    <span class="token comment" spellcheck="true">#    ssl_session_cache    shared:SSL:1m;</span>
+    <span class="token comment" spellcheck="true">#    ssl_session_timeout  5m;</span>
+
+    <span class="token comment" spellcheck="true">#    ssl_ciphers  HIGH:!aNULL:!MD5;</span>
+    <span class="token comment" spellcheck="true">#    ssl_prefer_server_ciphers  on;</span>
+
+    <span class="token comment" spellcheck="true">#    location / {</span>
+    <span class="token comment" spellcheck="true">#        root   html;</span>
+    <span class="token comment" spellcheck="true">#        index  index.html index.htm;</span>
+    <span class="token comment" spellcheck="true">#    }</span>
+    <span class="token comment" spellcheck="true">#}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
 <hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这篇介绍了Nginx的安装 非常简单 下面会写篇介绍Nginx负载均衡和高可用的博客</p>
 <hr>
@@ -502,7 +700,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/03/05/FastDFS-Install/" id="post_nav-newer" class="prev-content">
+        <a href="/2017/03/04/Zookeeper-Cluster-Install/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -516,7 +714,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 
     <!-- Next Nav -->
     
-        <a href="/2017/03/04/Zookeeper-Cluster-Install/" id="post_nav-older" class="next-content">
+        <a href="/2017/03/03/Redis-Cluster-Install/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

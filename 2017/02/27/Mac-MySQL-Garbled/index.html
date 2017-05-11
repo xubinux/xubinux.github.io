@@ -40,7 +40,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Binux">
     <meta name="description" content="一名正在崛起的Java后端工程师">
-    <meta name="keywords" content="null,Mac,MySQL">
+    <meta name="keywords" content="null,MySQL,Mac">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="http://on2bs9q7q.bkt.clouddn.com/avatar.png">
@@ -68,7 +68,7 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="完美解决Mac下Navicat Premium连接MySQL5.7中文乱码！！！ | Binux Blog">
     <meta property="og:description" content="一名正在崛起的Java后端工程师">
-    <meta property="og:article:tag" content="Mac"> <meta property="og:article:tag" content="MySQL"> 
+    <meta property="og:article:tag" content="MySQL"> <meta property="og:article:tag" content="Mac"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -227,7 +227,7 @@
 
     <!-- Custom Head -->
     
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -435,11 +435,42 @@
 <p>我总结出来的只需要改2处 <strong>有一处还是自己多此一举</strong> 出现的！</p>
 <hr>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>首先我们来改MySQL的字符集</p>
-<p>登录MySQL SHOW VARIABLES LIKE “character%”;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW VARIABLES LIKE &quot;character%&quot;;</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">| Variable_name            | Value                                                     |</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">| character_set_client     | utf8                                                      |</div><div class="line">| character_set_connection | utf8                                                      |</div><div class="line">| character_set_database   | latin1                                                    |</div><div class="line">| character_set_filesystem | binary                                                    |</div><div class="line">| character_set_results    | utf8                                                      |</div><div class="line">| character_set_server     | latin1                                                    |</div><div class="line">| character_set_system     | utf8                                                      |</div><div class="line">| character_sets_dir       | /usr/local/mysql-5.7.17-macos10.12-x86_64/share/charsets/ |</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">8 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
-<p>character_set_database和character_set_server的默认字符集还是latin1。</p>
-<p>需要改成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW VARIABLES LIKE &quot;character%&quot;;</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">| Variable_name            | Value                                                     |</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">| character_set_client     | utf8                                                      |</div><div class="line">| character_set_connection | utf8                                                      |</div><div class="line">| character_set_database   | utf8                                                      |</div><div class="line">| character_set_filesystem | binary                                                    |</div><div class="line">| character_set_results    | utf8                                                      |</div><div class="line">| character_set_server     | utf8                                                      |</div><div class="line">| character_set_system     | utf8                                                      |</div><div class="line">| character_sets_dir       | /usr/local/mysql-5.7.17-macos10.12-x86_64/share/charsets/ |</div><div class="line">+--------------------------+-----------------------------------------------------------+</div><div class="line">8 rows in set (0.00 sec)</div></pre></td></tr></table></figure></p>
-<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>停止MySQL服务</p>
-<center><img src="http://on2bs9q7q.bkt.clouddn.com/Mac-MySQL-img1.png" alt="MySQL设置"></center><br><center>MySQL设置</center><br>打开终端 执行 sudo vim /etc/my.cnf 输入密码 新建一个MySQL配置文件 因为5.7 安装的时候默认没有配置文件<br><br>加入2条配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[client]</div><div class="line">default-character-set=utf8</div><div class="line">[mysqld]</div><div class="line">character-set-server=utf8</div></pre></td></tr></table></figure><br><br>重新启动MySQL服务<br><br>打开Navicat Premium 连接<br><center><img src="http://on2bs9q7q.bkt.clouddn.com/Mac-MySQL-img2.png" alt="Navicat Premium连接"></center><br>发现还是乱码<br><center><img src="http://on2bs9q7q.bkt.clouddn.com/Mac-MySQL-img3.png" alt="中文乱码"></center><br><center>中文乱码</center><br>其实到这边 MySQL乱码就配置完成了 问题就出在 新建连接的时候Encoding这边选择了utf-8<br><br>把它改成Auto 问题解决<br><center><img src="http://on2bs9q7q.bkt.clouddn.com/Mac-MySQL-img4.png" alt="问题解决"></center>
+<p>登录MySQL SHOW VARIABLES LIKE “character%”;</p>
+<pre><code>mysql&gt; SHOW VARIABLES LIKE &quot;character%&quot;;
++--------------------------+-----------------------------------------------------------+
+| Variable_name            | Value                                                     |
++--------------------------+-----------------------------------------------------------+
+| character_set_client     | utf8                                                      |
+| character_set_connection | utf8                                                      |
+| character_set_database   | latin1                                                    |
+| character_set_filesystem | binary                                                    |
+| character_set_results    | utf8                                                      |
+| character_set_server     | latin1                                                    |
+| character_set_system     | utf8                                                      |
+| character_sets_dir       | /usr/local/mysql-5.7.17-macos10.12-x86_64/share/charsets/ |
++--------------------------+-----------------------------------------------------------+
+8 rows in set (0.00 sec)
+</code></pre><p>character_set_database和character_set_server的默认字符集还是latin1。</p>
+<p>需要改成</p>
+<pre><code>mysql&gt; SHOW VARIABLES LIKE &quot;character%&quot;;
++--------------------------+-----------------------------------------------------------+
+| Variable_name            | Value                                                     |
++--------------------------+-----------------------------------------------------------+
+| character_set_client     | utf8                                                      |
+| character_set_connection | utf8                                                      |
+| character_set_database   | utf8                                                      |
+| character_set_filesystem | binary                                                    |
+| character_set_results    | utf8                                                      |
+| character_set_server     | utf8                                                      |
+| character_set_system     | utf8                                                      |
+| character_sets_dir       | /usr/local/mysql-5.7.17-macos10.12-x86_64/share/charsets/ |
++--------------------------+-----------------------------------------------------------+
+8 rows in set (0.00 sec)
+</code></pre><h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>停止MySQL服务</p>
+<center><img src="http://on2bs9q7q.bkt.clouddn.com/Mac-MySQL-img1.png" alt="MySQL设置"></center><br><center>MySQL设置</center><br>打开终端 执行 sudo vim /etc/my.cnf 输入密码 新建一个MySQL配置文件 因为5.7 安装的时候默认没有配置文件<br><br>加入2条配置<br><code>[client]
+default-character-set=utf8
+[mysqld]
+character-set-server=utf8</code><br>重新启动MySQL服务<br><br>打开Navicat Premium 连接<br><center><img src="http://on2bs9q7q.bkt.clouddn.com/Mac-MySQL-img2.png" alt="Navicat Premium连接"></center><br>发现还是乱码<br><center><img src="http://on2bs9q7q.bkt.clouddn.com/Mac-MySQL-img3.png" alt="中文乱码"></center><br><center>中文乱码</center><br>其实到这边 MySQL乱码就配置完成了 问题就出在 新建连接的时候Encoding这边选择了utf-8<br><br>把它改成Auto 问题解决<br><center><img src="http://on2bs9q7q.bkt.clouddn.com/Mac-MySQL-img4.png" alt="问题解决"></center>
 
 <hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>出现这个问题不怪别人 都是自己手残 干嘛自己去改连接属性里面的Encoding 其实默认就是Auto 其实这个问题困扰我挺久的 </p>

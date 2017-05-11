@@ -40,7 +40,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Binux">
     <meta name="description" content="一名正在崛起的Java后端工程师">
-    <meta name="keywords" content="null,XBin-Store,FastDFS,Linux">
+    <meta name="keywords" content="null,Linux,XBin-Store,FastDFS">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="http://on2bs9q7q.bkt.clouddn.com/avatar.png">
@@ -68,7 +68,7 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Xbin-Store(分布式商城)项目所用Linux服务系列 FastDFS安装(五) | Binux Blog">
     <meta property="og:description" content="一名正在崛起的Java后端工程师">
-    <meta property="og:article:tag" content="XBin-Store"> <meta property="og:article:tag" content="FastDFS"> <meta property="og:article:tag" content="Linux"> 
+    <meta property="og:article:tag" content="Linux"> <meta property="og:article:tag" content="XBin-Store"> <meta property="og:article:tag" content="FastDFS"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -227,7 +227,7 @@
 
     <!-- Custom Head -->
     
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -469,19 +469,62 @@
 <p>在学习时可以不用考虑防火墙的问题</p>
 </blockquote>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="安装libfastcommon"><a href="#安装libfastcommon" class="headerlink" title="安装libfastcommon"></a>安装libfastcommon</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">./make.sh </div><div class="line">./make.sh install</div><div class="line">mkdir -p /usr/lib64</div><div class="line">install -m 755 libfastcommon.so /usr/lib64</div><div class="line">mkdir -p /usr/include/fastcommon</div></pre></td></tr></table></figure>
-<p>打印：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install -m 644 common_define.h hash.h chain.h logger.h base64.h shared_func.h pthread_func.h ini_file_reader.h _os_bits.h sockopt.h sched_thread.h http_func.h md5.h local_ip_func.h avl_tree.h ioevent.h ioevent_loop.h fast_task_queue.h fast_timer.h process_ctrl.h fast_mblock.h connection_pool.h /usr/include/fastcommon</div></pre></td></tr></table></figure></p>
-<blockquote>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="安装libfastcommon"><a href="#安装libfastcommon" class="headerlink" title="安装libfastcommon"></a>安装libfastcommon</h3><pre><code>./make.sh 
+./make.sh install
+mkdir -p /usr/lib64
+install -m 755 libfastcommon.so /usr/lib64
+mkdir -p /usr/include/fastcommon
+</code></pre><p>打印：</p>
+<pre><code>install -m 644 common_define.h hash.h chain.h logger.h base64.h shared_func.h pthread_func.h ini_file_reader.h _os_bits.h sockopt.h sched_thread.h http_func.h md5.h local_ip_func.h avl_tree.h ioevent.h ioevent_loop.h fast_task_queue.h fast_timer.h process_ctrl.h fast_mblock.h connection_pool.h /usr/include/fastcommon
+</code></pre><blockquote>
 <p>注意安装的路径：libfastcommon默认安装到了/usr/lib64/这个位置。</p>
 </blockquote>
-<h3 id="进行软链接创建"><a href="#进行软链接创建" class="headerlink" title="进行软链接创建"></a>进行软链接创建</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so</div><div class="line">ln -s /usr/lib64/libfdfsclient.so /usr/local/lib/libfdfsclient.so</div><div class="line">ln -s /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so</div></pre></td></tr></table></figure>
-<h3 id="安装FastDFS（同时进行）"><a href="#安装FastDFS（同时进行）" class="headerlink" title="安装FastDFS（同时进行）"></a>安装FastDFS（同时进行）</h3><h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><p>tar -zxvf FastDFS_v5.05.tar.gz -C /usr/local/fast/</p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/fast/FastDFS</div><div class="line">./make.sh</div><div class="line">./make.sh install</div></pre></td></tr></table></figure>
-<p>打印：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">mkdir -p /usr/bin</div><div class="line">mkdir -p /etc/fdfs</div><div class="line">cp -f fdfs_trackerd /usr/bin</div><div class="line">if [ ! -f /etc/fdfs/tracker.conf.sample ]; then cp -f ../conf/tracker.conf /etc/fdfs/tracker.conf.sample; fi</div><div class="line">mkdir -p /usr/bin</div><div class="line">mkdir -p /etc/fdfs</div><div class="line">cp -f fdfs_storaged  /usr/bin</div><div class="line">if [ ! -f /etc/fdfs/storage.conf.sample ]; then cp -f ../conf/storage.conf /etc/fdfs/storage.conf.sample; fi</div><div class="line">mkdir -p /usr/bin</div><div class="line">mkdir -p /etc/fdfs</div><div class="line">mkdir -p /usr/lib64</div><div class="line">cp -f fdfs_monitor fdfs_test fdfs_test1 fdfs_crc32 fdfs_upload_file fdfs_download_file fdfs_delete_file fdfs_file_info fdfs_appender_test fdfs_appender_test1 fdfs_append_file fdfs_upload_appender /usr/bin</div><div class="line">if [ 0 -eq 1 ]; then cp -f libfdfsclient.a /usr/lib64; fi</div><div class="line">if [ 1 -eq 1 ]; then cp -f libfdfsclient.so /usr/lib64; fi</div><div class="line">mkdir -p /usr/include/fastdfs</div><div class="line">cp -f ../common/fdfs_define.h ../common/fdfs_global.h ../common/mime_file_parser.h ../common/fdfs_http_shared.h ../tracker/tracker_types.h ../tracker/tracker_proto.h ../tracker/fdfs_shared_func.h ../storage/trunk_mgr/trunk_shared.h tracker_client.h storage_client.h storage_client1.h client_func.h client_global.h fdfs_client.h /usr/include/fastdfs</div><div class="line">if [ ! -f /etc/fdfs/client.conf.sample ]; then cp -f ../conf/client.conf /etc/fdfs/client.conf.sample; fi</div></pre></td></tr></table></figure></p>
-<h4 id="服务脚本在："><a href="#服务脚本在：" class="headerlink" title="服务脚本在："></a>服务脚本在：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ls /etc/init.d/ | grep fdfs</div><div class="line">fdfs_storaged</div><div class="line">fdfs_trackerd</div></pre></td></tr></table></figure>
-<h4 id="配置文件在："><a href="#配置文件在：" class="headerlink" title="配置文件在："></a>配置文件在：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ls /etc/fdfs/</div><div class="line">client.conf.sample  storage.conf.sample  tracker.conf.sample</div></pre></td></tr></table></figure>
-<h4 id="命令行工具在-usr-bin-目录下"><a href="#命令行工具在-usr-bin-目录下" class="headerlink" title="命令行工具在/usr/bin/目录下"></a>命令行工具在/usr/bin/目录下</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">ls /usr/bin/ | grep fdfs</div><div class="line">fdfs_appender_test</div><div class="line">fdfs_appender_test1</div><div class="line">fdfs_append_file</div><div class="line">fdfs_crc32</div><div class="line">fdfs_delete_file</div><div class="line">fdfs_download_file</div><div class="line">fdfs_file_info</div><div class="line">fdfs_monitor</div><div class="line">fdfs_storaged</div><div class="line">fdfs_test</div><div class="line">fdfs_test1</div><div class="line">fdfs_trackerd</div><div class="line">fdfs_upload_appender</div><div class="line">fdfs_upload_file</div></pre></td></tr></table></figure>
-<blockquote>
+<h3 id="进行软链接创建"><a href="#进行软链接创建" class="headerlink" title="进行软链接创建"></a>进行软链接创建</h3><pre><code>ln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so
+ln -s /usr/lib64/libfdfsclient.so /usr/local/lib/libfdfsclient.so
+ln -s /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so
+</code></pre><h3 id="安装FastDFS（同时进行）"><a href="#安装FastDFS（同时进行）" class="headerlink" title="安装FastDFS（同时进行）"></a>安装FastDFS（同时进行）</h3><h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><p>tar -zxvf FastDFS_v5.05.tar.gz -C /usr/local/fast/</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>cd /usr/local/fast/FastDFS
+./make.sh
+./make.sh install
+</code></pre><p>打印：</p>
+<pre><code>mkdir -p /usr/bin
+mkdir -p /etc/fdfs
+cp -f fdfs_trackerd /usr/bin
+if [ ! -f /etc/fdfs/tracker.conf.sample ]; then cp -f ../conf/tracker.conf /etc/fdfs/tracker.conf.sample; fi
+mkdir -p /usr/bin
+mkdir -p /etc/fdfs
+cp -f fdfs_storaged  /usr/bin
+if [ ! -f /etc/fdfs/storage.conf.sample ]; then cp -f ../conf/storage.conf /etc/fdfs/storage.conf.sample; fi
+mkdir -p /usr/bin
+mkdir -p /etc/fdfs
+mkdir -p /usr/lib64
+cp -f fdfs_monitor fdfs_test fdfs_test1 fdfs_crc32 fdfs_upload_file fdfs_download_file fdfs_delete_file fdfs_file_info fdfs_appender_test fdfs_appender_test1 fdfs_append_file fdfs_upload_appender /usr/bin
+if [ 0 -eq 1 ]; then cp -f libfdfsclient.a /usr/lib64; fi
+if [ 1 -eq 1 ]; then cp -f libfdfsclient.so /usr/lib64; fi
+mkdir -p /usr/include/fastdfs
+cp -f ../common/fdfs_define.h ../common/fdfs_global.h ../common/mime_file_parser.h ../common/fdfs_http_shared.h ../tracker/tracker_types.h ../tracker/tracker_proto.h ../tracker/fdfs_shared_func.h ../storage/trunk_mgr/trunk_shared.h tracker_client.h storage_client.h storage_client1.h client_func.h client_global.h fdfs_client.h /usr/include/fastdfs
+if [ ! -f /etc/fdfs/client.conf.sample ]; then cp -f ../conf/client.conf /etc/fdfs/client.conf.sample; fi
+</code></pre><h4 id="服务脚本在："><a href="#服务脚本在：" class="headerlink" title="服务脚本在："></a>服务脚本在：</h4><pre><code>ls /etc/init.d/ | grep fdfs
+fdfs_storaged
+fdfs_trackerd
+</code></pre><h4 id="配置文件在："><a href="#配置文件在：" class="headerlink" title="配置文件在："></a>配置文件在：</h4><pre><code>ls /etc/fdfs/
+client.conf.sample  storage.conf.sample  tracker.conf.sample
+</code></pre><h4 id="命令行工具在-usr-bin-目录下"><a href="#命令行工具在-usr-bin-目录下" class="headerlink" title="命令行工具在/usr/bin/目录下"></a>命令行工具在/usr/bin/目录下</h4><pre><code>ls /usr/bin/ | grep fdfs
+fdfs_appender_test
+fdfs_appender_test1
+fdfs_append_file
+fdfs_crc32
+fdfs_delete_file
+fdfs_download_file
+fdfs_file_info
+fdfs_monitor
+fdfs_storaged
+fdfs_test
+fdfs_test1
+fdfs_trackerd
+fdfs_upload_appender
+fdfs_upload_file
+</code></pre><blockquote>
 <p>因为FastDFS服务脚本设置的bin目录为/usr/local/bin/下,但是实际我们安装在了/usr/bin/下面。所以我们需要修改FastDFS配置文件中的路径，也就是需要修改俩 个配置文件：</p>
 <ul>
 <li>命令：vim /etc/init.d/fdfs_storaged</li>
@@ -490,9 +533,12 @@
 <li>进行全局替换命令：%s+/usr/local/bin+/usr/bin</li>
 </ul>
 </blockquote>
-<h2 id="配置跟踪器（trackerd）"><a href="#配置跟踪器（trackerd）" class="headerlink" title="配置跟踪器（trackerd）"></a>配置跟踪器（trackerd）</h2><h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd /etc/fdfs/</div><div class="line">cp tracker.conf.sample tracker.conf</div><div class="line">vim /etc/fdfs/tracker.conf</div></pre></td></tr></table></figure>
-<h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># the base path to store data and log files</div><div class="line">base_path=/fastdfs/tracker</div></pre></td></tr></table></figure>
-<p> mkdir -p /fastdfs/tracker</p>
+<h2 id="配置跟踪器（trackerd）"><a href="#配置跟踪器（trackerd）" class="headerlink" title="配置跟踪器（trackerd）"></a>配置跟踪器（trackerd）</h2><h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><pre><code>cd /etc/fdfs/
+cp tracker.conf.sample tracker.conf
+vim /etc/fdfs/tracker.conf
+</code></pre><h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><pre><code># the base path to store data and log files
+base_path=/fastdfs/tracker
+</code></pre><p> mkdir -p /fastdfs/tracker</p>
 <blockquote>
 <ul>
 <li>目录命令：cd /fastdfs/tracker/ &amp;&amp; ll</li>
@@ -501,10 +547,14 @@
 <li>停止tracker命令：/etc/init.d/fdfs_trackerd stop</li>
 </ul>
 </blockquote>
-<h4 id="查看是否启动成功"><a href="#查看是否启动成功" class="headerlink" title="查看是否启动成功"></a>查看是否启动成功</h4><h5 id="启动前："><a href="#启动前：" class="headerlink" title="启动前："></a>启动前：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /fastdfs/tracker/ &amp;&amp; ll</div><div class="line">total 0</div></pre></td></tr></table></figure>
-<h5 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h5><p>/etc/init.d/fdfs_trackerd start</p>
-<h5 id="启动成功"><a href="#启动成功" class="headerlink" title="启动成功"></a>启动成功</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd /fastdfs/tracker/ &amp;&amp; ll</div><div class="line">total 8</div><div class="line">drwxr-xr-x. 2 root root 4096 Dec 14 20:48 data</div><div class="line">drwxr-xr-x. 2 root root 4096 Dec 14 20:48 logs</div></pre></td></tr></table></figure>
-<blockquote>
+<h4 id="查看是否启动成功"><a href="#查看是否启动成功" class="headerlink" title="查看是否启动成功"></a>查看是否启动成功</h4><h5 id="启动前："><a href="#启动前：" class="headerlink" title="启动前："></a>启动前：</h5><pre><code>cd /fastdfs/tracker/ &amp;&amp; ll
+total 0
+</code></pre><h5 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h5><p>/etc/init.d/fdfs_trackerd start</p>
+<h5 id="启动成功"><a href="#启动成功" class="headerlink" title="启动成功"></a>启动成功</h5><pre><code>cd /fastdfs/tracker/ &amp;&amp; ll
+total 8
+drwxr-xr-x. 2 root root 4096 Dec 14 20:48 data
+drwxr-xr-x. 2 root root 4096 Dec 14 20:48 logs
+</code></pre><blockquote>
 <p>可以设置开机启动跟踪器：（一般生产环境需要开机启动一些服务，如keepalived、Nginx、tomcat等等）</p>
 <ul>
 <li>命令：vim /etc/rc.d/rc.local</li>
@@ -519,8 +569,11 @@
 <li>命令：vim /etc/fdfs/storage.conf</li>
 </ul>
 </blockquote>
-<h3 id="修改内容："><a href="#修改内容：" class="headerlink" title="修改内容："></a>修改内容：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">base_path=/fastdfs/storage</div><div class="line">store_path0=/fastdfs/storage</div><div class="line">tracker_server=192.168.1.1:22122</div><div class="line">http.server_port=80</div></pre></td></tr></table></figure>
-<h3 id="创建存储目录："><a href="#创建存储目录：" class="headerlink" title="创建存储目录："></a>创建存储目录：</h3><p>mkdir -p /fastdfs/storage</p>
+<h3 id="修改内容："><a href="#修改内容：" class="headerlink" title="修改内容："></a>修改内容：</h3><pre><code>base_path=/fastdfs/storage
+store_path0=/fastdfs/storage
+tracker_server=192.168.1.1:22122
+http.server_port=80
+</code></pre><h3 id="创建存储目录："><a href="#创建存储目录：" class="headerlink" title="创建存储目录："></a>创建存储目录：</h3><p>mkdir -p /fastdfs/storage</p>
 <h3 id="启动存储（storage）"><a href="#启动存储（storage）" class="headerlink" title="启动存储（storage）"></a>启动存储（storage）</h3><p>命令：/etc/init.d/fdfs_storaged start</p>
 <h3 id="查看是否启动成功-1"><a href="#查看是否启动成功-1" class="headerlink" title="查看是否启动成功"></a>查看是否启动成功</h3><p>ps -ef | grep fdfs</p>
 <blockquote>
@@ -533,15 +586,23 @@
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><h3 id="首先我们在跟踪器（tracker）里copy一份client-conf文件。"><a href="#首先我们在跟踪器（tracker）里copy一份client-conf文件。" class="headerlink" title="首先我们在跟踪器（tracker）里copy一份client.conf文件。"></a>首先我们在跟踪器（tracker）里copy一份client.conf文件。</h3><p>命令：cd /etc/fdfs/</p>
 <p>命令：cp client.conf.sample client.conf</p>
 <h3 id="编辑client-conf文件"><a href="#编辑client-conf文件" class="headerlink" title="编辑client.conf文件"></a>编辑client.conf文件</h3><p>vim /etc/fdfs/client.conf</p>
-<h3 id="修改内容：-1"><a href="#修改内容：-1" class="headerlink" title="修改内容："></a>修改内容：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">base_path=/fastdfs/tracker</div><div class="line">tracker_server=**192.168.1.1**:22122</div></pre></td></tr></table></figure>
-<h3 id="测试上传"><a href="#测试上传" class="headerlink" title="测试上传"></a>测试上传</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/bin/fdfs_upload_file /etc/fdfs/client.conf /root/FastDFS/libfastcommon-master.zip</div></pre></td></tr></table></figure>
-<p>打印：</p>
+<h3 id="修改内容：-1"><a href="#修改内容：-1" class="headerlink" title="修改内容："></a>修改内容：</h3><pre><code>base_path=/fastdfs/tracker
+tracker_server=**192.168.1.1**:22122
+</code></pre><h3 id="测试上传"><a href="#测试上传" class="headerlink" title="测试上传"></a>测试上传</h3><pre><code>/usr/bin/fdfs_upload_file /etc/fdfs/client.conf /root/FastDFS/libfastcommon-master.zip
+</code></pre><p>打印：</p>
 <p>group1/M00/00/00/2-YyVlhRQlaAZLlgAAGP6hUWM6I411.zip</p>
-<h3 id="存储器查看文件"><a href="#存储器查看文件" class="headerlink" title="存储器查看文件"></a>存储器查看文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd /fastdfs/storage/data/00/00/ &amp;&amp; ll</div><div class="line">total 1</div><div class="line">-rw-r--r--. 1 root root 102378 Dec 14 21:00 2-YyVlhRQlaAZLlgAAGP6hUWM6I411.zip</div></pre></td></tr></table></figure>
-<h2 id="FastDFS与Nginx整合（Storage）"><a href="#FastDFS与Nginx整合（Storage）" class="headerlink" title="FastDFS与Nginx整合（Storage）"></a>FastDFS与Nginx整合（Storage）</h2><h3 id="解压Nginx"><a href="#解压Nginx" class="headerlink" title="解压Nginx"></a>解压Nginx</h3><p>tar -zxvf nginx-1.6.2.tar.gz</p>
-<h3 id="安装fastdfs-nginx-module-v1-16-tar-gz"><a href="#安装fastdfs-nginx-module-v1-16-tar-gz" class="headerlink" title="安装fastdfs-nginx-module_v1.16.tar.gz"></a>安装fastdfs-nginx-module_v1.16.tar.gz</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tar -zxvf FastDFS/fastdfs-nginx-module_v1.16.tar.gz -C /usr/local/fast/</div><div class="line">cd /usr/local/fast/fastdfs-nginx-module/src/</div></pre></td></tr></table></figure>
-<h3 id="编辑配置文件config"><a href="#编辑配置文件config" class="headerlink" title="编辑配置文件config"></a>编辑配置文件config</h3><p>vim /usr/local/fast/fastdfs-nginx-module/src/config<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">修改前：</div><div class="line">CORE_INCS=&quot;$CORE_INCS /usr/local/include/fastdfs /usr/local/include/fastcommon/&quot;</div><div class="line">修改后：</div><div class="line">CORE_INCS=&quot;$CORE_INCS /usr/include/fastdfs /usr/include/fastcommon/&quot;</div></pre></td></tr></table></figure></p>
-<h3 id="FastDFS与Nginx进行集成"><a href="#FastDFS与Nginx进行集成" class="headerlink" title="FastDFS与Nginx进行集成"></a>FastDFS与Nginx进行集成</h3><p>cd nginx-1.6.2/</p>
+<h3 id="存储器查看文件"><a href="#存储器查看文件" class="headerlink" title="存储器查看文件"></a>存储器查看文件</h3><pre><code>cd /fastdfs/storage/data/00/00/ &amp;&amp; ll
+total 1
+-rw-r--r--. 1 root root 102378 Dec 14 21:00 2-YyVlhRQlaAZLlgAAGP6hUWM6I411.zip
+</code></pre><h2 id="FastDFS与Nginx整合（Storage）"><a href="#FastDFS与Nginx整合（Storage）" class="headerlink" title="FastDFS与Nginx整合（Storage）"></a>FastDFS与Nginx整合（Storage）</h2><h3 id="解压Nginx"><a href="#解压Nginx" class="headerlink" title="解压Nginx"></a>解压Nginx</h3><p>tar -zxvf nginx-1.6.2.tar.gz</p>
+<h3 id="安装fastdfs-nginx-module-v1-16-tar-gz"><a href="#安装fastdfs-nginx-module-v1-16-tar-gz" class="headerlink" title="安装fastdfs-nginx-module_v1.16.tar.gz"></a>安装fastdfs-nginx-module_v1.16.tar.gz</h3><pre><code>tar -zxvf FastDFS/fastdfs-nginx-module_v1.16.tar.gz -C /usr/local/fast/
+cd /usr/local/fast/fastdfs-nginx-module/src/
+</code></pre><h3 id="编辑配置文件config"><a href="#编辑配置文件config" class="headerlink" title="编辑配置文件config"></a>编辑配置文件config</h3><p>vim /usr/local/fast/fastdfs-nginx-module/src/config</p>
+<pre><code>修改前：
+CORE_INCS=&quot;$CORE_INCS /usr/local/include/fastdfs /usr/local/include/fastcommon/&quot;
+修改后：
+CORE_INCS=&quot;$CORE_INCS /usr/include/fastdfs /usr/include/fastcommon/&quot;
+</code></pre><h3 id="FastDFS与Nginx进行集成"><a href="#FastDFS与Nginx进行集成" class="headerlink" title="FastDFS与Nginx进行集成"></a>FastDFS与Nginx进行集成</h3><p>cd nginx-1.6.2/</p>
 <p>./configure –add-module=/usr/local/fast/fastdfs-nginx-module/src/</p>
 <p>make &amp;&amp; make install</p>
 <blockquote>
@@ -549,13 +610,20 @@
 </blockquote>
 <h3 id="复制、修改配置文件"><a href="#复制、修改配置文件" class="headerlink" title="复制、修改配置文件"></a>复制、修改配置文件</h3><p>cp /usr/local/fast/fastdfs-nginx-module/src/mod_fastdfs.conf /etc/fdfs/</p>
 <p>vim /etc/fdfs/mod_fastdfs.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">connect_timeout=10</div><div class="line">tracker_server=192.168.1.1:22122</div><div class="line">url_have_group_name = true</div><div class="line">store_path0=/fastdfs/storage</div></pre></td></tr></table></figure>
-<h3 id="复制FastDFS里的2个文件"><a href="#复制FastDFS里的2个文件" class="headerlink" title="复制FastDFS里的2个文件"></a>复制FastDFS里的2个文件</h3><p>cd /usr/local/fast/FastDFS/conf/</p>
+<pre><code>connect_timeout=10
+tracker_server=192.168.1.1:22122
+url_have_group_name = true
+store_path0=/fastdfs/storage
+</code></pre><h3 id="复制FastDFS里的2个文件"><a href="#复制FastDFS里的2个文件" class="headerlink" title="复制FastDFS里的2个文件"></a>复制FastDFS里的2个文件</h3><p>cd /usr/local/fast/FastDFS/conf/</p>
 <p>cp http.conf mime.types /etc/fdfs/</p>
 <h3 id="建立软连接"><a href="#建立软连接" class="headerlink" title="建立软连接"></a>建立软连接</h3><p>ln -s /fastdfs/storage/data/ /fastdfs/storage/data/M00</p>
 <h3 id="修改Nginx配置"><a href="#修改Nginx配置" class="headerlink" title="修改Nginx配置"></a>修改Nginx配置</h3><p>vim nginx.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">listen 80;</div><div class="line">server_name localhost;</div><div class="line">location ~/group([0-9])/M00 &#123;</div><div class="line">    ngx_fastdfs_module;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="启动Nginx"><a href="#启动Nginx" class="headerlink" title="启动Nginx"></a>启动Nginx</h3><p> /usr/local/nginx/sbin/nginx</p>
+<pre><code>listen 80;
+server_name localhost;
+location ~/group([0-9])/M00 {
+    ngx_fastdfs_module;
+}
+</code></pre><h3 id="启动Nginx"><a href="#启动Nginx" class="headerlink" title="启动Nginx"></a>启动Nginx</h3><p> /usr/local/nginx/sbin/nginx</p>
 <blockquote>
 <p>报错:  error while loading shared libraries: libpcre.so.1: cannot open shared object file: No such file or directory</p>
 </blockquote>
@@ -576,7 +644,270 @@
 <li>关闭nginx命令：/usr/local/nginx/sbin/nginx -s stop</li>
 </ul>
 <h2 id="使用Java客户端操作"><a href="#使用Java客户端操作" class="headerlink" title="使用Java客户端操作"></a>使用Java客户端操作</h2><h3 id="classpath下建立文件fastdfs-client-conf"><a href="#classpath下建立文件fastdfs-client-conf" class="headerlink" title="classpath下建立文件fastdfs_client.conf"></a>classpath下建立文件fastdfs_client.conf</h3><h4 id="输入以下内容"><a href="#输入以下内容" class="headerlink" title="输入以下内容"></a>输入以下内容</h4><p>tracker_server = 192.168.125.129:22122</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> vip.xubin.utils;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.commons.lang3.StringUtils;</div><div class="line"><span class="keyword">import</span> org.apache.log4j.Logger;</div><div class="line"><span class="keyword">import</span> org.csource.common.NameValuePair;</div><div class="line"><span class="keyword">import</span> org.csource.fastdfs.*;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.*;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * FastDFS 工具类</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FastDFSClientUtils</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String CONF_FILENAME = Thread.currentThread().getContextClassLoader().getResource(<span class="string">"fastdfs_client.conf"</span>).getPath();</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Logger logger = Logger.getLogger(FastDFSClientUtils.class);</div><div class="line"></div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> TrackerClient trackerClient;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="comment">//加载文件</span></div><div class="line">	<span class="keyword">static</span> &#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			ClientGlobal.init(CONF_FILENAME);</div><div class="line">			TrackerGroup trackerGroup = ClientGlobal.g_tracker_group;</div><div class="line">			trackerClient = <span class="keyword">new</span> TrackerClient(trackerGroup);</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			logger.error(e);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 上传</div><div class="line">	 * <span class="doctag">@param</span> file 文件</div><div class="line">	 * <span class="doctag">@param</span> path 路径</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 *          上传成功返回id，失败返回null</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">upload</span><span class="params">(File file, String path)</span> </span>&#123;</div><div class="line">		TrackerServer trackerServer = <span class="keyword">null</span>;</div><div class="line">		StorageServer storageServer = <span class="keyword">null</span>;</div><div class="line">		StorageClient1 storageClient1 = <span class="keyword">null</span>;</div><div class="line">		FileInputStream fis = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			NameValuePair[] meta_list = <span class="keyword">null</span>; <span class="comment">// new NameValuePair[0];</span></div><div class="line">			fis = <span class="keyword">new</span> FileInputStream(file);</div><div class="line">			<span class="keyword">byte</span>[] file_buff = <span class="keyword">null</span>;</div><div class="line">			<span class="keyword">if</span> (fis != <span class="keyword">null</span>) &#123;</div><div class="line">				<span class="keyword">int</span> len = fis.available();</div><div class="line">				file_buff = <span class="keyword">new</span> <span class="keyword">byte</span>[len];</div><div class="line">				fis.read(file_buff);</div><div class="line">			&#125;</div><div class="line"></div><div class="line">			trackerServer = trackerClient.getConnection();</div><div class="line">			<span class="keyword">if</span> (trackerServer == <span class="keyword">null</span>) &#123;</div><div class="line">				logger.error(<span class="string">"getConnection return null"</span>);</div><div class="line">			&#125;</div><div class="line">			storageServer = trackerClient.getStoreStorage(trackerServer);</div><div class="line">			storageClient1 = <span class="keyword">new</span> StorageClient1(trackerServer, storageServer);</div><div class="line">			String fileid = storageClient1.upload_file1(file_buff, getFileExt(path), meta_list);</div><div class="line"></div><div class="line">			<span class="keyword">return</span> fileid;</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception ex) &#123;</div><div class="line">			logger.error(ex);</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		&#125;<span class="keyword">finally</span>&#123;</div><div class="line">			<span class="keyword">if</span> (fis != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					fis.close();</div><div class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">					logger.error(e);</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (storageServer != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					storageServer.close();</div><div class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (trackerServer != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					trackerServer.close();</div><div class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			storageClient1 = <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 上传</div><div class="line">	 * <span class="doctag">@param</span> data 数据</div><div class="line">	 * <span class="doctag">@param</span> extName 路径</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 *          上传成功返回id，失败返回null</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">upload</span><span class="params">(<span class="keyword">byte</span>[] data, String extName)</span> </span>&#123;</div><div class="line">		TrackerServer trackerServer = <span class="keyword">null</span>;</div><div class="line">		StorageServer storageServer = <span class="keyword">null</span>;</div><div class="line">		StorageClient1 storageClient1 = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			NameValuePair[] meta_list = <span class="keyword">null</span>; <span class="comment">// new NameValuePair[0];</span></div><div class="line"></div><div class="line">			trackerServer = trackerClient.getConnection();</div><div class="line">			<span class="keyword">if</span> (trackerServer == <span class="keyword">null</span>) &#123;</div><div class="line">				logger.error(<span class="string">"getConnection return null"</span>);</div><div class="line">			&#125;</div><div class="line">			storageServer = trackerClient.getStoreStorage(trackerServer);</div><div class="line">			storageClient1 = <span class="keyword">new</span> StorageClient1(trackerServer, storageServer);</div><div class="line">			String fileid = storageClient1.upload_file1(data, extName, meta_list);</div><div class="line">			<span class="keyword">return</span> fileid;</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception ex) &#123;</div><div class="line">			logger.error(ex);</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		&#125;<span class="keyword">finally</span>&#123;</div><div class="line">			<span class="keyword">if</span> (storageServer != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					storageServer.close();</div><div class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (trackerServer != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					trackerServer.close();</div><div class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			storageClient1 = <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 下载</div><div class="line">	 * <span class="doctag">@param</span> fileId 文件id</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 *          返回InputStream</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> InputStream <span class="title">download</span><span class="params">(String groupName, String fileId)</span> </span>&#123;</div><div class="line">		TrackerServer trackerServer = <span class="keyword">null</span>;</div><div class="line">		StorageServer storageServer = <span class="keyword">null</span>;</div><div class="line">		StorageClient1 storageClient1 = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			trackerServer = trackerClient.getConnection();</div><div class="line">			<span class="keyword">if</span> (trackerServer == <span class="keyword">null</span>) &#123;</div><div class="line">				logger.error(<span class="string">"getConnection return null"</span>);</div><div class="line">			&#125;</div><div class="line">			storageServer = trackerClient.getStoreStorage(trackerServer, groupName);</div><div class="line">			storageClient1 = <span class="keyword">new</span> StorageClient1(trackerServer, storageServer);</div><div class="line">			<span class="keyword">byte</span>[] bytes = storageClient1.download_file1(fileId);</div><div class="line">			InputStream inputStream = <span class="keyword">new</span> ByteArrayInputStream(bytes);</div><div class="line">			<span class="keyword">return</span> inputStream;</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception ex) &#123;</div><div class="line">			logger.error(ex);</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		&#125; <span class="keyword">finally</span> &#123;</div><div class="line">			<span class="keyword">if</span> (storageServer != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					storageServer.close();</div><div class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (trackerServer != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					trackerServer.close();</div><div class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			storageClient1 = <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 删除</div><div class="line">	 * <span class="doctag">@param</span> fileId 文件id</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 *          删除成功返回0，非0则操作失败，返回错误代码</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">delete</span><span class="params">(String groupName, String fileId)</span> </span>&#123;</div><div class="line">		TrackerServer trackerServer = <span class="keyword">null</span>;</div><div class="line">		StorageServer storageServer = <span class="keyword">null</span>;</div><div class="line">		StorageClient1 storageClient1 = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			trackerServer = trackerClient.getConnection();</div><div class="line">			<span class="keyword">if</span> (trackerServer == <span class="keyword">null</span>) &#123;</div><div class="line">				logger.error(<span class="string">"getConnection return null"</span>);</div><div class="line">			&#125;</div><div class="line">			storageServer = trackerClient.getStoreStorage(trackerServer, groupName);</div><div class="line">			storageClient1 = <span class="keyword">new</span> StorageClient1(trackerServer, storageServer);</div><div class="line">			<span class="keyword">int</span> result = storageClient1.delete_file1(fileId);</div><div class="line">			<span class="keyword">return</span> result;</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception ex) &#123;</div><div class="line">			logger.error(ex);</div><div class="line">			<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		&#125; <span class="keyword">finally</span> &#123;</div><div class="line">			<span class="keyword">if</span> (storageServer != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					storageServer.close();</div><div class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (trackerServer != <span class="keyword">null</span>)&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					trackerServer.close();</div><div class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			storageClient1 = <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 更新文件</div><div class="line">	 * <span class="doctag">@param</span> oldFileId 旧文件id</div><div class="line">	 * <span class="doctag">@param</span> file 新文件</div><div class="line">	 * <span class="doctag">@param</span> path 新文件路径</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 *          上传成功返回id，失败返回null</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">modify</span><span class="params">(String oldGroupName, String oldFileId, File file, String path)</span> </span>&#123;</div><div class="line">		String fileid = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			<span class="comment">// 先上传</span></div><div class="line">			fileid = upload(file, path);</div><div class="line">			<span class="keyword">if</span> (fileid == <span class="keyword">null</span>) &#123;</div><div class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="comment">// 再删除</span></div><div class="line">			<span class="keyword">int</span> delResult = delete(oldGroupName, oldFileId);</div><div class="line">			<span class="keyword">if</span> (delResult != <span class="number">0</span>) &#123;</div><div class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">			&#125;</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception ex) &#123;</div><div class="line">			logger.error(ex);</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> fileid;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 获取文件后缀名</div><div class="line">	 * <span class="doctag">@param</span> fileName</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 *          如："jpg"、"txt"、"zip" 等</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getFileExt</span><span class="params">(String fileName)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (StringUtils.isBlank(fileName) || !fileName.contains(<span class="string">"."</span>)) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> fileName.substring(fileName.lastIndexOf(<span class="string">"."</span>) + <span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> vip<span class="token punctuation">.</span>xubin<span class="token punctuation">.</span>utils<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>commons<span class="token punctuation">.</span>lang3<span class="token punctuation">.</span>StringUtils<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>log4j<span class="token punctuation">.</span>Logger<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>csource<span class="token punctuation">.</span>common<span class="token punctuation">.</span>NameValuePair<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>csource<span class="token punctuation">.</span>fastdfs<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+
+
+<span class="token comment" spellcheck="true">/**
+ * FastDFS 工具类
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">FastDFSClientUtils</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> String CONF_FILENAME <span class="token operator">=</span> Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getContextClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span><span class="token string">"fastdfs_client.conf"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> Logger logger <span class="token operator">=</span> Logger<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>FastDFSClientUtils<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> TrackerClient trackerClient<span class="token punctuation">;</span>
+
+
+    <span class="token comment" spellcheck="true">//加载文件</span>
+    <span class="token keyword">static</span> <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            ClientGlobal<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>CONF_FILENAME<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            TrackerGroup trackerGroup <span class="token operator">=</span> ClientGlobal<span class="token punctuation">.</span>g_tracker_group<span class="token punctuation">;</span>
+            trackerClient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TrackerClient</span><span class="token punctuation">(</span>trackerGroup<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 上传
+     * @param file 文件
+     * @param path 路径
+     * @return
+     *          上传成功返回id，失败返回null
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> String <span class="token function">upload</span><span class="token punctuation">(</span>File file<span class="token punctuation">,</span> String path<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        TrackerServer trackerServer <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        StorageServer storageServer <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        StorageClient1 storageClient1 <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        FileInputStream fis <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            NameValuePair<span class="token punctuation">[</span><span class="token punctuation">]</span> meta_list <span class="token operator">=</span> null<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// new NameValuePair[0];</span>
+            fis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> file_buff <span class="token operator">=</span> null<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>fis <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">int</span> len <span class="token operator">=</span> fis<span class="token punctuation">.</span><span class="token function">available</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                file_buff <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span>len<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                fis<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>file_buff<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            trackerServer <span class="token operator">=</span> trackerClient<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>trackerServer <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"getConnection return null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            storageServer <span class="token operator">=</span> trackerClient<span class="token punctuation">.</span><span class="token function">getStoreStorage</span><span class="token punctuation">(</span>trackerServer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            storageClient1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StorageClient1</span><span class="token punctuation">(</span>trackerServer<span class="token punctuation">,</span> storageServer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            String fileid <span class="token operator">=</span> storageClient1<span class="token punctuation">.</span><span class="token function">upload_file1</span><span class="token punctuation">(</span>file_buff<span class="token punctuation">,</span> <span class="token function">getFileExt</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">,</span> meta_list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> fileid<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>ex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">finally</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>fis <span class="token operator">!=</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    fis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>storageServer <span class="token operator">!=</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    storageServer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>trackerServer <span class="token operator">!=</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    trackerServer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            storageClient1 <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 上传
+     * @param data 数据
+     * @param extName 路径
+     * @return
+     *          上传成功返回id，失败返回null
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> String <span class="token function">upload</span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data<span class="token punctuation">,</span> String extName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        TrackerServer trackerServer <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        StorageServer storageServer <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        StorageClient1 storageClient1 <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            NameValuePair<span class="token punctuation">[</span><span class="token punctuation">]</span> meta_list <span class="token operator">=</span> null<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// new NameValuePair[0];</span>
+
+            trackerServer <span class="token operator">=</span> trackerClient<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>trackerServer <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"getConnection return null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            storageServer <span class="token operator">=</span> trackerClient<span class="token punctuation">.</span><span class="token function">getStoreStorage</span><span class="token punctuation">(</span>trackerServer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            storageClient1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StorageClient1</span><span class="token punctuation">(</span>trackerServer<span class="token punctuation">,</span> storageServer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            String fileid <span class="token operator">=</span> storageClient1<span class="token punctuation">.</span><span class="token function">upload_file1</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> extName<span class="token punctuation">,</span> meta_list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> fileid<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>ex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">finally</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>storageServer <span class="token operator">!=</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    storageServer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>trackerServer <span class="token operator">!=</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    trackerServer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            storageClient1 <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 下载
+     * @param fileId 文件id
+     * @return
+     *          返回InputStream
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> InputStream <span class="token function">download</span><span class="token punctuation">(</span>String groupName<span class="token punctuation">,</span> String fileId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        TrackerServer trackerServer <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        StorageServer storageServer <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        StorageClient1 storageClient1 <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            trackerServer <span class="token operator">=</span> trackerClient<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>trackerServer <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"getConnection return null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            storageServer <span class="token operator">=</span> trackerClient<span class="token punctuation">.</span><span class="token function">getStoreStorage</span><span class="token punctuation">(</span>trackerServer<span class="token punctuation">,</span> groupName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            storageClient1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StorageClient1</span><span class="token punctuation">(</span>trackerServer<span class="token punctuation">,</span> storageServer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes <span class="token operator">=</span> storageClient1<span class="token punctuation">.</span><span class="token function">download_file1</span><span class="token punctuation">(</span>fileId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            InputStream inputStream <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ByteArrayInputStream</span><span class="token punctuation">(</span>bytes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> inputStream<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>ex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>storageServer <span class="token operator">!=</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    storageServer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>trackerServer <span class="token operator">!=</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    trackerServer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            storageClient1 <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 删除
+     * @param fileId 文件id
+     * @return
+     *          删除成功返回0，非0则操作失败，返回错误代码
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">delete</span><span class="token punctuation">(</span>String groupName<span class="token punctuation">,</span> String fileId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        TrackerServer trackerServer <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        StorageServer storageServer <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        StorageClient1 storageClient1 <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            trackerServer <span class="token operator">=</span> trackerClient<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>trackerServer <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"getConnection return null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            storageServer <span class="token operator">=</span> trackerClient<span class="token punctuation">.</span><span class="token function">getStoreStorage</span><span class="token punctuation">(</span>trackerServer<span class="token punctuation">,</span> groupName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            storageClient1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StorageClient1</span><span class="token punctuation">(</span>trackerServer<span class="token punctuation">,</span> storageServer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> result <span class="token operator">=</span> storageClient1<span class="token punctuation">.</span><span class="token function">delete_file1</span><span class="token punctuation">(</span>fileId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>ex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>storageServer <span class="token operator">!=</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    storageServer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>trackerServer <span class="token operator">!=</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    trackerServer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            storageClient1 <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 更新文件
+     * @param oldFileId 旧文件id
+     * @param file 新文件
+     * @param path 新文件路径
+     * @return
+     *          上传成功返回id，失败返回null
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> String <span class="token function">modify</span><span class="token punctuation">(</span>String oldGroupName<span class="token punctuation">,</span> String oldFileId<span class="token punctuation">,</span> File file<span class="token punctuation">,</span> String path<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String fileid <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 先上传</span>
+            fileid <span class="token operator">=</span> <span class="token function">upload</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span> path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>fileid <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">// 再删除</span>
+            <span class="token keyword">int</span> delResult <span class="token operator">=</span> <span class="token function">delete</span><span class="token punctuation">(</span>oldGroupName<span class="token punctuation">,</span> oldFileId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>delResult <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>ex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> fileid<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 获取文件后缀名
+     * @param fileName
+     * @return
+     *          如："jpg"、"txt"、"zip" 等
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> String <span class="token function">getFileExt</span><span class="token punctuation">(</span>String fileName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>StringUtils<span class="token punctuation">.</span><span class="token function">isBlank</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token operator">!</span>fileName<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> fileName<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>fileName<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>FastDFS的安装算是比较麻烦的 不过按照本篇 一步一步来 是绝对可以安装成功的 集群的安装就更麻烦了 个人暂时用不到 就不安装了</p>
 <hr>
@@ -641,7 +972,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 
     <!-- Next Nav -->
     
-        <a href="/2017/03/04/Nginx-Install/" id="post_nav-older" class="next-content">
+        <a href="/2017/03/04/Zookeeper-Cluster-Install/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

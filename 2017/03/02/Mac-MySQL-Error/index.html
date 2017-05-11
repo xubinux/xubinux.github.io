@@ -227,7 +227,7 @@
 
     <!-- Custom Head -->
     
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -444,22 +444,78 @@
 </ul>
 <h4 id="下面我会讲一下这个问题的原因-不限于我出现的这个问题-帮大家分析下这个问题-希望大家不要出现我这种问题了-为什么我老是碰到这种蛋疼问题-浪费时间还让人心烦-3天时间干什么不好啊"><a href="#下面我会讲一下这个问题的原因-不限于我出现的这个问题-帮大家分析下这个问题-希望大家不要出现我这种问题了-为什么我老是碰到这种蛋疼问题-浪费时间还让人心烦-3天时间干什么不好啊" class="headerlink" title="下面我会讲一下这个问题的原因 不限于我出现的这个问题 帮大家分析下这个问题 希望大家不要出现我这种问题了 为什么我老是碰到这种蛋疼问题 浪费时间还让人心烦 (3天时间干什么不好啊)"></a>下面我会讲一下这个问题的原因 不限于我出现的这个问题 帮大家分析下这个问题 希望大家不要出现我这种问题了 为什么我老是碰到这种蛋疼问题 <strong>浪费时间还让人心烦</strong> (3天时间干什么不好啊)</h4><hr>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h4 id="BalusC解答截图-再次感谢"><a href="#BalusC解答截图-再次感谢" class="headerlink" title="@BalusC解答截图 再次感谢"></a>@BalusC解答截图 再次感谢</h4><p><center><img src="http://on2bs9q7q.bkt.clouddn.com/MySQL-ERROR-img1.png" alt="@BalusC解答截图"></center><br><center>@BalusC解答截图</center></p>
-<h4 id="具体报错–MySQL服务没启动同样报此错"><a href="#具体报错–MySQL服务没启动同样报此错" class="headerlink" title="具体报错–MySQL服务没启动同样报此错"></a>具体报错–MySQL服务没启动同样报此错</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure</div><div class="line"></div><div class="line">The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</div><div class="line">	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)</div><div class="line">	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)</div><div class="line">	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)</div><div class="line">	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)</div><div class="line">	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)</div><div class="line">	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:981)</div><div class="line">	at com.mysql.jdbc.MysqlIO.readPacket(MysqlIO.java:628)</div><div class="line">	at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1014)</div><div class="line">	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2255)</div><div class="line">	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2286)</div><div class="line">	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2085)</div><div class="line">	at com.mysql.jdbc.ConnectionImpl.&lt;init&gt;(ConnectionImpl.java:795)</div><div class="line">	at com.mysql.jdbc.JDBC4Connection.&lt;init&gt;(JDBC4Connection.java:44)</div><div class="line">	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)</div><div class="line">	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)</div><div class="line">	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)</div><div class="line">	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)</div><div class="line">	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)</div><div class="line">	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:400)</div><div class="line">	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:327)</div><div class="line">	at org.mybatis.generator.internal.db.ConnectionFactory.getConnection(ConnectionFactory.java:68)</div><div class="line">	at org.mybatis.generator.config.Context.getConnection(Context.java:526)</div><div class="line">	at org.mybatis.generator.config.Context.introspectTables(Context.java:436)</div><div class="line">	at org.mybatis.generator.api.MyBatisGenerator.generate(MyBatisGenerator.java:222)</div><div class="line">	at org.mybatis.generator.api.MyBatisGenerator.generate(MyBatisGenerator.java:133)</div><div class="line">	at GeneratorSqlmap.generator(GeneratorSqlmap.java:27)</div><div class="line">	at GeneratorSqlmap.main(GeneratorSqlmap.java:33)</div><div class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</div><div class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)</div><div class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</div><div class="line">	at java.lang.reflect.Method.invoke(Method.java:606)</div><div class="line">	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)</div><div class="line">Caused by: java.io.EOFException: Can not read response from server. Expected to read 4 bytes, read 0 bytes before connection was unexpectedly lost.</div><div class="line">	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:2957)</div><div class="line">	at com.mysql.jdbc.MysqlIO.readPacket(MysqlIO.java:560)</div><div class="line">	... 25 more</div></pre></td></tr></table></figure>
-<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><h5 id="报错问题："><a href="#报错问题：" class="headerlink" title="报错问题："></a>报错问题：</h5><p>The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</p>
+<h4 id="具体报错–MySQL服务没启动同样报此错"><a href="#具体报错–MySQL服务没启动同样报此错" class="headerlink" title="具体报错–MySQL服务没启动同样报此错"></a>具体报错–MySQL服务没启动同样报此错</h4><pre><code>com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+    at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+    at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+    at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+    at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+    at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+    at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:981)
+    at com.mysql.jdbc.MysqlIO.readPacket(MysqlIO.java:628)
+    at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1014)
+    at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2255)
+    at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2286)
+    at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2085)
+    at com.mysql.jdbc.ConnectionImpl.&lt;init&gt;(ConnectionImpl.java:795)
+    at com.mysql.jdbc.JDBC4Connection.&lt;init&gt;(JDBC4Connection.java:44)
+    at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+    at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+    at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+    at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+    at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
+    at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:400)
+    at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:327)
+    at org.mybatis.generator.internal.db.ConnectionFactory.getConnection(ConnectionFactory.java:68)
+    at org.mybatis.generator.config.Context.getConnection(Context.java:526)
+    at org.mybatis.generator.config.Context.introspectTables(Context.java:436)
+    at org.mybatis.generator.api.MyBatisGenerator.generate(MyBatisGenerator.java:222)
+    at org.mybatis.generator.api.MyBatisGenerator.generate(MyBatisGenerator.java:133)
+    at GeneratorSqlmap.generator(GeneratorSqlmap.java:27)
+    at GeneratorSqlmap.main(GeneratorSqlmap.java:33)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke(Method.java:606)
+    at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
+Caused by: java.io.EOFException: Can not read response from server. Expected to read 4 bytes, read 0 bytes before connection was unexpectedly lost.
+    at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:2957)
+    at com.mysql.jdbc.MysqlIO.readPacket(MysqlIO.java:560)
+    ... 25 more
+</code></pre><h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><h5 id="报错问题："><a href="#报错问题：" class="headerlink" title="报错问题："></a>报错问题：</h5><p>The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</p>
 <p>最后一个发送成功的数据包在0秒前 没有收到任何来自服务器的数据包。</p>
 <p>简单来说就是连不上MySQL服务器了</p>
-<h5 id="检查MySQL连接是否有错"><a href="#检查MySQL连接是否有错" class="headerlink" title="检查MySQL连接是否有错"></a>检查MySQL连接是否有错</h5><p>这时候你就得检查下你的msyql连接url有没有写错了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">driverClass=&quot;**com.mysql.jdbc.Driver**&quot;</div><div class="line">connectionURL=&quot;jdbc:mysql://**IP**:**3306**/**库名**&quot;</div><div class="line">userId=&quot;root&quot;</div><div class="line">password=&quot;**密码**&quot;</div></pre></td></tr></table></figure></p>
-<blockquote>
+<h5 id="检查MySQL连接是否有错"><a href="#检查MySQL连接是否有错" class="headerlink" title="检查MySQL连接是否有错"></a>检查MySQL连接是否有错</h5><p>这时候你就得检查下你的msyql连接url有没有写错了</p>
+<pre><code>driverClass=&quot;**com.mysql.jdbc.Driver**&quot;
+connectionURL=&quot;jdbc:mysql://**IP**:**3306**/**库名**&quot;
+userId=&quot;root&quot;
+password=&quot;**密码**&quot;
+</code></pre><blockquote>
 <p>ip 端口 库名 仔细检查下</p>
 </blockquote>
 <p>如果到这还没有解决问题 那么继续往下看</p>
 <h4 id="检查Hosts文件"><a href="#检查Hosts文件" class="headerlink" title="检查Hosts文件"></a>检查Hosts文件</h4><p>查看jdbc中的IP是否在hosts文件中有解析</p>
 <h4 id="检查MySQL配置文件"><a href="#检查MySQL配置文件" class="headerlink" title="检查MySQL配置文件"></a>检查MySQL配置文件</h4><p>查看是否绑定ip地址</p>
 <p>如果有这行 注释bind-address=xxx.xxx.xxx.xxx</p>
-<h4 id="检查MySQL运行在哪个端口"><a href="#检查MySQL运行在哪个端口" class="headerlink" title="检查MySQL运行在哪个端口"></a>检查MySQL运行在哪个端口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show global variables like &apos;port&apos;;</div><div class="line">+---------------+-------+</div><div class="line">| Variable_name | Value |</div><div class="line">+---------------+-------+</div><div class="line">| port          | 3306  |</div><div class="line">+---------------+-------+</div><div class="line">1 row in set (0.10 sec)</div></pre></td></tr></table></figure>
-<h4 id="检查MySQL服务是否真正启动"><a href="#检查MySQL服务是否真正启动" class="headerlink" title="检查MySQL服务是否真正启动"></a>检查MySQL服务是否真正启动</h4><p>telnet <strong>Ip</strong> 3306</p>
-<h4 id="检查MySQL是否不接受远程连接"><a href="#检查MySQL是否不接受远程连接" class="headerlink" title="检查MySQL是否不接受远程连接"></a>检查MySQL是否不接受远程连接</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">SELECT USER,HOST FROM user;</div><div class="line">//正确</div><div class="line">+-----------+-----------+</div><div class="line">| USER      | HOST      |</div><div class="line">+-----------+-----------+</div><div class="line">| root      | %         |</div><div class="line">| mysql.sys | localhost |</div><div class="line">| root      | localhost |</div><div class="line">+-----------+-----------+</div></pre></td></tr></table></figure>
-<p>如果没有授权的话</p>
+<h4 id="检查MySQL运行在哪个端口"><a href="#检查MySQL运行在哪个端口" class="headerlink" title="检查MySQL运行在哪个端口"></a>检查MySQL运行在哪个端口</h4><pre><code>mysql&gt; show global variables like &#39;port&#39;;
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| port          | 3306  |
++---------------+-------+
+1 row in set (0.10 sec)
+</code></pre><h4 id="检查MySQL服务是否真正启动"><a href="#检查MySQL服务是否真正启动" class="headerlink" title="检查MySQL服务是否真正启动"></a>检查MySQL服务是否真正启动</h4><p>telnet <strong>Ip</strong> 3306</p>
+<h4 id="检查MySQL是否不接受远程连接"><a href="#检查MySQL是否不接受远程连接" class="headerlink" title="检查MySQL是否不接受远程连接"></a>检查MySQL是否不接受远程连接</h4><pre><code>SELECT USER,HOST FROM user;
+//正确
++-----------+-----------+
+| USER      | HOST      |
++-----------+-----------+
+| root      | %         |
+| mysql.sys | localhost |
+| root      | localhost |
++-----------+-----------+
+</code></pre><p>如果没有授权的话</p>
 <p>mysql&gt; grant all privileges on <em>.</em> to root@’%’ identified by ‘<strong>我是密码</strong>‘;</p>
 <h4 id="检查MySQL是否已经用完了所有连接"><a href="#检查MySQL是否已经用完了所有连接" class="headerlink" title="检查MySQL是否已经用完了所有连接"></a>检查MySQL是否已经用完了所有连接</h4><p>重启MySQL 出现运行程序 如果不报错就是此问题</p>
 <h4 id="检查有没有什么东西在阻止Java程序和MySQL连接"><a href="#检查有没有什么东西在阻止Java程序和MySQL连接" class="headerlink" title="检查有没有什么东西在阻止Java程序和MySQL连接"></a>检查有没有什么东西在阻止Java程序和MySQL连接</h4><p>比如关闭<strong>防火墙</strong> 或者设置防火墙规则</p>

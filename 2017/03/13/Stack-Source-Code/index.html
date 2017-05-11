@@ -227,7 +227,7 @@
 
     <!-- Custom Head -->
     
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -452,7 +452,19 @@
 </ul>
 <p>从上面的方法可以看出Stack对取出数据的操作都加了synchronized,说明他是支持并发取出数据的</p>
 <p>peek()和pop()的区别仅在于前者不会删除元素,后者会</p>
-<p>另外多了个search(Object o) 搜索最后出现的此元素元素<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 本质上还是调用父类的方法lastIndexOf来确定最后出现此元素的索引</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> <span class="title">search</span><span class="params">(Object o)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i = lastIndexOf(o);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (i &gt;= <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> size() - i;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>另外多了个search(Object o) 搜索最后出现的此元素元素</p>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * 本质上还是调用父类的方法lastIndexOf来确定最后出现此元素的索引
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">int</span> <span class="token function">search</span><span class="token punctuation">(</span>Object o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token function">lastIndexOf</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> i<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
 <hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Stack的源码还是很简单的,只比Vector多了几个方法用来实现栈的特性</p>
 <p>其实实现栈可以使用LinkedList来实现,LinkedList和Stack实现栈的区别只在于LinkedList底层是使用链表来存储数据的,而Stack是使用数组存储的</p>

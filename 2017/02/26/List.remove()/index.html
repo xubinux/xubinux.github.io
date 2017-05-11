@@ -40,7 +40,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Binux">
     <meta name="description" content="一名正在崛起的Java后端工程师">
-    <meta name="keywords" content="null,XBin-Store,Bug,Java">
+    <meta name="keywords" content="null,XBin-Store,Java,Bug">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="http://on2bs9q7q.bkt.clouddn.com/avatar.png">
@@ -68,7 +68,7 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="List.remove()无效!!! | Binux Blog">
     <meta property="og:description" content="一名正在崛起的Java后端工程师">
-    <meta property="og:article:tag" content="XBin-Store"> <meta property="og:article:tag" content="Bug"> <meta property="og:article:tag" content="Java"> 
+    <meta property="og:article:tag" content="XBin-Store"> <meta property="og:article:tag" content="Java"> <meta property="og:article:tag" content="Bug"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -227,7 +227,7 @@
 
     <!-- Custom Head -->
     
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -436,7 +436,42 @@
 <hr>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><center><img src="http://on2bs9q7q.bkt.clouddn.com/List.remove()-cart.png"></center><br><center>购物车截图</center>
 
-<p>服务端代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> *</div><div class="line"> * 根据商品id和数量对购物车增加商品或减少商品</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> pid       商品id</div><div class="line"> * <span class="doctag">@param</span> pcount    增加数量</div><div class="line"> * <span class="doctag">@param</span> type      1 增加 2 减少</div><div class="line"> * <span class="doctag">@param</span> index     商品位置   ps:用于直接定位商品 不用遍历整个购物车</div><div class="line"> * <span class="doctag">@return</span></div><div class="line"> */</div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> XbinResult <span class="title">decreOrIncre</span><span class="params">(Long pid, Integer pcount, Integer type, Integer index, String cookieUUID)</span> </span>&#123;</div><div class="line"></div><div class="line">    String key = CART_INFO_PROFIX + cookieUUID;</div><div class="line"></div><div class="line">    List&lt;CartInfo&gt; cartInfoList = getCartInfoListByCookiesId(cookieUUID);</div><div class="line">    <span class="keyword">if</span> (cartInfoList == <span class="keyword">null</span> || cartInfoList.size() == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> XbinResult.build(<span class="number">400</span>, <span class="string">"购物车没有商品 请不要非法操作!"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    CartInfo cartInfo = cartInfoList.get(index);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (type == <span class="number">1</span>) &#123;</div><div class="line">        cartInfo.setNum(cartInfo.getNum() + pcount);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        cartInfo.setNum(cartInfo.getNum() - pcount);</div><div class="line">    &#125;</div><div class="line">    cartInfoList.remove(index);</div><div class="line">    cartInfoList.add(index, cartInfo);</div><div class="line">    jedisClient.set(key, FastJsonConvert.convertObjectToJSON(cartInfoList));</div><div class="line">    jedisClient.expire(key,REDIS_CART_EXPIRE_TIME);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> XbinResult.ok();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>服务端代码：</p>
+<pre class=" language-Java"><code class="language-Java">/**
+ *
+ * 根据商品id和数量对购物车增加商品或减少商品
+ *
+ * @param pid       商品id
+ * @param pcount    增加数量
+ * @param type      1 增加 2 减少
+ * @param index     商品位置   ps:用于直接定位商品 不用遍历整个购物车
+ * @return
+ */
+@Override
+public XbinResult decreOrIncre(Long pid, Integer pcount, Integer type, Integer index, String cookieUUID) {
+
+    String key = CART_INFO_PROFIX + cookieUUID;
+
+    List<CartInfo> cartInfoList = getCartInfoListByCookiesId(cookieUUID);
+    if (cartInfoList == null || cartInfoList.size() == 0) {
+        return XbinResult.build(400, "购物车没有商品 请不要非法操作!");
+    }
+
+    CartInfo cartInfo = cartInfoList.get(index);
+
+    if (type == 1) {
+        cartInfo.setNum(cartInfo.getNum() + pcount);
+    } else {
+        cartInfo.setNum(cartInfo.getNum() - pcount);
+    }
+    cartInfoList.remove(index);
+    cartInfoList.add(index, cartInfo);
+    jedisClient.set(key, FastJsonConvert.convertObjectToJSON(cartInfoList));
+    jedisClient.expire(key,REDIS_CART_EXPIRE_TIME);
+
+    return XbinResult.ok();
+}
+</code></pre>
 <blockquote>
 <p>代码就不解释了 太简单了。</p>
 </blockquote>
@@ -444,7 +479,32 @@
 <center><img src="http://on2bs9q7q.bkt.clouddn.com/List.remove()-Bug.png"></center><br><center>点击➕号后刷新出现</center>
 
 <p>查询Redis中数据是这样的</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  &#123;</div><div class="line">    <span class="attr">"colour"</span>: <span class="string">"黑色"</span>,</div><div class="line">    <span class="attr">"id"</span>: <span class="number">148630831972863</span>,</div><div class="line">    <span class="attr">"imageUrl"</span>: <span class="string">"http://192.168.125.132/group1/M00/00/00/wKh9hFiM0l-AQuvEAABmx7u5QSA128.jpg"</span>,</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"Apple MacBook Pro 15.4英寸笔记本电脑 深空灰色（Multi-Touch Bar/Core i7/16GB/512GB MLH42CH/A）"</span>,</div><div class="line">    <span class="attr">"num"</span>: <span class="number">3</span>,</div><div class="line">    <span class="attr">"price"</span>: <span class="number">2148800</span>,</div><div class="line">    <span class="attr">"size"</span>: <span class="string">"32GB"</span>,</div><div class="line">    <span class="attr">"sum"</span>: <span class="number">6446400</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">"$ref"</span>: <span class="string">"$[0]"</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">"colour"</span>: <span class="string">"黑色"</span>,</div><div class="line">    <span class="attr">"id"</span>: <span class="number">148630639229938</span>,</div><div class="line">    <span class="attr">"imageUrl"</span>: <span class="string">"http://192.168.125.132/group1/M00/00/00/wKh9hFiMy4eAV5lwAAB25IS6WjM274.jpg"</span>,</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"Apple iPhone 7 (A1660) 32G 黑色 移动联通电信4G手机"</span>,</div><div class="line">    <span class="attr">"num"</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">"price"</span>: <span class="number">519900</span>,</div><div class="line">    <span class="attr">"size"</span>: <span class="string">"32GB"</span>,</div><div class="line">    <span class="attr">"sum"</span>: <span class="number">1039800</span></div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
+<pre class=" language-Json"><code class="language-Json">[
+  {
+    "colour": "黑色",
+    "id": 148630831972863,
+    "imageUrl": "http://192.168.125.132/group1/M00/00/00/wKh9hFiM0l-AQuvEAABmx7u5QSA128.jpg",
+    "name": "Apple MacBook Pro 15.4英寸笔记本电脑 深空灰色（Multi-Touch Bar/Core i7/16GB/512GB MLH42CH/A）",
+    "num": 3,
+    "price": 2148800,
+    "size": "32GB",
+    "sum": 6446400
+  },
+  {
+    "$ref": "$[0]"
+  },
+  {
+    "colour": "黑色",
+    "id": 148630639229938,
+    "imageUrl": "http://192.168.125.132/group1/M00/00/00/wKh9hFiMy4eAV5lwAAB25IS6WjM274.jpg",
+    "name": "Apple iPhone 7 (A1660) 32G 黑色 移动联通电信4G手机",
+    "num": 2,
+    "price": 519900,
+    "size": "32GB",
+    "sum": 1039800
+  }
+]
+</code></pre>
 <blockquote>
 <p>“$ref”: “$[0]” 表示数据引用索引0位置的数据</p>
 </blockquote>
@@ -468,7 +528,9 @@
 <p>我定义的Integer index ，他竟然没有自动拆箱 当成对象去比较了 这两个对象当然不会相同 返回false 自然不会删除 </p>
 <p>应该是默认调用的boolean remove(Object o) 方法才没有拆箱</p>
 <h2 id=""><a href="#" class="headerlink" title=""></a><p id="build"></p></h2><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>List Remove对象时不要传Integer对象的index值 要传也只能是传index.intValue()；</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//cartInfoList.remove(index);</span></div><div class="line"><span class="comment">//cartInfoList.add(index, cartInfo);</span></div></pre></td></tr></table></figure>
+<pre class=" language-Java"><code class="language-Java">//cartInfoList.remove(index);
+//cartInfoList.add(index, cartInfo);
+</code></pre>
 <p>最后我直接把这两句全注释了 解决了问题。</p>
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 

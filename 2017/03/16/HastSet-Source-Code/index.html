@@ -227,7 +227,7 @@
 
     <!-- Custom Head -->
     
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -443,14 +443,104 @@
 <hr>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>HashSet它是基于HashMap实现的，HashSet底层使用HashMap来保存所有元素，因此HashSet的实现比较简单，相关HashSet的操作，基本上都是直接调用底层HashMap的相关方法来完成，我们应该为保存到HashSet中的对象覆盖hashCode()和equals()来保证</p>
 <p>HashSet继承AbstractSet类，实现Set、Cloneable、Serializable接口。其中AbstractSet提供 Set 接口的骨干实现，从而最大限度地减少了实现此接口所需的工作。</p>
-<h3 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">5024744406713321676L</span>;</div><div class="line"></div><div class="line"><span class="comment">// 保存数据的Map</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">transient</span> HashMap&lt;E,Object&gt; map;</div><div class="line"></div><div class="line"><span class="comment">// 用来保存Map的Value值</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object PRESENT = <span class="keyword">new</span> Object();</div></pre></td></tr></table></figure>
-<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 构造一个HashSet使用默认的参数</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashSet</span><span class="params">()</span> </span>&#123;</div><div class="line">    map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 构造一个空的HashSet并把c的数据全部放入</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> c 集合</div><div class="line"> * <span class="doctag">@throws</span> NullPointerException if the specified collection is null</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashSet</span><span class="params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;</div><div class="line">    map = <span class="keyword">new</span> HashMap&lt;&gt;(Math.max((<span class="keyword">int</span>) (c.size()/.<span class="number">75f</span>) + <span class="number">1</span>, <span class="number">16</span>));</div><div class="line">    addAll(c);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 构造一个空的HashSet使用指定容量和加载系数</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span>      initialCapacity   指定容量</div><div class="line"> * <span class="doctag">@param</span>      loadFactor        指定加载系数</div><div class="line"> * <span class="doctag">@throws</span>     IllegalArgumentException</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashSet</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span> </span>&#123;</div><div class="line">    map = <span class="keyword">new</span> HashMap&lt;&gt;(initialCapacity, loadFactor);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 构造一个空的HashSet使用指定容量</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span>      initialCapacity   指定容量</div><div class="line"> * <span class="doctag">@throws</span>     IllegalArgumentException</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashSet</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span> </span>&#123;</div><div class="line">    map = <span class="keyword">new</span> HashMap&lt;&gt;(initialCapacity);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 访问权限为包权限，不对外公开</div><div class="line"> * 以指定指定容量和指定加载系数构造一个新的HashSet</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span>      initialCapacity   指定容量</div><div class="line"> * <span class="doctag">@param</span>      loadFactor        指定加载系数</div><div class="line"> * <span class="doctag">@param</span>      dummy             dummy 为标识 该构造函数主要作用是对LinkedHashSet起到一个支持作用</div><div class="line"> * <span class="doctag">@throws</span>     IllegalArgumentException</div><div class="line"> */</div><div class="line">HashSet(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor, <span class="keyword">boolean</span> dummy) &#123;</div><div class="line">    map = <span class="keyword">new</span> LinkedHashMap&lt;&gt;(initialCapacity, loadFactor);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h3><pre class=" language-java"><code class="language-java">
+    <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> serialVersionUID <span class="token operator">=</span> <span class="token operator">-</span>5024744406713321676L<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 保存数据的Map</span>
+    <span class="token keyword">private</span> <span class="token keyword">transient</span> HashMap<span class="token operator">&lt;</span>E<span class="token punctuation">,</span>Object<span class="token operator">></span> map<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 用来保存Map的Value值</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Object PRESENT <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * 构造一个HashSet使用默认的参数
+     */</span>
+    <span class="token keyword">public</span> <span class="token function">HashSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 构造一个空的HashSet并把c的数据全部放入
+     *
+     * @param c 集合
+     * @throws NullPointerException if the specified collection is null
+     */</span>
+    <span class="token keyword">public</span> <span class="token function">HashSet</span><span class="token punctuation">(</span>Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">E</span><span class="token operator">></span> c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>c<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token number">75f</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">addAll</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 构造一个空的HashSet使用指定容量和加载系数
+     *
+     * @param      initialCapacity   指定容量
+     * @param      loadFactor        指定加载系数
+     * @throws     IllegalArgumentException
+     */</span>
+    <span class="token keyword">public</span> <span class="token function">HashSet</span><span class="token punctuation">(</span><span class="token keyword">int</span> initialCapacity<span class="token punctuation">,</span> <span class="token keyword">float</span> loadFactor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>initialCapacity<span class="token punctuation">,</span> loadFactor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 构造一个空的HashSet使用指定容量
+     *
+     * @param      initialCapacity   指定容量
+     * @throws     IllegalArgumentException
+     */</span>
+    <span class="token keyword">public</span> <span class="token function">HashSet</span><span class="token punctuation">(</span><span class="token keyword">int</span> initialCapacity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>initialCapacity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 访问权限为包权限，不对外公开
+     * 以指定指定容量和指定加载系数构造一个新的HashSet
+     *
+     * @param      initialCapacity   指定容量
+     * @param      loadFactor        指定加载系数
+     * @param      dummy             dummy 为标识 该构造函数主要作用是对LinkedHashSet起到一个支持作用
+     * @throws     IllegalArgumentException
+     */</span>
+    <span class="token function">HashSet</span><span class="token punctuation">(</span><span class="token keyword">int</span> initialCapacity<span class="token punctuation">,</span> <span class="token keyword">float</span> loadFactor<span class="token punctuation">,</span> <span class="token keyword">boolean</span> dummy<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>initialCapacity<span class="token punctuation">,</span> loadFactor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
 <h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>HashSet底层使用了HashMap实现,使其的实现过程变得非常简单,他仅使用了HashMap的Key用来存放数据,Value存放的是一个空对象,了解了HashMap的原理,HashSet的原理就一目了然了。</p>
 <blockquote>
 <p>HashMap 的<code>put()</code>方法添加<code>key-value</code>时，当新<code>put()</code>HashMap的Entry中key与集合中原有Entry的key相同（<code>hashCode()</code>返回值相等，通过<code>equals()</code>比较也返回 true),新添加的Entry的value会将覆盖原来Entry的value(HashSet中的value都是PRESENT),但key不会有任何改变,因此如果向HashSet中添加一个已经存在的元素时,新添加的集合元素将不会被放入HashMap中,原来的元素也不会有任何改变,这也就满足了Set中元素不重复的特性。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 添加一个元素</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> e 元素</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> map.put(e, PRESENT)==<span class="keyword">null</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">/**</span></div><div class="line"> * 删除一个元素</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> o 元素</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(Object o)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> map.remove(o)==PRESENT;</div><div class="line">&#125;</div><div class="line"><span class="comment">/**</span></div><div class="line"> * 判断元素是否在集合中</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> o 元素</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object o)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> map.containsKey(o);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 获取Map中的keys</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> map.keySet().iterator();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * 添加一个元素
+     *
+     * @param e 元素
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">add</span><span class="token punctuation">(</span>E e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>e<span class="token punctuation">,</span> PRESENT<span class="token punctuation">)</span><span class="token operator">==</span>null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/**
+     * 删除一个元素
+     *
+     * @param o 元素
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">remove</span><span class="token punctuation">(</span>Object o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> map<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span><span class="token operator">==</span>PRESENT<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/**
+     * 判断元素是否在集合中
+     *
+     * @param o 元素
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">contains</span><span class="token punctuation">(</span>Object o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> map<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * 获取Map中的keys
+     *
+     */</span>
+    <span class="token keyword">public</span> Iterator<span class="token operator">&lt;</span>E<span class="token operator">></span> <span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> map<span class="token punctuation">.</span><span class="token function">keySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
 <hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>HashSet的实现算是简单的,原因在于他直接使用了HashMap做底层存储,HashMap算比较复杂的集合,踩着巨人的肩膀,</p>
 <hr>
