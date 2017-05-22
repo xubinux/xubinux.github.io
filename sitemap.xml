@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://binux.cn/2017/05/22/xbin-store-announcement/</loc>
+    
+    <lastmod>2017-05-22T07:00:14.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://binux.cn/portfolio/index.html</loc>
     
     <lastmod>2017-05-11T09:04:49.000Z</lastmod>
@@ -142,14 +149,14 @@
   </url>
   
   <url>
-    <loc>http://binux.cn/2017/03/11/LinkedList-Source-Code/</loc>
+    <loc>http://binux.cn/2017/03/09/Vector-Source-Code/</loc>
     
     <lastmod>2017-03-19T13:30:18.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://binux.cn/2017/03/09/Vector-Source-Code/</loc>
+    <loc>http://binux.cn/2017/03/11/LinkedList-Source-Code/</loc>
     
     <lastmod>2017-03-19T13:30:18.000Z</lastmod>
     
