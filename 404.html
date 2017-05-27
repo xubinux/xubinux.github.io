@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.4 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+        Binux Blog
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+        <link rel="dns-prefetch" href="https://changyan.sohu.com"/>
+    
+    
+        <link rel="dns-prefetch" href="https://hm.baidu.com"/>
+    
+    
+        <link rel="dns-prefetch" href="https://www.google-analytics.com"/>
+    
+    
+        <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Binux">
+    <meta name="description" content="一名正在崛起的Java后端工程师">
+    <meta name="keywords" content="null">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="http://on2bs9q7q.bkt.clouddn.com/avatar.png">
+    <link rel="icon" sizes="192x192" href="http://on2bs9q7q.bkt.clouddn.com/favicon.png">
+    <link rel="apple-touch-icon" href="http://on2bs9q7q.bkt.clouddn.com/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Binux Blog">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://binux.cn">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Binux Blog">
+    <meta property="og:description" content="一名正在崛起的Java后端工程师">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+    <!-- Baidu Analytics -->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {var hm = document.createElement('script');
+        hm.src = 'https://hm.baidu.com/hm.js?c286c0c5e31950b803d5d56c74493f58';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+
+    
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-92760839-1', 'auto');ga('send', 'pageview');
+    </script>
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Binux</strong>
+        <span>5月 27, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABfklEQVR42u3aQXLDIAwFUN//0u0BOhAhgVGmj5UncezHRpOP9Px81XpwcXFxcXFxG3Cf8Bo+7s+3o/tz78LFxb3F/VBKUvfEt/HhV7i4uFe5o4Iyvx4WoMBz5vfg4uJ+I3dehnBxcf8bN86qvAsXF7cDt16eVinHsxouLm6BGz/ErF+/er6Li4ub4i63PMMtlnjxOtgTxsXFLcwzRApNfQPJ5+Pi4l7lzhshq1FntbQNP8fFxb3EnUedSpjJRSNcXNwO3FwEmr8mWbZwcXEbcOOgyB+avUNauLi4t7gLYxDHoKXwg4uLe4y7t31SiVXbpkVwcXG3cveGmdzxKy4ubjduvHjlhq5WRzlxcXHf59aPSitbXR6/wMXFfYWbG7CuH3y8NHuOi4tb4FZaqpHNlOIQLi7uVW58rKoee47MnuPi4jbg5raxYfwCFxe3JTcXciLtE1xc3G7ceICJH5TkBrxwcXE7cCsN0YWjz1QQwsXFfZ/bf+Hi4uLi4uJeWr9yDSfN2Ru2FQAAAABJRU5ErkJggg==">
+        </ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=&url=http://binux.cn//404.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://binux.cn//404.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Binux Blog&title=&summary=一名正在崛起的Java后端工程师&pics=http://binux.cnhttp://on2bs9q7q.bkt.clouddn.com/avatar.png&url=http://binux.cn/404.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <!DOCTYPE html>
+<!-- saved from url=(0028)https://hacpai.com/halt.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <title>404 Not Found!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="http://on2bs9q7q.bkt.clouddn.com/avatar.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <style>
+            html {
+                height: 100%;
+            }
+            body {
+                font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+                background: #79a8ae;
+                color: #CFEBE4;
+                font-size: 18px;
+                line-height: 2;
+                letter-spacing: 1.2px;
+                margin: 0;
+            }
+            a {
+                color: #ebf7f4;
+            }
+            .body--ready {
+                background: -webkit-linear-gradient(top, rgb(203, 235, 219) 0%, rgb(55, 148, 192) 120%);
+                background: -moz-linear-gradient(top, rgb(203, 235, 219) 0%, rgb(55, 148, 192) 120%);
+                background: -o-linear-gradient(top, rgb(203, 235, 219) 0%, rgb(55, 148, 192) 120%);
+                background: -ms-linear-gradient(top, rgb(203, 235, 219) 0%, rgb(55, 148, 192) 120%);
+                background: linear-gradient(top, rgb(203, 235, 219) 0%, rgb(55, 148, 192) 120%);
+            }
+            .text {
+                position: fixed;
+                bottom: 100px;
+                text-align: center;
+                width: 100%;
+            }
+            .canvas {
+                margin: 0 auto;
+                display: block;
+            }
+        </style>
+    <meta name="chromesniffer" id="chromesniffer_meta" content="{&quot;Java&quot;:-1}"><script type="text/javascript" src="chrome-extension://fhhdlnnepfjhlhilgmeepgkhjmhhhjkh/js/detector.js"></script><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+    <body class="body--ready" data-pinterest-extension-installed="cr1.39.1">
+        <canvas class="canvas" width="1820" height="905"></canvas>
+        <p class="text">
+            <a href="http://binux.cn" target="_blank">binux.cn</a>
+        </p>
+        <script>
+            var S = {
+                init: function () {
+                    S.Drawing.init('.canvas');
+                    document.body.classList.add('body--ready');
+                    S.UI.simulate("#countdown 3|404|404 Not Found!");
+                    S.Drawing.loop(function () {
+                        S.Shape.render();
+                    });
+                }
+            };
+
+
+            S.Drawing = (function () {
+                var canvas,
+                        context,
+                        renderFn,
+                        requestFrame = window.requestAnimationFrame ||
+                        window.webkitRequestAnimationFrame ||
+                        window.mozRequestAnimationFrame ||
+                        window.oRequestAnimationFrame ||
+                        window.msRequestAnimationFrame ||
+                        function (callback) {
+                            window.setTimeout(callback, 1000 / 60);
+                        };
+
+                return {
+                    init: function (el) {
+                        canvas = document.querySelector(el);
+                        context = canvas.getContext('2d');
+                        this.adjustCanvas();
+
+                        window.addEventListener('resize', function (e) {
+                            S.Drawing.adjustCanvas();
+                        });
+                    },
+                    loop: function (fn) {
+                        renderFn = !renderFn ? fn : renderFn;
+                        this.clearFrame();
+                        renderFn();
+                        requestFrame.call(window, this.loop.bind(this));
+                    },
+                    adjustCanvas: function () {
+                        canvas.width = window.innerWidth - 100;
+                        canvas.height = window.innerHeight - 30;
+                    },
+                    clearFrame: function () {
+                        context.clearRect(0, 0, canvas.width, canvas.height);
+                    },
+                    getArea: function () {
+                        return {w: canvas.width, h: canvas.height};
+                    },
+                    drawCircle: function (p, c) {
+                        context.fillStyle = c.render();
+                        context.beginPath();
+                        context.arc(p.x, p.y, p.z, 0, 2 * Math.PI, true);
+                        context.closePath();
+                        context.fill();
+                    }
+                };
+            }());
+
+
+            S.UI = (function () {
+                var interval,
+                        currentAction,
+                        time,
+                        maxShapeSize = 30,
+                        sequence = [],
+                        cmd = '#';
+
+                function formatTime(date) {
+                    var h = date.getHours(),
+                            m = date.getMinutes(),
+                            m = m < 10 ? '0' + m : m;
+                    return h + ':' + m;
+                }
+
+                function getValue(value) {
+                    return value && value.split(' ')[1];
+                }
+
+                function getAction(value) {
+                    value = value && value.split(' ')[0];
+                    return value && value[0] === cmd && value.substring(1);
+                }
+
+                function timedAction(fn, delay, max, reverse) {
+                    clearInterval(interval);
+                    currentAction = reverse ? max : 1;
+                    fn(currentAction);
+
+                    if (!max || (!reverse && currentAction < max) || (reverse && currentAction > 0)) {
+                        interval = setInterval(function () {
+                            currentAction = reverse ? currentAction - 1 : currentAction + 1;
+                            fn(currentAction);
+
+                            if ((!reverse && max && currentAction === max) || (reverse && currentAction === 0)) {
+                                clearInterval(interval);
+                            }
+                        }, delay);
+                    }
+                }
+
+                function performAction(value) {
+                    var action,
+                            value,
+                            current;
+
+                    sequence = typeof (value) === 'object' ? value : sequence.concat(value.split('|'));
+
+                    timedAction(function (index) {
+                        current = sequence.shift();
+                        action = getAction(current);
+                        value = getValue(current);
+
+                        switch (action) {
+                            case 'countdown':
+                                value = parseInt(value) || 10;
+                                value = value > 0 ? value : 10;
+
+                                timedAction(function (index) {
+                                    if (index === 0) {
+                                        if (sequence.length === 0) {
+                                            S.Shape.switchShape(S.ShapeBuilder.letter(''));
+                                        } else {
+                                            performAction(sequence);
+                                        }
+                                    } else {
+                                        S.Shape.switchShape(S.ShapeBuilder.letter(index), true);
+                                    }
+                                }, 1000, value, true);
+                                break;
+
+                            case 'rectangle':
+                                value = value && value.split('x');
+                                value = (value && value.length === 2) ? value : [maxShapeSize, maxShapeSize / 2];
+
+                                S.Shape.switchShape(S.ShapeBuilder.rectangle(Math.min(maxShapeSize, parseInt(value[0])), Math.min(maxShapeSize, parseInt(value[1]))));
+                                break;
+
+                            case 'circle':
+                                value = parseInt(value) || maxShapeSize;
+                                value = Math.min(value, maxShapeSize);
+                                S.Shape.switchShape(S.ShapeBuilder.circle(value));
+                                break;
+
+                            case 'time':
+                                var t = formatTime(new Date());
+
+                                if (sequence.length > 0) {
+                                    S.Shape.switchShape(S.ShapeBuilder.letter(t));
+                                } else {
+                                    timedAction(function () {
+                                        t = formatTime(new Date());
+                                        if (t !== time) {
+                                            time = t;
+                                            S.Shape.switchShape(S.ShapeBuilder.letter(time));
+                                        }
+                                    }, 1000);
+                                }
+                                break;
+
+                            default:
+                                S.Shape.switchShape(S.ShapeBuilder.letter(current[0] === cmd ? 'HacPai' : current));
+                        }
+                    }, 2000, sequence.length);
+                }
+
+                return {
+                    simulate: function (action) {
+                        performAction(action);
+                    }
+                };
+            }());
+
+
+            S.Point = function (args) {
+                this.x = args.x;
+                this.y = args.y;
+                this.z = args.z;
+                this.a = args.a;
+                this.h = args.h;
+            };
+
+
+            S.Color = function (r, g, b, a) {
+                this.r = r;
+                this.g = g;
+                this.b = b;
+                this.a = a;
+            };
+
+            S.Color.prototype = {
+                render: function () {
+                    return 'rgba(' + this.r + ',' + +this.g + ',' + this.b + ',' + this.a + ')';
+                }
+            };
+
+
+            S.Dot = function (x, y) {
+                this.p = new S.Point({
+                    x: x,
+                    y: y,
+                    z: 5,
+                    a: 1,
+                    h: 0
+                });
+
+                this.e = 0.07;
+                this.s = true;
+
+                this.c = new S.Color(255, 255, 255, this.p.a);
+
+                this.t = this.clone();
+                this.q = [];
+            };
+
+            S.Dot.prototype = {
+                clone: function () {
+                    return new S.Point({
+                        x: this.x,
+                        y: this.y,
+                        z: this.z,
+                        a: this.a,
+                        h: this.h
+                    });
+                },
+                _draw: function () {
+                    this.c.a = this.p.a;
+                    S.Drawing.drawCircle(this.p, this.c);
+                },
+                _moveTowards: function (n) {
+                    var details = this.distanceTo(n, true),
+                            dx = details[0],
+                            dy = details[1],
+                            d = details[2],
+                            e = this.e * d;
+
+                    if (this.p.h === -1) {
+                        this.p.x = n.x;
+                        this.p.y = n.y;
+                        return true;
+                    }
+
+                    if (d > 1) {
+                        this.p.x -= ((dx / d) * e);
+                        this.p.y -= ((dy / d) * e);
+                    } else {
+                        if (this.p.h > 0) {
+                            this.p.h--;
+                        } else {
+                            return true;
+                        }
+                    }
+
+                    return false;
+                },
+                _update: function () {
+                    if (this._moveTowards(this.t)) {
+                        var p = this.q.shift();
+
+                        if (p) {
+                            this.t.x = p.x || this.p.x;
+                            this.t.y = p.y || this.p.y;
+                            this.t.z = p.z || this.p.z;
+                            this.t.a = p.a || this.p.a;
+                            this.p.h = p.h || 0;
+                        } else {
+                            if (this.s) {
+                                this.p.x -= Math.sin(Math.random() * 3.142);
+                                this.p.y -= Math.sin(Math.random() * 3.142);
+                            } else {
+                                this.move(new S.Point({
+                                    x: this.p.x + (Math.random() * 50) - 25,
+                                    y: this.p.y + (Math.random() * 50) - 25
+                                }));
+                            }
+                        }
+                    }
+
+                    d = this.p.a - this.t.a;
+                    this.p.a = Math.max(0.1, this.p.a - (d * 0.05));
+                    d = this.p.z - this.t.z;
+                    this.p.z = Math.max(1, this.p.z - (d * 0.05));
+                },
+                distanceTo: function (n, details) {
+                    var dx = this.p.x - n.x,
+                            dy = this.p.y - n.y,
+                            d = Math.sqrt(dx * dx + dy * dy);
+
+                    return details ? [dx, dy, d] : d;
+                },
+                move: function (p, avoidStatic) {
+                    if (!avoidStatic || (avoidStatic && this.distanceTo(p) > 1)) {
+                        this.q.push(p);
+                    }
+                },
+                render: function () {
+                    this._update();
+                    this._draw();
+                }
+            };
+
+
+            S.ShapeBuilder = (function () {
+                var gap = 13,
+                        shapeCanvas = document.createElement('canvas'),
+                        shapeContext = shapeCanvas.getContext('2d'),
+                        fontSize = 500,
+                        fontFamily = 'Avenir, Helvetica Neue, Helvetica, Arial, sans-serif';
+
+                function fit() {
+                    shapeCanvas.width = Math.floor(window.innerWidth / gap) * gap;
+                    shapeCanvas.height = Math.floor(window.innerHeight / gap) * gap;
+                    shapeContext.fillStyle = 'red';
+                    shapeContext.textBaseline = 'middle';
+                    shapeContext.textAlign = 'center';
+                }
+
+                function processCanvas() {
+                    var pixels = shapeContext.getImageData(0, 0, shapeCanvas.width, shapeCanvas.height).data;
+                    dots = [],
+                            pixels,
+                            x = 0,
+                            y = 0,
+                            fx = shapeCanvas.width,
+                            fy = shapeCanvas.height,
+                            w = 0,
+                            h = 0;
+
+                    for (var p = 0; p < pixels.length; p += (4 * gap)) {
+                        if (pixels[p + 3] > 0) {
+                            dots.push(new S.Point({
+                                x: x,
+                                y: y
+                            }));
+
+                            w = x > w ? x : w;
+                            h = y > h ? y : h;
+                            fx = x < fx ? x : fx;
+                            fy = y < fy ? y : fy;
+                        }
+
+                        x += gap;
+
+                        if (x >= shapeCanvas.width) {
+                            x = 0;
+                            y += gap;
+                            p += gap * 4 * shapeCanvas.width;
+                        }
+                    }
+
+                    return {dots: dots, w: w + fx, h: h + fy};
+                }
+
+                function setFontSize(s) {
+                    shapeContext.font = 'bold ' + s + 'px ' + fontFamily;
+                }
+
+                function isNumber(n) {
+                    return !isNaN(parseFloat(n)) && isFinite(n);
+                }
+
+                function init() {
+                    fit();
+                    window.addEventListener('resize', fit);
+                }
+
+                // Init
+                init();
+
+                return {
+                    imageFile: function (url, callback) {
+                        var image = new Image(),
+                                a = S.Drawing.getArea();
+
+                        image.onload = function () {
+                            shapeContext.clearRect(0, 0, shapeCanvas.width, shapeCanvas.height);
+                            shapeContext.drawImage(this, 0, 0, a.h * 0.6, a.h * 0.6);
+                            callback(processCanvas());
+                        };
+
+                        image.onerror = function () {
+                            callback(S.ShapeBuilder.letter('What?'));
+                        };
+
+                        image.src = url;
+                    },
+                    circle: function (d) {
+                        var r = Math.max(0, d) / 2;
+                        shapeContext.clearRect(0, 0, shapeCanvas.width, shapeCanvas.height);
+                        shapeContext.beginPath();
+                        shapeContext.arc(r * gap, r * gap, r * gap, 0, 2 * Math.PI, false);
+                        shapeContext.fill();
+                        shapeContext.closePath();
+
+                        return processCanvas();
+                    },
+                    letter: function (l) {
+                        var s = 0;
+
+                        setFontSize(fontSize);
+                        s = Math.min(fontSize,
+                                (shapeCanvas.width / shapeContext.measureText(l).width) * 0.8 * fontSize,
+                                (shapeCanvas.height / fontSize) * (isNumber(l) ? 1 : 0.45) * fontSize);
+                        setFontSize(s);
+
+                        shapeContext.clearRect(0, 0, shapeCanvas.width, shapeCanvas.height);
+                        shapeContext.fillText(l, shapeCanvas.width / 2, shapeCanvas.height / 2);
+
+                        return processCanvas();
+                    },
+                    rectangle: function (w, h) {
+                        var dots = [],
+                                width = gap * w,
+                                height = gap * h;
+
+                        for (var y = 0; y < height; y += gap) {
+                            for (var x = 0; x < width; x += gap) {
+                                dots.push(new S.Point({
+                                    x: x,
+                                    y: y
+                                }));
+                            }
+                        }
+
+                        return {dots: dots, w: width, h: height};
+                    }
+                };
+            }());
+
+
+            S.Shape = (function () {
+                var dots = [],
+                        width = 0,
+                        height = 0,
+                        cx = 0,
+                        cy = 0;
+
+                function compensate() {
+                    var a = S.Drawing.getArea();
+
+                    cx = a.w / 2 - width / 2;
+                    cy = a.h / 2 - height / 2;
+                }
+
+                return {
+                    shuffleIdle: function () {
+                        var a = S.Drawing.getArea();
+
+                        for (var d = 0; d < dots.length; d++) {
+                            if (!dots[d].s) {
+                                dots[d].move({
+                                    x: Math.random() * a.w,
+                                    y: Math.random() * a.h
+                                });
+                            }
+                        }
+                    },
+                    switchShape: function (n, fast) {
+                        var size,
+                                a = S.Drawing.getArea();
+
+                        width = n.w;
+                        height = n.h;
+
+                        compensate();
+
+                        if (n.dots.length > dots.length) {
+                            size = n.dots.length - dots.length;
+                            for (var d = 1; d <= size; d++) {
+                                dots.push(new S.Dot(a.w / 2, a.h / 2));
+                            }
+                        }
+
+                        var d = 0,
+                                i = 0;
+
+                        while (n.dots.length > 0) {
+                            i = Math.floor(Math.random() * n.dots.length);
+                            dots[d].e = fast ? 0.25 : (dots[d].s ? 0.14 : 0.11);
+
+                            if (dots[d].s) {
+                                dots[d].move(new S.Point({
+                                    z: Math.random() * 20 + 10,
+                                    a: Math.random(),
+                                    h: 18
+                                }));
+                            } else {
+                                dots[d].move(new S.Point({
+                                    z: Math.random() * 5 + 5,
+                                    h: fast ? 18 : 30
+                                }));
+                            }
+
+                            dots[d].s = true;
+                            dots[d].move(new S.Point({
+                                x: n.dots[i].x + cx,
+                                y: n.dots[i].y + cy,
+                                a: 1,
+                                z: 5,
+                                h: 0
+                            }));
+
+                            n.dots = n.dots.slice(0, i).concat(n.dots.slice(i + 1));
+                            d++;
+                        }
+
+                        for (var i = d; i < dots.length; i++) {
+                            if (dots[i].s) {
+                                dots[i].move(new S.Point({
+                                    z: Math.random() * 20 + 10,
+                                    a: Math.random(),
+                                    h: 20
+                                }));
+
+                                dots[i].s = false;
+                                dots[i].e = 0.04;
+                                dots[i].move(new S.Point({
+                                    x: Math.random() * a.w,
+                                    y: Math.random() * a.h,
+                                    a: 0.3, //.4
+                                    z: Math.random() * 4,
+                                    h: 0
+                                }));
+                            }
+                        }
+                    },
+                    render: function () {
+                        for (var d = 0; d < dots.length; d++) {
+                            dots[d].render();
+                        }
+                    }
+                };
+            }());
+            S.init();
+        </script>
+
+</body><div></div></html>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+    <!-- 使用 changyan -->
+    <div id="changyan-comment">
+        <!--PC和WAP自适应版-->
+<div id="SOHUCS" sid="404.html"  ></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cyt0kNDsK';
+var conf = 'prod_6019a9b89b227a35c3c85c9c2a8ac75e';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+    </div>
+    <style>
+        #changyan-comment{
+            background-color: #eee;
+            padding: 2pc;
+        }
+    </style>
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(http://on2bs9q7q.bkt.clouddn.com/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="http://on2bs9q7q.bkt.clouddn.com/avatar.jpg" alt="Binux's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        xu.binux@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="Mailto:xu.binux@gmail.com?Subject=网友来信（来自博客）" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">17</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Bug/">Bug<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/安装教程/">安装教程<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/源码分析/">源码分析<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/随记/">随记<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/面试题/">面试题<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="About ME">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About ME
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/portfolio" title="Portfolio">
+                
+                    <i class="material-icons sidebar-material-icons">reorder</i>
+                
+                Portfolio
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="Gallery">
+                
+                    <i class="material-icons sidebar-material-icons">photo</i>
+                
+                Gallery
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/tags" title="Tags">
+                
+                    <i class="material-icons sidebar-material-icons">bookmark</i>
+                
+                Tags
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="Links">
+                
+                    <i class="material-icons sidebar-material-icons">people</i>
+                
+                Links
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">23</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/xubin0830" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-weibo.svg);">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/xubinux" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.svg);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/binux-29/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.svg);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Binux Blog
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+    
+        <script src="/js/smoothscroll.js"></script>
+    
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <!-- 畅言公共 js 代码 start -->
+		<script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cyt0kNDsK">
+</script>
+    <!-- 畅言公共 js 代码 end -->
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
