@@ -3,6 +3,25 @@
 
 
     
+  <url>
+    <loc>http://binux.cn/2017/06/03/Hadoop-Perceived/</loc>
+    <lastmod>2017-06-03T10:08:56.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hadoop 机架感知</title>
+        <pubTime>2017-06-02T16:00:00.000Z</pubTime>
+        
+        <tag>Hadoop</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hadoop" url="http://binux.cn/categories/Hadoop/"/>
+          
+        </display>
+    </data>
+    </url>
+
     
     
   <url>
@@ -35,9 +54,9 @@
         <title>CentOS 7下 Docker 安装</title>
         <pubTime>2017-05-07T16:00:00.000Z</pubTime>
         
-        <tag>Docker</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>Docker</tag>
          
          
            
@@ -99,9 +118,9 @@
         <title>Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三)</title>
         <pubTime>2017-03-03T16:00:00.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>XBin-Store</tag>
+         
+        <tag>Linux</tag>
          
         <tag>Zookeeper</tag>
          
@@ -123,9 +142,9 @@
         <title>Xbin-Store(分布式商城)项目所用Linux服务系列 Solr集群安装(六)</title>
         <pubTime>2017-03-05T16:00:00.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>XBin-Store</tag>
+         
+        <tag>Linux</tag>
          
         <tag>Solr</tag>
          
@@ -147,11 +166,11 @@
         <title>Xbin-Store(分布式商城)项目所用Linux服务系列 FastDFS安装(五)</title>
         <pubTime>2017-03-04T16:00:00.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>XBin-Store</tag>
          
         <tag>FastDFS</tag>
+         
+        <tag>Linux</tag>
          
          
            
@@ -196,9 +215,9 @@
         
         <tag>XBin-Store</tag>
          
-        <tag>Bug</tag>
-         
         <tag>Java</tag>
+         
+        <tag>Bug</tag>
          
          
            
@@ -218,9 +237,9 @@
         <title>Xbin-Store(分布式商城)项目所用Linux服务系列 MySQL安装(一)</title>
         <pubTime>2017-02-28T16:00:00.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>XBin-Store</tag>
+         
+        <tag>Linux</tag>
          
         <tag>MySQL</tag>
          
@@ -242,9 +261,9 @@
         <title>Xbin-Store(分布式商城)项目所用Linux服务系列 Redis集群安装(二)</title>
         <pubTime>2017-03-02T16:00:00.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>XBin-Store</tag>
+         
+        <tag>Linux</tag>
          
         <tag>Redis</tag>
          
@@ -266,9 +285,9 @@
         <title>Xbin-Store(分布式商城)项目所用Linux服务系列 RocketMQ集群安装(七)</title>
         <pubTime>2017-03-06T16:00:00.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>XBin-Store</tag>
+         
+        <tag>Linux</tag>
          
         <tag>RocketMQ</tag>
          
@@ -290,9 +309,9 @@
         <title>Xbin-Store(分布式商城)项目所用Linux服务系列 Nginx安装(四)</title>
         <pubTime>2017-03-03T16:00:00.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>XBin-Store</tag>
+         
+        <tag>Linux</tag>
          
         <tag>Nginx</tag>
          
