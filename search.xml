@@ -112,54 +112,6 @@ distance<span class="token punctuation">(</span>/D1/R1/H1,/D2/R3/H7<span class="
     </entry>
     
     <entry>
-      <title><![CDATA[关于 xbin-store 的一些声明!]]></title>
-      <url>http://binux.cn/2017/05/08/xbin-store/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>“简单谈谈 xbin-store ”</p>
-</blockquote>
-<h2 id="项目起因"><a href="#项目起因" class="headerlink" title="项目起因"></a>项目起因</h2><p>项目开始于 2017-01-24 是我寒假闲着没事做的一个项目,当时是想着模仿 JD 写一个分布式商城,能把自己所学的全部知识运用进去。</p>
-<p>一方面是我觉得动手实践肯定比单纯看书效果好,虽然过程中会出现很多错误,但在解决各种问题的时候也变相的锻炼了自己的能力。</p>
-<p>另一方面我想做个完善的分布式商城 就像 JD 一样的商城 (理想很完美 现实很残酷 选择的目标太庞大)  </p>
-<h2 id="为什么开源"><a href="#为什么开源" class="headerlink" title="为什么开源"></a>为什么开源</h2><p>上面说过这个项目起因是我自己做来锻炼自己能力的,但是做着做着我发现凭我一个人的精力是无法完成这么庞大的系统的,于是我选择开源到 Github、OSChina 希望可以找到一些志同道合的朋友一起开发 </p>
-<p>还有就是帮助一些对分布式感兴趣的朋友,包括创建群、写运行教程、甚至录视频。</p>
-<p>最后我发现Star 1000 OSChina 有奖杯 其实我还挺想要的 不过我也不着急 项目足够完善后 还怕拿不到嘛！</p>
-<script src="//git.oschina.net/binu/xbin-store/star_widget_preview"></script>
-
-<h2 id="关于项目进度"><a href="#关于项目进度" class="headerlink" title="关于项目进度"></a>关于项目进度</h2><ul>
-<li>2017-01-24 项目开始</li>
-<li>2017-02-26 从本地的 Gitblit 迁移到 Github</li>
-<li>2017-04-03 发布到 OSChina</li>
-<li>2017-04-08 修改为使用 Spring Boot</li>
-<li>2017-05-05 新建 xbin-store-cloud 项目 使用 Spring Cloud 重构</li>
-<li>…</li>
-</ul>
-<p>大家可能发现从4月3后 项目基本变化在于架构的变化 从Spring Boot 到 Spring Cloud 架构的变化也反应着我正在学习的内容 技术总是在不停变化着 </p>
-<p>其实最主要的原因还是我比较喜欢研究架构方面的内容 兴趣驱使着我学习 也没什么特别爱好了 写代码算是唯一爱好了</p>
-<p>所以 如果你是想找个完善的电子商城 那么这个项目不适合你 功能很不完善 这个我自己知道 但是这个不完善是由于没有时间写 整个项目真正写的时间其实2个月都没有 </p>
-<h2 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h2><p>希望 xbin-store、xbin-store-cloud 可以一直完善下去 奔着 写个 JD 的目标 大步前进</p>
-<p>最后祝大家 Enjoy Coding</p>
-<hr>
-<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 随记 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 随记 </tag>
-            
-            <tag> xbin-store </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[CentOS 7下 Docker 安装]]></title>
       <url>http://binux.cn/2017/05/08/Docker-Instal/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -225,9 +177,57 @@ ExecStart<span class="token operator">=</span>/usr/bin/dockerd <span class="toke
         
         <tags>
             
+            <tag> Docker </tag>
+            
             <tag> Linux </tag>
             
-            <tag> Docker </tag>
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[关于 xbin-store 的一些声明!]]></title>
+      <url>http://binux.cn/2017/05/08/xbin-store/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>“简单谈谈 xbin-store ”</p>
+</blockquote>
+<h2 id="项目起因"><a href="#项目起因" class="headerlink" title="项目起因"></a>项目起因</h2><p>项目开始于 2017-01-24 是我寒假闲着没事做的一个项目,当时是想着模仿 JD 写一个分布式商城,能把自己所学的全部知识运用进去。</p>
+<p>一方面是我觉得动手实践肯定比单纯看书效果好,虽然过程中会出现很多错误,但在解决各种问题的时候也变相的锻炼了自己的能力。</p>
+<p>另一方面我想做个完善的分布式商城 就像 JD 一样的商城 (理想很完美 现实很残酷 选择的目标太庞大)  </p>
+<h2 id="为什么开源"><a href="#为什么开源" class="headerlink" title="为什么开源"></a>为什么开源</h2><p>上面说过这个项目起因是我自己做来锻炼自己能力的,但是做着做着我发现凭我一个人的精力是无法完成这么庞大的系统的,于是我选择开源到 Github、OSChina 希望可以找到一些志同道合的朋友一起开发 </p>
+<p>还有就是帮助一些对分布式感兴趣的朋友,包括创建群、写运行教程、甚至录视频。</p>
+<p>最后我发现Star 1000 OSChina 有奖杯 其实我还挺想要的 不过我也不着急 项目足够完善后 还怕拿不到嘛！</p>
+<script src="//git.oschina.net/binu/xbin-store/star_widget_preview"></script>
+
+<h2 id="关于项目进度"><a href="#关于项目进度" class="headerlink" title="关于项目进度"></a>关于项目进度</h2><ul>
+<li>2017-01-24 项目开始</li>
+<li>2017-02-26 从本地的 Gitblit 迁移到 Github</li>
+<li>2017-04-03 发布到 OSChina</li>
+<li>2017-04-08 修改为使用 Spring Boot</li>
+<li>2017-05-05 新建 xbin-store-cloud 项目 使用 Spring Cloud 重构</li>
+<li>…</li>
+</ul>
+<p>大家可能发现从4月3后 项目基本变化在于架构的变化 从Spring Boot 到 Spring Cloud 架构的变化也反应着我正在学习的内容 技术总是在不停变化着 </p>
+<p>其实最主要的原因还是我比较喜欢研究架构方面的内容 兴趣驱使着我学习 也没什么特别爱好了 写代码算是唯一爱好了</p>
+<p>所以 如果你是想找个完善的电子商城 那么这个项目不适合你 功能很不完善 这个我自己知道 但是这个不完善是由于没有时间写 整个项目真正写的时间其实2个月都没有 </p>
+<h2 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h2><p>希望 xbin-store、xbin-store-cloud 可以一直完善下去 奔着 写个 JD 的目标 大步前进</p>
+<p>最后祝大家 Enjoy Coding</p>
+<hr>
+<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 随记 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 随记 </tag>
+            
+            <tag> xbin-store </tag>
             
         </tags>
         
@@ -1322,449 +1322,6 @@ ExecStart<span class="token operator">=</span>/usr/bin/dockerd <span class="toke
     </entry>
     
     <entry>
-      <title><![CDATA[Alibaba 2018实习生招聘 在线编程题解答]]></title>
-      <url>http://binux.cn/2017/03/09/Alibaba-Arithmetic/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>“阿里巴巴 2018实习生 在线编程 题目解答”</p>
-</blockquote>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p> 对于一个长度为N的整型数组A， 数组里所有的数都是正整数，对于两个满足0&lt;=X &lt;= Y &lt;N的整数，A[X], A[X+1] … A[Y]构成A的一个切片，记作(X, Y)。</p>
-<p> 用三个下标 m1, m2, m3下标满足条件 0 &lt; m1, m1 + 1 &lt; m2, m2 +1 &lt; m3 &lt; N – 1。</p>
-<p> 可以把这个整型数组分成(0, m1-1), (m1+1, m2-1), (m2+1, m3-1), (m3+1, N-1) 四个切片。如果这四个切片中的整数求和相等，称作“四等分”。</p>
-<p> 编写一个函数，求一个给定的整型数组是否可以四等分，如果可以，返回一个布尔类型的true，如果不可以返回一个布尔类型的false。</p>
-<p> 限制条件： 数组A最多有1,000,000项，数组中的整数取值范围介于-1,000,000到1,000,000之间。</p>
-<p> 要求： 函数的计算复杂度为O(N)，使用的额外存储空间（除了输入的数组之外）最多为O(N)。</p>
-<p> 例子：</p>
-<p> 对于数组A=[2, 5, 1, 1, 1, 1, 4, 1, 7, 3, 7] 存在下标 2, 7, 9使得数组分成四个分片[2, 5], [1, 1, 1, 4], [7], [7]，这三个分片内整数之和相等，所以对于这个数组，函数应该返回true。</p>
-<p> 对于数组 A=[10, 2, 11, 13, 1, 1, 1, 1, 1]， 找不到能把数组四等分的下标，所以函数应该返回false。</p>
-<hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> cn<span class="token punctuation">.</span>binux<span class="token punctuation">;</span>
-
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>
-
-    <span class="token comment" spellcheck="true">/** 请完成下面这个函数，实现题目要求的功能 **/</span>
-    <span class="token comment" spellcheck="true">/** 当然，你也可以不按照这个模板来作答，完全按照自己的想法来 ^-^  **/</span>
-    <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> A<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>A <span class="token operator">==</span> null <span class="token operator">||</span> A<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> <span class="token punctuation">(</span><span class="token number">4</span> <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">int</span> indexl <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> indexr <span class="token operator">=</span> A<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">int</span> suml <span class="token operator">=</span> A<span class="token punctuation">[</span>indexl<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> sumr <span class="token operator">=</span> A<span class="token punctuation">[</span>indexr<span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>indexl <span class="token operator">&lt;</span> indexr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>suml <span class="token operator">&lt;</span> sumr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                indexl<span class="token operator">++</span><span class="token punctuation">;</span>
-                suml <span class="token operator">+=</span> A<span class="token punctuation">[</span>indexl<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>suml <span class="token operator">></span> sumr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                indexr<span class="token operator">--</span><span class="token punctuation">;</span>
-                sumr <span class="token operator">+=</span> A<span class="token punctuation">[</span>indexr<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-                <span class="token keyword">boolean</span> check <span class="token operator">=</span> <span class="token function">check</span><span class="token punctuation">(</span>indexl <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> indexr <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> suml<span class="token punctuation">,</span> A<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>check<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token keyword">return</span> check<span class="token punctuation">;</span>
-                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-                    indexl<span class="token operator">++</span><span class="token punctuation">;</span>
-                    suml <span class="token operator">+=</span> A<span class="token punctuation">[</span>indexl<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token keyword">int</span> start<span class="token punctuation">,</span> <span class="token keyword">int</span> end<span class="token punctuation">,</span> <span class="token keyword">int</span> sum<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> A<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-        <span class="token keyword">int</span> indexl <span class="token operator">=</span> start <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> indexr <span class="token operator">=</span> end <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> suml <span class="token operator">=</span> A<span class="token punctuation">[</span>indexl<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> sumr <span class="token operator">=</span> A<span class="token punctuation">[</span>indexr<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>indexr <span class="token operator">></span> indexl<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>suml <span class="token operator">&lt;</span> sumr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                indexl<span class="token operator">++</span><span class="token punctuation">;</span>
-                suml <span class="token operator">+=</span> A<span class="token punctuation">[</span>indexl<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>suml <span class="token operator">></span> sumr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                indexr<span class="token operator">--</span><span class="token punctuation">;</span>
-                sumr <span class="token operator">+=</span> A<span class="token punctuation">[</span>indexr<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>suml <span class="token operator">==</span> sumr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>indexr <span class="token operator">-</span> indexl <span class="token operator">==</span> <span class="token number">2</span> <span class="token operator">&amp;&amp;</span> suml <span class="token operator">==</span> sum<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-                    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//ArrayList&lt;Integer> inputs = new ArrayList&lt;Integer>();</span>
-        <span class="token comment" spellcheck="true">//Scanner in = new Scanner(System.in);</span>
-        <span class="token comment" spellcheck="true">//String line = in.nextLine();</span>
-        <span class="token comment" spellcheck="true">//while(line != null &amp;&amp; !line.isEmpty()) {</span>
-        <span class="token comment" spellcheck="true">//    int value = Integer.parseInt(line.trim());</span>
-        <span class="token comment" spellcheck="true">//    if(value == 0) break;</span>
-        <span class="token comment" spellcheck="true">//    inputs.add(value);</span>
-        <span class="token comment" spellcheck="true">//    line = in.nextLine();</span>
-        <span class="token comment" spellcheck="true">//}</span>
-        <span class="token comment" spellcheck="true">//int[] A = new int[inputs.size()];</span>
-        <span class="token comment" spellcheck="true">//for(int i=0; i&lt;inputs.size(); i++) {</span>
-        <span class="token comment" spellcheck="true">//    A[i] = inputs.get(i).intValue();</span>
-        <span class="token comment" spellcheck="true">//}</span>
-        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> A1 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
-        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> A2 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span>
-        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> A3 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span>
-        Boolean res <span class="token operator">=</span> <span class="token function">resolve</span><span class="token punctuation">(</span>A1<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这道算法题 不是太难 毕竟是招实习生</p>
-<p>并且阿里还说了 这道题目并不会影响最后的录用 只是作为一个参考</p>
-<hr>
-<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 面试题 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Alibaba </tag>
-            
-            <tag> Arithmetic </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[JDK底层实现源码分析系列(二) Vector源码分析]]></title>
-      <url>http://binux.cn/2017/03/09/Vector-Source-Code/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>“合抱之木 生于毫末 九层之台 起于累土 千里之行 始于足下”</p>
-</blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>JDK 版本1.7</p>
-</blockquote>
-<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/Java-Collections.png" alt="Collection"></center>
-
-<blockquote>
-<p>来源<a href="https://infinitescript.com/2014/10/java-collections-framework/" target="_blank" rel="external">Java Collections Framework</a></p>
-</blockquote>
-<h3 id="Vector-继承树"><a href="#Vector-继承树" class="headerlink" title="Vector 继承树"></a>Vector 继承树</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/Vector.png" alt="Vector"></center><br><center>Vector</center>
-
-<hr>
-<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><h3 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 序列化ID
-     */</span>
-    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> serialVersionUID <span class="token operator">=</span> <span class="token operator">-</span>2767605614048989439L<span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">/**
-     * 容量增加时的数量
-     * @serial
-     */</span>
-    <span class="token keyword">protected</span> <span class="token keyword">int</span> capacityIncrement<span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">/**
-     * 存放数据的数组
-     *
-     * @serial
-     */</span>
-    <span class="token keyword">protected</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span> elementData<span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">/**
-     * 元素的个数 == size
-     *
-     * @serial
-     */</span>
-    <span class="token keyword">protected</span> <span class="token keyword">int</span> elementCount<span class="token punctuation">;</span>
-
-    <span class="token comment" spellcheck="true">/**
-     * 数组分配的最大大小
-     */</span>
-    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> MAX_ARRAY_SIZE <span class="token operator">=</span> Integer<span class="token punctuation">.</span>MAX_VALUE <span class="token operator">-</span> <span class="token number">8</span><span class="token punctuation">;</span>
-</code></pre>
-<blockquote>
-<p><strong>transient</strong>为Java关键字 作用是序列化时 忽略修饰的对象</p>
-</blockquote>
-<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 默认构造方法 构造一个容量为10的Vector
-     */</span>
-    <span class="token keyword">public</span> <span class="token function">Vector</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment" spellcheck="true">/**
-     * 构造一个指定容量的Vector 增长速度为默认2倍
-     *
-     * @param   initialCapacity   the initial capacity of the vector
-     * @throws IllegalArgumentException if the specified initial capacity
-     *         is negative
-     */</span>
-    <span class="token keyword">public</span> <span class="token function">Vector</span><span class="token punctuation">(</span><span class="token keyword">int</span> initialCapacity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-         <span class="token keyword">this</span><span class="token punctuation">(</span>initialCapacity<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">/**
-     * 构造一个指定数组、增长容量的Vector
-     *
-     * @param   initialCapacity     初始化容量
-     * @param   capacityIncrement   增长大小
-     * @throws IllegalArgumentException
-     */</span>
-    <span class="token keyword">public</span> <span class="token function">Vector</span><span class="token punctuation">(</span><span class="token keyword">int</span> initialCapacity<span class="token punctuation">,</span> <span class="token keyword">int</span> capacityIncrement<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>initialCapacity <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token string">"Illegal Capacity: "</span><span class="token operator">+</span>
-                                               initialCapacity<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>elementData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span>initialCapacity<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>capacityIncrement <span class="token operator">=</span> capacityIncrement<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">/**
-     * 将提供的集合转成数组返回给elementData（返回若不是Object[]将调用Arrays.copyOf方法将其转为Object[]）。
-     *
-     * @param c 提供的集合
-     * @throws NullPointerException 如果指定的collection 为 null
-     */</span>
-    <span class="token keyword">public</span> <span class="token function">Vector</span><span class="token punctuation">(</span>Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">E</span><span class="token operator">></span> c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        elementData <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">toArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        elementCount <span class="token operator">=</span> elementData<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">// c.toArray might (incorrectly) not return Object[] (see 6260652)</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>elementData<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
-            elementData <span class="token operator">=</span> Arrays<span class="token punctuation">.</span><span class="token function">copyOf</span><span class="token punctuation">(</span>elementData<span class="token punctuation">,</span> elementCount<span class="token punctuation">,</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><blockquote>
-<p>只选取了ArrayList中没有的一些方法<br><br>Vector其余方法除了加了synchronized关键字 其他都差不多 就不贴出来了</p>
-</blockquote>
-<h4 id="lt-增-gt"><a href="#lt-增-gt" class="headerlink" title="&lt;增&gt;"></a>&lt;增&gt;</h4><h5 id="void-insertElementAt-E-obj-int-index"><a href="#void-insertElementAt-E-obj-int-index" class="headerlink" title="void insertElementAt(E obj, int index)"></a>void insertElementAt(E obj, int index)</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 在指定index插入一个元素
-     *
-     * @param      obj     the component to insert
-     * @param      index   where to insert the new component
-     * @throws ArrayIndexOutOfBoundsException if the index is out of range
-     *         ({@code index &lt; 0 || index > size()})
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">insertElementAt</span><span class="token punctuation">(</span>E obj<span class="token punctuation">,</span> <span class="token keyword">int</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        modCount<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">></span> elementCount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArrayIndexOutOfBoundsException</span><span class="token punctuation">(</span>index
-                                                     <span class="token operator">+</span> <span class="token string">" > "</span> <span class="token operator">+</span> elementCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token function">ensureCapacityHelper</span><span class="token punctuation">(</span>elementCount <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 确保数组容量够</span>
-        System<span class="token punctuation">.</span><span class="token function">arraycopy</span><span class="token punctuation">(</span>elementData<span class="token punctuation">,</span> index<span class="token punctuation">,</span> elementData<span class="token punctuation">,</span> index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> elementCount <span class="token operator">-</span> index<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        elementData<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> obj<span class="token punctuation">;</span>
-        elementCount<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h5 id="boolean-addAll-int-index-Collection-lt-extends-E-gt-c"><a href="#boolean-addAll-int-index-Collection-lt-extends-E-gt-c" class="headerlink" title="boolean addAll(int index, Collection&lt;? extends E&gt; c)"></a>boolean addAll(int index, Collection&lt;? extends E&gt; c)</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 从index的位置插入c集合中的全部元素
-     *
-     * @param index 指定index
-     * @param c 元素集合
-     * @return boolean
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">boolean</span> <span class="token function">addAll</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">,</span> Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">E</span><span class="token operator">></span> c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        modCount<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> index <span class="token operator">></span> elementCount<span class="token punctuation">)</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArrayIndexOutOfBoundsException</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        Object<span class="token punctuation">[</span><span class="token punctuation">]</span> a <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">toArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> numNew <span class="token operator">=</span> a<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
-        <span class="token function">ensureCapacityHelper</span><span class="token punctuation">(</span>elementCount <span class="token operator">+</span> numNew<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">int</span> numMoved <span class="token operator">=</span> elementCount <span class="token operator">-</span> index<span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>numMoved <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
-            System<span class="token punctuation">.</span><span class="token function">arraycopy</span><span class="token punctuation">(</span>elementData<span class="token punctuation">,</span> index<span class="token punctuation">,</span> elementData<span class="token punctuation">,</span> index <span class="token operator">+</span> numNew<span class="token punctuation">,</span>
-                             numMoved<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        System<span class="token punctuation">.</span><span class="token function">arraycopy</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> elementData<span class="token punctuation">,</span> index<span class="token punctuation">,</span> numNew<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        elementCount <span class="token operator">+=</span> numNew<span class="token punctuation">;</span>
-        <span class="token keyword">return</span> numNew <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h4 id="lt-删-gt"><a href="#lt-删-gt" class="headerlink" title="&lt;删&gt;"></a>&lt;删&gt;</h4><h5 id="boolean-removeElement-Object-obj"><a href="#boolean-removeElement-Object-obj" class="headerlink" title="boolean removeElement(Object obj)"></a>boolean removeElement(Object obj)</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 删除指定元素
-     *
-     * @param   obj   元素对象
-     * @return  boolean
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">boolean</span> <span class="token function">removeElement</span><span class="token punctuation">(</span>Object obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        modCount<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token function">indexOf</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token function">removeElementAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h5 id="void-removeElementAt-int-index"><a href="#void-removeElementAt-int-index" class="headerlink" title="void removeElementAt(int index)"></a>void removeElementAt(int index)</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 删除指定index的元素
-     *
-     * @param      index   指定index
-     * @throws ArrayIndexOutOfBoundsException
-     *         ({@code index &lt; 0 || index >= size()})
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">removeElementAt</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        modCount<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">>=</span> elementCount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArrayIndexOutOfBoundsException</span><span class="token punctuation">(</span>index <span class="token operator">+</span> <span class="token string">" >= "</span> <span class="token operator">+</span>
-                                                     elementCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArrayIndexOutOfBoundsException</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">int</span> j <span class="token operator">=</span> elementCount <span class="token operator">-</span> index <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            System<span class="token punctuation">.</span><span class="token function">arraycopy</span><span class="token punctuation">(</span>elementData<span class="token punctuation">,</span> index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> elementData<span class="token punctuation">,</span> index<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        elementCount<span class="token operator">--</span><span class="token punctuation">;</span>
-        elementData<span class="token punctuation">[</span>elementCount<span class="token punctuation">]</span> <span class="token operator">=</span> null<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* to let gc do its work */</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h5 id="void-removeAllElements"><a href="#void-removeAllElements" class="headerlink" title="void removeAllElements()"></a>void removeAllElements()</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 删除全部元素
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">removeAllElements</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        modCount<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">// Let gc do its work</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> elementCount<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-            elementData<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> null<span class="token punctuation">;</span>
-
-        elementCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h4 id="lt-改-gt"><a href="#lt-改-gt" class="headerlink" title="&lt;改&gt;"></a>&lt;改&gt;</h4><h5 id="E-set-int-index-E-element"><a href="#E-set-int-index-E-element" class="headerlink" title="E set(int index, E element)"></a>E set(int index, E element)</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 修改指定index的元素
-     *
-     * @param index 指定index
-     * @param element 需要替换的元素
-     * @return 被替换的元素
-     * @throws ArrayIndexOutOfBoundsException
-     *         ({@code index &lt; 0 || index >= size()})
-     * @since 1.2
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> E <span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">,</span> E element<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">>=</span> elementCount<span class="token punctuation">)</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArrayIndexOutOfBoundsException</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        E oldValue <span class="token operator">=</span> <span class="token function">elementData</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        elementData<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> element<span class="token punctuation">;</span>
-        <span class="token keyword">return</span> oldValue<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h5 id="void-setElementAt-E-obj-int-index"><a href="#void-setElementAt-E-obj-int-index" class="headerlink" title="void setElementAt(E obj, int index)"></a>void setElementAt(E obj, int index)</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 修改指定index的元素
-     * @param      obj     需要替换的对象
-     * @param      index   index
-     * @throws ArrayIndexOutOfBoundsException
-     *         ({@code index &lt; 0 || index >= size()})
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">setElementAt</span><span class="token punctuation">(</span>E obj<span class="token punctuation">,</span> <span class="token keyword">int</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">>=</span> elementCount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArrayIndexOutOfBoundsException</span><span class="token punctuation">(</span>index <span class="token operator">+</span> <span class="token string">" >= "</span> <span class="token operator">+</span>
-                                                     elementCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        elementData<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> obj<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h5 id="void-setSize-int-newSize"><a href="#void-setSize-int-newSize" class="headerlink" title="void setSize(int newSize)"></a>void setSize(int newSize)</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 如果新的Size大于当前size 调整数组的容量
-     *
-     * @param  newSize   the new size of this vector
-     * @throws ArrayIndexOutOfBoundsException if the new size is negative
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">setSize</span><span class="token punctuation">(</span><span class="token keyword">int</span> newSize<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        modCount<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>newSize <span class="token operator">></span> elementCount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token function">ensureCapacityHelper</span><span class="token punctuation">(</span>newSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> newSize <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> elementCount <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                elementData<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> null<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        elementCount <span class="token operator">=</span> newSize<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h4 id="lt-查-gt"><a href="#lt-查-gt" class="headerlink" title="&lt;查&gt;"></a>&lt;查&gt;</h4><h5 id="int-indexOf-Object-o-int-index"><a href="#int-indexOf-Object-o-int-index" class="headerlink" title="int indexOf(Object o, int index)"></a>int indexOf(Object o, int index)</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 返回从index位置的出现的第一个指定的元素index
-     *
-     * @param o 需要查询的元素
-     * @param index index
-     * @return
-     *          -1 表示无
-     * @throws IndexOutOfBoundsException
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">int</span> <span class="token function">indexOf</span><span class="token punctuation">(</span>Object o<span class="token punctuation">,</span> <span class="token keyword">int</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>o <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> index <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> elementCount <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>elementData<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span>null<span class="token punctuation">)</span>
-                    <span class="token keyword">return</span> i<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> index <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> elementCount <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>o<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>elementData<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                    <span class="token keyword">return</span> i<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h5 id="int-capacity"><a href="#int-capacity" class="headerlink" title="int capacity()"></a>int capacity()</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 返回当前数组长度
-     *
-     * @return  the current capacity (the length of its internal
-     *          data array, kept in the field {@code elementData}
-     *          of this vector)
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">int</span> <span class="token function">capacity</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> elementData<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h4 id="lt-其他-gt"><a href="#lt-其他-gt" class="headerlink" title="&lt;其他&gt;"></a>&lt;其他&gt;</h4><h5 id="List-subList-int-fromIndex-int-toIndex"><a href="#List-subList-int-fromIndex-int-toIndex" class="headerlink" title="List subList(int fromIndex, int toIndex)"></a>List<e> subList(int fromIndex, int toIndex)</e></h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * 同ArrayList 只不过返回的是一个线程安全的list
-     *
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> List<span class="token operator">&lt;</span>E<span class="token operator">></span> <span class="token function">subList</span><span class="token punctuation">(</span><span class="token keyword">int</span> fromIndex<span class="token punctuation">,</span> <span class="token keyword">int</span> toIndex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> Collections<span class="token punctuation">.</span><span class="token function">synchronizedList</span><span class="token punctuation">(</span><span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">subList</span><span class="token punctuation">(</span>fromIndex<span class="token punctuation">,</span> toIndex<span class="token punctuation">)</span><span class="token punctuation">,</span>
-                                            <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-</code></pre>
-<h3 id="list扩容-和ArrayList一样"><a href="#list扩容-和ArrayList一样" class="headerlink" title="list扩容(和ArrayList一样)"></a>list扩容(和ArrayList一样)</h3><hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Vector和ArrayList的实现上很类似 说白了就是每个会产生线程安全问题的方法上加synchronized的ArrayList</p>
-<p>由于加了synchronized 导致Vector比ArrayList的性能低很多</p>
-<p>而且Vector的默认扩容是2倍 ArrayList为1.5倍</p>
-<hr>
-<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 源码分析 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> JDK </tag>
-            
-            <tag> Source Code </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[JDK底层实现源码分析系列(一) ArrayList源码分析]]></title>
       <url>http://binux.cn/2017/03/09/ArrayList-Source-Code/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -2307,6 +1864,449 @@ ExecStart<span class="token operator">=</span>/usr/bin/dockerd <span class="toke
     </entry>
     
     <entry>
+      <title><![CDATA[JDK底层实现源码分析系列(二) Vector源码分析]]></title>
+      <url>http://binux.cn/2017/03/09/Vector-Source-Code/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>“合抱之木 生于毫末 九层之台 起于累土 千里之行 始于足下”</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>JDK 版本1.7</p>
+</blockquote>
+<h3 id="Collection-大家族"><a href="#Collection-大家族" class="headerlink" title="Collection 大家族"></a>Collection 大家族</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/Java-Collections.png" alt="Collection"></center>
+
+<blockquote>
+<p>来源<a href="https://infinitescript.com/2014/10/java-collections-framework/" target="_blank" rel="external">Java Collections Framework</a></p>
+</blockquote>
+<h3 id="Vector-继承树"><a href="#Vector-继承树" class="headerlink" title="Vector 继承树"></a>Vector 继承树</h3><center><img src="http://on2bs9q7q.bkt.clouddn.com/Vector.png" alt="Vector"></center><br><center>Vector</center>
+
+<hr>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><h3 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * 序列化ID
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> serialVersionUID <span class="token operator">=</span> <span class="token operator">-</span>2767605614048989439L<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 容量增加时的数量
+     * @serial
+     */</span>
+    <span class="token keyword">protected</span> <span class="token keyword">int</span> capacityIncrement<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 存放数据的数组
+     *
+     * @serial
+     */</span>
+    <span class="token keyword">protected</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span> elementData<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 元素的个数 == size
+     *
+     * @serial
+     */</span>
+    <span class="token keyword">protected</span> <span class="token keyword">int</span> elementCount<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 数组分配的最大大小
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> MAX_ARRAY_SIZE <span class="token operator">=</span> Integer<span class="token punctuation">.</span>MAX_VALUE <span class="token operator">-</span> <span class="token number">8</span><span class="token punctuation">;</span>
+</code></pre>
+<blockquote>
+<p><strong>transient</strong>为Java关键字 作用是序列化时 忽略修饰的对象</p>
+</blockquote>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * 默认构造方法 构造一个容量为10的Vector
+     */</span>
+    <span class="token keyword">public</span> <span class="token function">Vector</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/**
+     * 构造一个指定容量的Vector 增长速度为默认2倍
+     *
+     * @param   initialCapacity   the initial capacity of the vector
+     * @throws IllegalArgumentException if the specified initial capacity
+     *         is negative
+     */</span>
+    <span class="token keyword">public</span> <span class="token function">Vector</span><span class="token punctuation">(</span><span class="token keyword">int</span> initialCapacity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         <span class="token keyword">this</span><span class="token punctuation">(</span>initialCapacity<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 构造一个指定数组、增长容量的Vector
+     *
+     * @param   initialCapacity     初始化容量
+     * @param   capacityIncrement   增长大小
+     * @throws IllegalArgumentException
+     */</span>
+    <span class="token keyword">public</span> <span class="token function">Vector</span><span class="token punctuation">(</span><span class="token keyword">int</span> initialCapacity<span class="token punctuation">,</span> <span class="token keyword">int</span> capacityIncrement<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>initialCapacity <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token string">"Illegal Capacity: "</span><span class="token operator">+</span>
+                                               initialCapacity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>elementData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span>initialCapacity<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>capacityIncrement <span class="token operator">=</span> capacityIncrement<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 将提供的集合转成数组返回给elementData（返回若不是Object[]将调用Arrays.copyOf方法将其转为Object[]）。
+     *
+     * @param c 提供的集合
+     * @throws NullPointerException 如果指定的collection 为 null
+     */</span>
+    <span class="token keyword">public</span> <span class="token function">Vector</span><span class="token punctuation">(</span>Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">E</span><span class="token operator">></span> c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        elementData <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">toArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        elementCount <span class="token operator">=</span> elementData<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// c.toArray might (incorrectly) not return Object[] (see 6260652)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>elementData<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+            elementData <span class="token operator">=</span> Arrays<span class="token punctuation">.</span><span class="token function">copyOf</span><span class="token punctuation">(</span>elementData<span class="token punctuation">,</span> elementCount<span class="token punctuation">,</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><blockquote>
+<p>只选取了ArrayList中没有的一些方法<br><br>Vector其余方法除了加了synchronized关键字 其他都差不多 就不贴出来了</p>
+</blockquote>
+<h4 id="lt-增-gt"><a href="#lt-增-gt" class="headerlink" title="&lt;增&gt;"></a>&lt;增&gt;</h4><h5 id="void-insertElementAt-E-obj-int-index"><a href="#void-insertElementAt-E-obj-int-index" class="headerlink" title="void insertElementAt(E obj, int index)"></a>void insertElementAt(E obj, int index)</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * 在指定index插入一个元素
+     *
+     * @param      obj     the component to insert
+     * @param      index   where to insert the new component
+     * @throws ArrayIndexOutOfBoundsException if the index is out of range
+     *         ({@code index &lt; 0 || index > size()})
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">insertElementAt</span><span class="token punctuation">(</span>E obj<span class="token punctuation">,</span> <span class="token keyword">int</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        modCount<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">></span> elementCount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArrayIndexOutOfBoundsException</span><span class="token punctuation">(</span>index
+                                                     <span class="token operator">+</span> <span class="token string">" > "</span> <span class="token operator">+</span> elementCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">ensureCapacityHelper</span><span class="token punctuation">(</span>elementCount <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 确保数组容量够</span>
+        System<span class="token punctuation">.</span><span class="token function">arraycopy</span><span class="token punctuation">(</span>elementData<span class="token punctuation">,</span> index<span class="token punctuation">,</span> elementData<span class="token punctuation">,</span> index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> elementCount <span class="token operator">-</span> index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        elementData<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> obj<span class="token punctuation">;</span>
+        elementCount<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h5 id="boolean-addAll-int-index-Collection-lt-extends-E-gt-c"><a href="#boolean-addAll-int-index-Collection-lt-extends-E-gt-c" class="headerlink" title="boolean addAll(int index, Collection&lt;? extends E&gt; c)"></a>boolean addAll(int index, Collection&lt;? extends E&gt; c)</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * 从index的位置插入c集合中的全部元素
+     *
+     * @param index 指定index
+     * @param c 元素集合
+     * @return boolean
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">boolean</span> <span class="token function">addAll</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">,</span> Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">E</span><span class="token operator">></span> c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        modCount<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> index <span class="token operator">></span> elementCount<span class="token punctuation">)</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArrayIndexOutOfBoundsException</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Object<span class="token punctuation">[</span><span class="token punctuation">]</span> a <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">toArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> numNew <span class="token operator">=</span> a<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token function">ensureCapacityHelper</span><span class="token punctuation">(</span>elementCount <span class="token operator">+</span> numNew<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">int</span> numMoved <span class="token operator">=</span> elementCount <span class="token operator">-</span> index<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>numMoved <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
+            System<span class="token punctuation">.</span><span class="token function">arraycopy</span><span class="token punctuation">(</span>elementData<span class="token punctuation">,</span> index<span class="token punctuation">,</span> elementData<span class="token punctuation">,</span> index <span class="token operator">+</span> numNew<span class="token punctuation">,</span>
+                             numMoved<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        System<span class="token punctuation">.</span><span class="token function">arraycopy</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> elementData<span class="token punctuation">,</span> index<span class="token punctuation">,</span> numNew<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        elementCount <span class="token operator">+=</span> numNew<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> numNew <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h4 id="lt-删-gt"><a href="#lt-删-gt" class="headerlink" title="&lt;删&gt;"></a>&lt;删&gt;</h4><h5 id="boolean-removeElement-Object-obj"><a href="#boolean-removeElement-Object-obj" class="headerlink" title="boolean removeElement(Object obj)"></a>boolean removeElement(Object obj)</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * 删除指定元素
+     *
+     * @param   obj   元素对象
+     * @return  boolean
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">boolean</span> <span class="token function">removeElement</span><span class="token punctuation">(</span>Object obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        modCount<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token function">indexOf</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">removeElementAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h5 id="void-removeElementAt-int-index"><a href="#void-removeElementAt-int-index" class="headerlink" title="void removeElementAt(int index)"></a>void removeElementAt(int index)</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * 删除指定index的元素
+     *
+     * @param      index   指定index
+     * @throws ArrayIndexOutOfBoundsException
+     *         ({@code index &lt; 0 || index >= size()})
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">removeElementAt</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        modCount<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">>=</span> elementCount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArrayIndexOutOfBoundsException</span><span class="token punctuation">(</span>index <span class="token operator">+</span> <span class="token string">" >= "</span> <span class="token operator">+</span>
+                                                     elementCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArrayIndexOutOfBoundsException</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span> j <span class="token operator">=</span> elementCount <span class="token operator">-</span> index <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span><span class="token function">arraycopy</span><span class="token punctuation">(</span>elementData<span class="token punctuation">,</span> index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> elementData<span class="token punctuation">,</span> index<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        elementCount<span class="token operator">--</span><span class="token punctuation">;</span>
+        elementData<span class="token punctuation">[</span>elementCount<span class="token punctuation">]</span> <span class="token operator">=</span> null<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* to let gc do its work */</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h5 id="void-removeAllElements"><a href="#void-removeAllElements" class="headerlink" title="void removeAllElements()"></a>void removeAllElements()</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * 删除全部元素
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">removeAllElements</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        modCount<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// Let gc do its work</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> elementCount<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            elementData<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> null<span class="token punctuation">;</span>
+
+        elementCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h4 id="lt-改-gt"><a href="#lt-改-gt" class="headerlink" title="&lt;改&gt;"></a>&lt;改&gt;</h4><h5 id="E-set-int-index-E-element"><a href="#E-set-int-index-E-element" class="headerlink" title="E set(int index, E element)"></a>E set(int index, E element)</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * 修改指定index的元素
+     *
+     * @param index 指定index
+     * @param element 需要替换的元素
+     * @return 被替换的元素
+     * @throws ArrayIndexOutOfBoundsException
+     *         ({@code index &lt; 0 || index >= size()})
+     * @since 1.2
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> E <span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword">int</span> index<span class="token punctuation">,</span> E element<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">>=</span> elementCount<span class="token punctuation">)</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArrayIndexOutOfBoundsException</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        E oldValue <span class="token operator">=</span> <span class="token function">elementData</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        elementData<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> element<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> oldValue<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h5 id="void-setElementAt-E-obj-int-index"><a href="#void-setElementAt-E-obj-int-index" class="headerlink" title="void setElementAt(E obj, int index)"></a>void setElementAt(E obj, int index)</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * 修改指定index的元素
+     * @param      obj     需要替换的对象
+     * @param      index   index
+     * @throws ArrayIndexOutOfBoundsException
+     *         ({@code index &lt; 0 || index >= size()})
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">setElementAt</span><span class="token punctuation">(</span>E obj<span class="token punctuation">,</span> <span class="token keyword">int</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">>=</span> elementCount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArrayIndexOutOfBoundsException</span><span class="token punctuation">(</span>index <span class="token operator">+</span> <span class="token string">" >= "</span> <span class="token operator">+</span>
+                                                     elementCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        elementData<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> obj<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h5 id="void-setSize-int-newSize"><a href="#void-setSize-int-newSize" class="headerlink" title="void setSize(int newSize)"></a>void setSize(int newSize)</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * 如果新的Size大于当前size 调整数组的容量
+     *
+     * @param  newSize   the new size of this vector
+     * @throws ArrayIndexOutOfBoundsException if the new size is negative
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">setSize</span><span class="token punctuation">(</span><span class="token keyword">int</span> newSize<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        modCount<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>newSize <span class="token operator">></span> elementCount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">ensureCapacityHelper</span><span class="token punctuation">(</span>newSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> newSize <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> elementCount <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                elementData<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> null<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        elementCount <span class="token operator">=</span> newSize<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h4 id="lt-查-gt"><a href="#lt-查-gt" class="headerlink" title="&lt;查&gt;"></a>&lt;查&gt;</h4><h5 id="int-indexOf-Object-o-int-index"><a href="#int-indexOf-Object-o-int-index" class="headerlink" title="int indexOf(Object o, int index)"></a>int indexOf(Object o, int index)</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * 返回从index位置的出现的第一个指定的元素index
+     *
+     * @param o 需要查询的元素
+     * @param index index
+     * @return
+     *          -1 表示无
+     * @throws IndexOutOfBoundsException
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">int</span> <span class="token function">indexOf</span><span class="token punctuation">(</span>Object o<span class="token punctuation">,</span> <span class="token keyword">int</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>o <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> index <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> elementCount <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>elementData<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span>null<span class="token punctuation">)</span>
+                    <span class="token keyword">return</span> i<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> index <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> elementCount <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>o<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>elementData<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token keyword">return</span> i<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h5 id="int-capacity"><a href="#int-capacity" class="headerlink" title="int capacity()"></a>int capacity()</h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * 返回当前数组长度
+     *
+     * @return  the current capacity (the length of its internal
+     *          data array, kept in the field {@code elementData}
+     *          of this vector)
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">int</span> <span class="token function">capacity</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> elementData<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h4 id="lt-其他-gt"><a href="#lt-其他-gt" class="headerlink" title="&lt;其他&gt;"></a>&lt;其他&gt;</h4><h5 id="List-subList-int-fromIndex-int-toIndex"><a href="#List-subList-int-fromIndex-int-toIndex" class="headerlink" title="List subList(int fromIndex, int toIndex)"></a>List<e> subList(int fromIndex, int toIndex)</e></h5><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * 同ArrayList 只不过返回的是一个线程安全的list
+     *
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> List<span class="token operator">&lt;</span>E<span class="token operator">></span> <span class="token function">subList</span><span class="token punctuation">(</span><span class="token keyword">int</span> fromIndex<span class="token punctuation">,</span> <span class="token keyword">int</span> toIndex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> Collections<span class="token punctuation">.</span><span class="token function">synchronizedList</span><span class="token punctuation">(</span><span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">subList</span><span class="token punctuation">(</span>fromIndex<span class="token punctuation">,</span> toIndex<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                                            <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h3 id="list扩容-和ArrayList一样"><a href="#list扩容-和ArrayList一样" class="headerlink" title="list扩容(和ArrayList一样)"></a>list扩容(和ArrayList一样)</h3><hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Vector和ArrayList的实现上很类似 说白了就是每个会产生线程安全问题的方法上加synchronized的ArrayList</p>
+<p>由于加了synchronized 导致Vector比ArrayList的性能低很多</p>
+<p>而且Vector的默认扩容是2倍 ArrayList为1.5倍</p>
+<hr>
+<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 源码分析 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> JDK </tag>
+            
+            <tag> Source Code </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Alibaba 2018实习生招聘 在线编程题解答]]></title>
+      <url>http://binux.cn/2017/03/09/Alibaba-Arithmetic/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>“阿里巴巴 2018实习生 在线编程 题目解答”</p>
+</blockquote>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p> 对于一个长度为N的整型数组A， 数组里所有的数都是正整数，对于两个满足0&lt;=X &lt;= Y &lt;N的整数，A[X], A[X+1] … A[Y]构成A的一个切片，记作(X, Y)。</p>
+<p> 用三个下标 m1, m2, m3下标满足条件 0 &lt; m1, m1 + 1 &lt; m2, m2 +1 &lt; m3 &lt; N – 1。</p>
+<p> 可以把这个整型数组分成(0, m1-1), (m1+1, m2-1), (m2+1, m3-1), (m3+1, N-1) 四个切片。如果这四个切片中的整数求和相等，称作“四等分”。</p>
+<p> 编写一个函数，求一个给定的整型数组是否可以四等分，如果可以，返回一个布尔类型的true，如果不可以返回一个布尔类型的false。</p>
+<p> 限制条件： 数组A最多有1,000,000项，数组中的整数取值范围介于-1,000,000到1,000,000之间。</p>
+<p> 要求： 函数的计算复杂度为O(N)，使用的额外存储空间（除了输入的数组之外）最多为O(N)。</p>
+<p> 例子：</p>
+<p> 对于数组A=[2, 5, 1, 1, 1, 1, 4, 1, 7, 3, 7] 存在下标 2, 7, 9使得数组分成四个分片[2, 5], [1, 1, 1, 4], [7], [7]，这三个分片内整数之和相等，所以对于这个数组，函数应该返回true。</p>
+<p> 对于数组 A=[10, 2, 11, 13, 1, 1, 1, 1, 1]， 找不到能把数组四等分的下标，所以函数应该返回false。</p>
+<hr>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> cn<span class="token punctuation">.</span>binux<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">/** 请完成下面这个函数，实现题目要求的功能 **/</span>
+    <span class="token comment" spellcheck="true">/** 当然，你也可以不按照这个模板来作答，完全按照自己的想法来 ^-^  **/</span>
+    <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> A<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>A <span class="token operator">==</span> null <span class="token operator">||</span> A<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> <span class="token punctuation">(</span><span class="token number">4</span> <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">int</span> indexl <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> indexr <span class="token operator">=</span> A<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">int</span> suml <span class="token operator">=</span> A<span class="token punctuation">[</span>indexl<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> sumr <span class="token operator">=</span> A<span class="token punctuation">[</span>indexr<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>indexl <span class="token operator">&lt;</span> indexr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>suml <span class="token operator">&lt;</span> sumr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                indexl<span class="token operator">++</span><span class="token punctuation">;</span>
+                suml <span class="token operator">+=</span> A<span class="token punctuation">[</span>indexl<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>suml <span class="token operator">></span> sumr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                indexr<span class="token operator">--</span><span class="token punctuation">;</span>
+                sumr <span class="token operator">+=</span> A<span class="token punctuation">[</span>indexr<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token keyword">boolean</span> check <span class="token operator">=</span> <span class="token function">check</span><span class="token punctuation">(</span>indexl <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> indexr <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> suml<span class="token punctuation">,</span> A<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>check<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> check<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    indexl<span class="token operator">++</span><span class="token punctuation">;</span>
+                    suml <span class="token operator">+=</span> A<span class="token punctuation">[</span>indexl<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token keyword">int</span> start<span class="token punctuation">,</span> <span class="token keyword">int</span> end<span class="token punctuation">,</span> <span class="token keyword">int</span> sum<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> A<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">int</span> indexl <span class="token operator">=</span> start <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> indexr <span class="token operator">=</span> end <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> suml <span class="token operator">=</span> A<span class="token punctuation">[</span>indexl<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> sumr <span class="token operator">=</span> A<span class="token punctuation">[</span>indexr<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>indexr <span class="token operator">></span> indexl<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>suml <span class="token operator">&lt;</span> sumr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                indexl<span class="token operator">++</span><span class="token punctuation">;</span>
+                suml <span class="token operator">+=</span> A<span class="token punctuation">[</span>indexl<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>suml <span class="token operator">></span> sumr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                indexr<span class="token operator">--</span><span class="token punctuation">;</span>
+                sumr <span class="token operator">+=</span> A<span class="token punctuation">[</span>indexr<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>suml <span class="token operator">==</span> sumr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>indexr <span class="token operator">-</span> indexl <span class="token operator">==</span> <span class="token number">2</span> <span class="token operator">&amp;&amp;</span> suml <span class="token operator">==</span> sum<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//ArrayList&lt;Integer> inputs = new ArrayList&lt;Integer>();</span>
+        <span class="token comment" spellcheck="true">//Scanner in = new Scanner(System.in);</span>
+        <span class="token comment" spellcheck="true">//String line = in.nextLine();</span>
+        <span class="token comment" spellcheck="true">//while(line != null &amp;&amp; !line.isEmpty()) {</span>
+        <span class="token comment" spellcheck="true">//    int value = Integer.parseInt(line.trim());</span>
+        <span class="token comment" spellcheck="true">//    if(value == 0) break;</span>
+        <span class="token comment" spellcheck="true">//    inputs.add(value);</span>
+        <span class="token comment" spellcheck="true">//    line = in.nextLine();</span>
+        <span class="token comment" spellcheck="true">//}</span>
+        <span class="token comment" spellcheck="true">//int[] A = new int[inputs.size()];</span>
+        <span class="token comment" spellcheck="true">//for(int i=0; i&lt;inputs.size(); i++) {</span>
+        <span class="token comment" spellcheck="true">//    A[i] = inputs.get(i).intValue();</span>
+        <span class="token comment" spellcheck="true">//}</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> A1 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> A2 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> A3 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span>
+        Boolean res <span class="token operator">=</span> <span class="token function">resolve</span><span class="token punctuation">(</span>A1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这道算法题 不是太难 毕竟是招实习生</p>
+<p>并且阿里还说了 这道题目并不会影响最后的录用 只是作为一个参考</p>
+<hr>
+<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 面试题 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Alibaba </tag>
+            
+            <tag> Arithmetic </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Xbin-Store(分布式商城)项目所用Linux服务系列 RocketMQ集群安装(七)]]></title>
       <url>http://binux.cn/2017/03/07/RocketMQ-Cluster-Install/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -2540,9 +2540,9 @@ jps
         
         <tags>
             
-            <tag> XBin-Store </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> XBin-Store </tag>
             
             <tag> RocketMQ </tag>
             
@@ -2743,9 +2743,9 @@ jps
         
         <tags>
             
-            <tag> XBin-Store </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> XBin-Store </tag>
             
             <tag> Solr </tag>
             
@@ -3253,11 +3253,11 @@ location ~/group([0-9])/M00 {
         
         <tags>
             
+            <tag> Linux </tag>
+            
             <tag> XBin-Store </tag>
             
             <tag> FastDFS </tag>
-            
-            <tag> Linux </tag>
             
         </tags>
         
@@ -3505,9 +3505,9 @@ http <span class="token punctuation">{</span>
         
         <tags>
             
-            <tag> XBin-Store </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> XBin-Store </tag>
             
             <tag> Nginx </tag>
             
@@ -3685,9 +3685,9 @@ vim /etc/sysconfig/iptables
         
         <tags>
             
-            <tag> XBin-Store </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> XBin-Store </tag>
             
             <tag> Zookeeper </tag>
             
@@ -4175,9 +4175,9 @@ Connecting to node 192.168.1.171:7003: OK
         
         <tags>
             
-            <tag> XBin-Store </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> XBin-Store </tag>
             
             <tag> Redis </tag>
             
@@ -4301,9 +4301,9 @@ password=&quot;**密码**&quot;
         
         <tags>
             
-            <tag> MySQL </tag>
-            
             <tag> Bug </tag>
+            
+            <tag> MySQL </tag>
             
         </tags>
         
@@ -4324,76 +4324,39 @@ password=&quot;**密码**&quot;
 <li><a href="http://binux.cn/2017/03/06/Solr-Cluster-Install/">Xbin-Store(分布式商城)项目所依赖的Linux服务系列 Solr集群安装(六)</a></li>
 <li><a href="http://binux.cn/2017/03/07/RocketMQ-Cluster-Install/">Xbin-Store(分布式商城)项目所依赖的Linux服务系列 RocketMQ集群安装(七)</a></li>
 </ul>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Mac上MySQL就突然没用了 但是Navicat、IDEA都可以连接上MySQL 使用Java就是连接不上 <strong>重装也没有用</strong></p>
-<p> Google、Baidu了一上午都没解决 不想在浪费时间了 就在Linux中装个MySQL用吧！ (虽然很想把问题找出来)</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>yum 安装 MySQL5.7 最简单的方法!</p>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="第一步-安装CentOS-略"><a href="#第一步-安装CentOS-略" class="headerlink" title="第一步 安装CentOS 略"></a>第一步 安装CentOS 略</h3><h3 id="第二步-下载MySQL"><a href="#第二步-下载MySQL" class="headerlink" title="第二步 下载MySQL"></a>第二步 下载MySQL</h3><ul>
-<li>1、Linux下载 wget <a href="http://mirrors.sohu.com/mysql/MySQL-5.7/mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz" target="_blank" rel="external">http://mirrors.sohu.com/mysql/MySQL-5.7/mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz</a></li>
-<li>2、<a href="http://mirrors.sohu.com/mysql/MySQL-5.7/mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz" target="_blank" rel="external">右键我迅雷下载</a></li>
-</ul>
-<h3 id="第三步-解压tar文件"><a href="#第三步-解压tar文件" class="headerlink" title="第三步 解压tar文件"></a>第三步 解压tar文件</h3><p>[root@mysql ~]# tar -zxvf mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz</p>
-<h3 id="第四步-改名"><a href="#第四步-改名" class="headerlink" title="第四步 改名"></a>第四步 改名</h3><p>[root@mysql ~]# mv mysql-5.7.17-linux-glibc2.5-x86_64 /usr/local/mysql</p>
-<h3 id="第五步-复制修改配置文件"><a href="#第五步-复制修改配置文件" class="headerlink" title="第五步 复制修改配置文件"></a>第五步 复制修改配置文件</h3><p>[root@mysql ~]# cp /usr/local/mysql/support-files/my-default.cnf /etc/my.cnf</p>
-<p>[root@mysql ~]# vim /etc/my.cnf</p>
-<h4 id="添加以下配置：-解决中文乱码"><a href="#添加以下配置：-解决中文乱码" class="headerlink" title="添加以下配置：(解决中文乱码)"></a>添加以下配置：(解决中文乱码)</h4><pre><code>[mysql]
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="第一步-安装CentOS-略"><a href="#第一步-安装CentOS-略" class="headerlink" title="第一步 安装CentOS 略"></a>第一步 安装CentOS 略</h3><p>CentOS 版本为6.5</p>
+<h3 id="第二步-安装-yum-仓库列表"><a href="#第二步-安装-yum-仓库列表" class="headerlink" title="第二步 安装 yum 仓库列表"></a>第二步 安装 yum 仓库列表</h3><p>使用yum 安装mysql，要使用mysql的yum仓库，先从官网下载适合你系统的仓库</p>
+<p><a href="https://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="external">https://dev.mysql.com/downloads/repo/yum/</a></p>
+<blockquote>
+<p>我下载的是 mysql57-community-release-el6-11.noarch.rpm </p>
+</blockquote>
+<p>安装 <code>yum localinstall mysql-community-release-el6-5.noarch.rpm</code></p>
+<h3 id="第三步-安装mysql"><a href="#第三步-安装mysql" class="headerlink" title="第三步 安装mysql"></a>第三步 安装mysql</h3><p>yum install mysql-community-server</p>
+<h3 id="第四步-启动mysql"><a href="#第四步-启动mysql" class="headerlink" title="第四步 启动mysql"></a>第四步 启动mysql</h3><p>sudo service mysqld start</p>
+<h3 id="第五步-设置root用户密码"><a href="#第五步-设置root用户密码" class="headerlink" title="第五步 设置root用户密码"></a>第五步 设置root用户密码</h3><p>查看初始密码</p>
+<p>grep “password” /var/log/mysqld.log </p>
+<pre><code>2017-06-11T20:14:59.383788Z 1 [Note] A temporary password is generated for root@localhost: e.Vsb5=28=.v
+</code></pre><p>密码为 ：e.Vsb5=28=.v</p>
+<p>SET PASSWORD FOR ‘root’@’localhost’ = PASSWORD(‘14130220’);　// 为root账号设置密码</p>
+<blockquote>
+<p>此时如有报错 ERROR 1819 (HY000): Your password does not satisfy the current policy requirements</p>
+<p>设置密码过于简单</p>
+</blockquote>
+<pre><code>set global validate_password_policy=0; // 默认1 即必须含有1个数字、小写或大写字母、特殊字符
+
+set global validate_password_length=4; // 默认8 即密码长度
+</code></pre><h3 id="第六步-mysql远程连接授权"><a href="#第六步-mysql远程连接授权" class="headerlink" title="第六步 mysql远程连接授权"></a>第六步 mysql远程连接授权</h3><p>GRANT ALL PRIVILEGES ON <em>.</em> TO ‘<strong>myuser</strong>‘@’%’ IDENTIFIED BY ‘<strong>mypassword</strong>‘ WITH GRANT OPTION;</p>
+<p>注意：’myuser’、’mypassword’ 需要替换成实际的用户名和密码。</p>
+<h4 id="第七步-添加以下配置：-解决中文乱码"><a href="#第七步-添加以下配置：-解决中文乱码" class="headerlink" title="第七步 添加以下配置：(解决中文乱码)"></a>第七步 添加以下配置：(解决中文乱码)</h4><p>vim /etc/my.cnf</p>
+<pre><code>[mysql]
 default-character-set=utf8
 
 [mysqld]
 character_set_server=utf8
-</code></pre><h3 id="第六步-复制、配置mysql服务"><a href="#第六步-复制、配置mysql服务" class="headerlink" title="第六步 复制、配置mysql服务"></a>第六步 复制、配置mysql服务</h3><p>[root@mysql ~]# cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql</p>
-<h4 id="第46行做如下修改"><a href="#第46行做如下修改" class="headerlink" title="第46行做如下修改"></a>第46行做如下修改</h4><pre><code>basedir=/usr/local/mysql
-datadir=/usr/local/mysql/data
-</code></pre><h3 id="第七步-启动mysql服务"><a href="#第七步-启动mysql服务" class="headerlink" title="第七步 启动mysql服务"></a>第七步 启动mysql服务</h3><p>[root@mysql ~]# cd /usr/local/mysql/bin/</p>
-<p>[root@mysql bin]# ./mysqld –initialize –user=mysql –basedir=/usr/local/mysql –datadir=/usr/local/mysql/data</p>
-<h4 id="屏幕打印："><a href="#屏幕打印：" class="headerlink" title="屏幕打印："></a>屏幕打印：</h4><pre><code>2017-01-27T03:14:04.598579Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
-2017-01-27T03:14:04.598645Z 0 [Warning] &#39;NO_ZERO_DATE&#39;, &#39;NO_ZERO_IN_DATE&#39; and &#39;ERROR_FOR_DIVISION_BY_ZERO&#39; sql modes should be used with strict mode. They will be merged with strict mode in a future release.
-2017-01-27T03:14:04.598648Z 0 [Warning] &#39;NO_AUTO_CREATE_USER&#39; sql mode was not set.
-2017-01-27T03:14:05.002057Z 0 [Warning] InnoDB: New log files created, LSN=45790
-2017-01-27T03:14:05.079640Z 0 [Warning] InnoDB: Creating foreign key constraint system tables.
-2017-01-27T03:14:05.214710Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: a8c7be60-e43e-11e6-b470-000c299fe1ef.
-2017-01-27T03:14:05.216074Z 0 [Warning] Gtid table is not ready to be used. Table &#39;mysql.gtid_executed&#39; cannot be opened.
-2017-01-27T03:14:05.221297Z 1 [Note] A temporary password is generated for root@localhost: ME#SiCHkw4zS
-</code></pre><blockquote>
-<p>ME#SiCHkw4zS 这个是初始化密码</p>
-</blockquote>
-<h3 id="第八步-加密mysql数据"><a href="#第八步-加密mysql数据" class="headerlink" title="第八步 加密mysql数据"></a>第八步 加密mysql数据</h3><p>[root@mysql mysql]# ./bin/mysql_ssl_rsa_setup –datadir=/usr/local/mysql/data</p>
-<h4 id="屏幕打印：-1"><a href="#屏幕打印：-1" class="headerlink" title="屏幕打印："></a>屏幕打印：</h4><pre><code>Generating a 2048 bit RSA private key
-....................................................+++
-..................+++
-writing new private key to &#39;ca-key.pem&#39;
------
-Generating a 2048 bit RSA private key
-......+++
-.............+++
-writing new private key to &#39;server-key.pem&#39;
------
-Generating a 2048 bit RSA private key
-..........................................................................................................................................+++
-.....+++
-writing new private key to &#39;client-key.pem&#39;
------
-</code></pre><h3 id="第九步-启动mysql"><a href="#第九步-启动mysql" class="headerlink" title="第九步 启动mysql"></a>第九步 启动mysql</h3><p>[root@mysql mysql]# ./mysqld_safe –user=mysql &amp;</p>
-<h4 id="查看启动是否成功-打印如下-启动成功"><a href="#查看启动是否成功-打印如下-启动成功" class="headerlink" title="查看启动是否成功(打印如下 启动成功)"></a>查看启动是否成功(打印如下 启动成功)</h4><p>[root@mysql mysql]# ps -ef|grep mysql</p>
-<h4 id="屏幕打印：-2"><a href="#屏幕打印：-2" class="headerlink" title="屏幕打印："></a>屏幕打印：</h4><pre><code>root      2286  1573  0 11:30 pts/1    00:00:00 /bin/sh ./mysqld_safe --user=mysql
-mysql     2407  2286  5 11:30 pts/1    00:00:00 /usr/local/mysql/bin/mysqld --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --plugin-dir=/usr/local/mysql/lib/plugin --user=mysql --log-error=/usr/local/mysql/data/storm3.err --pid-file=/usr/local/mysql/data/mysql.pid
-root      2438  1573  0 11:30 pts/1    00:00:00 grep mysql
-</code></pre><h4 id="启动-输入初始密码"><a href="#启动-输入初始密码" class="headerlink" title="启动 输入初始密码"></a>启动 输入初始密码</h4><p>[root@mysql mysql]# ./mysql -uroot -p</p>
-<h3 id="第十步-重新设置密码、授权"><a href="#第十步-重新设置密码、授权" class="headerlink" title="第十步 重新设置密码、授权"></a>第十步 重新设置密码、授权</h3><h4 id="设置密码"><a href="#设置密码" class="headerlink" title="设置密码"></a>设置密码</h4><p>mysql&gt; grant all privileges on <em>.</em> to root@’%’ identified by ‘<strong>我是密码</strong>‘;</p>
-<h4 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h4><p>mysql&gt;grant all privileges on <em>.</em> to root@’%’ identified by ‘<strong>我是密码</strong>‘;</p>
-<h4 id="刷新"><a href="#刷新" class="headerlink" title="刷新"></a>刷新</h4><p>mysql&gt;flush privileges;</p>
-<h3 id="第十一步-设置防火墙规则"><a href="#第十一步-设置防火墙规则" class="headerlink" title="第十一步 设置防火墙规则"></a>第十一步 设置防火墙规则</h3><p>[root@mysql mysql]# vim /etc/sysconfig/iptables</p>
-<h4 id="添加以下规则："><a href="#添加以下规则：" class="headerlink" title="添加以下规则："></a>添加以下规则：</h4><pre><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
-</code></pre><h4 id="重启防火墙："><a href="#重启防火墙：" class="headerlink" title="重启防火墙："></a>重启防火墙：</h4><p>[root@mysql mysql]# service iptables restart</p>
-<h3 id="第十二步-开机自启"><a href="#第十二步-开机自启" class="headerlink" title="第十二步 开机自启"></a>第十二步 开机自启</h3><p>chkconfig –add mysql</p>
-<p>chkconfig mysql on</p>
-<h3 id="第十三步-配置环境变量"><a href="#第十三步-配置环境变量" class="headerlink" title="第十三步 配置环境变量"></a>第十三步 配置环境变量</h3><p>[root@mysql mysql]# vim /etc/profile</p>
-<h4 id="添加配置"><a href="#添加配置" class="headerlink" title="添加配置"></a>添加配置</h4><p>export PATH=$JAVA_HOME/bin:/usr/local/mysql/bin:$PATH</p>
-<h3 id="第十四步-Linux新建mysql用户"><a href="#第十四步-Linux新建mysql用户" class="headerlink" title="第十四步 Linux新建mysql用户"></a>第十四步 Linux新建mysql用户</h3><p>[root@mysql mysql]# groupadd mysql</p>
-<p>[root@mysql mysql]# useradd -r -g mysql mysql</p>
-<p>[root@mysql mysql]# passwd mysql</p>
-<p>[root@mysql mysql]#chown -R mysql:mysql /usr/local/mysql/</p>
-<hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>MySQL安装还是很简单的。</p>
+</code></pre><p>重启 </p>
+<p>service mysqld restart</p>
 <hr>
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 ]]></content>
@@ -4407,9 +4370,9 @@ root      2438  1573  0 11:30 pts/1    00:00:00 grep mysql
         
         <tags>
             
-            <tag> XBin-Store </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> XBin-Store </tag>
             
             <tag> MySQL </tag>
             

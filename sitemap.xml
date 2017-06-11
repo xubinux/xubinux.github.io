@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://binux.cn/2017/03/01/Linux-MySQL-Install/</loc>
+    
+    <lastmod>2017-06-10T16:00:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://binux.cn/2017/06/03/Hadoop-Perceived/</loc>
     
     <lastmod>2017-06-03T10:08:56.000Z</lastmod>
@@ -82,13 +89,6 @@
     <loc>http://binux.cn/2017/02/26/List.remove()/</loc>
     
     <lastmod>2017-03-19T13:53:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://binux.cn/2017/03/01/Linux-MySQL-Install/</loc>
-    
-    <lastmod>2017-03-19T13:52:03.000Z</lastmod>
     
   </url>
   

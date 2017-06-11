@@ -40,7 +40,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Binux">
     <meta name="description" content="一名正在崛起的Java后端工程师">
-    <meta name="keywords" content="null,XBin-Store,Linux,MySQL">
+    <meta name="keywords" content="null,Linux,XBin-Store,MySQL">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="http://on2bs9q7q.bkt.clouddn.com/avatar.png">
@@ -68,7 +68,7 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Xbin-Store(分布式商城)项目所用Linux服务系列 MySQL安装(一) | Binux Blog">
     <meta property="og:description" content="一名正在崛起的Java后端工程师">
-    <meta property="og:article:tag" content="XBin-Store"> <meta property="og:article:tag" content="Linux"> <meta property="og:article:tag" content="MySQL"> 
+    <meta property="og:article:tag" content="Linux"> <meta property="og:article:tag" content="XBin-Store"> <meta property="og:article:tag" content="MySQL"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -274,7 +274,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#系列"><span class="post-toc-number">1.</span> <span class="post-toc-text">系列</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">2.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正文"><span class="post-toc-number">3.</span> <span class="post-toc-text">正文</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第一步-安装CentOS-略"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">第一步 安装CentOS 略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第二步-下载MySQL"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">第二步 下载MySQL</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第三步-解压tar文件"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">第三步 解压tar文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第四步-改名"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">第四步 改名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第五步-复制修改配置文件"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">第五步 复制修改配置文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加以下配置：-解决中文乱码"><span class="post-toc-number">3.5.1.</span> <span class="post-toc-text">添加以下配置：(解决中文乱码)</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第六步-复制、配置mysql服务"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">第六步 复制、配置mysql服务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第46行做如下修改"><span class="post-toc-number">3.6.1.</span> <span class="post-toc-text">第46行做如下修改</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第七步-启动mysql服务"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">第七步 启动mysql服务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#屏幕打印："><span class="post-toc-number">3.7.1.</span> <span class="post-toc-text">屏幕打印：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第八步-加密mysql数据"><span class="post-toc-number">3.8.</span> <span class="post-toc-text">第八步 加密mysql数据</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#屏幕打印：-1"><span class="post-toc-number">3.8.1.</span> <span class="post-toc-text">屏幕打印：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第九步-启动mysql"><span class="post-toc-number">3.9.</span> <span class="post-toc-text">第九步 启动mysql</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看启动是否成功-打印如下-启动成功"><span class="post-toc-number">3.9.1.</span> <span class="post-toc-text">查看启动是否成功(打印如下 启动成功)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#屏幕打印：-2"><span class="post-toc-number">3.9.2.</span> <span class="post-toc-text">屏幕打印：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#启动-输入初始密码"><span class="post-toc-number">3.9.3.</span> <span class="post-toc-text">启动 输入初始密码</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第十步-重新设置密码、授权"><span class="post-toc-number">3.10.</span> <span class="post-toc-text">第十步 重新设置密码、授权</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置密码"><span class="post-toc-number">3.10.1.</span> <span class="post-toc-text">设置密码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#授权"><span class="post-toc-number">3.10.2.</span> <span class="post-toc-text">授权</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#刷新"><span class="post-toc-number">3.10.3.</span> <span class="post-toc-text">刷新</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第十一步-设置防火墙规则"><span class="post-toc-number">3.11.</span> <span class="post-toc-text">第十一步 设置防火墙规则</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加以下规则："><span class="post-toc-number">3.11.1.</span> <span class="post-toc-text">添加以下规则：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#重启防火墙："><span class="post-toc-number">3.11.2.</span> <span class="post-toc-text">重启防火墙：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第十二步-开机自启"><span class="post-toc-number">3.12.</span> <span class="post-toc-text">第十二步 开机自启</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第十三步-配置环境变量"><span class="post-toc-number">3.13.</span> <span class="post-toc-text">第十三步 配置环境变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加配置"><span class="post-toc-number">3.13.1.</span> <span class="post-toc-text">添加配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第十四步-Linux新建mysql用户"><span class="post-toc-number">3.14.</span> <span class="post-toc-text">第十四步 Linux新建mysql用户</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">4.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#著作权声明"><span class="post-toc-number">5.</span> <span class="post-toc-text">著作权声明</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#系列"><span class="post-toc-number">1.</span> <span class="post-toc-text">系列</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">2.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正文"><span class="post-toc-number">3.</span> <span class="post-toc-text">正文</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第一步-安装CentOS-略"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">第一步 安装CentOS 略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第二步-安装-yum-仓库列表"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">第二步 安装 yum 仓库列表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第三步-安装mysql"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">第三步 安装mysql</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第四步-启动mysql"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">第四步 启动mysql</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第五步-设置root用户密码"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">第五步 设置root用户密码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第六步-mysql远程连接授权"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">第六步 mysql远程连接授权</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第七步-添加以下配置：-解决中文乱码"><span class="post-toc-number">3.6.1.</span> <span class="post-toc-text">第七步 添加以下配置：(解决中文乱码)</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#著作权声明"><span class="post-toc-number">4.</span> <span class="post-toc-text">著作权声明</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -438,76 +438,39 @@
 <li><a href="http://binux.cn/2017/03/06/Solr-Cluster-Install/">Xbin-Store(分布式商城)项目所依赖的Linux服务系列 Solr集群安装(六)</a></li>
 <li><a href="http://binux.cn/2017/03/07/RocketMQ-Cluster-Install/">Xbin-Store(分布式商城)项目所依赖的Linux服务系列 RocketMQ集群安装(七)</a></li>
 </ul>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Mac上MySQL就突然没用了 但是Navicat、IDEA都可以连接上MySQL 使用Java就是连接不上 <strong>重装也没有用</strong></p>
-<p> Google、Baidu了一上午都没解决 不想在浪费时间了 就在Linux中装个MySQL用吧！ (虽然很想把问题找出来)</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>yum 安装 MySQL5.7 最简单的方法!</p>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="第一步-安装CentOS-略"><a href="#第一步-安装CentOS-略" class="headerlink" title="第一步 安装CentOS 略"></a>第一步 安装CentOS 略</h3><h3 id="第二步-下载MySQL"><a href="#第二步-下载MySQL" class="headerlink" title="第二步 下载MySQL"></a>第二步 下载MySQL</h3><ul>
-<li>1、Linux下载 wget <a href="http://mirrors.sohu.com/mysql/MySQL-5.7/mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz" target="_blank" rel="external">http://mirrors.sohu.com/mysql/MySQL-5.7/mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz</a></li>
-<li>2、<a href="http://mirrors.sohu.com/mysql/MySQL-5.7/mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz" target="_blank" rel="external">右键我迅雷下载</a></li>
-</ul>
-<h3 id="第三步-解压tar文件"><a href="#第三步-解压tar文件" class="headerlink" title="第三步 解压tar文件"></a>第三步 解压tar文件</h3><p>[root@mysql ~]# tar -zxvf mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz</p>
-<h3 id="第四步-改名"><a href="#第四步-改名" class="headerlink" title="第四步 改名"></a>第四步 改名</h3><p>[root@mysql ~]# mv mysql-5.7.17-linux-glibc2.5-x86_64 /usr/local/mysql</p>
-<h3 id="第五步-复制修改配置文件"><a href="#第五步-复制修改配置文件" class="headerlink" title="第五步 复制修改配置文件"></a>第五步 复制修改配置文件</h3><p>[root@mysql ~]# cp /usr/local/mysql/support-files/my-default.cnf /etc/my.cnf</p>
-<p>[root@mysql ~]# vim /etc/my.cnf</p>
-<h4 id="添加以下配置：-解决中文乱码"><a href="#添加以下配置：-解决中文乱码" class="headerlink" title="添加以下配置：(解决中文乱码)"></a>添加以下配置：(解决中文乱码)</h4><pre><code>[mysql]
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="第一步-安装CentOS-略"><a href="#第一步-安装CentOS-略" class="headerlink" title="第一步 安装CentOS 略"></a>第一步 安装CentOS 略</h3><p>CentOS 版本为6.5</p>
+<h3 id="第二步-安装-yum-仓库列表"><a href="#第二步-安装-yum-仓库列表" class="headerlink" title="第二步 安装 yum 仓库列表"></a>第二步 安装 yum 仓库列表</h3><p>使用yum 安装mysql，要使用mysql的yum仓库，先从官网下载适合你系统的仓库</p>
+<p><a href="https://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="external">https://dev.mysql.com/downloads/repo/yum/</a></p>
+<blockquote>
+<p>我下载的是 mysql57-community-release-el6-11.noarch.rpm </p>
+</blockquote>
+<p>安装 <code>yum localinstall mysql-community-release-el6-5.noarch.rpm</code></p>
+<h3 id="第三步-安装mysql"><a href="#第三步-安装mysql" class="headerlink" title="第三步 安装mysql"></a>第三步 安装mysql</h3><p>yum install mysql-community-server</p>
+<h3 id="第四步-启动mysql"><a href="#第四步-启动mysql" class="headerlink" title="第四步 启动mysql"></a>第四步 启动mysql</h3><p>sudo service mysqld start</p>
+<h3 id="第五步-设置root用户密码"><a href="#第五步-设置root用户密码" class="headerlink" title="第五步 设置root用户密码"></a>第五步 设置root用户密码</h3><p>查看初始密码</p>
+<p>grep “password” /var/log/mysqld.log </p>
+<pre><code>2017-06-11T20:14:59.383788Z 1 [Note] A temporary password is generated for root@localhost: e.Vsb5=28=.v
+</code></pre><p>密码为 ：e.Vsb5=28=.v</p>
+<p>SET PASSWORD FOR ‘root’@’localhost’ = PASSWORD(‘14130220’);　// 为root账号设置密码</p>
+<blockquote>
+<p>此时如有报错 ERROR 1819 (HY000): Your password does not satisfy the current policy requirements</p>
+<p>设置密码过于简单</p>
+</blockquote>
+<pre><code>set global validate_password_policy=0; // 默认1 即必须含有1个数字、小写或大写字母、特殊字符
+
+set global validate_password_length=4; // 默认8 即密码长度
+</code></pre><h3 id="第六步-mysql远程连接授权"><a href="#第六步-mysql远程连接授权" class="headerlink" title="第六步 mysql远程连接授权"></a>第六步 mysql远程连接授权</h3><p>GRANT ALL PRIVILEGES ON <em>.</em> TO ‘<strong>myuser</strong>‘@’%’ IDENTIFIED BY ‘<strong>mypassword</strong>‘ WITH GRANT OPTION;</p>
+<p>注意：’myuser’、’mypassword’ 需要替换成实际的用户名和密码。</p>
+<h4 id="第七步-添加以下配置：-解决中文乱码"><a href="#第七步-添加以下配置：-解决中文乱码" class="headerlink" title="第七步 添加以下配置：(解决中文乱码)"></a>第七步 添加以下配置：(解决中文乱码)</h4><p>vim /etc/my.cnf</p>
+<pre><code>[mysql]
 default-character-set=utf8
 
 [mysqld]
 character_set_server=utf8
-</code></pre><h3 id="第六步-复制、配置mysql服务"><a href="#第六步-复制、配置mysql服务" class="headerlink" title="第六步 复制、配置mysql服务"></a>第六步 复制、配置mysql服务</h3><p>[root@mysql ~]# cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql</p>
-<h4 id="第46行做如下修改"><a href="#第46行做如下修改" class="headerlink" title="第46行做如下修改"></a>第46行做如下修改</h4><pre><code>basedir=/usr/local/mysql
-datadir=/usr/local/mysql/data
-</code></pre><h3 id="第七步-启动mysql服务"><a href="#第七步-启动mysql服务" class="headerlink" title="第七步 启动mysql服务"></a>第七步 启动mysql服务</h3><p>[root@mysql ~]# cd /usr/local/mysql/bin/</p>
-<p>[root@mysql bin]# ./mysqld –initialize –user=mysql –basedir=/usr/local/mysql –datadir=/usr/local/mysql/data</p>
-<h4 id="屏幕打印："><a href="#屏幕打印：" class="headerlink" title="屏幕打印："></a>屏幕打印：</h4><pre><code>2017-01-27T03:14:04.598579Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
-2017-01-27T03:14:04.598645Z 0 [Warning] &#39;NO_ZERO_DATE&#39;, &#39;NO_ZERO_IN_DATE&#39; and &#39;ERROR_FOR_DIVISION_BY_ZERO&#39; sql modes should be used with strict mode. They will be merged with strict mode in a future release.
-2017-01-27T03:14:04.598648Z 0 [Warning] &#39;NO_AUTO_CREATE_USER&#39; sql mode was not set.
-2017-01-27T03:14:05.002057Z 0 [Warning] InnoDB: New log files created, LSN=45790
-2017-01-27T03:14:05.079640Z 0 [Warning] InnoDB: Creating foreign key constraint system tables.
-2017-01-27T03:14:05.214710Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: a8c7be60-e43e-11e6-b470-000c299fe1ef.
-2017-01-27T03:14:05.216074Z 0 [Warning] Gtid table is not ready to be used. Table &#39;mysql.gtid_executed&#39; cannot be opened.
-2017-01-27T03:14:05.221297Z 1 [Note] A temporary password is generated for root@localhost: ME#SiCHkw4zS
-</code></pre><blockquote>
-<p>ME#SiCHkw4zS 这个是初始化密码</p>
-</blockquote>
-<h3 id="第八步-加密mysql数据"><a href="#第八步-加密mysql数据" class="headerlink" title="第八步 加密mysql数据"></a>第八步 加密mysql数据</h3><p>[root@mysql mysql]# ./bin/mysql_ssl_rsa_setup –datadir=/usr/local/mysql/data</p>
-<h4 id="屏幕打印：-1"><a href="#屏幕打印：-1" class="headerlink" title="屏幕打印："></a>屏幕打印：</h4><pre><code>Generating a 2048 bit RSA private key
-....................................................+++
-..................+++
-writing new private key to &#39;ca-key.pem&#39;
------
-Generating a 2048 bit RSA private key
-......+++
-.............+++
-writing new private key to &#39;server-key.pem&#39;
------
-Generating a 2048 bit RSA private key
-..........................................................................................................................................+++
-.....+++
-writing new private key to &#39;client-key.pem&#39;
------
-</code></pre><h3 id="第九步-启动mysql"><a href="#第九步-启动mysql" class="headerlink" title="第九步 启动mysql"></a>第九步 启动mysql</h3><p>[root@mysql mysql]# ./mysqld_safe –user=mysql &amp;</p>
-<h4 id="查看启动是否成功-打印如下-启动成功"><a href="#查看启动是否成功-打印如下-启动成功" class="headerlink" title="查看启动是否成功(打印如下 启动成功)"></a>查看启动是否成功(打印如下 启动成功)</h4><p>[root@mysql mysql]# ps -ef|grep mysql</p>
-<h4 id="屏幕打印：-2"><a href="#屏幕打印：-2" class="headerlink" title="屏幕打印："></a>屏幕打印：</h4><pre><code>root      2286  1573  0 11:30 pts/1    00:00:00 /bin/sh ./mysqld_safe --user=mysql
-mysql     2407  2286  5 11:30 pts/1    00:00:00 /usr/local/mysql/bin/mysqld --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --plugin-dir=/usr/local/mysql/lib/plugin --user=mysql --log-error=/usr/local/mysql/data/storm3.err --pid-file=/usr/local/mysql/data/mysql.pid
-root      2438  1573  0 11:30 pts/1    00:00:00 grep mysql
-</code></pre><h4 id="启动-输入初始密码"><a href="#启动-输入初始密码" class="headerlink" title="启动 输入初始密码"></a>启动 输入初始密码</h4><p>[root@mysql mysql]# ./mysql -uroot -p</p>
-<h3 id="第十步-重新设置密码、授权"><a href="#第十步-重新设置密码、授权" class="headerlink" title="第十步 重新设置密码、授权"></a>第十步 重新设置密码、授权</h3><h4 id="设置密码"><a href="#设置密码" class="headerlink" title="设置密码"></a>设置密码</h4><p>mysql&gt; grant all privileges on <em>.</em> to root@’%’ identified by ‘<strong>我是密码</strong>‘;</p>
-<h4 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h4><p>mysql&gt;grant all privileges on <em>.</em> to root@’%’ identified by ‘<strong>我是密码</strong>‘;</p>
-<h4 id="刷新"><a href="#刷新" class="headerlink" title="刷新"></a>刷新</h4><p>mysql&gt;flush privileges;</p>
-<h3 id="第十一步-设置防火墙规则"><a href="#第十一步-设置防火墙规则" class="headerlink" title="第十一步 设置防火墙规则"></a>第十一步 设置防火墙规则</h3><p>[root@mysql mysql]# vim /etc/sysconfig/iptables</p>
-<h4 id="添加以下规则："><a href="#添加以下规则：" class="headerlink" title="添加以下规则："></a>添加以下规则：</h4><pre><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
-</code></pre><h4 id="重启防火墙："><a href="#重启防火墙：" class="headerlink" title="重启防火墙："></a>重启防火墙：</h4><p>[root@mysql mysql]# service iptables restart</p>
-<h3 id="第十二步-开机自启"><a href="#第十二步-开机自启" class="headerlink" title="第十二步 开机自启"></a>第十二步 开机自启</h3><p>chkconfig –add mysql</p>
-<p>chkconfig mysql on</p>
-<h3 id="第十三步-配置环境变量"><a href="#第十三步-配置环境变量" class="headerlink" title="第十三步 配置环境变量"></a>第十三步 配置环境变量</h3><p>[root@mysql mysql]# vim /etc/profile</p>
-<h4 id="添加配置"><a href="#添加配置" class="headerlink" title="添加配置"></a>添加配置</h4><p>export PATH=$JAVA_HOME/bin:/usr/local/mysql/bin:$PATH</p>
-<h3 id="第十四步-Linux新建mysql用户"><a href="#第十四步-Linux新建mysql用户" class="headerlink" title="第十四步 Linux新建mysql用户"></a>第十四步 Linux新建mysql用户</h3><p>[root@mysql mysql]# groupadd mysql</p>
-<p>[root@mysql mysql]# useradd -r -g mysql mysql</p>
-<p>[root@mysql mysql]# passwd mysql</p>
-<p>[root@mysql mysql]#chown -R mysql:mysql /usr/local/mysql/</p>
-<hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>MySQL安装还是很简单的。</p>
+</code></pre><p>重启 </p>
+<p>service mysqld restart</p>
 <hr>
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 
