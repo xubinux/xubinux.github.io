@@ -4,6 +4,84 @@
   
     
     <entry>
+      <title><![CDATA[Hive 安装教程]]></title>
+      <url>http://binux.cn/2017/06/14/Hive-Install/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>“这篇文章将介绍如何安装 Hive”</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="所需软件"><a href="#所需软件" class="headerlink" title="所需软件"></a>所需软件</h3><p>CentOS 6.5 </p>
+<p>Hadoop 2.6.1</p>
+<p>Hive 1.2.x</p>
+<h3 id="下载软件"><a href="#下载软件" class="headerlink" title="下载软件"></a>下载软件</h3><ul>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/apache/hive/hive-1.2.2/apache-hive-1.2.2-bin.tar.gz" target="_blank" rel="external">apache-hive-1.2.2-bin.tar.gz</a></li>
+</ul>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="1-安装-MySQL"><a href="#1-安装-MySQL" class="headerlink" title="1.安装 MySQL"></a>1.安装 MySQL</h3><p><a href="http://binux.cn/2017/03/01/Linux-MySQL-Install/">http://binux.cn/2017/03/01/Linux-MySQL-Install/</a></p>
+<h3 id="2-上传-解压-Tar-包"><a href="#2-上传-解压-Tar-包" class="headerlink" title="2.上传 解压 Tar 包"></a>2.上传 解压 Tar 包</h3><p>tar -zxvf apache-hive-1.2.1-bin.tar.gz -C apps/</p>
+<h3 id="3-配置-Hive"><a href="#3-配置-Hive" class="headerlink" title="3.配置 Hive"></a>3.配置 Hive</h3><p>配置HIVE_HOME环境变量  第48行</p>
+<p>cp conf/hive-env.sh.template conf/hive-env.sh</p>
+<p>vim conf/hive-env.sh 配置其中的$hadoop_home</p>
+<p>配置元数据库信息  </p>
+<p>vim  hive-site.xml </p>
+<p>添加如下内容：</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>javax.jdo.option.ConnectionURL<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>jdbc:mysql://localhost:3306/hive?createDatabaseIfNotExist=true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>JDBC connect string for a JDBC metastore<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>javax.jdo.option.ConnectionDriverName<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>com.mysql.jdbc.Driver<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>Driver class name for a JDBC metastore<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>javax.jdo.option.ConnectionUserName<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>root<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>username to use against metastore database<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>javax.jdo.option.ConnectionPassword<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>14130220<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>password to use against metastore database<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>复制 MySQL 驱动到 Hive/lib 下</p>
+<h3 id="4-启动"><a href="#4-启动" class="headerlink" title="4.启动"></a>4.启动</h3><p>配置 HIVE_HOME</p>
+<pre class=" language-bash"><code class="language-bash">HIVE_HOME<span class="token operator">=</span>/home/hadoop/apps/hive-1.2.1
+PATH<span class="token operator">=</span><span class="token variable">$HIVE_HOME</span>/bin:<span class="token variable">$PATH</span>
+</code></pre>
+<h3 id="5-启动"><a href="#5-启动" class="headerlink" title="5.启动"></a>5.启动</h3><p>[hadoop@hadoop1 ~]$ hive //启动</p>
+<blockquote>
+<p>报错 java.lang.IncompatibleClassChangeError: Found class jline.Terminal, but interface was expected</p>
+<p>rm HAOOP_HOME/share/hadoop/yarn/lib/jline-0.9.94.jar </p>
+<p>cp HIVE_HOME/lib/jline-2.12.jar HAOOP_HOME/share/hadoop/yarn/lib/</p>
+</blockquote>
+<hr>
+<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 安装教程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Hadoop </tag>
+            
+            <tag> Hive </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Hadoop 机架感知]]></title>
       <url>http://binux.cn/2017/06/03/Hadoop-Perceived/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -112,6 +190,54 @@ distance<span class="token punctuation">(</span>/D1/R1/H1,/D2/R3/H7<span class="
     </entry>
     
     <entry>
+      <title><![CDATA[关于 xbin-store 的一些声明!]]></title>
+      <url>http://binux.cn/2017/05/08/xbin-store/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>“简单谈谈 xbin-store ”</p>
+</blockquote>
+<h2 id="项目起因"><a href="#项目起因" class="headerlink" title="项目起因"></a>项目起因</h2><p>项目开始于 2017-01-24 是我寒假闲着没事做的一个项目,当时是想着模仿 JD 写一个分布式商城,能把自己所学的全部知识运用进去。</p>
+<p>一方面是我觉得动手实践肯定比单纯看书效果好,虽然过程中会出现很多错误,但在解决各种问题的时候也变相的锻炼了自己的能力。</p>
+<p>另一方面我想做个完善的分布式商城 就像 JD 一样的商城 (理想很完美 现实很残酷 选择的目标太庞大)  </p>
+<h2 id="为什么开源"><a href="#为什么开源" class="headerlink" title="为什么开源"></a>为什么开源</h2><p>上面说过这个项目起因是我自己做来锻炼自己能力的,但是做着做着我发现凭我一个人的精力是无法完成这么庞大的系统的,于是我选择开源到 Github、OSChina 希望可以找到一些志同道合的朋友一起开发 </p>
+<p>还有就是帮助一些对分布式感兴趣的朋友,包括创建群、写运行教程、甚至录视频。</p>
+<p>最后我发现Star 1000 OSChina 有奖杯 其实我还挺想要的 不过我也不着急 项目足够完善后 还怕拿不到嘛！</p>
+<script src="//git.oschina.net/binu/xbin-store/star_widget_preview"></script>
+
+<h2 id="关于项目进度"><a href="#关于项目进度" class="headerlink" title="关于项目进度"></a>关于项目进度</h2><ul>
+<li>2017-01-24 项目开始</li>
+<li>2017-02-26 从本地的 Gitblit 迁移到 Github</li>
+<li>2017-04-03 发布到 OSChina</li>
+<li>2017-04-08 修改为使用 Spring Boot</li>
+<li>2017-05-05 新建 xbin-store-cloud 项目 使用 Spring Cloud 重构</li>
+<li>…</li>
+</ul>
+<p>大家可能发现从4月3后 项目基本变化在于架构的变化 从Spring Boot 到 Spring Cloud 架构的变化也反应着我正在学习的内容 技术总是在不停变化着 </p>
+<p>其实最主要的原因还是我比较喜欢研究架构方面的内容 兴趣驱使着我学习 也没什么特别爱好了 写代码算是唯一爱好了</p>
+<p>所以 如果你是想找个完善的电子商城 那么这个项目不适合你 功能很不完善 这个我自己知道 但是这个不完善是由于没有时间写 整个项目真正写的时间其实2个月都没有 </p>
+<h2 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h2><p>希望 xbin-store、xbin-store-cloud 可以一直完善下去 奔着 写个 JD 的目标 大步前进</p>
+<p>最后祝大家 Enjoy Coding</p>
+<hr>
+<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 随记 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 随记 </tag>
+            
+            <tag> xbin-store </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[CentOS 7下 Docker 安装]]></title>
       <url>http://binux.cn/2017/05/08/Docker-Instal/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -177,57 +303,9 @@ ExecStart<span class="token operator">=</span>/usr/bin/dockerd <span class="toke
         
         <tags>
             
-            <tag> Docker </tag>
-            
             <tag> Linux </tag>
             
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[关于 xbin-store 的一些声明!]]></title>
-      <url>http://binux.cn/2017/05/08/xbin-store/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>“简单谈谈 xbin-store ”</p>
-</blockquote>
-<h2 id="项目起因"><a href="#项目起因" class="headerlink" title="项目起因"></a>项目起因</h2><p>项目开始于 2017-01-24 是我寒假闲着没事做的一个项目,当时是想着模仿 JD 写一个分布式商城,能把自己所学的全部知识运用进去。</p>
-<p>一方面是我觉得动手实践肯定比单纯看书效果好,虽然过程中会出现很多错误,但在解决各种问题的时候也变相的锻炼了自己的能力。</p>
-<p>另一方面我想做个完善的分布式商城 就像 JD 一样的商城 (理想很完美 现实很残酷 选择的目标太庞大)  </p>
-<h2 id="为什么开源"><a href="#为什么开源" class="headerlink" title="为什么开源"></a>为什么开源</h2><p>上面说过这个项目起因是我自己做来锻炼自己能力的,但是做着做着我发现凭我一个人的精力是无法完成这么庞大的系统的,于是我选择开源到 Github、OSChina 希望可以找到一些志同道合的朋友一起开发 </p>
-<p>还有就是帮助一些对分布式感兴趣的朋友,包括创建群、写运行教程、甚至录视频。</p>
-<p>最后我发现Star 1000 OSChina 有奖杯 其实我还挺想要的 不过我也不着急 项目足够完善后 还怕拿不到嘛！</p>
-<script src="//git.oschina.net/binu/xbin-store/star_widget_preview"></script>
-
-<h2 id="关于项目进度"><a href="#关于项目进度" class="headerlink" title="关于项目进度"></a>关于项目进度</h2><ul>
-<li>2017-01-24 项目开始</li>
-<li>2017-02-26 从本地的 Gitblit 迁移到 Github</li>
-<li>2017-04-03 发布到 OSChina</li>
-<li>2017-04-08 修改为使用 Spring Boot</li>
-<li>2017-05-05 新建 xbin-store-cloud 项目 使用 Spring Cloud 重构</li>
-<li>…</li>
-</ul>
-<p>大家可能发现从4月3后 项目基本变化在于架构的变化 从Spring Boot 到 Spring Cloud 架构的变化也反应着我正在学习的内容 技术总是在不停变化着 </p>
-<p>其实最主要的原因还是我比较喜欢研究架构方面的内容 兴趣驱使着我学习 也没什么特别爱好了 写代码算是唯一爱好了</p>
-<p>所以 如果你是想找个完善的电子商城 那么这个项目不适合你 功能很不完善 这个我自己知道 但是这个不完善是由于没有时间写 整个项目真正写的时间其实2个月都没有 </p>
-<h2 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h2><p>希望 xbin-store、xbin-store-cloud 可以一直完善下去 奔着 写个 JD 的目标 大步前进</p>
-<p>最后祝大家 Enjoy Coding</p>
-<hr>
-<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 随记 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 随记 </tag>
-            
-            <tag> xbin-store </tag>
+            <tag> Docker </tag>
             
         </tags>
         
@@ -2540,9 +2618,9 @@ jps
         
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> XBin-Store </tag>
+            
+            <tag> Linux </tag>
             
             <tag> RocketMQ </tag>
             
@@ -2743,9 +2821,9 @@ jps
         
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> XBin-Store </tag>
+            
+            <tag> Linux </tag>
             
             <tag> Solr </tag>
             
@@ -3253,11 +3331,191 @@ location ~/group([0-9])/M00 {
         
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> XBin-Store </tag>
             
             <tag> FastDFS </tag>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三)]]></title>
+      <url>http://binux.cn/2017/03/04/Zookeeper-Cluster-Install/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>“这篇文章将介绍如何安装Zookeeper集群”</p>
+</blockquote>
+<h2 id="系列"><a href="#系列" class="headerlink" title="系列"></a>系列</h2><ul>
+<li><a href="http://binux.cn/2017/03/01/Linux-MySQL-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 MySQL安装(一)</a></li>
+<li><a href="http://binux.cn/2017/03/03/Redis-Cluster-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Redis集群安装(二)</a></li>
+<li><strong><a href="http://binux.cn/2017/03/04/Zookeeper-Cluster-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三)</a></strong></li>
+<li><a href="http://binux.cn/2017/03/04/Nginx-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Nginx安装(四)</a></li>
+<li><a href="http://binux.cn/2017/03/05/FastDFS-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 FastDFS安装(五)</a></li>
+<li><a href="http://binux.cn/2017/03/06/Solr-Cluster-Install/">Xbin-Store(分布式商城)项目所依赖的Linux服务系列 Solr集群安装(六)</a></li>
+<li><a href="http://binux.cn/2017/03/07/RocketMQ-Cluster-Install/">Xbin-Store(分布式商城)项目所依赖的Linux服务系列 RocketMQ集群安装(七)</a></li>
+</ul>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="Zookeeper集群方案"><a href="#Zookeeper集群方案" class="headerlink" title="Zookeeper集群方案"></a>Zookeeper集群方案</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">主机IP</th>
+<th style="text-align:center">消息端口</th>
+<th style="text-align:center">通信端口</th>
+<th style="text-align:center">节点目录/usr/local/下</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">192.168.1.1</td>
+<td style="text-align:center">2181</td>
+<td style="text-align:center">2888:3888</td>
+<td style="text-align:center">zookeeper</td>
+</tr>
+<tr>
+<td style="text-align:center">192.168.1.2</td>
+<td style="text-align:center">2181</td>
+<td style="text-align:center">2888:3888</td>
+<td style="text-align:center">zookeeper</td>
+</tr>
+<tr>
+<td style="text-align:center">192.168.1.3</td>
+<td style="text-align:center">2181</td>
+<td style="text-align:center">2888:3888</td>
+<td style="text-align:center">zookeeper</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="安装JDK-略"><a href="#安装JDK-略" class="headerlink" title="安装JDK 略"></a>安装JDK 略</h4><blockquote>
+<p>以下操作3台机器同时操作</p>
+</blockquote>
+<h4 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h4><p>useradd zookeeper</p>
+<p>passwd zookeeper</p>
+<p>设置密码</p>
+<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p>官网下载<a href="http://apache.fayea.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz" target="_blank" rel="external">zookeeper-3.4.6</a><br>Linux wget <a href="http://apache.fayea.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz" target="_blank" rel="external">http://apache.fayea.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz</a></p>
+<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><p>tar -zxvf zookeeper-3.4.6.tar.gz —C /usr/local</p>
+<h4 id="改名"><a href="#改名" class="headerlink" title="改名"></a>改名</h4><p>cd /usr/local</p>
+<p>mv zookeeper-3.4.6 zookeeper</p>
+<h4 id="建立以下文件夹"><a href="#建立以下文件夹" class="headerlink" title="建立以下文件夹"></a>建立以下文件夹</h4><p>cd /usr/local/zookeeper</p>
+<p>mkdir data</p>
+<p>mkdir logs</p>
+<h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p>将/conf目录下的zoo_sample.cfg文件拷贝一份， 命名为为zoo.cfg</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># The number of milliseconds of each tick</span>
+tickTime<span class="token operator">=</span>2000
+<span class="token comment" spellcheck="true"># The number of ticks that the initial</span>
+<span class="token comment" spellcheck="true"># synchronization phase can take</span>
+initLimit<span class="token operator">=</span>10
+<span class="token comment" spellcheck="true"># The number of ticks that can pass between</span>
+<span class="token comment" spellcheck="true"># sending a request and getting an acknowledgement</span>
+syncLimit<span class="token operator">=</span>5
+<span class="token comment" spellcheck="true"># the directory where the snapshot is stored.</span>
+<span class="token comment" spellcheck="true"># do not use /tmp for storage, /tmp here is just</span>
+<span class="token comment" spellcheck="true"># example sakes.</span>
+dataDir<span class="token operator">=</span>/usr/local/zookeeper/data
+dataLogDir<span class="token operator">=</span>/usr/local/zookeeper/logs
+<span class="token comment" spellcheck="true"># the port at which the clients will connect</span>
+clientPort<span class="token operator">=</span>2181
+<span class="token comment" spellcheck="true">#</span>
+<span class="token comment" spellcheck="true"># Be sure to read the maintenance section of the</span>
+<span class="token comment" spellcheck="true"># administrator guide before turning on autopurge.</span>
+<span class="token comment" spellcheck="true">#</span>
+<span class="token comment" spellcheck="true"># http://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_maintenance</span>
+<span class="token comment" spellcheck="true">#</span>
+<span class="token comment" spellcheck="true"># The number of snapshots to retain in dataDir</span>
+<span class="token comment" spellcheck="true">#autopurge.snapRetainCount=3</span>
+<span class="token comment" spellcheck="true"># Purge task interval in hours</span>
+<span class="token comment" spellcheck="true"># Set to "0" to disable auto purge feature</span>
+<span class="token comment" spellcheck="true">#autopurge.purgeInterval=1</span>
+<span class="token comment" spellcheck="true"># 2888 端口号是 zookeeper 服务之间通信的端口。</span>
+<span class="token comment" spellcheck="true"># 3888 是 zookeeper 与其他应用程序通信的端口。</span>
+server.0<span class="token operator">=</span>192.168.1.1:2888:3888
+server.1<span class="token operator">=</span>192.168.1.2:2888:3888
+server.2<span class="token operator">=</span>192.168.1.3:2888:3888
+</code></pre>
+<h4 id="解释配置文件"><a href="#解释配置文件" class="headerlink" title="解释配置文件"></a>解释配置文件</h4><pre><code>initLimit：这个配置项是用来配置 Zookeeper 接受客户端（这里所说的客户端不
+是用户连接 Zookeeper 服务器的客户端，而是 Zookeeper 服务器集群中连接到
+Leader 的 Follower 服务器）初始化连接时最长能忍受多少个心跳时间间隔数。
+当已经超过 10 个心跳的时间（也就是 tickTime）长度后 Zookeeper 服务器还没
+有收到客户端的返回信息，那么表明这个客户端连接失败。总的时间长度就是
+5*2000=10 秒。
+
+syncLimit：这个配置项标识 Leader 与 Follower 之间发送消息，请求和应答时
+间长度，最长不能超过多少个 tickTime 的时间长度，总的时间长度就是 2*2000=4
+秒。
+
+server.A=B:C:D：其中 A 是一个数字，表示这个是第几号服务器；B 是这个服务
+器的 IP 地址或/etc/hosts 文件中映射了 IP 的主机名；C 表示的是这个服务器与
+集群中的 Leader 服务器交换信息的端口；D 表示的是万一集群中的 Leader 服务
+器挂了，需要一个端口来重新进行选举，选出一个新的 Leader，而这个端口就是
+用来执行选举时服务器相互通信的端口。如果是伪集群的配置方式，由于 B 都是
+一样，所以不同的 Zookeeper 实例通信端口号不能一样，所以要给它们分配不同
+的端口号。
+</code></pre><h4 id="新建myid文件"><a href="#新建myid文件" class="headerlink" title="新建myid文件"></a>新建myid文件</h4><p>cd /usr/local/zookeeper/data</p>
+<ul>
+<li>192.168.1.1机器:  echo 0 &gt;&gt; myid</li>
+<li>192.168.1.2机器:  echo 1 &gt;&gt; myid</li>
+<li>192.168.1.3机器:  echo 2 &gt;&gt; myid</li>
+</ul>
+<h4 id="编辑-bash-profile文件"><a href="#编辑-bash-profile文件" class="headerlink" title="编辑.bash_profile文件"></a>编辑.bash_profile文件</h4><p>添加</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">export</span> ZOOKEEPER_HOME<span class="token operator">=</span>/usr/local/zookeeper
+<span class="token comment" spellcheck="true"># zookeeper env</span>
+<span class="token function">export</span> PATH<span class="token operator">=</span><span class="token variable">$ZOOKEEPER_HOME</span>/bin:<span class="token variable">$PATH</span>
+</code></pre>
+<p>使配置文件生效<br>$ source /home/zookeeper/.bash_profile</p>
+<h4 id="添加防火墙规则"><a href="#添加防火墙规则" class="headerlink" title="添加防火墙规则"></a>添加防火墙规则</h4><p>在防火墙中打开要用到的端口2181、2888、3888</p>
+<h5 id="切换到-root-用户权限，执行以下命令："><a href="#切换到-root-用户权限，执行以下命令：" class="headerlink" title="切换到 root 用户权限，执行以下命令："></a>切换到 root 用户权限，执行以下命令：</h5><pre><code>chkconfig iptables on
+service iptables start
+vim /etc/sysconfig/iptables
+</code></pre><h5 id="增加以下-3-行："><a href="#增加以下-3-行：" class="headerlink" title="增加以下 3 行："></a>增加以下 3 行：</h5><pre><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 2181 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 2888 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 3888 -j ACCEPT
+</code></pre><h5 id="重启防火墙："><a href="#重启防火墙：" class="headerlink" title="重启防火墙："></a>重启防火墙：</h5><p>service iptables restart</p>
+<h3 id="zk操作"><a href="#zk操作" class="headerlink" title="zk操作"></a>zk操作</h3><h4 id="启动zk"><a href="#启动zk" class="headerlink" title="启动zk"></a>启动zk</h4><p>zkServer.sh start</p>
+<h5 id="查看有无启动成功"><a href="#查看有无启动成功" class="headerlink" title="查看有无启动成功"></a>查看有无启动成功</h5><p>jps</p>
+<pre><code>1456 QuorumPeerMain
+1475 Jps
+</code></pre><blockquote>
+<p>启动成功</p>
+</blockquote>
+<h4 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h4><p>zkServer.shstatus</p>
+<h4 id="查看日志文件"><a href="#查看日志文件" class="headerlink" title="查看日志文件"></a>查看日志文件</h4><p>$ tail -500f /usr/local/zookeeper/logs/zookeeper.out</p>
+<h4 id="停止zookeeper进程："><a href="#停止zookeeper进程：" class="headerlink" title="停止zookeeper进程："></a>停止zookeeper进程：</h4><p>zkServer.sh stop</p>
+<h4 id="配置zookeeper开机使用xubin用户启动："><a href="#配置zookeeper开机使用xubin用户启动：" class="headerlink" title="配置zookeeper开机使用xubin用户启动："></a>配置zookeeper开机使用xubin用户启动：</h4><p>编辑/etc/rc.local 文件，加入：</p>
+<p>su - zookeeper -c ‘/usr/local/zookeeper/bin/zkServer.sh start’</p>
+<h3 id="zookeeper查看插件"><a href="#zookeeper查看插件" class="headerlink" title="zookeeper查看插件"></a>zookeeper查看插件</h3><h4 id="eclipse"><a href="#eclipse" class="headerlink" title="eclipse"></a>eclipse</h4><ul>
+<li>Help -&gt; Install New Software</li>
+<li>添加 url <a href="http://www.massedynamic.org/eclipse/updates/" target="_blank" rel="external">http://www.massedynamic.org/eclipse/updates/</a></li>
+<li>选择zookeeper插件安装</li>
+<li>Eclipse 菜单打开Window -&gt; Show View -&gt; Other… -&gt; ZooKeeper 3.2.2</li>
+<li>输入zookeeper的地址 连接</li>
+</ul>
+<h4 id="idea插件"><a href="#idea插件" class="headerlink" title="idea插件"></a>idea插件</h4><p>直接插件库中搜索zookeeper</p>
+<blockquote>
+<p>不过我不推荐使用<br>插件开发成那样还上线…(不过是免费的 想用就用吧)</p>
+</blockquote>
+<h4 id="Java开发的客户端"><a href="#Java开发的客户端" class="headerlink" title="Java开发的客户端"></a>Java开发的客户端</h4><p><a href="http://download.csdn.net/detail/nihaoadam/9427620" target="_blank" rel="external">点我下载</a></p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>安装集群的时候一定要把防火墙配置好 不然就会出现各种问题 或者直接把防火墙关了吧 学习技术的时候可以不用考虑防火墙</p>
+<p>后面会写一篇关于使用ZkClient、Curator操作Zookeeper的博客</p>
+<hr>
+<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 安装教程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> XBin-Store </tag>
+            
+            <tag> Linux </tag>
+            
+            <tag> Zookeeper </tag>
             
         </tags>
         
@@ -3505,191 +3763,11 @@ http <span class="token punctuation">{</span>
         
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> XBin-Store </tag>
+            
+            <tag> Linux </tag>
             
             <tag> Nginx </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三)]]></title>
-      <url>http://binux.cn/2017/03/04/Zookeeper-Cluster-Install/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>“这篇文章将介绍如何安装Zookeeper集群”</p>
-</blockquote>
-<h2 id="系列"><a href="#系列" class="headerlink" title="系列"></a>系列</h2><ul>
-<li><a href="http://binux.cn/2017/03/01/Linux-MySQL-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 MySQL安装(一)</a></li>
-<li><a href="http://binux.cn/2017/03/03/Redis-Cluster-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Redis集群安装(二)</a></li>
-<li><strong><a href="http://binux.cn/2017/03/04/Zookeeper-Cluster-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三)</a></strong></li>
-<li><a href="http://binux.cn/2017/03/04/Nginx-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 Nginx安装(四)</a></li>
-<li><a href="http://binux.cn/2017/03/05/FastDFS-Install/">Xbin-Store(分布式商城)项目所用Linux服务系列 FastDFS安装(五)</a></li>
-<li><a href="http://binux.cn/2017/03/06/Solr-Cluster-Install/">Xbin-Store(分布式商城)项目所依赖的Linux服务系列 Solr集群安装(六)</a></li>
-<li><a href="http://binux.cn/2017/03/07/RocketMQ-Cluster-Install/">Xbin-Store(分布式商城)项目所依赖的Linux服务系列 RocketMQ集群安装(七)</a></li>
-</ul>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="Zookeeper集群方案"><a href="#Zookeeper集群方案" class="headerlink" title="Zookeeper集群方案"></a>Zookeeper集群方案</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">主机IP</th>
-<th style="text-align:center">消息端口</th>
-<th style="text-align:center">通信端口</th>
-<th style="text-align:center">节点目录/usr/local/下</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">192.168.1.1</td>
-<td style="text-align:center">2181</td>
-<td style="text-align:center">2888:3888</td>
-<td style="text-align:center">zookeeper</td>
-</tr>
-<tr>
-<td style="text-align:center">192.168.1.2</td>
-<td style="text-align:center">2181</td>
-<td style="text-align:center">2888:3888</td>
-<td style="text-align:center">zookeeper</td>
-</tr>
-<tr>
-<td style="text-align:center">192.168.1.3</td>
-<td style="text-align:center">2181</td>
-<td style="text-align:center">2888:3888</td>
-<td style="text-align:center">zookeeper</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="安装JDK-略"><a href="#安装JDK-略" class="headerlink" title="安装JDK 略"></a>安装JDK 略</h4><blockquote>
-<p>以下操作3台机器同时操作</p>
-</blockquote>
-<h4 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h4><p>useradd zookeeper</p>
-<p>passwd zookeeper</p>
-<p>设置密码</p>
-<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p>官网下载<a href="http://apache.fayea.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz" target="_blank" rel="external">zookeeper-3.4.6</a><br>Linux wget <a href="http://apache.fayea.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz" target="_blank" rel="external">http://apache.fayea.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz</a></p>
-<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><p>tar -zxvf zookeeper-3.4.6.tar.gz —C /usr/local</p>
-<h4 id="改名"><a href="#改名" class="headerlink" title="改名"></a>改名</h4><p>cd /usr/local</p>
-<p>mv zookeeper-3.4.6 zookeeper</p>
-<h4 id="建立以下文件夹"><a href="#建立以下文件夹" class="headerlink" title="建立以下文件夹"></a>建立以下文件夹</h4><p>cd /usr/local/zookeeper</p>
-<p>mkdir data</p>
-<p>mkdir logs</p>
-<h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p>将/conf目录下的zoo_sample.cfg文件拷贝一份， 命名为为zoo.cfg</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># The number of milliseconds of each tick</span>
-tickTime<span class="token operator">=</span>2000
-<span class="token comment" spellcheck="true"># The number of ticks that the initial</span>
-<span class="token comment" spellcheck="true"># synchronization phase can take</span>
-initLimit<span class="token operator">=</span>10
-<span class="token comment" spellcheck="true"># The number of ticks that can pass between</span>
-<span class="token comment" spellcheck="true"># sending a request and getting an acknowledgement</span>
-syncLimit<span class="token operator">=</span>5
-<span class="token comment" spellcheck="true"># the directory where the snapshot is stored.</span>
-<span class="token comment" spellcheck="true"># do not use /tmp for storage, /tmp here is just</span>
-<span class="token comment" spellcheck="true"># example sakes.</span>
-dataDir<span class="token operator">=</span>/usr/local/zookeeper/data
-dataLogDir<span class="token operator">=</span>/usr/local/zookeeper/logs
-<span class="token comment" spellcheck="true"># the port at which the clients will connect</span>
-clientPort<span class="token operator">=</span>2181
-<span class="token comment" spellcheck="true">#</span>
-<span class="token comment" spellcheck="true"># Be sure to read the maintenance section of the</span>
-<span class="token comment" spellcheck="true"># administrator guide before turning on autopurge.</span>
-<span class="token comment" spellcheck="true">#</span>
-<span class="token comment" spellcheck="true"># http://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_maintenance</span>
-<span class="token comment" spellcheck="true">#</span>
-<span class="token comment" spellcheck="true"># The number of snapshots to retain in dataDir</span>
-<span class="token comment" spellcheck="true">#autopurge.snapRetainCount=3</span>
-<span class="token comment" spellcheck="true"># Purge task interval in hours</span>
-<span class="token comment" spellcheck="true"># Set to "0" to disable auto purge feature</span>
-<span class="token comment" spellcheck="true">#autopurge.purgeInterval=1</span>
-<span class="token comment" spellcheck="true"># 2888 端口号是 zookeeper 服务之间通信的端口。</span>
-<span class="token comment" spellcheck="true"># 3888 是 zookeeper 与其他应用程序通信的端口。</span>
-server.0<span class="token operator">=</span>192.168.1.1:2888:3888
-server.1<span class="token operator">=</span>192.168.1.2:2888:3888
-server.2<span class="token operator">=</span>192.168.1.3:2888:3888
-</code></pre>
-<h4 id="解释配置文件"><a href="#解释配置文件" class="headerlink" title="解释配置文件"></a>解释配置文件</h4><pre><code>initLimit：这个配置项是用来配置 Zookeeper 接受客户端（这里所说的客户端不
-是用户连接 Zookeeper 服务器的客户端，而是 Zookeeper 服务器集群中连接到
-Leader 的 Follower 服务器）初始化连接时最长能忍受多少个心跳时间间隔数。
-当已经超过 10 个心跳的时间（也就是 tickTime）长度后 Zookeeper 服务器还没
-有收到客户端的返回信息，那么表明这个客户端连接失败。总的时间长度就是
-5*2000=10 秒。
-
-syncLimit：这个配置项标识 Leader 与 Follower 之间发送消息，请求和应答时
-间长度，最长不能超过多少个 tickTime 的时间长度，总的时间长度就是 2*2000=4
-秒。
-
-server.A=B:C:D：其中 A 是一个数字，表示这个是第几号服务器；B 是这个服务
-器的 IP 地址或/etc/hosts 文件中映射了 IP 的主机名；C 表示的是这个服务器与
-集群中的 Leader 服务器交换信息的端口；D 表示的是万一集群中的 Leader 服务
-器挂了，需要一个端口来重新进行选举，选出一个新的 Leader，而这个端口就是
-用来执行选举时服务器相互通信的端口。如果是伪集群的配置方式，由于 B 都是
-一样，所以不同的 Zookeeper 实例通信端口号不能一样，所以要给它们分配不同
-的端口号。
-</code></pre><h4 id="新建myid文件"><a href="#新建myid文件" class="headerlink" title="新建myid文件"></a>新建myid文件</h4><p>cd /usr/local/zookeeper/data</p>
-<ul>
-<li>192.168.1.1机器:  echo 0 &gt;&gt; myid</li>
-<li>192.168.1.2机器:  echo 1 &gt;&gt; myid</li>
-<li>192.168.1.3机器:  echo 2 &gt;&gt; myid</li>
-</ul>
-<h4 id="编辑-bash-profile文件"><a href="#编辑-bash-profile文件" class="headerlink" title="编辑.bash_profile文件"></a>编辑.bash_profile文件</h4><p>添加</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">export</span> ZOOKEEPER_HOME<span class="token operator">=</span>/usr/local/zookeeper
-<span class="token comment" spellcheck="true"># zookeeper env</span>
-<span class="token function">export</span> PATH<span class="token operator">=</span><span class="token variable">$ZOOKEEPER_HOME</span>/bin:<span class="token variable">$PATH</span>
-</code></pre>
-<p>使配置文件生效<br>$ source /home/zookeeper/.bash_profile</p>
-<h4 id="添加防火墙规则"><a href="#添加防火墙规则" class="headerlink" title="添加防火墙规则"></a>添加防火墙规则</h4><p>在防火墙中打开要用到的端口2181、2888、3888</p>
-<h5 id="切换到-root-用户权限，执行以下命令："><a href="#切换到-root-用户权限，执行以下命令：" class="headerlink" title="切换到 root 用户权限，执行以下命令："></a>切换到 root 用户权限，执行以下命令：</h5><pre><code>chkconfig iptables on
-service iptables start
-vim /etc/sysconfig/iptables
-</code></pre><h5 id="增加以下-3-行："><a href="#增加以下-3-行：" class="headerlink" title="增加以下 3 行："></a>增加以下 3 行：</h5><pre><code>-A INPUT -m state --state NEW -m tcp -p tcp --dport 2181 -j ACCEPT
--A INPUT -m state --state NEW -m tcp -p tcp --dport 2888 -j ACCEPT
--A INPUT -m state --state NEW -m tcp -p tcp --dport 3888 -j ACCEPT
-</code></pre><h5 id="重启防火墙："><a href="#重启防火墙：" class="headerlink" title="重启防火墙："></a>重启防火墙：</h5><p>service iptables restart</p>
-<h3 id="zk操作"><a href="#zk操作" class="headerlink" title="zk操作"></a>zk操作</h3><h4 id="启动zk"><a href="#启动zk" class="headerlink" title="启动zk"></a>启动zk</h4><p>zkServer.sh start</p>
-<h5 id="查看有无启动成功"><a href="#查看有无启动成功" class="headerlink" title="查看有无启动成功"></a>查看有无启动成功</h5><p>jps</p>
-<pre><code>1456 QuorumPeerMain
-1475 Jps
-</code></pre><blockquote>
-<p>启动成功</p>
-</blockquote>
-<h4 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h4><p>zkServer.shstatus</p>
-<h4 id="查看日志文件"><a href="#查看日志文件" class="headerlink" title="查看日志文件"></a>查看日志文件</h4><p>$ tail -500f /usr/local/zookeeper/logs/zookeeper.out</p>
-<h4 id="停止zookeeper进程："><a href="#停止zookeeper进程：" class="headerlink" title="停止zookeeper进程："></a>停止zookeeper进程：</h4><p>zkServer.sh stop</p>
-<h4 id="配置zookeeper开机使用xubin用户启动："><a href="#配置zookeeper开机使用xubin用户启动：" class="headerlink" title="配置zookeeper开机使用xubin用户启动："></a>配置zookeeper开机使用xubin用户启动：</h4><p>编辑/etc/rc.local 文件，加入：</p>
-<p>su - zookeeper -c ‘/usr/local/zookeeper/bin/zkServer.sh start’</p>
-<h3 id="zookeeper查看插件"><a href="#zookeeper查看插件" class="headerlink" title="zookeeper查看插件"></a>zookeeper查看插件</h3><h4 id="eclipse"><a href="#eclipse" class="headerlink" title="eclipse"></a>eclipse</h4><ul>
-<li>Help -&gt; Install New Software</li>
-<li>添加 url <a href="http://www.massedynamic.org/eclipse/updates/" target="_blank" rel="external">http://www.massedynamic.org/eclipse/updates/</a></li>
-<li>选择zookeeper插件安装</li>
-<li>Eclipse 菜单打开Window -&gt; Show View -&gt; Other… -&gt; ZooKeeper 3.2.2</li>
-<li>输入zookeeper的地址 连接</li>
-</ul>
-<h4 id="idea插件"><a href="#idea插件" class="headerlink" title="idea插件"></a>idea插件</h4><p>直接插件库中搜索zookeeper</p>
-<blockquote>
-<p>不过我不推荐使用<br>插件开发成那样还上线…(不过是免费的 想用就用吧)</p>
-</blockquote>
-<h4 id="Java开发的客户端"><a href="#Java开发的客户端" class="headerlink" title="Java开发的客户端"></a>Java开发的客户端</h4><p><a href="http://download.csdn.net/detail/nihaoadam/9427620" target="_blank" rel="external">点我下载</a></p>
-<hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>安装集群的时候一定要把防火墙配置好 不然就会出现各种问题 或者直接把防火墙关了吧 学习技术的时候可以不用考虑防火墙</p>
-<p>后面会写一篇关于使用ZkClient、Curator操作Zookeeper的博客</p>
-<hr>
-<h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 安装教程 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Linux </tag>
-            
-            <tag> XBin-Store </tag>
-            
-            <tag> Zookeeper </tag>
             
         </tags>
         
@@ -4175,9 +4253,9 @@ Connecting to node 192.168.1.171:7003: OK
         
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> XBin-Store </tag>
+            
+            <tag> Linux </tag>
             
             <tag> Redis </tag>
             
@@ -4301,9 +4379,9 @@ password=&quot;**密码**&quot;
         
         <tags>
             
-            <tag> Bug </tag>
-            
             <tag> MySQL </tag>
+            
+            <tag> Bug </tag>
             
         </tags>
         
@@ -4370,9 +4448,9 @@ character_set_server=utf8
         
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> XBin-Store </tag>
+            
+            <tag> Linux </tag>
             
             <tag> MySQL </tag>
             

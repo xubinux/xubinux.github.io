@@ -10,7 +10,7 @@
     
     <title>
         
-            解决Java程序连接不上MySQL 但是Navicat可以连接的问题! | 
+            Hive 安装教程 | 
         
         Binux Blog
     </title>
@@ -40,7 +40,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Binux">
     <meta name="description" content="一名正在崛起的Java后端工程师">
-    <meta name="keywords" content="null,MySQL,Bug">
+    <meta name="keywords" content="null,Hadoop,Hive">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="http://on2bs9q7q.bkt.clouddn.com/avatar.png">
@@ -66,9 +66,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://binux.cn">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="解决Java程序连接不上MySQL 但是Navicat可以连接的问题! | Binux Blog">
+    <meta property="og:title" content="Hive 安装教程 | Binux Blog">
     <meta property="og:description" content="一名正在崛起的Java后端工程师">
-    <meta property="og:article:tag" content="MySQL"> <meta property="og:article:tag" content="Bug"> 
+    <meta property="og:article:tag" content="Hadoop"> <meta property="og:article:tag" content="Hive"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -274,7 +274,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#具体情况是这样的"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">具体情况是这样的</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#下面我会讲一下这个问题的原因-不限于我出现的这个问题-帮大家分析下这个问题-希望大家不要出现我这种问题了-为什么我老是碰到这种蛋疼问题-浪费时间还让人心烦-3天时间干什么不好啊"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">下面我会讲一下这个问题的原因 不限于我出现的这个问题 帮大家分析下这个问题 希望大家不要出现我这种问题了 为什么我老是碰到这种蛋疼问题 浪费时间还让人心烦 (3天时间干什么不好啊)</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正文"><span class="post-toc-number">2.</span> <span class="post-toc-text">正文</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#BalusC解答截图-再次感谢"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">@BalusC解答截图 再次感谢</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#具体报错–MySQL服务没启动同样报此错"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">具体报错–MySQL服务没启动同样报此错</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分析"><span class="post-toc-number">2.0.3.</span> <span class="post-toc-text">分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#报错问题："><span class="post-toc-number">2.0.3.1.</span> <span class="post-toc-text">报错问题：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#检查MySQL连接是否有错"><span class="post-toc-number">2.0.3.2.</span> <span class="post-toc-text">检查MySQL连接是否有错</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#检查Hosts文件"><span class="post-toc-number">2.0.4.</span> <span class="post-toc-text">检查Hosts文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#检查MySQL配置文件"><span class="post-toc-number">2.0.5.</span> <span class="post-toc-text">检查MySQL配置文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#检查MySQL运行在哪个端口"><span class="post-toc-number">2.0.6.</span> <span class="post-toc-text">检查MySQL运行在哪个端口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#检查MySQL服务是否真正启动"><span class="post-toc-number">2.0.7.</span> <span class="post-toc-text">检查MySQL服务是否真正启动</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#检查MySQL是否不接受远程连接"><span class="post-toc-number">2.0.8.</span> <span class="post-toc-text">检查MySQL是否不接受远程连接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#检查MySQL是否已经用完了所有连接"><span class="post-toc-number">2.0.9.</span> <span class="post-toc-text">检查MySQL是否已经用完了所有连接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#检查有没有什么东西在阻止Java程序和MySQL连接"><span class="post-toc-number">2.0.10.</span> <span class="post-toc-text">检查有没有什么东西在阻止Java程序和MySQL连接</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#著作权声明"><span class="post-toc-number">4.</span> <span class="post-toc-text">著作权声明</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#所需软件"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">所需软件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下载软件"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">下载软件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正文"><span class="post-toc-number">2.</span> <span class="post-toc-text">正文</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-安装-MySQL"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1.安装 MySQL</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-上传-解压-Tar-包"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.上传 解压 Tar 包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-配置-Hive"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3.配置 Hive</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-启动"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">4.启动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-启动"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">5.启动</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#著作权声明"><span class="post-toc-number">3.</span> <span class="post-toc-text">著作权声明</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -299,10 +299,10 @@
     <!-- Paradox Post Header -->
     
         <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://on2bs9q7q.bkt.clouddn.com/Mac-MySQL-blog.png)">
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://on2bs9q7q.bkt.clouddn.com/2017061414974259623895.png)">
     
             <p class="article-headline-p">
-                解决Java程序连接不上MySQL 但是Navicat可以连接的问题!
+                Hive 安装教程
             </p>
         </div>
 
@@ -321,7 +321,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Binux</strong>
-        <span>3月 02, 2017</span>
+        <span>6月 14, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -342,7 +342,7 @@
         </button>
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
             <li class="mdl-menu__item">在其它设备中阅读本文章</li>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACaElEQVR42u3aUU7DMBAE0N7/0nCAKmVmHZuoevmqKEn8jGQv4339fPX1wsPDw8PDw8PDexjvFV/vd0Uve3vC1b1Xb6nHhoeHh3eElwwxGXr7bf45HxseHh7eSd7Vgnv1O/lm8Hmh/7wx5GPDw8PDezIv3zZmbDw8PLzv4yVLfPLzR+97eHh4eDeFEcninj9nFoJszFrw8PDwYl5+yHT+89HzPTw8PLyAV7c0BWHEbOhtU8LlCPHw8PA289qgoY1oP2Nm4cUfhTseHh7eZl7y+tnx1dVdeVNC+y48PDy887x2w0imaaVdoI2S8fDw8M7zkoI1v3cYwpaRLh4eHt7/8vIyehbj5hOUhx3RARgeHh7erbwd5fIsSiiK5vXOCDw8PLwF3qxcTraQlYlINqGipMbDw8O7ldcC2hiinY6VBgU8PDy887x8OZ61C+SY/I3Ffwx4eHh4G3izhqekmE6Q7TQNsxY8PDy8DbzZIp7zZs0Kw6YrPDw8vA28/ObZkVUbSayU8nh4eHjneSsRQEJKium87C5aB/Dw8PBu5d3VHNAW6G0JnjcQ4OHh4Z3htYyV4ni2YeR/DDw8PLyTvDxOzacgn5S8HQEPDw/vObzklS2gHtyoKMfDw8M7yWuvu47K6kI5D5Hx8PDwNvNe8TXbTtpAduXoCw8PD+8k767NIPm2fTIeHh7ek3nJsp43CiTHZm0YMWy6wsPDw3sMr201aMPc4ZEbHh4e3iN57SFW3kbQFuJbSmo8PDy8W8OIz5i7ot5ZKIyHh4d3kjeLAHJ2fqi23uyFh4eHt5v3fRceHh4eHh4eHt4Drl+xXhYRSw2U8AAAAABJRU5ErkJggg==">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACXUlEQVR42u3awY7iMBAEUP7/p3evK63IVLkdk0EvJzSY0I9D7Knu15+vvl54eHh4eHh4eHgP473i6+3t/nn3//Xv/nJ9n0lteHh4eGd4PzxqNxX0buX1j9XWhoeHh3eS966g669MVibs5M7Rp/Dw8PAezEs2jLUtAQ8PD+/7eG1I0W4qeHh4eL+Flwe1bdi6K2i4PWvBw8PDi3nzEu97fbS/h4eHhxfw6pGmTeHC9WdHFeLh4eHdzGvbVO3oQMKYtM3w8PDwPsXLS2kjg2R7uK6kXoOHh4d3My9/rK+Vm28Aa0244j8GPDw8vE28diwgHxpI7rC2beDh4eE9h9fedNfhOwEXYTEeHh7eEV5S+mT0ai2kyAdY8fDw8E7y2nInj/42pGjDDjw8PLwzvLb06y0kj1/zUCMPSvDw8PDO8JIBgnnR98GKIzUeHh7eJt7aiEDbKpsPvxbtNzw8PLyDvPkxOie1Awobhq7w8PDwNvF2fWV+NG+HCdpDOR4eHt5JXvIIbo+5bdss/4GK0QE8PDy8rby1Rv5a7JtvA6NBBDw8PLyDvHnLf7HZP4iSN6TUeHh4eAPe2iF4bU07mlAEInh4eHgHeZPm/X2DWfkGg4eHh3eG115JcDAZRW0DiDqlxsPDwxvzJiNTdcAabwYtCQ8PD+88b9La3xvgtgExHh4e3md5+QM6X7O2nSRbFB4eHt7v4rUH5fzdCRgPDw/vybw8GtgVVRRDCXh4eHgHeUlZE1JSeh4x4+Hh4X2W10YAybttifk96zACDw8Pbyvv+y48PDw8PDw8PLwHXH8BBtIrJkTfcJIAAAAASUVORK5CYII=">
         </ul>
     
 
@@ -354,7 +354,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Bug/">Bug</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/MySQL/">MySQL</a>
+        <a class="post_tag-link" href="/tags/Hadoop/">Hadoop</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Hive/">Hive</a>
     </ul>
     
 
@@ -381,7 +381,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=解决Java程序连接不上MySQL 但是Navicat可以连接的问题!&url=http://binux.cn//2017/03/02/Mac-MySQL-Error/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Hive 安装教程&url=http://binux.cn//2017/06/14/Hive-Install/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -396,7 +396,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://binux.cn//2017/03/02/Mac-MySQL-Error/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://binux.cn//2017/06/14/Hive-Install/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -408,7 +408,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Binux Blog&title=解决Java程序连接不上MySQL 但是Navicat可以连接的问题!&summary=一名正在崛起的Java后端工程师&pics=http://binux.cnhttp://on2bs9q7q.bkt.clouddn.com/avatar.png&url=http://binux.cn/2017/03/02/Mac-MySQL-Error/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Binux Blog&title=Hive 安装教程&summary=一名正在崛起的Java后端工程师&pics=http://binux.cnhttp://on2bs9q7q.bkt.clouddn.com/avatar.png&url=http://binux.cn/2017/06/14/Hive-Install/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -427,105 +427,59 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <blockquote>
-<p>“这篇文章将讲一个困扰了我3天的问题 Java连接不上MySQL”</p>
+<p>“这篇文章将介绍如何安装 Hive”</p>
 </blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇讲的Mac上MySQL就突然没用了 但是Navicat、IDEA都可以连接上MySQL 使用Java就是连接不上 <strong>重装也没有用</strong></p>
-<h4 id="具体情况是这样的"><a href="#具体情况是这样的" class="headerlink" title="具体情况是这样的"></a>具体情况是这样的</h4><ul>
-<li><p>第一天晚上在写订单模块 代码写完了 准备测试时 突然整个控制台狂打印错误 具体的错误就是下面的错误 当时就想着反正就order模块报错 明天再改吧 就回宿舍了</p>
-</li>
-<li><p>第二天早上过来 我启动其他服务 发现全部都报错 Google了一上午 重装MySQL 依然没解决 下午不甘的去上课</p>
-</li>
-<li><p>第二天晚上继续找错 试遍了各种情况 打算在虚拟机装MySQL 直接用虚拟机的 但是 依然报错 但是我发现我把网线一拔就可以正常使用 哎 谁能体会我现在的心情 再次不甘的回宿舍了</p>
-</li>
-<li><p>第三天早上 带着万分的无奈 继续找错 8点找到11点半 还是找不到啊</p>
-</li>
-<li><p>第三天下午我终于找到了 还是得感谢Google 感谢www.stackoverflow.com上的@BalusC</p>
-</li>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="所需软件"><a href="#所需软件" class="headerlink" title="所需软件"></a>所需软件</h3><p>CentOS 6.5 </p>
+<p>Hadoop 2.6.1</p>
+<p>Hive 1.2.x</p>
+<h3 id="下载软件"><a href="#下载软件" class="headerlink" title="下载软件"></a>下载软件</h3><ul>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/apache/hive/hive-1.2.2/apache-hive-1.2.2-bin.tar.gz" target="_blank" rel="external">apache-hive-1.2.2-bin.tar.gz</a></li>
 </ul>
-<h4 id="下面我会讲一下这个问题的原因-不限于我出现的这个问题-帮大家分析下这个问题-希望大家不要出现我这种问题了-为什么我老是碰到这种蛋疼问题-浪费时间还让人心烦-3天时间干什么不好啊"><a href="#下面我会讲一下这个问题的原因-不限于我出现的这个问题-帮大家分析下这个问题-希望大家不要出现我这种问题了-为什么我老是碰到这种蛋疼问题-浪费时间还让人心烦-3天时间干什么不好啊" class="headerlink" title="下面我会讲一下这个问题的原因 不限于我出现的这个问题 帮大家分析下这个问题 希望大家不要出现我这种问题了 为什么我老是碰到这种蛋疼问题 浪费时间还让人心烦 (3天时间干什么不好啊)"></a>下面我会讲一下这个问题的原因 不限于我出现的这个问题 帮大家分析下这个问题 希望大家不要出现我这种问题了 为什么我老是碰到这种蛋疼问题 <strong>浪费时间还让人心烦</strong> (3天时间干什么不好啊)</h4><hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h4 id="BalusC解答截图-再次感谢"><a href="#BalusC解答截图-再次感谢" class="headerlink" title="@BalusC解答截图 再次感谢"></a>@BalusC解答截图 再次感谢</h4><p><center><img src="http://on2bs9q7q.bkt.clouddn.com/MySQL-ERROR-img1.png" alt="@BalusC解答截图"></center><br><center>@BalusC解答截图</center></p>
-<h4 id="具体报错–MySQL服务没启动同样报此错"><a href="#具体报错–MySQL服务没启动同样报此错" class="headerlink" title="具体报错–MySQL服务没启动同样报此错"></a>具体报错–MySQL服务没启动同样报此错</h4><pre><code>com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="1-安装-MySQL"><a href="#1-安装-MySQL" class="headerlink" title="1.安装 MySQL"></a>1.安装 MySQL</h3><p><a href="http://binux.cn/2017/03/01/Linux-MySQL-Install/">http://binux.cn/2017/03/01/Linux-MySQL-Install/</a></p>
+<h3 id="2-上传-解压-Tar-包"><a href="#2-上传-解压-Tar-包" class="headerlink" title="2.上传 解压 Tar 包"></a>2.上传 解压 Tar 包</h3><p>tar -zxvf apache-hive-1.2.1-bin.tar.gz -C apps/</p>
+<h3 id="3-配置-Hive"><a href="#3-配置-Hive" class="headerlink" title="3.配置 Hive"></a>3.配置 Hive</h3><p>配置HIVE_HOME环境变量  第48行</p>
+<p>cp conf/hive-env.sh.template conf/hive-env.sh</p>
+<p>vim conf/hive-env.sh 配置其中的$hadoop_home</p>
+<p>配置元数据库信息  </p>
+<p>vim  hive-site.xml </p>
+<p>添加如下内容：</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>javax.jdo.option.ConnectionURL<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>jdbc:mysql://localhost:3306/hive?createDatabaseIfNotExist=true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>JDBC connect string for a JDBC metastore<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
 
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-    at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-    at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
-    at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-    at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
-    at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
-    at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:981)
-    at com.mysql.jdbc.MysqlIO.readPacket(MysqlIO.java:628)
-    at com.mysql.jdbc.MysqlIO.doHandshake(MysqlIO.java:1014)
-    at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2255)
-    at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2286)
-    at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2085)
-    at com.mysql.jdbc.ConnectionImpl.&lt;init&gt;(ConnectionImpl.java:795)
-    at com.mysql.jdbc.JDBC4Connection.&lt;init&gt;(JDBC4Connection.java:44)
-    at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-    at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
-    at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-    at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
-    at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
-    at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:400)
-    at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:327)
-    at org.mybatis.generator.internal.db.ConnectionFactory.getConnection(ConnectionFactory.java:68)
-    at org.mybatis.generator.config.Context.getConnection(Context.java:526)
-    at org.mybatis.generator.config.Context.introspectTables(Context.java:436)
-    at org.mybatis.generator.api.MyBatisGenerator.generate(MyBatisGenerator.java:222)
-    at org.mybatis.generator.api.MyBatisGenerator.generate(MyBatisGenerator.java:133)
-    at GeneratorSqlmap.generator(GeneratorSqlmap.java:27)
-    at GeneratorSqlmap.main(GeneratorSqlmap.java:33)
-    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-    at java.lang.reflect.Method.invoke(Method.java:606)
-    at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
-Caused by: java.io.EOFException: Can not read response from server. Expected to read 4 bytes, read 0 bytes before connection was unexpectedly lost.
-    at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:2957)
-    at com.mysql.jdbc.MysqlIO.readPacket(MysqlIO.java:560)
-    ... 25 more
-</code></pre><h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><h5 id="报错问题："><a href="#报错问题：" class="headerlink" title="报错问题："></a>报错问题：</h5><p>The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.</p>
-<p>最后一个发送成功的数据包在0秒前 没有收到任何来自服务器的数据包。</p>
-<p>简单来说就是连不上MySQL服务器了</p>
-<h5 id="检查MySQL连接是否有错"><a href="#检查MySQL连接是否有错" class="headerlink" title="检查MySQL连接是否有错"></a>检查MySQL连接是否有错</h5><p>这时候你就得检查下你的msyql连接url有没有写错了</p>
-<pre><code>driverClass=&quot;**com.mysql.jdbc.Driver**&quot;
-connectionURL=&quot;jdbc:mysql://**IP**:**3306**/**库名**&quot;
-userId=&quot;root&quot;
-password=&quot;**密码**&quot;
-</code></pre><blockquote>
-<p>ip 端口 库名 仔细检查下</p>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>javax.jdo.option.ConnectionDriverName<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>com.mysql.jdbc.Driver<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>Driver class name for a JDBC metastore<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>javax.jdo.option.ConnectionUserName<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>root<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>username to use against metastore database<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>javax.jdo.option.ConnectionPassword<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>14130220<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>password to use against metastore database<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>复制 MySQL 驱动到 Hive/lib 下</p>
+<h3 id="4-启动"><a href="#4-启动" class="headerlink" title="4.启动"></a>4.启动</h3><p>配置 HIVE_HOME</p>
+<pre class=" language-bash"><code class="language-bash">HIVE_HOME<span class="token operator">=</span>/home/hadoop/apps/hive-1.2.1
+PATH<span class="token operator">=</span><span class="token variable">$HIVE_HOME</span>/bin:<span class="token variable">$PATH</span>
+</code></pre>
+<h3 id="5-启动"><a href="#5-启动" class="headerlink" title="5.启动"></a>5.启动</h3><p>[hadoop@hadoop1 ~]$ hive //启动</p>
+<blockquote>
+<p>报错 java.lang.IncompatibleClassChangeError: Found class jline.Terminal, but interface was expected</p>
+<p>rm HAOOP_HOME/share/hadoop/yarn/lib/jline-0.9.94.jar </p>
+<p>cp HIVE_HOME/lib/jline-2.12.jar HAOOP_HOME/share/hadoop/yarn/lib/</p>
 </blockquote>
-<p>如果到这还没有解决问题 那么继续往下看</p>
-<h4 id="检查Hosts文件"><a href="#检查Hosts文件" class="headerlink" title="检查Hosts文件"></a>检查Hosts文件</h4><p>查看jdbc中的IP是否在hosts文件中有解析</p>
-<h4 id="检查MySQL配置文件"><a href="#检查MySQL配置文件" class="headerlink" title="检查MySQL配置文件"></a>检查MySQL配置文件</h4><p>查看是否绑定ip地址</p>
-<p>如果有这行 注释bind-address=xxx.xxx.xxx.xxx</p>
-<h4 id="检查MySQL运行在哪个端口"><a href="#检查MySQL运行在哪个端口" class="headerlink" title="检查MySQL运行在哪个端口"></a>检查MySQL运行在哪个端口</h4><pre><code>mysql&gt; show global variables like &#39;port&#39;;
-+---------------+-------+
-| Variable_name | Value |
-+---------------+-------+
-| port          | 3306  |
-+---------------+-------+
-1 row in set (0.10 sec)
-</code></pre><h4 id="检查MySQL服务是否真正启动"><a href="#检查MySQL服务是否真正启动" class="headerlink" title="检查MySQL服务是否真正启动"></a>检查MySQL服务是否真正启动</h4><p>telnet <strong>Ip</strong> 3306</p>
-<h4 id="检查MySQL是否不接受远程连接"><a href="#检查MySQL是否不接受远程连接" class="headerlink" title="检查MySQL是否不接受远程连接"></a>检查MySQL是否不接受远程连接</h4><pre><code>SELECT USER,HOST FROM user;
-//正确
-+-----------+-----------+
-| USER      | HOST      |
-+-----------+-----------+
-| root      | %         |
-| mysql.sys | localhost |
-| root      | localhost |
-+-----------+-----------+
-</code></pre><p>如果没有授权的话</p>
-<p>mysql&gt; grant all privileges on <em>.</em> to root@’%’ identified by ‘<strong>我是密码</strong>‘;</p>
-<h4 id="检查MySQL是否已经用完了所有连接"><a href="#检查MySQL是否已经用完了所有连接" class="headerlink" title="检查MySQL是否已经用完了所有连接"></a>检查MySQL是否已经用完了所有连接</h4><p>重启MySQL 出现运行程序 如果不报错就是此问题</p>
-<h4 id="检查有没有什么东西在阻止Java程序和MySQL连接"><a href="#检查有没有什么东西在阻止Java程序和MySQL连接" class="headerlink" title="检查有没有什么东西在阻止Java程序和MySQL连接"></a>检查有没有什么东西在阻止Java程序和MySQL连接</h4><p>比如关闭<strong>防火墙</strong> 或者设置防火墙规则</p>
-<p>比如有没有开什么<strong>代理</strong></p>
-<p>比如拔网线 再连接MySQL试试</p>
-<hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><center><img src="http://on2bs9q7q.bkt.clouddn.com/MySQL-ERROR-img2.png" alt="Shadowsocks"></center><br><center>Shadowsocks</center>
-
-<p>我是栽在最后一条Proxy 想到了Firewall 却忘记他了 程序员翻个墙看看外面的世界 这是一件很正常的事 个人感觉Google甩Baidu一个地球到月球的距离 我就是由于开着小飞机(Shadowsocks) 嫌网速卡 切换到全局模式 然后就让我郁闷了3天。</p>
-<p>改成自动模式 解决问题..</p>
 <hr>
 <h2 id="著作权声明"><a href="#著作权声明" class="headerlink" title="著作权声明"></a>著作权声明</h2><p>本文首次发布于 <a href="http://binux.cn">Binux Blog</a>，转载请保留以上链接</p>
 
@@ -545,7 +499,7 @@ password=&quot;**密码**&quot;
     <!-- 使用 changyan -->
     <div id="changyan-comment">
         <!--PC和WAP自适应版-->
-<div id="SOHUCS" sid="2017/03/02/Mac-MySQL-Error/"  ></div>
+<div id="SOHUCS" sid="2017/06/14/Hive-Install/"  ></div>
 <script type="text/javascript">
 (function(){
 var appid = 'cyt0kNDsK';
@@ -574,21 +528,13 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/03/03/Redis-Cluster-Install/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/03/01/Linux-MySQL-Install/" id="post_nav-older" class="next-content">
+        <a href="/2017/06/03/Hadoop-Perceived/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

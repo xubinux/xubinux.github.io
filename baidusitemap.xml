@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://binux.cn/2017/06/14/Hive-Install/</loc>
+    <lastmod>2017-06-14T08:21:14.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hive 安装教程</title>
+        <pubTime>2017-06-13T16:00:00.000Z</pubTime>
+        
+        <tag>Hadoop</tag>
+         
+        <tag>Hive</tag>
+         
+         
+           
+             
+              <breadCrumb title="安装教程" url="http://binux.cn/categories/%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://binux.cn/2017/03/01/Linux-MySQL-Install/</loc>
     <lastmod>2017-06-10T16:00:00.000Z</lastmod>
     <data>
@@ -11,9 +33,9 @@
         <title>Xbin-Store(分布式商城)项目所用Linux服务系列 MySQL安装(一)</title>
         <pubTime>2017-02-28T16:00:00.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>XBin-Store</tag>
+         
+        <tag>Linux</tag>
          
         <tag>MySQL</tag>
          
@@ -78,9 +100,9 @@
         <title>CentOS 7下 Docker 安装</title>
         <pubTime>2017-05-07T16:00:00.000Z</pubTime>
         
-        <tag>Docker</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>Docker</tag>
          
          
            
@@ -142,9 +164,9 @@
         <title>Xbin-Store(分布式商城)项目所用Linux服务系列 Zookeeper集群安装(三)</title>
         <pubTime>2017-03-03T16:00:00.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>XBin-Store</tag>
+         
+        <tag>Linux</tag>
          
         <tag>Zookeeper</tag>
          
@@ -166,9 +188,9 @@
         <title>Xbin-Store(分布式商城)项目所用Linux服务系列 Solr集群安装(六)</title>
         <pubTime>2017-03-05T16:00:00.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>XBin-Store</tag>
+         
+        <tag>Linux</tag>
          
         <tag>Solr</tag>
          
@@ -190,11 +212,11 @@
         <title>Xbin-Store(分布式商城)项目所用Linux服务系列 FastDFS安装(五)</title>
         <pubTime>2017-03-04T16:00:00.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>XBin-Store</tag>
          
         <tag>FastDFS</tag>
+         
+        <tag>Linux</tag>
          
          
            
@@ -254,18 +276,18 @@
 
     
   <url>
-    <loc>http://binux.cn/2017/03/03/Redis-Cluster-Install/</loc>
+    <loc>http://binux.cn/2017/03/07/RocketMQ-Cluster-Install/</loc>
     <lastmod>2017-03-19T13:48:39.000Z</lastmod>
     <data>
         <display>
-        <title>Xbin-Store(分布式商城)项目所用Linux服务系列 Redis集群安装(二)</title>
-        <pubTime>2017-03-02T16:00:00.000Z</pubTime>
+        <title>Xbin-Store(分布式商城)项目所用Linux服务系列 RocketMQ集群安装(七)</title>
+        <pubTime>2017-03-06T16:00:00.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>XBin-Store</tag>
          
-        <tag>Redis</tag>
+        <tag>Linux</tag>
+         
+        <tag>RocketMQ</tag>
          
          
            
@@ -278,18 +300,18 @@
 
     
   <url>
-    <loc>http://binux.cn/2017/03/07/RocketMQ-Cluster-Install/</loc>
+    <loc>http://binux.cn/2017/03/03/Redis-Cluster-Install/</loc>
     <lastmod>2017-03-19T13:48:39.000Z</lastmod>
     <data>
         <display>
-        <title>Xbin-Store(分布式商城)项目所用Linux服务系列 RocketMQ集群安装(七)</title>
-        <pubTime>2017-03-06T16:00:00.000Z</pubTime>
+        <title>Xbin-Store(分布式商城)项目所用Linux服务系列 Redis集群安装(二)</title>
+        <pubTime>2017-03-02T16:00:00.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>XBin-Store</tag>
          
-        <tag>RocketMQ</tag>
+        <tag>Linux</tag>
+         
+        <tag>Redis</tag>
          
          
            
@@ -309,9 +331,9 @@
         <title>Xbin-Store(分布式商城)项目所用Linux服务系列 Nginx安装(四)</title>
         <pubTime>2017-03-03T16:00:00.000Z</pubTime>
         
-        <tag>Linux</tag>
-         
         <tag>XBin-Store</tag>
+         
+        <tag>Linux</tag>
          
         <tag>Nginx</tag>
          
@@ -373,9 +395,9 @@
         <title>解决Java程序连接不上MySQL 但是Navicat可以连接的问题!</title>
         <pubTime>2017-03-01T16:00:00.000Z</pubTime>
         
-        <tag>Bug</tag>
-         
         <tag>MySQL</tag>
+         
+        <tag>Bug</tag>
          
          
            
@@ -454,12 +476,12 @@
 
     
   <url>
-    <loc>http://binux.cn/2017/03/11/LinkedList-Source-Code/</loc>
+    <loc>http://binux.cn/2017/03/14/HastMap-Source-Code/</loc>
     <lastmod>2017-03-19T13:30:18.000Z</lastmod>
     <data>
         <display>
-        <title>JDK底层实现源码分析系列(三) LinkedList源码分析</title>
-        <pubTime>2017-03-10T16:00:00.000Z</pubTime>
+        <title>JDK底层实现源码分析系列(四) HashMap源码分析</title>
+        <pubTime>2017-03-13T16:00:00.000Z</pubTime>
         
         <tag>JDK</tag>
          
@@ -498,12 +520,12 @@
 
     
   <url>
-    <loc>http://binux.cn/2017/03/14/HastMap-Source-Code/</loc>
+    <loc>http://binux.cn/2017/03/11/LinkedList-Source-Code/</loc>
     <lastmod>2017-03-19T13:30:18.000Z</lastmod>
     <data>
         <display>
-        <title>JDK底层实现源码分析系列(四) HashMap源码分析</title>
-        <pubTime>2017-03-13T16:00:00.000Z</pubTime>
+        <title>JDK底层实现源码分析系列(三) LinkedList源码分析</title>
+        <pubTime>2017-03-10T16:00:00.000Z</pubTime>
         
         <tag>JDK</tag>
          
